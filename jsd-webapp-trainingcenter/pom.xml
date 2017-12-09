@@ -5,6 +5,7 @@
 		<groupId>io.jsd.training</groupId>
 		<artifactId>jsd-main</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../jsd-main/pom.xml</relativePath>
 	</parent>
 	<artifactId>jsd-webapp-trainingcenter</artifactId>
 	<name>training-center</name>
@@ -121,19 +122,6 @@
 			<groupId>org.jboss.spec.javax.jms</groupId>
 			<artifactId>jboss-jms-api_2.0_spec</artifactId>
 			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.5.3</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>2.5.3</version>
 		</dependency>
 
 		<dependency>

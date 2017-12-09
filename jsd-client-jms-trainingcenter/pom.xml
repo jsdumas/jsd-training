@@ -4,27 +4,13 @@
     <groupId>io.jsd.training</groupId>
     <artifactId>jsd-main</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../jsd-main/pom.xml</relativePath>
   </parent>
   <artifactId>jsd-client-jms-trainingcenter</artifactId>
   <name>client-jms</name>
   
   
   <dependencies>
-
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.5.3</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>2.5.3</version>
-		</dependency>
-
-
 		<dependency>
 			<groupId>org.jboss.spec.javax.jms</groupId>
 			<artifactId>jboss-jms-api_2.0_spec</artifactId>
