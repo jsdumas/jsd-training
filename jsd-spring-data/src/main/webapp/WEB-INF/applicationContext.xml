@@ -36,11 +36,11 @@
 
 
 	<!-- Pour les annotations -->
-	<context:component-scan base-package="io.jsd.training" />
-	<jpa:repositories base-package="io.jsd.training.dao"></jpa:repositories>
+	<context:component-scan base-package="io.jsd.training.springdata" />
+	<jpa:repositories base-package="io.jsd.training.springdata.dao"></jpa:repositories>
 
 		
-	<!-- Connection à la BDD -->
+	<!-- Connexion à la BDD - variables déclarées dans le pom profile / properties-->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="${jdbc.url}" />
@@ -54,7 +54,7 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- Indiquer l'endroit ou se trouve les entity du projet -->
-		<property name="packagesToScan" value="fr.treeptik.model" />
+		<property name="packagesToScan" value="io.jsd.training.springdata.model" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="showSql" value="true" />

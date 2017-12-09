@@ -7,4 +7,5 @@
     <relativePath>../jsd-main/pom.xml</relativePath>
   </parent>
   <artifactId>jsd-codingame</artifactId>
+  <name>codingame</name>
   </project>
