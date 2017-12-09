@@ -1,0 +1,90 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="template.xhtml">
+
+	<ui:define name="add-session">
+
+		<h1>Ajouter une session</h1>
+		<h:form>
+
+			<h:inputHidden value="#{dtSessionManagedBean.session.id}" />
+			<h:panelGrid columns="2" cellpadding="5">
+
+
+				<p:outputLabel for="duree" value="Durée :" />
+				<p:inputText id="duree"
+					value="#{dtFormationManagedBean.formation.duree}" />
+
+
+				<p:outputLabel for="formation" value="Formation :" />
+				<p:selectOneMenu id="formation"
+					value="#{dtSessionManagedBean.formation}" style="width:150px">
+					<!--                 <p:ajax listener="#{dropdownView.onCountryChange}" update="city" /> -->
+					<f:selectItem itemLabel="Select formation" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems
+						value="#{dtSessionManagedBean.sessionDTO.formations}"
+						var="formation" itemLabel="#{formation.intitule}"
+						itemValue="#{formation}" />
+				</p:selectOneMenu>
+
+
+				<p:outputLabel for="formateur" value="Formateur :" />
+				<p:selectOneMenu id="formateur"
+					value="#{dtSessionManagedBean.ids}" style="width:150px">
+					<f:selectItem itemLabel="Select formateur" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems
+						value="#{dtSessionManagedBean.sessionDTO.formateurs}"
+						var="formateur" itemLabel="#{formateur.prenom} #{formateur.nom}"
+						itemValue="#{formateur.id}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="dateDeDebut" value="Date de début :" />
+				<p:calendar id="dateDeDebut"
+					value="#{dtSessionManagedBean.sessionDTO.dateDeDebut}"
+					pattern="dd-MM-yyyy" mask="true" />
+
+				<p:outputLabel for="dateDeFin" value="Date de fin :" />
+				<p:calendar id="dateDeFin"
+					value="#{dtSessionManagedBean.sessionDTO.dateDeFin}"
+					pattern="dd-MM-yyyy" mask="true" />
+
+				<p:outputLabel for="difficulte">Difficulté</p:outputLabel>
+				<p:inputText id="difficulte"
+					value="#{dtFormationManagedBean.formation.difficulte}" />
+
+			</h:panelGrid>
+
+
+
+			<p:commandButton action="#{dtSessionManagedBean.create()}"
+				value="Envoyer" />
+
+
+			<p:dialog modal="true" resizable="false" header="Values"
+				widgetVar="dlg" showEffect="fold">
+
+				<p:panelGrid id="display" columns="2" columnClasses="label,value">
+
+					<h:outputText value="Date de début" />
+					<h:outputText
+						value="#{dtSessionManagedBean.sessionDTO.dateDeDebut}">
+						<f:convertDateTime pattern="MM/dd/yyyy" />
+					</h:outputText>
+
+					<h:outputText value="Date de fin" />
+					<h:outputText value="#{dtSessionManagedBean.sessionDTO.dateDeFin}">
+						<f:convertDateTime pattern="MM/dd/yyyy" />
+					</h:outputText>
+
+				</p:panelGrid>
+			</p:dialog>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

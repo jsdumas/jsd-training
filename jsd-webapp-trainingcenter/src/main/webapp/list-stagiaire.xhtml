@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="template.xhtml">
+
+	<ui:define name="list-stagiaire">
+	
+	<p:dataTable var="stagiaire" value="#{dtStagiaireManagedBean.stagiaires}" sortMode="multiple">
+			<p:column headerText="Id" sortBy="#{stagiaire.id}">
+				<h:outputText value="#{stagiaire.id}" />
+			</p:column>
+
+			<p:column headerText="Nom" sortBy="#{stagiaire.nom}">
+				<h:outputText value="#{stagiaire.nom}" />
+			</p:column>
+
+			<p:column headerText="Prénom" sortBy="#{stagiaire.prenom}">
+				<h:outputText value="#{stagiaire.prenom}" />
+			</p:column>
+
+			<p:column headerText="Date de naissance" sortBy="#{stagiaire.dateDeNaissance}">
+				<h:outputText value="#{stagiaire.dateDeNaissance}" />
+			</p:column>
+			
+			<p:column headerText="E mail" sortBy="#{stagiaire.email}">
+				<h:outputText value="#{stagiaire.email}" />
+			</p:column>
+			
+			<p:column headerText="Nombre de jours disponibles" sortBy="#{stagiaire.nbJourDispo}">
+				<h:outputText value="#{stagiaire.nbJourDispo}" />
+			</p:column>
+			
+			<p:column headerText="Supprimer">
+			<h:form>
+						<h:commandLink action="#{dtStagiaireManagedBean.remove()}" value="[X]" />
+			
+			</h:form>
+			</p:column>
+		</p:dataTable>
+	
+	
+		</ui:define>
+
+</ui:composition>

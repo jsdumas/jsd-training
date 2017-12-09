@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="template.xhtml">
+
+	<ui:define name="add-formateur">
+	
+	<h1>Ajouter un formateur</h1>
+		<h:form>
+		
+			<h:inputHidden value="#{dtFormateurManagedBean.formateur.id}" />
+			
+			<h:panelGrid columns="2" cellpadding="5">
+			
+			<div class="form-group">
+				<label for="nom">Nom</label>
+				<p:inputText name="nom" value="#{dtFormateurManagedBean.formateur.nom}" />
+			</div>
+			
+			<div class="form-group">
+				<label for="prenom">Prenom</label>
+				<p:inputText name="prenom" value="#{dtFormateurManagedBean.formateur.prenom}" />
+			</div>
+			
+			<div class="form-group">
+				<label for="entreprise">Entreprise</label>
+				<p:inputText name="entreprise" value="#{dtFormateurManagedBean.formateur.entreprise}"/>
+			</div>
+			
+			<div class="form-group">
+				<label for="poste">Poste</label>
+				<p:inputText name="poste" value="#{dtFormateurManagedBean.formateur.poste}"/>
+			</div>
+			
+			</h:panelGrid>
+			
+			<p:commandButton action="#{dtFormateurManagedBean.create()}" value="Envoyer"/>
+			
+		</h:form>
+	
+		</ui:define>
+
+</ui:composition>

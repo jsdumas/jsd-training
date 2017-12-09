@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="template.xhtml">
+
+	<ui:define name="list-formateur">
+	
+	<p:dataTable var="formateur" value="#{dtFormateurManagedBean.formateurs}" sortMode="multiple">
+			<p:column headerText="Id" sortBy="#{formateur.id}">
+				<h:outputText value="#{formateur.id}" />
+			</p:column>
+
+			<p:column headerText="Nom" sortBy="#{formateur.nom}">
+				<h:outputText value="#{formateur.nom}" />
+			</p:column>
+
+			<p:column headerText="Prenom" sortBy="#{formateur.prenom}">
+				<h:outputText value="#{formateur.prenom}" />
+			</p:column>
+
+			<p:column headerText="Entreprise" sortBy="#{formateur.entreprise}">
+				<h:outputText value="#{formateur.entreprise}" />
+			</p:column>
+			
+			<p:column headerText="Poste" sortBy="#{formateur.poste}">
+				<h:outputText value="#{formateur.poste}" />
+			</p:column>
+			
+			<p:column headerText="Supprimer">
+			<h:form>
+						<h:commandLink action="#{dtFormateurManagedBean.remove()}" value="[X]" />
+			
+			</h:form>
+			</p:column>
+			
+		</p:dataTable>
+	
+	
+	
+		</ui:define>
+
+</ui:composition>
