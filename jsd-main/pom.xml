@@ -23,6 +23,7 @@
 	<modules>
 		<module>jsd-client-jms-trainingcenter</module>
 		<module>jsd-client-rest-trainingcenter</module>
+		<module>jsd-client-ws-trainingcenter</module>
 		<module>jsd-codingame</module>
 		<module>jsd-java</module>
 		<module>jsd-spring-data</module>
