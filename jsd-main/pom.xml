@@ -14,14 +14,26 @@
 		<version.maven.resources.plugin>3.0.2</version.maven.resources.plugin>
 		<version.java>1.8</version.java>
 		<version.junit>4.12</version.junit>
+		<version.hamcrest>1.3</version.hamcrest>
+		<version.fasterxml.jackson>2.5.3</version.fasterxml.jackson>
+		<version.logforj>1.2.17</version.logforj>
 	</properties>
 
 
 	<modules>
-		<module>io.jsd.java</module>
+		<module>jsd-client-jms-trainingcenter</module>
+		<module>jsd-client-rest-trainingcenter</module>
+		<module>jsd-codingame</module>
+		<module>jsd-java</module>
+		<module>jsd-spring-data</module>
+		<module>jsd-spring-framework</module>
+		<module>jsd-webapp-trainingcenter</module>
 	</modules>
 
 	<dependencies>
+		<!-- *** -->
+		<!-- TEST -->
+		<!-- *** -->
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -34,9 +46,32 @@
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
-			<version>1.3</version>
+			<version>${version.hamcrest}</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- *** -->
+		<!-- LOG -->
+		<!-- *** -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${version.logforj}</version>
+		</dependency>
+		<!-- *** -->
+		<!-- XML -->
+		<!-- *** -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${version.fasterxml.jackson}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${version.fasterxml.jackson}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
