@@ -1,20 +1,24 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>io.jsd.training</groupId>
-  <artifactId>jsd-main</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  
-  <properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>io.jsd.training</groupId>
+	<artifactId>jsd-main</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.plugin>3.7.0</maven.compiler.plugin>
+		<version.java>1.8</version.java>
 	</properties>
-  
-  <modules>
-  	<module>io.jsd.java</module>
-  </modules>
-  
-  <dependencies>
+
+
+	<modules>
+		<module>io.jsd.java</module>
+	</modules>
+
+	<dependencies>
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -31,16 +35,16 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-  
-  <build>
+
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
+				<version>${maven.compiler.plugin}</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${version.java}</source>
+					<target>${version.java}</target>
 					<encoding>UTF-8</encoding>
 					<executable>C:\Program Files\Java\jre1.8.0_73\bin\javac</executable>
 				</configuration>
