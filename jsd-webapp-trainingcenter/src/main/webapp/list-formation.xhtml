@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="template.xhtml">
+
+	<ui:define name="list-formation">
+
+		<p:dataTable var="formation" value="#{dtFormationManagedBean.formations}" sortMode="multiple">
+			<p:column headerText="Id" sortBy="#{formation.id}">
+				<h:outputText value="#{formation.id}" />
+			</p:column>
+
+			<p:column headerText="Intitulé" sortBy="#{formation.intitule}">
+				<h:outputText value="#{formation.intitule}" />
+			</p:column>
+
+			<p:column headerText="Durée" sortBy="#{formation.duree}">
+				<h:outputText value="#{formation.duree}" />
+			</p:column>
+
+			<p:column headerText="Difficulté" sortBy="#{formation.difficulte}">
+				<h:outputText value="#{formation.difficulte}" />
+			</p:column>
+			
+			<p:column headerText="Supprimer">
+			<h:form>
+						<h:commandLink action="#{dtFormationManagedBean.remove()}" value="[X]" />
+			
+			</h:form>
+			</p:column>
+		</p:dataTable>
+
+
+
+	</ui:define>
+
+</ui:composition>

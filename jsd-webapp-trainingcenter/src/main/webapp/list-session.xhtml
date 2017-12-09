@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="template.xhtml">
+
+	<ui:define name="list-session">
+
+		<p:dataTable var="sess" value="#{dtSessionManagedBean.sessions}"
+			sortMode="multiple">
+			<p:column headerText="Id" sortBy="#{sess.id}">
+				<h:outputText value="#{sess.id}" />
+			</p:column>
+
+			<p:column headerText="Formation" sortBy="#{sess.formation.intitule}">
+				<h:outputText value="#{sess.formation.intitule}" />
+			</p:column>
+
+			<p:column headerText="Formateur" sortBy="#{sess.formateur.nom}">
+				<h:outputText value="#{sess.formateur.prenom} #{sess.formateur.nom}" />
+			</p:column>
+
+			<p:column headerText="Date de début" sortBy="#{sess.dateDeDebut}">
+				<h:outputFormat value="{0, date, dd-MM-yyyy}">
+					<f:param value="#{sess.dateDeDebut}" />
+				</h:outputFormat>
+			</p:column>
+
+
+
+			<p:column headerText="Date de fin" sortBy="#{sess.dateDeFin}">
+				<h:outputFormat value="{0, date, dd-MM-yyyy}">
+					<f:param value="#{sess.dateDeFin}" />
+				</h:outputFormat>
+			</p:column>
+
+			<p:column headerText="Supprimer">
+				<h:form>
+					<h:commandLink action="#{dtSessionManagedBean.remove()}"
+						value="[X]" />
+
+				</h:form>
+			</p:column>
+		</p:dataTable>
+
+
+
+	</ui:define>
+
+</ui:composition>

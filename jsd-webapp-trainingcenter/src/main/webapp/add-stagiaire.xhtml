@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="template.xhtml">
+
+	<ui:define name="add-stagiaire">
+	
+	<h1>Ajouter un stagiaire</h1>
+		<h:form>
+		
+			<h:inputHidden value="#{dtStagiaireManagedBean.stagiaire.id}" />
+			
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<p:outputLabel for="nom" value="Nom"/>
+				<p:inputText id="nom" value="#{dtStagiaireManagedBean.stagiaire.nom}" />
+				
+				<p:outputLabel for="prenom" value="Prenom" />
+				<p:inputText id="prenom" value="#{dtStagiaireManagedBean.stagiaire.prenom}" />
+				
+				<p:outputLabel for="dateDeNaissance" value="Date de naissance :" />
+				<p:calendar id="dateDeNaissance"
+					value="#{dtStagiaireManagedBean.stagiaire.dateDeNaissance}"
+					navigator="true"
+					pattern="dd/MM/yyyy" mask="true" />
+			
+				<p:outputLabel for="email" value="E mail"/>
+				<p:inputText id="email" value="#{dtStagiaireManagedBean.stagiaire.email}"/>
+			
+				<p:outputLabel for="nbJourDispo" value="Nombre de jours de formation" />
+				<p:inputText id="nbJourDispo" value="#{dtStagiaireManagedBean.stagiaire.nbJourDispo}"/>
+				
+				
+			
+			</h:panelGrid>
+			
+			<p:commandButton action="#{dtStagiaireManagedBean.create()}" value="Envoyer"/>
+			
+			<p:dialog modal="true" resizable="false" header="Values"
+				widgetVar="dlg" showEffect="fold">
+
+				<p:panelGrid id="display" columns="2" columnClasses="label,value">
+
+					<h:outputText value="Date de Naissance" />
+					<h:outputText
+						value="#{dtStagiaireManagedBean.stagiaire.dateDeNaissance}">
+						<f:convertDateTime pattern="MM/dd/yyyy" />
+					</h:outputText>
+
+				</p:panelGrid>
+			</p:dialog>
+			
+		</h:form>
+	
+		</ui:define>
+
+</ui:composition>

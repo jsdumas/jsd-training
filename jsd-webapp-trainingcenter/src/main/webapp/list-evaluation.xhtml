@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="template.xhtml">
+
+	<ui:define name="list-evaluation">
+
+		<p:dataTable var="evaluation"
+			value="#{dtEvaluationManagedBean.evaluations}" sortMode="multiple">
+
+			<!-- 			<p:column headerText="Id" sortBy="#{evaluation.id}"> -->
+			<!-- 				<h:outputText value="#{evaluation.id}" /> -->
+			<!-- 			</p:column> -->
+
+			<p:column headerText="Session" sortBy="#{evaluation.session}">
+				<h:outputText value="#{evaluation.session.id}" />
+			</p:column>
+
+			<p:column headerText="Stagiaire" sortBy="#{evaluation.stagiaire}">
+				<h:outputText
+					value="#{evaluation.stagiaire.prenom} #{evaluation.stagiaire.nom}" />
+			</p:column>
+
+			<p:column headerText="Date de la note"
+				sortBy="#{evaluation.dateCourante}">
+				<h:outputText value="#{evaluation.dateCourante}" />
+			</p:column>
+
+			<p:column headerText="Note" sortBy="#{evaluation.note}">
+				<h:outputText value="#{evaluation.note}" />
+			</p:column>
+
+
+
+			<!-- 			<p:column headerText="Supprimer"> -->
+			<!-- 				<h:form> -->
+			<!-- 					<h:commandLink action="#{dtSessionManagedBean.remove()}" -->
+			<!-- 						value="[X]" /> -->
+
+			<!-- 				</h:form> -->
+			<!-- 			</p:column> -->
+		</p:dataTable>
+
+
+
+	</ui:define>
+
+</ui:composition>

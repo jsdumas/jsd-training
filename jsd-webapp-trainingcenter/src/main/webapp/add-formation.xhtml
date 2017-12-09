@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="template.xhtml">
+
+	<ui:define name="add-formation">
+	
+	<h1>Ajouter une formation</h1>
+		<h:form>
+		
+			<h:inputHidden value="#{dtFormationManagedBean.formation.id}" />
+			
+			<h:panelGrid columns="2" cellpadding="5">
+			
+				<p:outputLabel for="intitule" value="Intitulé" />
+				<p:inputText id="intitule" value="#{dtFormationManagedBean.formation.intitule}" />
+			
+				<p:outputLabel for="duree" value="Durée" />
+				<h:inputText id="duree" value="#{dtFormationManagedBean.formation.duree}" />
+				
+				
+				<p:outputLabel for="formateur" value="Formateur :" />
+				<p:selectManyMenu id="formateur"
+					value="#{dtFormationManagedBean.idFormateurs}" style="width:150px">
+					<f:selectItems
+						value="#{dtFormationManagedBean.formateurs}"
+						var="formateur" itemLabel="#{formateur.prenom} #{formateur.nom}"
+						itemValue="#{formateur.id}" />
+				</p:selectManyMenu>
+			
+			
+				<p:outputLabel for="difficulte" value="Difficulté" />
+				<h:inputText id="difficulte" value="#{dtFormationManagedBean.formation.difficulte}" />
+			
+			</h:panelGrid>
+			
+			<p:commandButton action="#{dtFormationManagedBean.create()}" value="Envoyer"/>
+			
+		</h:form>
+	
+		</ui:define>
+
+</ui:composition>
