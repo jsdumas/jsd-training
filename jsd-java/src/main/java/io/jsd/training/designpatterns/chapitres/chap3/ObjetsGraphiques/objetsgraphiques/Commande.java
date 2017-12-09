@@ -1,0 +1,1 @@
+﻿package io.jsd.training.designpatterns.chapitres.chap3.ObjetsGraphiques.objetsgraphiques;public interface Commande {    public void lance();}
