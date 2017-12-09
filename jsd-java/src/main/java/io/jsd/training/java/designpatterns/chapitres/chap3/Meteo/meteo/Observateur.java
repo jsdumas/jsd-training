@@ -1,0 +1,1 @@
+﻿package io.jsd.training.java.designpatterns.chapitres.chap3.Meteo.meteo;public interface Observateur {    void actualise();}
