@@ -19,10 +19,9 @@
 			</activation>
 
 			<properties>
-				<jdbc.url>jdbc:mysql://localhost:3306/tpspringdata</jdbc.url>
+				<jdbc.url>jdbc:mysql://localhost:3306/jsd-springdata</jdbc.url>
 				<jdbc.user>root</jdbc.user>
 				<jdbc.password>root</jdbc.password>
-
 			</properties>
 		</profile>
 	</profiles>

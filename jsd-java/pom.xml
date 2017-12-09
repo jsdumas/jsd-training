@@ -11,5 +11,6 @@
 	</parent>
 	
 	<artifactId>jsd-java</artifactId>
+	<name>java</name>
 	
 </project> 
