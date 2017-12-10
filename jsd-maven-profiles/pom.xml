@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.jsd.training</groupId>
+    <artifactId>jsd-maven-main</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../jsd-maven-main/pom.xml</relativePath>
+  </parent>
+  <artifactId>jsd-maven-profiles</artifactId>
+  <packaging>pom</packaging>
+  <name>maven-profiles</name>
+  
+  <profiles>
+
+		<profile>
+			<id>jsd-webapp-petclinic</id>
+<!-- 			<activation> -->
+<!-- 				<activeByDefault>true</activeByDefault> -->
+<!-- 			</activation> -->
+			<properties>
+				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+				<jdbc.url>jdbc:mysql://localhost:3306/petclinic</jdbc.url>
+				<jdbc.username>root</jdbc.username>
+				<jdbc.password>root</jdbc.password>
+
+				<jdbc.test.driverClassName>com.mysql.jdbc.Driver</jdbc.test.driverClassName>
+				<jdbc.test.url>jdbc:mysql://localhost:3306/testpetclinic</jdbc.test.url>
+				<jdbc.test.username>root</jdbc.test.username>
+				<jdbc.test.password>root</jdbc.test.password>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>johndoe-webapp-petclinic</id>
+			<properties>
+				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+				<jdbc.url>jdbc:mysql://localhost:3306/petclinic</jdbc.url>
+				<jdbc.username>root</jdbc.username>
+				<jdbc.password>stagiaire</jdbc.password>
+
+				<jdbc.test.driverClassName>com.mysql.jdbc.Driver</jdbc.test.driverClassName>
+				<jdbc.test.url>jdbc:mysql://localhost:3306/testpetclinic</jdbc.test.url>
+				<jdbc.test.username>root</jdbc.test.username>
+				<jdbc.test.password>stagiaire</jdbc.test.password>
+			</properties>
+		</profile>
+
+	</profiles>
+</project>

@@ -24,6 +24,7 @@
 
 
 	<modules>
+		<module>jsd-maven-profiles</module>
 		<module>jsd-client-jms-trainingcenter</module>
 		<module>jsd-client-rest-trainingcenter</module>
 		<module>jsd-client-ws-trainingcenter</module>

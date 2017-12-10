@@ -1,18 +1,24 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>io.jsd.training</groupId>
-    <artifactId>jsd-maven-main</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../jsd-maven-main/pom.xml</relativePath>
-  </parent>
-  <artifactId>jsd-client-jms-trainingcenter</artifactId>
-  <name>client-jms</name>
-  <dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>io.jsd.training</groupId>
+		<artifactId>jsd-maven-main</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../jsd-maven-main/pom.xml</relativePath>
+	</parent>
+	<artifactId>jsd-client-jms-trainingcenter</artifactId>
+	<name>client-jms</name>
+
+	<properties>
+		<version.jboss.jms>1.0.0.Final</version.jboss.jms>
+	</properties>
+
+	<dependencies>
 		<dependency>
 			<groupId>org.jboss.spec.javax.jms</groupId>
 			<artifactId>jboss-jms-api_2.0_spec</artifactId>
-			<version>1.0.0.Final</version>
+			<version>${version.jboss.jms}</version>
 		</dependency>
 	</dependencies>
 </project>

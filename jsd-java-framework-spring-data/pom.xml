@@ -14,7 +14,7 @@
 
 	<profiles>
 		<profile>
-			<id>jsd-mysql</id>
+			<id>jsd-spring-data</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
