@@ -36,69 +36,71 @@
 		<module>jsd-webapp-trainingcenter</module>
 	</modules>
 
-	<dependencies>
-	
-<!-- 	*** -->
-<!-- 	APACHE IO -->
-<!-- 	*** -->
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>${version.commons.io}</version>
-		</dependency>
 
-		<!-- *** -->
-		<!-- TEST -->
-		<!-- *** -->
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${version.junit}</version>
-			<scope>test</scope>
-		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-all</artifactId>
-			<version>${version.hamcrest}</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- *** -->
-		<!-- LOG -->
-		<!-- *** -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${version.logforj}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${version.logback}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${version.slfforj}</version>
-		</dependency>
-		<!-- *** -->
-		<!-- XML -->
-		<!-- *** -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>${version.fasterxml.jackson}</version>
-		</dependency>
+		<dependencies>
 
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${version.fasterxml.jackson}</version>
-		</dependency>
+			<!-- *** -->
+			<!-- APACHE IO -->
+			<!-- *** -->
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${version.commons.io}</version>
+			</dependency>
 
-	</dependencies>
+			<!-- *** -->
+			<!-- TEST -->
+			<!-- *** -->
+			<!-- https://mvnrepository.com/artifact/junit/junit -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${version.junit}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>${version.hamcrest}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- *** -->
+			<!-- LOG -->
+			<!-- *** -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${version.logforj}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${version.logback}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${version.slfforj}</version>
+			</dependency>
+			<!-- *** -->
+			<!-- XML -->
+			<!-- *** -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${version.fasterxml.jackson}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${version.fasterxml.jackson}</version>
+			</dependency>
+
+		</dependencies>
 
 	<build>
 		<plugins>
