@@ -8,8 +8,6 @@
   </parent>
   <artifactId>jsd-client-jms-trainingcenter</artifactId>
   <name>client-jms</name>
-  
-  
   <dependencies>
 		<dependency>
 			<groupId>org.jboss.spec.javax.jms</groupId>
