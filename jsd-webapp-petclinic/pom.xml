@@ -14,45 +14,8 @@
   </properties>
   
   
-  <profiles>
-
-		<profile>
-			<id>jsd</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-				<jdbc.url>jdbc:mysql://localhost:3306/petclinic</jdbc.url>
-				<jdbc.username>root</jdbc.username>
-				<jdbc.password>root</jdbc.password>
-
-				<jdbc.test.driverClassName>com.mysql.jdbc.Driver</jdbc.test.driverClassName>
-				<jdbc.test.url>jdbc:mysql://localhost:3306/testpetclinic</jdbc.test.url>
-				<jdbc.test.username>root</jdbc.test.username>
-				<jdbc.test.password>root</jdbc.test.password>
-			</properties>
-		</profile>
-
-		<profile>
-			<id>johndoe</id>
-			<properties>
-				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-				<jdbc.url>jdbc:mysql://localhost:3306/petclinic</jdbc.url>
-				<jdbc.username>root</jdbc.username>
-				<jdbc.password>stagiaire</jdbc.password>
-
-				<jdbc.test.driverClassName>com.mysql.jdbc.Driver</jdbc.test.driverClassName>
-				<jdbc.test.url>jdbc:mysql://localhost:3306/testpetclinic</jdbc.test.url>
-				<jdbc.test.username>root</jdbc.test.username>
-				<jdbc.test.password>stagiaire</jdbc.test.password>
-			</properties>
-		</profile>
-
-	</profiles>
-
 	<dependencies>
-
+	
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
