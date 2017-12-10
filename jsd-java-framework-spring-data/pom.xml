@@ -12,22 +12,6 @@
 
 
 
-	<profiles>
-		<profile>
-			<id>jsd-spring-data</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-
-			<properties>
-				<jdbc.url>jdbc:mysql://localhost:3306/jsd-springdata</jdbc.url>
-				<jdbc.user>root</jdbc.user>
-				<jdbc.password>root</jdbc.password>
-			</properties>
-		</profile>
-	</profiles>
-
-
 
 	<dependencies>
 		<!-- *** -->
