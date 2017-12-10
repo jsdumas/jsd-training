@@ -2,9 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.jsd.training</groupId>
-    <artifactId>jsd-main</artifactId>
+    <artifactId>jsd-maven-main</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../jsd-main/pom.xml</relativePath>
+    <relativePath>../jsd-maven-main/pom.xml</relativePath>
   </parent>
   <artifactId>jsd-codingame</artifactId>
   <name>codingame</name>

@@ -29,18 +29,18 @@
 	http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 	<!-- Déclaration des beans pour une config XML -->
-	<!-- <bean id="personneDAO" class="fr.treeptik.dao.impl.PersonneMemoryDAO"></bean> -->
-	<!-- <bean id="personneService" class="fr.treeptik.service.PersonneService"> -->
+	<!-- <bean id="personneDAO" class="io.jsd.training.java.framework.spring.data.dao.impl.PersonneMemoryDAO"></bean> -->
+	<!-- <bean id="personneService" class="io.jsd.training.java.framework.spring.data.service.PersonneService"> -->
 	<!-- <property name="personneDAO" ref="personneDAO"></property> -->
 	<!-- </bean> -->
 
 
 	<!-- Pour les annotations -->
-	<context:component-scan base-package="io.jsd.training.springdata" />
+	<context:component-scan base-package="io.jsd.training.java.framework.spring.data" />
 	<jpa:repositories base-package="io.jsd.training.java.framework.spring.data.dao"></jpa:repositories>
 
 		
-	<!-- Connexion à la BDD - variables déclarées dans le pom profile / properties-->
+	<!-- DB connection - variables déclarées dans le pom profile / properties-->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="${jdbc.url}" />
