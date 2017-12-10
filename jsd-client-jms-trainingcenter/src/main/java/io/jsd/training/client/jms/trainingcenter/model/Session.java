@@ -6,9 +6,6 @@ import java.util.List;
 
 public class Session implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
@@ -21,11 +18,6 @@ public class Session implements Serializable {
 	
 	public Session() {
 	}
-	
-	
-	
-	
-
 //	public Session(Integer id, Formateur formateur, Formation formation,
 //			List<Stagiaire> stagiaires, Date dateDeDebut, Date dateDeFin,
 //			List<Evaluation> evaluations) {
@@ -45,9 +37,6 @@ public class Session implements Serializable {
 		this.dateDeDebut = dateDeDebut;
 		this.dateDeFin = dateDeFin;
 	}
-
-
-
 
 
 	@Override
