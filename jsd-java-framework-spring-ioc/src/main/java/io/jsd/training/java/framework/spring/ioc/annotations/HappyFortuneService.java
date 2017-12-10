@@ -1,4 +1,4 @@
-package io.jsd.training.springframework.annotations;
+package io.jsd.training.java.framework.spring.ioc.annotations;
 
 import org.springframework.stereotype.Component;
 
