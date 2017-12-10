@@ -1,0 +1,84 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.3//EN"
+       "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+
+	<field name="personne.username">
+
+		<field-validator type="requiredstring">
+<!-- 			<message>Le champ username est manquant</message> -->
+				<message key="error.username.empty"/>
+		</field-validator>
+
+		<field-validator type="stringlength">
+			<param name="minLength">6</param>
+			<param name="maxLength">12</param>
+			<message>Le champ username doit être compris entre ${minLength} et
+				${maxLength}
+			</message>
+		</field-validator>
+
+		<field-validator type="fieldexpression">
+			<param name="expression"><![CDATA[personne.username != personne.password]]></param>
+			<message>l'username ne doit pas être identique au password</message>
+		</field-validator>
+
+	</field>
+
+	<field name="personne.password">
+		<field-validator type="requiredstring">
+<!-- 			<message>Le champ password est manquant</message> -->
+			<message key="error.password.empty"/>
+		</field-validator>
+
+		<field-validator type="stringlength">
+			<param name="minLength">6</param>
+			<param name="maxLength">12</param>
+			<message>Le champ password doit être compris entre ${minLength} et
+				${maxLength}
+			</message>
+		</field-validator>
+
+		<field-validator type="regex">
+			<param name="regex"><![CDATA[[\s\S]*[A-Z]+[\s\S]*]]></param>
+			<message>Le password doit contenir au moins 1 majuscule</message>
+		</field-validator>
+		
+		<field-validator type="regex">
+			<param name="regex"><![CDATA[[\s\S]*[0-9]+[\s\S]*]]></param>
+			<message>Le password doit contenir au moins 1 chiffre</message>
+		</field-validator>
+		
+		<field-validator type="regex">
+			<param name="regex"><![CDATA[[\s\S]*[\W]+[\s\S]*]]></param>
+			<message>Le password doit contenir au moins 1 caractère spécial</message>
+		</field-validator>
+		
+		<field-validator type="regex">
+			<param name="regex"><![CDATA[[^;]+]]></param>
+			<message>Le password ne doit contenir aucun ;</message>
+		</field-validator>
+
+	</field>
+
+	<field name="personne.age">
+
+		<field-validator type="int">
+			<param name="min">18</param>
+			<param name="max">65</param>
+			<message>Le champ age doit être compris entre doit être compris entre
+				${min} et ${max}
+			</message>
+		</field-validator>
+
+	</field>
+
+	<field name="personne.email">
+		<field-validator type="email">
+			<message>Le champ email doit être correcte</message>
+		</field-validator>
+	</field>
+
+
+</validators>      
+       
