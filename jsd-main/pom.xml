@@ -28,9 +28,9 @@
 		<module>jsd-client-rest-trainingcenter</module>
 		<module>jsd-client-ws-trainingcenter</module>
 		<module>jsd-codingame</module>
+		<module>jsd-java</module>
 		<module>jsd-java-framework-spring-data</module>
 		<module>jsd-java-framework-spring-ioc</module>
-		<module>jsd-java</module>
 		<module>jsd-webapp-petclinic</module>
 		<module>jsd-webapp-trainingcenter</module>
 	</modules>

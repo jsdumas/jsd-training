@@ -1,12 +1,12 @@
-package io.jsd.training.springdata.runtime;
+package io.jsd.training.java.framework.spring.data.runtime;
 
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import io.jsd.training.springdata.model.Client;
-import io.jsd.training.springdata.service.ClientService;
+import io.jsd.training.java.framework.spring.data.model.Client;
+import io.jsd.training.java.framework.spring.data.service.ClientService;
 
 public class Runtime {
 
