@@ -1,4 +1,4 @@
-package io.jsd.training.springdata.dao;
+package io.jsd.training.java.framework.spring.data.dao;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import io.jsd.training.springdata.model.Client;
+import io.jsd.training.java.framework.spring.data.model.Client;
 
 @Repository
 public interface ClientDAO extends CrudRepository<Client, Long>{

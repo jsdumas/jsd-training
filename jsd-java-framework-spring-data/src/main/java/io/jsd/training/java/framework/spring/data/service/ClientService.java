@@ -1,4 +1,4 @@
-package io.jsd.training.springdata.service;
+package io.jsd.training.java.framework.spring.data.service;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import io.jsd.training.springdata.dao.ClientDAO;
-import io.jsd.training.springdata.model.Client;
+import io.jsd.training.java.framework.spring.data.dao.ClientDAO;
+import io.jsd.training.java.framework.spring.data.model.Client;
 
 @Service
 public class ClientService {

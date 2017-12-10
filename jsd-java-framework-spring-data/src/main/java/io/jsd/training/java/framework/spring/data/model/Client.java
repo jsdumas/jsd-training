@@ -1,4 +1,4 @@
-package io.jsd.training.springdata.model;
+package io.jsd.training.java.framework.spring.data.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
