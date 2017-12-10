@@ -1,4 +1,4 @@
-package io.jsd.training.springframework.xml;
+package io.jsd.training.java.framework.spring.ioc.xml;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

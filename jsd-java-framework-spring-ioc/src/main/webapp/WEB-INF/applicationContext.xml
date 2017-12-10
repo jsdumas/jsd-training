@@ -8,7 +8,7 @@
 
 <!-- annotation configuration -->
 	<!-- add entry to enable component scanning  -->
-    <context:component-scan base-package="io.jsd.training.springframework.annotations"/>
+    <context:component-scan base-package="io.jsd.training.java.framework.spring.ioc.annotations"/>
     
     
 <!--     ********************************************************************* -->
@@ -28,19 +28,19 @@
     <!-- define the dependency -->
     
     <bean id="myCoach"
-    	class="io.jsd.training.springframework.xml.TrackCoach">
+    	class="io.jsd.training.java.framework.spring.ioc.xml.TrackCoach">
     	<constructor-arg ref="myFortuneService"/>
     </bean>
     	
     <bean id="myHockeyCoach"
-    	class="io.jsd.training.springframework.xml.HockeyCoach"
+    	class="io.jsd.training.java.framework.spring.ioc.xml.HockeyCoach"
     	scope="prototype">
     	<!-- set up constructor injection  -->
     	<constructor-arg ref="myFortuneService"/>
     </bean>
     
     <bean id="myCricketCoach"
-    	class="io.jsd.training.springframework.xml.CricketCoach">
+    	class="io.jsd.training.java.framework.spring.ioc.CricketCoach">
     	<!-- set up setter injection -->
     	<property name="fortuneService" ref="myFortuneService"/>
     	
@@ -50,7 +50,7 @@
     	</bean>
     	
     <bean id="myFortuneService"
-    class="io.jsd.training.springframework.xml.HappyFortuneService">
+    class="io.jsd.training.java.framework.spring.ioc.xml.HappyFortuneService">
     </bean>    
     
 </beans>

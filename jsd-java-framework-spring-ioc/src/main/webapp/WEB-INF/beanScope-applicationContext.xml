@@ -13,14 +13,14 @@
     <!-- define the dependency -->
     
     <bean id="myCoach"
-    	class="com.luv2code.springdemo.TrackCoach"
+    	class="io.jsd.training.java.framework.spring.ioc.xml.TrackCoach"
     	scope="prototype">
     	<constructor-arg ref="myFortuneService"/>
     </bean>
     	
    
     <bean id="myFortuneService"
-    class="com.luv2code.springdemo.HappyFortuneService">
+    class="io.jsd.training.java.framework.spring.ioc.xml.HappyFortuneService">
     </bean>
     
 </beans>
