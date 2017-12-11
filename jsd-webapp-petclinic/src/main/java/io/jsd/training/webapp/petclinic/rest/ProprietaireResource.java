@@ -1,5 +1,10 @@
 package io.jsd.training.webapp.petclinic.rest;
 
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +18,8 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
 import io.jsd.training.webapp.petclinic.dao.entity.Proprietaire;
-import io.jsd.training.webapp.petclinic.exception.ServiceException;
 import io.jsd.training.webapp.petclinic.service.ProprietaireService;
+import io.jsd.training.webapp.petclinic.service.ServiceException;
 
 
 @Api(value = "proprietaire", description = "Operations on the owners")
@@ -25,32 +30,42 @@ public class ProprietaireResource {
 	private ProprietaireService proprietaireService;
 	
 	@ApiOperation(value = "Save a given owner")
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = POST)
 	public Proprietaire saveFromRest(Proprietaire proprietaire) throws ServiceException {
 		return proprietaireService.save(proprietaire);
 	}
 
 	@ApiOperation(value = "Find an owner, knowing their id")
-	@RequestMapping(method = RequestMethod.GET, value ="/id/{id}")
-	public Proprietaire findFromRest(@ApiParam(name="id", value="The id of the owner to be found", required=true) @PathVariable Integer id) throws ServiceException {
+	@RequestMapping(//
+			method = GET, //
+			value ="/id/{id}")
+	public Proprietaire findFromRest(//
+			@ApiParam(name="id", value="The id of the owner to be found", required=true)//
+			@PathVariable Integer id//
+			) throws ServiceException {
 		return proprietaireService.find(id);
 	}
 
 	@ApiOperation(value = "Find all the owners")
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = GET)
 	List<Proprietaire> findAllFromRest() throws ServiceException {
 		return proprietaireService.findAll();
 	}
 	
 	@ApiOperation(value = "Update a given owner")
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(method = PUT)
 	public Proprietaire updateFromRest(Proprietaire proprietaire) throws ServiceException {
 		return proprietaireService.update(proprietaire);
 	}
 	
 	@ApiOperation(value = "Delete an owner, knowing their id")
-	@RequestMapping(method = RequestMethod.DELETE, value ="/id/{id}")
-	public void deleteFromRest(@ApiParam(name="id", value="The id of the owner to be deleted", required=true)@PathVariable Integer id) throws ServiceException {
+	@RequestMapping(//
+			method = DELETE, //
+			value ="/id/{id}")
+	public void deleteFromRest(//
+			@ApiParam(name="id", value="The id of the owner to be deleted", required=true)//
+			@PathVariable Integer id//
+			) throws ServiceException {
 		Proprietaire proprietaire = new Proprietaire();
 		proprietaire.setId(id);
 		
