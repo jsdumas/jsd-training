@@ -5,7 +5,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
-import io.jsd.training.webapp.trainingcenter.exception.DAOException;
 
 public interface GenericDAO<T, K> {
 	

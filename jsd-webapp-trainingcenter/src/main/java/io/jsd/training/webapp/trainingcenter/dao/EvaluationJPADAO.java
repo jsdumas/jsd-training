@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.trainingcenter.dao.impl;
+package io.jsd.training.webapp.trainingcenter.dao;
 
 import java.util.List;
 
@@ -9,10 +9,8 @@ import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import io.jsd.training.webapp.trainingcenter.dao.EvaluationDAO;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Evaluation;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
-import io.jsd.training.webapp.trainingcenter.exception.DAOException;
 
 @Stateless
 public class EvaluationJPADAO extends GenericJPADAO<Evaluation, Integer>

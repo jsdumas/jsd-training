@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.trainingcenter.web;
+package io.jsd.training.webapp.trainingcenter.controller;
 
 import java.io.IOException;
 
@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet (urlPatterns = "/logout")
 public class Logout extends HttpServlet{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Override

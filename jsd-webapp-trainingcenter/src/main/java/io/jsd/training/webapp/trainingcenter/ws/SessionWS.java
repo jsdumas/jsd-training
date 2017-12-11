@@ -4,7 +4,7 @@ import javax.inject.Inject;
 import javax.jws.WebService;
 
 import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
-import io.jsd.training.webapp.trainingcenter.exception.ServiceException;
+import io.jsd.training.webapp.trainingcenter.service.ServiceException;
 import io.jsd.training.webapp.trainingcenter.service.SessionService;
 
 @WebService

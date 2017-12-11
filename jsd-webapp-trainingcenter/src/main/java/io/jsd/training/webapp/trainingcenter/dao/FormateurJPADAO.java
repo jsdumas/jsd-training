@@ -1,9 +1,7 @@
-package io.jsd.training.webapp.trainingcenter.dao.impl;
+package io.jsd.training.webapp.trainingcenter.dao;
 
 import javax.ejb.Stateless;
 
-import io.jsd.training.webapp.trainingcenter.dao.FormateurDAO;
-import io.jsd.training.webapp.trainingcenter.dao.FormationDAO;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
 

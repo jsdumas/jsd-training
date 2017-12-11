@@ -7,7 +7,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 
 import io.jsd.training.webapp.trainingcenter.dao.entity.Stagiaire;
-import io.jsd.training.webapp.trainingcenter.exception.ServiceException;
+import io.jsd.training.webapp.trainingcenter.service.ServiceException;
 import io.jsd.training.webapp.trainingcenter.service.StagiaireService;
 
 @ManagedBean (name="dtStagiaireManagedBean")

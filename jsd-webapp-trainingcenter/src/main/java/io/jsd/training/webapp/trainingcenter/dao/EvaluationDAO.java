@@ -8,7 +8,6 @@ import io.jsd.training.webapp.trainingcenter.dao.entity.Evaluation;
 import io.jsd.training.webapp.trainingcenter.dao.entity.EvaluationID;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
-import io.jsd.training.webapp.trainingcenter.exception.DAOException;
 
 public interface EvaluationDAO extends GenericDAO<Evaluation, Integer> {
 	
