@@ -16,10 +16,10 @@ import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
 import io.jsd.training.webapp.trainingcenter.dto.SessionDTO;
-import io.jsd.training.webapp.trainingcenter.exception.ServiceException;
 import io.jsd.training.webapp.trainingcenter.service.EvaluationService;
 import io.jsd.training.webapp.trainingcenter.service.FormateurService;
 import io.jsd.training.webapp.trainingcenter.service.FormationService;
+import io.jsd.training.webapp.trainingcenter.service.ServiceException;
 import io.jsd.training.webapp.trainingcenter.service.SessionService;
 
 @ManagedBean(name = "dtSessionManagedBean")

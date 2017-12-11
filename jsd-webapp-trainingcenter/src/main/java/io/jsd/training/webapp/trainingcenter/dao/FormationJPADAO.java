@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.trainingcenter.dao.impl;
+package io.jsd.training.webapp.trainingcenter.dao;
 
 import java.util.List;
 
@@ -8,12 +8,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
-import io.jsd.training.webapp.trainingcenter.dao.FormationDAO;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
-import io.jsd.training.webapp.trainingcenter.exception.DAOException;
-import io.jsd.training.webapp.trainingcenter.exception.ServiceException;
+import io.jsd.training.webapp.trainingcenter.service.ServiceException;
 
 //Pool d'instance de variable sans état
 @Stateless

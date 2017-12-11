@@ -11,8 +11,8 @@ import javax.inject.Inject;
 import org.jboss.logging.Logger;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Evaluation;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
-import io.jsd.training.webapp.trainingcenter.exception.ServiceException;
 import io.jsd.training.webapp.trainingcenter.service.EvaluationService;
+import io.jsd.training.webapp.trainingcenter.service.ServiceException;
 
 @ManagedBean(name = "dtEvaluationManagedBean")
 @RequestScoped
@@ -38,9 +38,6 @@ public class EvaluationManagedBean {
 		evaluations.setWrappedData(evaluationService.findAll());
 
 	}
-
-
-	
 
 //	public String create() throws ServiceException {
 //		logger.info("FORMATION " + formation);

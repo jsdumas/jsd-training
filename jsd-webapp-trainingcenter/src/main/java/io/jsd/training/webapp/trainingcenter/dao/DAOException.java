@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.trainingcenter.exception;
+package io.jsd.training.webapp.trainingcenter.dao;
 
 public class DAOException extends Exception {
 	

@@ -4,8 +4,7 @@ import java.util.List;
 
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
-import io.jsd.training.webapp.trainingcenter.exception.DAOException;
-import io.jsd.training.webapp.trainingcenter.exception.ServiceException;
+import io.jsd.training.webapp.trainingcenter.service.ServiceException;
 
 public interface FormationDAO extends GenericDAO<Formation, Integer> {
 

@@ -6,11 +6,10 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import io.jsd.training.webapp.trainingcenter.dao.DAOException;
 import io.jsd.training.webapp.trainingcenter.dao.SessionDAO;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
-import io.jsd.training.webapp.trainingcenter.exception.DAOException;
-import io.jsd.training.webapp.trainingcenter.exception.ServiceException;
 
 @Stateless
 public class SessionService {
