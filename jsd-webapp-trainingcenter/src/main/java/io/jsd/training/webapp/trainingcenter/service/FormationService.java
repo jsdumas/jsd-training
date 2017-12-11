@@ -7,11 +7,11 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import io.jsd.training.webapp.trainingcenter.dao.FormationDAO;
+import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
+import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
+import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
 import io.jsd.training.webapp.trainingcenter.exception.DAOException;
 import io.jsd.training.webapp.trainingcenter.exception.ServiceException;
-import io.jsd.training.webapp.trainingcenter.model.Formateur;
-import io.jsd.training.webapp.trainingcenter.model.Formation;
-import io.jsd.training.webapp.trainingcenter.model.Session;
 
 @Stateless
 public class FormationService {

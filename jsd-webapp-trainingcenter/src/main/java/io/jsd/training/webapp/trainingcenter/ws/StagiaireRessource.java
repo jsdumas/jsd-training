@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.trainingcenter.rest;
+package io.jsd.training.webapp.trainingcenter.ws;
 
 import java.util.List;
 
@@ -17,9 +17,9 @@ import javax.ws.rs.core.MediaType;
 
 import org.jboss.logging.Logger;
 
+import io.jsd.training.webapp.trainingcenter.dao.entity.Personne;
+import io.jsd.training.webapp.trainingcenter.dao.entity.Stagiaire;
 import io.jsd.training.webapp.trainingcenter.exception.ServiceException;
-import io.jsd.training.webapp.trainingcenter.model.Personne;
-import io.jsd.training.webapp.trainingcenter.model.Stagiaire;
 import io.jsd.training.webapp.trainingcenter.service.StagiaireService;
 
 

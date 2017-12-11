@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
+import io.jsd.training.webapp.trainingcenter.dao.entity.Evaluation;
+import io.jsd.training.webapp.trainingcenter.dao.entity.EvaluationID;
+import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
+import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
 import io.jsd.training.webapp.trainingcenter.exception.DAOException;
-import io.jsd.training.webapp.trainingcenter.model.Evaluation;
-import io.jsd.training.webapp.trainingcenter.model.EvaluationID;
-import io.jsd.training.webapp.trainingcenter.model.Formation;
-import io.jsd.training.webapp.trainingcenter.model.Session;
 
 public interface EvaluationDAO extends GenericDAO<Evaluation, Integer> {
 	

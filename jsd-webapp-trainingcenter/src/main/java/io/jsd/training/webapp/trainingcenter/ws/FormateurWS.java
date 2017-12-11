@@ -1,10 +1,10 @@
-package io.jsd.training.webapp.trainingcenter.webservice;
+package io.jsd.training.webapp.trainingcenter.ws;
 
 import javax.inject.Inject;
 import javax.jws.WebService;
 
+import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
 import io.jsd.training.webapp.trainingcenter.exception.ServiceException;
-import io.jsd.training.webapp.trainingcenter.model.Formateur;
 import io.jsd.training.webapp.trainingcenter.service.FormateurService;
 
 @WebService

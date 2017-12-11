@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.trainingcenter.model;
+package io.jsd.training.webapp.trainingcenter.dao.entity;
 
 import java.io.Serializable;
 import java.util.List;
