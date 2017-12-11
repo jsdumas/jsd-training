@@ -45,7 +45,7 @@ public class ServiceException_Exception
     /**
      * 
      * @return
-     *     returns fault bean: fr.treeptik.clients.webservice.ServiceException
+     *     returns fault bean: io.jsd.training.tp.spring.clients.webservice.ServiceException
      */
     public ServiceException getFaultInfo() {
         return faultInfo;
