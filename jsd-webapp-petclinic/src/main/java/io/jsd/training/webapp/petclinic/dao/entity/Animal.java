@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.petclinic.model;
+package io.jsd.training.webapp.petclinic.dao.entity;
 
 import java.io.Serializable;
 import java.util.Date;

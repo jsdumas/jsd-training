@@ -11,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import io.jsd.training.webapp.petclinic.dao.entity.Animal;
+import io.jsd.training.webapp.petclinic.dao.entity.Chat;
+import io.jsd.training.webapp.petclinic.dao.entity.Cheval;
+import io.jsd.training.webapp.petclinic.dao.entity.Chien;
+import io.jsd.training.webapp.petclinic.dao.entity.Proprietaire;
 import io.jsd.training.webapp.petclinic.exception.ServiceException;
-import io.jsd.training.webapp.petclinic.model.Animal;
-import io.jsd.training.webapp.petclinic.model.Chat;
-import io.jsd.training.webapp.petclinic.model.Cheval;
-import io.jsd.training.webapp.petclinic.model.Chien;
-import io.jsd.training.webapp.petclinic.model.Proprietaire;
 import io.jsd.training.webapp.petclinic.utils.DateUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)

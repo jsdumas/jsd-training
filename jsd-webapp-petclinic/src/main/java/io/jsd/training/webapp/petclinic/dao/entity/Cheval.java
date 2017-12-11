@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.petclinic.model;
+package io.jsd.training.webapp.petclinic.dao.entity;
 
 import java.util.Date;
 
@@ -6,28 +6,27 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("CHAT")
-public class Chat extends Animal {
+@DiscriminatorValue("CHEVAL")
+public class Cheval extends Animal {
 
 
 	private static final long serialVersionUID = 1L;
 
-	public Chat() {
+	public Cheval() {
 		super();
 	}
 
-	public Chat(String nom, Date dateDeNaissance) {
+	public Cheval(String nom, Date dateDeNaissance) {
 		super(nom, dateDeNaissance);
 	}
-	
-	public Chat(Integer id, String nom, Date dateDeNaissance, Proprietaire proprietaire) {
+
+	public Cheval(Integer id, String nom, Date dateDeNaissance, Proprietaire proprietaire) {
 		super(id, nom, dateDeNaissance, proprietaire);
 	}
 	
 	@Override
 	public String getTypeLabel() {
-		return "chat";
+		return "cheval";
 	}
-
 
 }

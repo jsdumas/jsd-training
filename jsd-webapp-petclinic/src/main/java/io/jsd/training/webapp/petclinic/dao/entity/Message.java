@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.petclinic.model;
+package io.jsd.training.webapp.petclinic.dao.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

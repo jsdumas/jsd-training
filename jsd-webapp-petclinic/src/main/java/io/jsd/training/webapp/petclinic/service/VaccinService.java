@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.jsd.training.webapp.petclinic.dao.VaccinDAO;
+import io.jsd.training.webapp.petclinic.dao.entity.Vaccin;
 import io.jsd.training.webapp.petclinic.exception.ServiceException;
-import io.jsd.training.webapp.petclinic.model.Vaccin;
 import io.jsd.training.webapp.petclinic.utils.MailUtils;
 
 @Service

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import io.jsd.training.webapp.petclinic.dao.entity.Message;
 import io.jsd.training.webapp.petclinic.exception.ServiceException;
-import io.jsd.training.webapp.petclinic.model.Message;
 import io.jsd.training.webapp.petclinic.service.MessageService;
 
 @Controller

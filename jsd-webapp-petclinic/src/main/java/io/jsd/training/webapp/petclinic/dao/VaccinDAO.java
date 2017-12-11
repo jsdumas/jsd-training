@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import io.jsd.training.webapp.petclinic.model.Vaccin;
+import io.jsd.training.webapp.petclinic.dao.entity.Vaccin;
 
 public interface VaccinDAO extends JpaRepository<Vaccin, Integer> {
 	@Query(

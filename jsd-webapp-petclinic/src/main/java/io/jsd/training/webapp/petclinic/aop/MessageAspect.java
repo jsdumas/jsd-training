@@ -6,10 +6,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import io.jsd.training.webapp.petclinic.dao.entity.Animal;
+import io.jsd.training.webapp.petclinic.dao.entity.Message;
+import io.jsd.training.webapp.petclinic.dao.entity.Proprietaire;
 import io.jsd.training.webapp.petclinic.exception.ServiceException;
-import io.jsd.training.webapp.petclinic.model.Animal;
-import io.jsd.training.webapp.petclinic.model.Message;
-import io.jsd.training.webapp.petclinic.model.Proprietaire;
 import io.jsd.training.webapp.petclinic.service.MessageService;
 
 @Component

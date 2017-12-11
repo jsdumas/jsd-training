@@ -8,8 +8,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import io.jsd.training.webapp.petclinic.model.Animal;
-import io.jsd.training.webapp.petclinic.model.Vaccin;
+import io.jsd.training.webapp.petclinic.dao.entity.Animal;
+import io.jsd.training.webapp.petclinic.dao.entity.Vaccin;
 
 public class VaccinDTO {
 	private Integer id;
