@@ -1,22 +1,22 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>io.jsd.training</groupId>
-    <artifactId>jsd-maven-main</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../jsd-maven-main/pom.xml</relativePath>
-  </parent>
-  <artifactId>jsd-webapp-project-spring</artifactId>
-  <name>webapp-project-spring</name>
-  
-  
-  
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>io.jsd.training</groupId>
+		<artifactId>jsd-maven-main</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../jsd-maven-main/pom.xml</relativePath>
+	</parent>
+	<artifactId>jsd-webapp-project-spring</artifactId>
+	<name>webapp-project-spring</name>
+
+
+
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>4.1.6.RELEASE</version>
 		</dependency>
 
 		<dependency>
@@ -33,43 +33,37 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>4.1.6.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>4.1.6.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>4.1.6.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			</dependency>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>4.0.1.RELEASE</version>
 		</dependency>
 
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>4.0.1.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
-			<version>4.0.0.RELEASE</version>
 		</dependency>
 
 		<dependency>
@@ -81,28 +75,26 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			</dependency>
+		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			</dependency>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			</dependency>
-
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			</dependency>
-
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>4.1.6.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
 		<dependency>
@@ -135,8 +127,8 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>3.0.5.RELEASE</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
@@ -159,54 +151,54 @@
 		</repository>
 	</repositories>
 
-<!-- 	<build> -->
+	<!-- <build> -->
 
-<!-- 		<testResources> -->
-<!-- 			<testResource> -->
-<!-- 				<filtering>true</filtering> -->
-<!-- 				<directory>src/test/resources</directory> -->
-<!-- 			</testResource> -->
+	<!-- <testResources> -->
+	<!-- <testResource> -->
+	<!-- <filtering>true</filtering> -->
+	<!-- <directory>src/test/resources</directory> -->
+	<!-- </testResource> -->
 
-<!-- 		</testResources> -->
+	<!-- </testResources> -->
 
-<!-- 		<plugins> -->
-<!-- 			<plugin> -->
-<!-- 				<artifactId>maven-resources-plugin</artifactId> -->
-<!-- 				<version>${version.maven.resources.plugin}</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>copy-resources</id> -->
-<!-- 						<phase>validate</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>copy-resources</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<outputDirectory>src/main/webapp/WEB-INF</outputDirectory> -->
-<!-- 							<resources> -->
-<!-- 								<resource> -->
-<!-- 									<filtering>true</filtering> -->
-<!-- 									<directory>src/main/resources</directory> -->
-<!-- 								</resource> -->
-<!-- 							</resources> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
-<!-- 			<plugin> -->
-<!-- 	          <groupId>org.apache.tomcat.maven</groupId> -->
-<!-- 	          <artifactId>tomcat7-maven-plugin</artifactId> -->
-<!-- 	          <version>2.2</version> -->
-<!-- 	          <configuration> -->
-<!-- 	          	<path>/petclinic</path> -->
-<!-- 	          </configuration> -->
-<!-- 	        </plugin> -->
-<!-- 		</plugins> -->
-<!-- 	</build> -->
-<profiles>
-<profile>
+	<!-- <plugins> -->
+	<!-- <plugin> -->
+	<!-- <artifactId>maven-resources-plugin</artifactId> -->
+	<!-- <version>${version.maven.resources.plugin}</version> -->
+	<!-- <executions> -->
+	<!-- <execution> -->
+	<!-- <id>copy-resources</id> -->
+	<!-- <phase>validate</phase> -->
+	<!-- <goals> -->
+	<!-- <goal>copy-resources</goal> -->
+	<!-- </goals> -->
+	<!-- <configuration> -->
+	<!-- <outputDirectory>src/main/webapp/WEB-INF</outputDirectory> -->
+	<!-- <resources> -->
+	<!-- <resource> -->
+	<!-- <filtering>true</filtering> -->
+	<!-- <directory>src/main/resources</directory> -->
+	<!-- </resource> -->
+	<!-- </resources> -->
+	<!-- </configuration> -->
+	<!-- </execution> -->
+	<!-- </executions> -->
+	<!-- </plugin> -->
+	<!-- <plugin> -->
+	<!-- <groupId>org.apache.tomcat.maven</groupId> -->
+	<!-- <artifactId>tomcat7-maven-plugin</artifactId> -->
+	<!-- <version>2.2</version> -->
+	<!-- <configuration> -->
+	<!-- <path>/petclinic</path> -->
+	<!-- </configuration> -->
+	<!-- </plugin> -->
+	<!-- </plugins> -->
+	<!-- </build> -->
+	<profiles>
+		<profile>
 			<id>jsd-webapp-project-spring</id>
 			<activation>
-			<activeByDefault>true</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
 				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
@@ -267,6 +259,6 @@
 
 			</build>
 		</profile>
-</profiles>
-  
+	</profiles>
+
 </project>
