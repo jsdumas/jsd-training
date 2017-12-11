@@ -1,4 +1,4 @@
-package io.jsd.training.java.framework.struts.dao.impl;
+package io.jsd.training.java.framework.struts.dao;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import io.jsd.training.java.framework.struts.dao.PersonneDAO;
-import io.jsd.training.java.framework.struts.model.Personne;
+import io.jsd.training.java.framework.struts.dao.entity.Personne;
 
 public class PersonneFileDAO implements PersonneDAO {
 	File file = new File("/home/stagiaire/personnesStruts.csv");
