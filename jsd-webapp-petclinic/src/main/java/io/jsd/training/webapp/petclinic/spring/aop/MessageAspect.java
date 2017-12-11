@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import io.jsd.training.webapp.petclinic.dao.entity.Animal;
 import io.jsd.training.webapp.petclinic.dao.entity.Message;
 import io.jsd.training.webapp.petclinic.dao.entity.Proprietaire;
-import io.jsd.training.webapp.petclinic.service.MessageService;
-import io.jsd.training.webapp.petclinic.service.ServiceException;
+import io.jsd.training.webapp.petclinic.spring.service.MessageService;
+import io.jsd.training.webapp.petclinic.spring.service.ServiceException;
 
 @Component
 public class MessageAspect {

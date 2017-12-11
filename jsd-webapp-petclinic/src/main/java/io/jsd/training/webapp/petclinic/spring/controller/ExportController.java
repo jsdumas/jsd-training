@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.jsd.training.webapp.petclinic.dto.ExportDTO;
-import io.jsd.training.webapp.petclinic.service.AnimalService;
-import io.jsd.training.webapp.petclinic.service.ProprietaireService;
-import io.jsd.training.webapp.petclinic.service.ServiceException;
+import io.jsd.training.webapp.petclinic.spring.service.AnimalService;
+import io.jsd.training.webapp.petclinic.spring.service.ProprietaireService;
+import io.jsd.training.webapp.petclinic.spring.service.ServiceException;
 
 @Controller
 @RequestMapping("/export")

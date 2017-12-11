@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.jsd.training.webapp.petclinic.dao.entity.Message;
-import io.jsd.training.webapp.petclinic.service.MessageService;
-import io.jsd.training.webapp.petclinic.service.ServiceException;
+import io.jsd.training.webapp.petclinic.spring.service.MessageService;
+import io.jsd.training.webapp.petclinic.spring.service.ServiceException;
 
 @Controller
 @RequestMapping("/")

@@ -11,9 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import io.jsd.training.webapp.petclinic.dao.entity.Vaccin;
 import io.jsd.training.webapp.petclinic.dto.VaccinDTO;
-import io.jsd.training.webapp.petclinic.service.AnimalService;
-import io.jsd.training.webapp.petclinic.service.ServiceException;
-import io.jsd.training.webapp.petclinic.service.VaccinService;
+import io.jsd.training.webapp.petclinic.spring.service.AnimalService;
+import io.jsd.training.webapp.petclinic.spring.service.ServiceException;
+import io.jsd.training.webapp.petclinic.spring.service.VaccinService;
 
 @Controller
 @RequestMapping("/vaccin")
