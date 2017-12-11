@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import io.jsd.training.webapp.petclinic.dao.MessageDAO;
 import io.jsd.training.webapp.petclinic.dao.entity.Message;
-import io.jsd.training.webapp.petclinic.exception.ServiceException;
 
 
 @Service
