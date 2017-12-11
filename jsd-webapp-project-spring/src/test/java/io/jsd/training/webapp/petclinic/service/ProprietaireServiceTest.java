@@ -18,7 +18,8 @@ import io.jsd.training.webapp.petclinic.spring.service.ServiceException;
 import io.jsd.training.webapp.petclinic.utils.DateUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(value = "classpath:testapplicationContext.xml")
+//@ContextConfiguration(value = "classpath:testapplicationContext.xml")
+@ContextConfiguration(value = "/testapplicationContext.xml")
 public class ProprietaireServiceTest {
 
 	@Autowired

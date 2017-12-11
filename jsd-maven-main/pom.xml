@@ -22,9 +22,41 @@
 		<version.slfforj>1.7.12</version.slfforj>
 	</properties>
 
+	<profiles>
+
+		<profile>
+			<id>jsd-java-framework-spring-data</id>
+			<!-- <activation> -->
+			<!-- <activeByDefault>true</activeByDefault> -->
+			<!-- </activation> -->
+			<properties>
+				<jdbc.url>jdbc:mysql://localhost:3306/jsd-springdata</jdbc.url>
+				<jdbc.user>root</jdbc.user>
+				<jdbc.password>root</jdbc.password>
+			</properties>
+		</profile>
+
+		
+
+		<profile>
+			<id>johndoe-webapp-petclinic</id>
+			<properties>
+				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+				<jdbc.url>jdbc:mysql://localhost:3306/petclinic</jdbc.url>
+				<jdbc.username>root</jdbc.username>
+				<jdbc.password>stagiaire</jdbc.password>
+
+				<jdbc.test.driverClassName>com.mysql.jdbc.Driver</jdbc.test.driverClassName>
+				<jdbc.test.url>jdbc:mysql://localhost:3306/testpetclinic</jdbc.test.url>
+				<jdbc.test.username>root</jdbc.test.username>
+				<jdbc.test.password>stagiaire</jdbc.test.password>
+			</properties>
+		</profile>
+
+	</profiles>
+
 
 	<modules>
-		<module>jsd-maven-profiles</module>
 		<module>jsd-client-jms-trainingcenter</module>
 		<module>jsd-client-rest-trainingcenter</module>
 		<module>jsd-client-ws-trainingcenter</module>
@@ -45,6 +77,27 @@
 				<artifactId>commons-io</artifactId>
 				<version>${version.commons.io}</version>
 			</dependency>
+			<!-- *** -->
+			<!-- SPRING -->
+			<!-- *** -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>4.1.6.RELEASE</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>4.1.6.RELEASE</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>1.8.0.RELEASE</version>
+			</dependency>
+
 			<!-- *** -->
 			<!-- XML -->
 			<!-- *** -->
@@ -136,28 +189,28 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${version.maven.compiler.plugin}</version>
-				<configuration>
-					<source>${version.java}</source>
-					<target>${version.java}</target>
-					<encoding>UTF-8</encoding>
-					<executable>C:\Program Files\Java\jre1.8.0_73\bin\javac</executable>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>${version.maven.resources.plugin}</version>
-				<configuration>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${version.maven.compiler.plugin}</version>
+					<configuration>
+						<source>${version.java}</source>
+						<target>${version.java}</target>
+						<encoding>UTF-8</encoding>
+						<executable>C:\Program Files\Java\jre1.8.0_73\bin\javac</executable>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${version.maven.resources.plugin}</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 </project>

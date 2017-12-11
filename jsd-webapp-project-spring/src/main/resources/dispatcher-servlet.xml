@@ -188,16 +188,16 @@
 	<aop:config>
 		<aop:aspect id="myMessageAspect" ref="messageAspect">
 			<aop:pointcut id="serviceCreatePointCut"
-				expression="execution(* fr.treeptik.petclinic.service.*.save(..))" />
+				expression="execution(* io.jsd.training.webapp.petclinic.service.*.save(..))" />
 			<aop:after-returning pointcut-ref="serviceCreatePointCut"
 				method="afterServiceCreate" returning="mResult" />
 
 			<aop:pointcut id="serviceRemovePointCut"
-				expression="execution(* fr.treeptik.petclinic.service.*.remove(..))" />
+				expression="execution(* io.jsd.training.webapp.petclinic.service.*.remove(..))" />
 			<aop:after pointcut-ref="serviceRemovePointCut" method="afterServiceRemove" />
 
 			<aop:pointcut id="serviceUpdatePointCut"
-				expression="execution(* fr.treeptik.petclinic.service.*.update(..))" />
+				expression="execution(* io.jsd.training.webapp.petclinic.service.*.update(..))" />
 			<aop:after-returning pointcut-ref="serviceUpdatePointCut"
 				method="afterServiceUpdate" returning="result" />
 

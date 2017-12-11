@@ -4,10 +4,10 @@ import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint.StaticPart;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import io.jsd.training.tp.spring.model.Client;
-import io.jsd.training.tp.spring.model.Message;
-import io.jsd.training.tp.spring.model.Reservation;
-import io.jsd.training.tp.spring.model.Voiture;
+import io.jsd.training.tp.spring.dao.entity.Client;
+import io.jsd.training.tp.spring.dao.entity.Message;
+import io.jsd.training.tp.spring.dao.entity.Reservation;
+import io.jsd.training.tp.spring.dao.entity.Voiture;
 import io.jsd.training.tp.spring.service.MessageService;
 
 public class DataBaseNotification {

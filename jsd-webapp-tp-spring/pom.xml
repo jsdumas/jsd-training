@@ -13,7 +13,7 @@
 
 	<profiles>
 		<profile>
-			<id>dev</id>
+			<id>jsd-webapp-tp-spring</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
@@ -148,4 +148,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<packaging>war</packaging>
 </project>

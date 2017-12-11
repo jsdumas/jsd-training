@@ -9,8 +9,8 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import io.jsd.training.tp.spring.dao.VoitureDAO;
+import io.jsd.training.tp.spring.dao.entity.Voiture;
 import io.jsd.training.tp.spring.exception.DAOException;
-import io.jsd.training.tp.spring.model.Voiture;
 import io.jsd.training.tp.spring.utils.DateUtils;
 
 @Repository

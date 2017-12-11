@@ -38,11 +38,11 @@
     http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 
 
-	<context:component-scan base-package="fr.treeptik"></context:component-scan>
+	<context:component-scan base-package="io.jsd.training.webapp.petclinic"></context:component-scan>
 
 	<mvc:annotation-driven />
 
-	<jpa:repositories base-package="fr.treeptik.petclinic.dao" />
+	<jpa:repositories base-package="io.jsd.training.webapp.petclinic.dao" />
 
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
@@ -72,7 +72,7 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="fr.treeptik.petclinic.model" />
+		<property name="packagesToScan" value="io.jsd.training.webapp.petclinic.dao.entity" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="showSql" value="false" />

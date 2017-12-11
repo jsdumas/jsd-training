@@ -10,10 +10,10 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import io.jsd.training.tp.spring.dao.ReservationDAO;
+import io.jsd.training.tp.spring.dao.entity.Client;
+import io.jsd.training.tp.spring.dao.entity.Reservation;
+import io.jsd.training.tp.spring.dao.entity.Voiture;
 import io.jsd.training.tp.spring.exception.DAOException;
-import io.jsd.training.tp.spring.model.Client;
-import io.jsd.training.tp.spring.model.Reservation;
-import io.jsd.training.tp.spring.model.Voiture;
 
 @Repository
 public class ReservationJPADAO extends GenericJPADAO<Reservation, Integer>

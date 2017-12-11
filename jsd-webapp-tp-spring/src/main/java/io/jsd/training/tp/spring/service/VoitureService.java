@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.jsd.training.tp.spring.dao.VoitureDAO;
+import io.jsd.training.tp.spring.dao.entity.Voiture;
 import io.jsd.training.tp.spring.exception.DAOException;
 import io.jsd.training.tp.spring.exception.ServiceException;
-import io.jsd.training.tp.spring.model.Voiture;
 
 @Service
 public class VoitureService {

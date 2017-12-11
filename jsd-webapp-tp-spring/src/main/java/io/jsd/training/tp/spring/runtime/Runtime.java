@@ -9,11 +9,11 @@ import java.util.Scanner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import io.jsd.training.tp.spring.dao.entity.Client;
+import io.jsd.training.tp.spring.dao.entity.Reservation;
+import io.jsd.training.tp.spring.dao.entity.Voiture;
 import io.jsd.training.tp.spring.exception.DAOException;
 import io.jsd.training.tp.spring.exception.ServiceException;
-import io.jsd.training.tp.spring.model.Client;
-import io.jsd.training.tp.spring.model.Reservation;
-import io.jsd.training.tp.spring.model.Voiture;
 import io.jsd.training.tp.spring.service.ClientService;
 import io.jsd.training.tp.spring.service.ReservationService;
 import io.jsd.training.tp.spring.service.VoitureService;

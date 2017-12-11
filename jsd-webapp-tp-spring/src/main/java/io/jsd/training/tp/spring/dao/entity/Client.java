@@ -1,4 +1,4 @@
-package io.jsd.training.tp.spring.model;
+package io.jsd.training.tp.spring.dao.entity;
 
 import java.util.List;
 
