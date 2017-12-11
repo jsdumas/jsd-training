@@ -7,8 +7,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../jsd-maven-main/pom.xml</relativePath>
 	</parent>
-	<artifactId>jsd-java-framework-struts</artifactId>
-	<name>java-framework-struts</name>
+	<artifactId>jsd-webapp-project-struts</artifactId>
+	<name>webapp-project-struts</name>
 
 	<packaging>war</packaging>
 

@@ -7,8 +7,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../jsd-maven-main/pom.xml</relativePath>
 	</parent>
-	<artifactId>jsd-webapp-trainingcenter</artifactId>
-	<name>training-center</name>
+	<artifactId>jsd-webapp-project-ejb</artifactId>
+	<name>webapp-project-ejb</name>
 	<packaging>war</packaging>
 
 	<properties>
