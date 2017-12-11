@@ -32,8 +32,9 @@
 		<module>jsd-java</module>
 		<module>jsd-java-framework-spring-data</module>
 		<module>jsd-java-framework-spring-ioc</module>
-		<module>jsd-webapp-petclinic</module>
-		<module>jsd-webapp-trainingcenter</module>
+		<module>jsd-webapp-project-ejb</module>
+		<module>jsd-webapp-project-spring</module>
+		<module>jsd-webapp-project-struts</module>
 	</modules>
 
 	<dependencyManagement>
