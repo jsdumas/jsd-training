@@ -3,7 +3,7 @@ package io.jsd.training.java.framework.struts.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.jsd.training.java.framework.struts.model.Personne;
+import io.jsd.training.java.framework.struts.dao.entity.Personne;
 
 public class Utilitaire {
 	

@@ -1,4 +1,4 @@
-package io.jsd.training.java.framework.struts.model;
+package io.jsd.training.java.framework.struts.dao.entity;
 
 import java.io.Serializable;
 

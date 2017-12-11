@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import io.jsd.training.java.framework.struts.model.Personne;
+import io.jsd.training.java.framework.struts.dao.entity.Personne;
 
 public interface PersonneSpringDAO extends JpaRepository<Personne, Integer>{
 	

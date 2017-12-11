@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.jsd.training.java.framework.struts.dao.PersonneSpringDAO;
+import io.jsd.training.java.framework.struts.dao.entity.Personne;
 import io.jsd.training.java.framework.struts.exception.ServiceException;
-import io.jsd.training.java.framework.struts.model.Personne;
 
 @Service
 public class PersonneService implements Serializable {

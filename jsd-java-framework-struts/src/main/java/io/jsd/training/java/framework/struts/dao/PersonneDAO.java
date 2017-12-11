@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
+import io.jsd.training.java.framework.struts.dao.entity.Personne;
 import io.jsd.training.java.framework.struts.exception.ControllerException;
-import io.jsd.training.java.framework.struts.model.Personne;
 
 public interface PersonneDAO {
 	Integer create(Personne personne) throws Exception;
