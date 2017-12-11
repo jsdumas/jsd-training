@@ -27,13 +27,13 @@ public interface FormationWS {
      * 
      * @param arg0
      * @return
-     *     returns fr.treeptik.clients.webservice.Formation
+     *     returns io.jsd.training.tp.spring.clients.webservice.Formation
      * @throws ServiceException_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "saveFromWebService", targetNamespace = "http://webservice.centreformation.treeptik.fr/", className = "fr.treeptik.clients.webservice.SaveFromWebService")
-    @ResponseWrapper(localName = "saveFromWebServiceResponse", targetNamespace = "http://webservice.centreformation.treeptik.fr/", className = "fr.treeptik.clients.webservice.SaveFromWebServiceResponse")
+    @RequestWrapper(localName = "saveFromWebService", targetNamespace = "http://webservice.centreformation.treeptik.fr/", className = "io.jsd.training.tp.spring.clients.webservice.SaveFromWebService")
+    @ResponseWrapper(localName = "saveFromWebServiceResponse", targetNamespace = "http://webservice.centreformation.treeptik.fr/", className = "io.jsd.training.tp.spring.clients.webservice.SaveFromWebServiceResponse")
     public Formation saveFromWebService(
         @WebParam(name = "arg0", targetNamespace = "")
         Formation arg0)

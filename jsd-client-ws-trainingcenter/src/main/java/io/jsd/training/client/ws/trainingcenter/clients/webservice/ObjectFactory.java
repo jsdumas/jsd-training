@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the fr.treeptik.clients.webservice package. 
+ * generated in the io.jsd.training.tp.spring.clients.webservice package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -29,7 +29,7 @@ public class ObjectFactory {
     private final static QName _SaveFromWebServiceResponse_QNAME = new QName("http://webservice.centreformation.treeptik.fr/", "saveFromWebServiceResponse");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: fr.treeptik.clients.webservice
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: io.jsd.training.tp.spring.clients.webservice
      * 
      */
     public ObjectFactory() {
