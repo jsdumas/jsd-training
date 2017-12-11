@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.JoinPoint.StaticPart;
 
-import io.jsd.training.tp.spring.model.Client;
+import io.jsd.training.tp.spring.dao.entity.Client;
 
 public class MonitorAspect {
 

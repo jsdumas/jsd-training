@@ -68,7 +68,7 @@
 		
 		
 		<aop:aspect id="notification" ref="dataBaseNotifification">
-			<aop:pointcut expression="execution(* fr.treeptik.service.*.save(..)) &amp;&amp; !execution(* fr.treeptik.service.MessageService.*(..))" id="savePointCut"/>
+			<aop:pointcut expression="execution(* io.jsd.training.tp.spring.service.*.save(..)) &amp;&amp; !execution(* io.jsd.training.tp.spring.service.MessageService.*(..))" id="savePointCut"/>
 			<aop:after-returning pointcut-ref="savePointCut" method="afterReturningSave" returning="result"/>
 		</aop:aspect>
 	</aop:config>
@@ -89,7 +89,7 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- Indiquer l'endroit ou se trouve les entity du projet -->
-		<property name="packagesToScan" value="fr.treeptik.model" />
+		<property name="packagesToScan" value="io.jsd.training.tp.spring.dao.entity" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="showSql" value="true" />

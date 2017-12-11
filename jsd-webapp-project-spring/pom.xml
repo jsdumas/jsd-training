@@ -25,7 +25,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.1.6.RELEASE</version>
 			<exclusions>
 				<exclusion>
 					<groupId>commons-logging</groupId>
@@ -55,8 +54,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>4.1.6.RELEASE</version>
-		</dependency>
+			</dependency>
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -96,8 +94,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>1.8.0.RELEASE</version>
-		</dependency>
+			</dependency>
 
 		<dependency>
 			<groupId>mysql</groupId>
@@ -115,12 +112,6 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.8.5</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
 		</dependency>
 
 		<dependency>
@@ -171,39 +162,39 @@
 		</repository>
 	</repositories>
 
-	<build>
+<!-- 	<build> -->
 
-		<testResources>
-			<testResource>
-				<filtering>true</filtering>
-				<directory>src/test/resources</directory>
-			</testResource>
+<!-- 		<testResources> -->
+<!-- 			<testResource> -->
+<!-- 				<filtering>true</filtering> -->
+<!-- 				<directory>src/test/resources</directory> -->
+<!-- 			</testResource> -->
 
-		</testResources>
+<!-- 		</testResources> -->
 
-		<plugins>
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>${version.maven.resources.plugin}</version>
-				<executions>
-					<execution>
-						<id>copy-resources</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>src/main/webapp/WEB-INF</outputDirectory>
-							<resources>
-								<resource>
-									<filtering>true</filtering>
-									<directory>src/main/resources</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 		<plugins> -->
+<!-- 			<plugin> -->
+<!-- 				<artifactId>maven-resources-plugin</artifactId> -->
+<!-- 				<version>${version.maven.resources.plugin}</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>copy-resources</id> -->
+<!-- 						<phase>validate</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>copy-resources</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<outputDirectory>src/main/webapp/WEB-INF</outputDirectory> -->
+<!-- 							<resources> -->
+<!-- 								<resource> -->
+<!-- 									<filtering>true</filtering> -->
+<!-- 									<directory>src/main/resources</directory> -->
+<!-- 								</resource> -->
+<!-- 							</resources> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 <!-- 			<plugin> -->
 <!-- 	          <groupId>org.apache.tomcat.maven</groupId> -->
 <!-- 	          <artifactId>tomcat7-maven-plugin</artifactId> -->
@@ -212,7 +203,73 @@
 <!-- 	          	<path>/petclinic</path> -->
 <!-- 	          </configuration> -->
 <!-- 	        </plugin> -->
-		</plugins>
-	</build>
+<!-- 		</plugins> -->
+<!-- 	</build> -->
+<profiles>
+<profile>
+			<id>jsd-webapp-project-spring</id>
+			<!-- <activation> -->
+			<!-- <activeByDefault>true</activeByDefault> -->
+			<!-- </activation> -->
+			<properties>
+				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+				<jdbc.url>jdbc:mysql://localhost:3306/petclinic</jdbc.url>
+				<jdbc.username>root</jdbc.username>
+				<jdbc.password>root</jdbc.password>
+
+				<jdbc.test.driverClassName>com.mysql.jdbc.Driver</jdbc.test.driverClassName>
+				<jdbc.test.url>jdbc:mysql://localhost:3306/testpetclinic</jdbc.test.url>
+				<jdbc.test.username>root</jdbc.test.username>
+				<jdbc.test.password>root</jdbc.test.password>
+			</properties>
+			<build>
+
+				<testResources>
+					<testResource>
+						<filtering>true</filtering>
+						<directory>src/test/resources</directory>
+					</testResource>
+				</testResources>
+
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>src/main/webapp/WEB-INF</outputDirectory>
+									<resources>
+										<resource>
+											<filtering>true</filtering>
+											<directory>src/main/resources</directory>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat7-maven-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<path>/petclinic</path>
+						</configuration>
+					</plugin>
+				</plugins>
+
+			</build>
+		</profile>
+</profiles>
   
 </project>
