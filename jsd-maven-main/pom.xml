@@ -38,14 +38,13 @@
 	</modules>
 
 	<dependencyManagement>
-		<!-- APACHE IO -->
 		<dependencies>
+			<!-- APACHE IO -->
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
 				<version>${version.commons.io}</version>
 			</dependency>
-
 			<!-- *** -->
 			<!-- XML -->
 			<!-- *** -->
@@ -60,6 +59,37 @@
 				<artifactId>jackson-databind</artifactId>
 				<version>${version.fasterxml.jackson}</version>
 			</dependency>
+			<!-- ********* -->
+			<!-- HIBERNATE -->
+			<!-- ********* -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>4.3.8.Final</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate.javax.persistence</groupId>
+				<artifactId>hibernate-jpa-2.0-api</artifactId>
+				<version>1.0.1.Final</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>5.0.1.Final</version>
+			</dependency>
+
+			<!-- *** -->
+			<!-- BDD -->
+			<!-- *** -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.35</version>
+			</dependency>
+
+
 		</dependencies>
 	</dependencyManagement>
 
