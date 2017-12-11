@@ -21,7 +21,7 @@ import io.jsd.training.webapp.petclinic.utils.DateUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(value = "classpath:testapplicationContext.xml")
-@ContextConfiguration(value = "/testapplicationContext.xml")
+@ContextConfiguration(value = "/dispatcher-servlet.xml")
 public class VaccinServiceTest {
 
 	@Autowired

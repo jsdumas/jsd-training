@@ -9,9 +9,6 @@
   <artifactId>jsd-webapp-project-spring</artifactId>
   <name>webapp-project-spring</name>
   
-  <properties>
-  	<version.maven.resources.plugin>3.0.2</version.maven.resources.plugin>
-  </properties>
   
   
 	<dependencies>
@@ -208,9 +205,9 @@
 <profiles>
 <profile>
 			<id>jsd-webapp-project-spring</id>
-			<!-- <activation> -->
-			<!-- <activeByDefault>true</activeByDefault> -->
-			<!-- </activation> -->
+			<activation>
+			<activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
 				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 				<jdbc.url>jdbc:mysql://localhost:3306/petclinic</jdbc.url>
