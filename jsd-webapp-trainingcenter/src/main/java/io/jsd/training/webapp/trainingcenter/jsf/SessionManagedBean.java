@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.trainingcenter.controller;
+package io.jsd.training.webapp.trainingcenter.jsf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +16,11 @@ import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
 import io.jsd.training.webapp.trainingcenter.dto.SessionDTO;
-import io.jsd.training.webapp.trainingcenter.service.EvaluationService;
-import io.jsd.training.webapp.trainingcenter.service.FormateurService;
-import io.jsd.training.webapp.trainingcenter.service.FormationService;
-import io.jsd.training.webapp.trainingcenter.service.ServiceException;
-import io.jsd.training.webapp.trainingcenter.service.SessionService;
+import io.jsd.training.webapp.trainingcenter.ejb.EvaluationService;
+import io.jsd.training.webapp.trainingcenter.ejb.FormateurService;
+import io.jsd.training.webapp.trainingcenter.ejb.FormationService;
+import io.jsd.training.webapp.trainingcenter.ejb.ServiceException;
+import io.jsd.training.webapp.trainingcenter.ejb.SessionService;
 
 @ManagedBean(name = "dtSessionManagedBean")
 @RequestScoped

@@ -19,8 +19,8 @@ import org.jboss.logging.Logger;
 
 import io.jsd.training.webapp.trainingcenter.dao.entity.Personne;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Stagiaire;
-import io.jsd.training.webapp.trainingcenter.service.ServiceException;
-import io.jsd.training.webapp.trainingcenter.service.StagiaireService;
+import io.jsd.training.webapp.trainingcenter.ejb.ServiceException;
+import io.jsd.training.webapp.trainingcenter.ejb.StagiaireService;
 
 
 

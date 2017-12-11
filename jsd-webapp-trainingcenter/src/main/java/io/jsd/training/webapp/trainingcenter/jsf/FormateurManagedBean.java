@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.trainingcenter.controller;
+package io.jsd.training.webapp.trainingcenter.jsf;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -7,8 +7,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
-import io.jsd.training.webapp.trainingcenter.service.FormateurService;
-import io.jsd.training.webapp.trainingcenter.service.ServiceException;
+import io.jsd.training.webapp.trainingcenter.ejb.FormateurService;
+import io.jsd.training.webapp.trainingcenter.ejb.ServiceException;
 
 
 

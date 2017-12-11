@@ -13,8 +13,8 @@ import javax.jms.TextMessage;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
-import io.jsd.training.webapp.trainingcenter.service.ServiceException;
-import io.jsd.training.webapp.trainingcenter.service.SessionService;
+import io.jsd.training.webapp.trainingcenter.ejb.ServiceException;
+import io.jsd.training.webapp.trainingcenter.ejb.SessionService;
 
 @MessageDriven(name="sessionListenerQueue", activationConfig = 
 {@ActivationConfigProperty

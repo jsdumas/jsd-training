@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.trainingcenter.controller;
+package io.jsd.training.webapp.trainingcenter.jsf;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -7,8 +7,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 
 import io.jsd.training.webapp.trainingcenter.dao.entity.Stagiaire;
-import io.jsd.training.webapp.trainingcenter.service.ServiceException;
-import io.jsd.training.webapp.trainingcenter.service.StagiaireService;
+import io.jsd.training.webapp.trainingcenter.ejb.ServiceException;
+import io.jsd.training.webapp.trainingcenter.ejb.StagiaireService;
 
 @ManagedBean (name="dtStagiaireManagedBean")
 //@ViewScoped
