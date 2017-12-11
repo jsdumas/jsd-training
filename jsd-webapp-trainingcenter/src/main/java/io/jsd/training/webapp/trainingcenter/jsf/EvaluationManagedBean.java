@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.trainingcenter.controller;
+package io.jsd.training.webapp.trainingcenter.jsf;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import javax.inject.Inject;
 import org.jboss.logging.Logger;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Evaluation;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
-import io.jsd.training.webapp.trainingcenter.service.EvaluationService;
-import io.jsd.training.webapp.trainingcenter.service.ServiceException;
+import io.jsd.training.webapp.trainingcenter.ejb.EvaluationService;
+import io.jsd.training.webapp.trainingcenter.ejb.ServiceException;
 
 @ManagedBean(name = "dtEvaluationManagedBean")
 @RequestScoped

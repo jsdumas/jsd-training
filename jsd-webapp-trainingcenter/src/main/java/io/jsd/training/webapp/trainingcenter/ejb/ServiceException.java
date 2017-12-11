@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.trainingcenter.service;
+package io.jsd.training.webapp.trainingcenter.ejb;
 
 public class ServiceException extends Exception {
 	

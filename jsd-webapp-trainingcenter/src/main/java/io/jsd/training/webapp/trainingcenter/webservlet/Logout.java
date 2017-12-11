@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.trainingcenter.controller;
+package io.jsd.training.webapp.trainingcenter.webservlet;
 
 import java.io.IOException;
 
