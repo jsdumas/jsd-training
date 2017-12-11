@@ -16,6 +16,9 @@ import io.jsd.training.webapp.petclinic.dao.entity.Chat;
 import io.jsd.training.webapp.petclinic.dao.entity.Cheval;
 import io.jsd.training.webapp.petclinic.dao.entity.Chien;
 import io.jsd.training.webapp.petclinic.dao.entity.Proprietaire;
+import io.jsd.training.webapp.petclinic.spring.service.AnimalService;
+import io.jsd.training.webapp.petclinic.spring.service.ProprietaireService;
+import io.jsd.training.webapp.petclinic.spring.service.ServiceException;
 import io.jsd.training.webapp.petclinic.utils.DateUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)

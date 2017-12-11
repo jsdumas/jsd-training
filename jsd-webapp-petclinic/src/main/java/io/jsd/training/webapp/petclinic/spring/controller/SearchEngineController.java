@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.jsd.training.webapp.petclinic.dao.entity.Animal;
-import io.jsd.training.webapp.petclinic.service.AnimalService;
-import io.jsd.training.webapp.petclinic.service.ServiceException;
+import io.jsd.training.webapp.petclinic.spring.service.AnimalService;
+import io.jsd.training.webapp.petclinic.spring.service.ServiceException;
 
 @Controller
 @RequestMapping("/search-engine")

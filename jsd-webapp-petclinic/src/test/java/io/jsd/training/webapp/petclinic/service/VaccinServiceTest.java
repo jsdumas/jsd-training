@@ -14,6 +14,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import io.jsd.training.webapp.petclinic.dao.entity.Animal;
 import io.jsd.training.webapp.petclinic.dao.entity.Vaccin;
+import io.jsd.training.webapp.petclinic.spring.service.AnimalService;
+import io.jsd.training.webapp.petclinic.spring.service.ServiceException;
+import io.jsd.training.webapp.petclinic.spring.service.VaccinService;
 import io.jsd.training.webapp.petclinic.utils.DateUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)

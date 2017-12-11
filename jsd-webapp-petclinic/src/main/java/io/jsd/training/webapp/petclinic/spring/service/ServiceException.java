@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.petclinic.service;
+package io.jsd.training.webapp.petclinic.spring.service;
 
 public class ServiceException extends Exception {
 

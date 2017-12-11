@@ -1,37 +1,47 @@
-package io.jsd.training.webapp.petclinic.service;
+package io.jsd.training.webapp.petclinic.spring.service;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.jsd.training.webapp.petclinic.dao.AnimalDAO;
-import io.jsd.training.webapp.petclinic.dao.VaccinDAO;
-import io.jsd.training.webapp.petclinic.dao.entity.Animal;
+import io.jsd.training.webapp.petclinic.dao.ProprietaireDAO;
+import io.jsd.training.webapp.petclinic.dao.entity.Proprietaire;
 import io.jsd.training.webapp.petclinic.utils.DateUtils;
 
 @Service
-public class AnimalService {
+public class ProprietaireService {
 
+	@Autowired
+	private ProprietaireDAO proprietaireDAO;
 	@Autowired
 	private AnimalDAO animalDAO;
-	@Autowired
-	private VaccinDAO vaccinDAO;
+
+	Logger logger = LoggerFactory.getLogger(ProprietaireService.class);
 
 	@Transactional
-	public Animal save(Animal animal) throws ServiceException {
+	public Proprietaire save(Proprietaire proprietaire) throws ServiceException {
+		Locale locale = Locale.getDefault();
+		ResourceBundle res = ResourceBundle.getBundle("messages", locale);
+		String texte = (String) res.getObject("proprietaire.password");
+
 		try {
-			return animalDAO.save(animal);
+			logger.debug("Propriétaire :" + proprietaire);
+			return proprietaireDAO.save(proprietaire);
 
 		} catch (DataAccessException e) {
 			throw new ServiceException("error save", e);
@@ -39,79 +49,46 @@ public class AnimalService {
 	}
 
 	@Transactional
-	public Animal update(Animal animal) throws ServiceException {
+	public Proprietaire update(Proprietaire proprietaire)
+			throws ServiceException {
 		try {
 
-			return animalDAO.save(animal);
+			return proprietaireDAO.save(proprietaire);
 		} catch (DataAccessException e) {
 			throw new ServiceException("error update", e);
 		}
 	}
 
-	public Animal find(Integer id) throws ServiceException {
+	public Proprietaire find(Integer id) throws ServiceException {
 		try {
 
-			return animalDAO.findOne(id);
+			return proprietaireDAO.findOne(id);
 		} catch (DataAccessException e) {
 			throw new ServiceException("error find", e);
 		}
 	}
 
-	public List<Animal> findAll() throws ServiceException {
+	public List<Proprietaire> findAll() throws ServiceException {
 		try {
 
-			return animalDAO.findAll();
+			return proprietaireDAO.findAll();
 		} catch (DataAccessException e) {
 			throw new ServiceException("error findAll", e);
 		}
 	}
 
 	@Transactional
-	public void remove(Animal animal) throws ServiceException {
+	public void remove(Proprietaire proprietaire) throws ServiceException {
 		try {
-			animalDAO.delete(animal);
+			proprietaireDAO.delete(proprietaire);
 		} catch (DataAccessException e) {
 			throw new ServiceException("error remove", e);
 		}
 	}
 
-	public List<Animal> findAllNomProprietaire(String nomProprietaire)
+	public void exportProprietaireCsv(Integer resultNumber)
 			throws ServiceException {
-		try {
-			return animalDAO.findAllNomProprietaire(nomProprietaire);
-		} catch (DataAccessException e) {
-			throw new ServiceException("error findAllNomProprietaire", e);
-		}
-	}
-
-	public List<Animal> findAllTypeAnimal(String typeAnimal)
-			throws ServiceException {
-		try {
-			if (typeAnimal != null && !typeAnimal.equals("")) {
-				return animalDAO.findAllTypeAnimal(typeAnimal);
-			}
-			return animalDAO.findAll();
-		} catch (DataAccessException e) {
-			throw new ServiceException("error findAllTypeAnimal", e);
-		}
-	}
-
-	public List<Animal> findAllAgeAnimal(Integer ageAnimal)
-			throws ServiceException {
-		try {
-			if (ageAnimal != null) {
-				Date ageToDate = DateUtils.ageToDate(ageAnimal);
-				return animalDAO.findAllAgeAnimal(ageToDate);
-			}
-			return animalDAO.findAll();
-
-		} catch (DataAccessException e) {
-			throw new ServiceException("error findAllAgeAnimal", e);
-		}
-	}
-
-	public void exportAnimalCsv(Integer resultNumber) throws ServiceException {
-		File file = new File("animal.csv");
+		File file = new File("proprietaire.csv");
 		if (file.exists()) {
 			file.delete();
 		}
@@ -119,24 +96,23 @@ public class AnimalService {
 		FileWriter writer = null;
 		try {
 			writer = new FileWriter(file, true);
-			List<Animal> animaux = new ArrayList<Animal>();
+			List<Proprietaire> proprietaires = new ArrayList<Proprietaire>();
 			try {
-				animaux = findAll();
+				proprietaires = findAll();
 				Integer i = 0;
-				for (Animal a : animaux) {
+				for (Proprietaire p : proprietaires) {
 					if (i >= resultNumber)
 						break;
 					StringBuilder builder = new StringBuilder();
-					builder.append(a.getId());
+					builder.append(p.getId());
 					builder.append(";");
-					builder.append(a.getTypeLabel());
+					builder.append(p.getLastName());
 					builder.append(";");
-					builder.append(a.getNom());
+					builder.append(p.getFirstName());
 					builder.append(";");
-					builder.append(DateUtils.dateToString(a
-							.getDateDeNaissance()));
+					builder.append(DateUtils.dateToString(p.getBirthDate()));
 					builder.append(";");
-					builder.append(a.getProprietaire().getLastName());
+					builder.append(p.getEmail());
 					builder.append(";");
 					builder.append("\n");
 					writer.write(builder.toString());
@@ -168,15 +144,20 @@ public class AnimalService {
 		File fileToSave = null;
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		fileChooser.setDialogTitle("Choisir la destination du fichier exporté");
+
+		Locale locale = Locale.getDefault();
+		ResourceBundle res = ResourceBundle.getBundle("messages", locale);
+		String texte = (String) res
+				.getObject("Choisirladestinationdufichierexporte");
+		fileChooser.setDialogTitle(texte);
 
 		int userSelection = fileChooser.showSaveDialog(parentFrame);
-		File file = new File("animal.csv");
+		
 
 		if (userSelection == JFileChooser.APPROVE_OPTION) {
-
 			try {
-				exportAnimalCsv(resultNumber);
+				exportProprietaireCsv(resultNumber);
+				File file = new File("proprietaire.csv");
 				fileToSave = fileChooser.getSelectedFile();
 				File saved = new File(fileToSave.getAbsolutePath() + "/"
 						+ file.getName());
@@ -188,6 +169,7 @@ public class AnimalService {
 						file.renameTo(saved);
 					}
 				}
+				
 			} catch (ServiceException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -195,14 +177,5 @@ public class AnimalService {
 
 		}
 
-	}
-
-	public List<Animal> findByProprietaire(Integer id) throws ServiceException {
-		try {
-
-			return animalDAO.findByProprietaire(id);
-		} catch (DataAccessException e) {
-			throw new ServiceException("error findByProprietaire", e);
-		}
 	}
 }

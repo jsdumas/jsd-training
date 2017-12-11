@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.petclinic.rest;
+package io.jsd.training.webapp.petclinic.spring.rest;
 
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -18,8 +18,8 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
 import io.jsd.training.webapp.petclinic.dao.entity.Vaccin;
-import io.jsd.training.webapp.petclinic.service.ServiceException;
-import io.jsd.training.webapp.petclinic.service.VaccinService;
+import io.jsd.training.webapp.petclinic.spring.service.ServiceException;
+import io.jsd.training.webapp.petclinic.spring.service.VaccinService;
 
 
 @Api(value = "vaccin", description = "Operations on the vaccines") // documentation

@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.petclinic.service;
+package io.jsd.training.webapp.petclinic.spring.service;
 
 import java.util.Calendar;
 import java.util.Date;
