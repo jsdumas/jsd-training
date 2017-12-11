@@ -1,6 +1,5 @@
 package io.jsd.training.webapp.trainingcenter.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,18 +9,10 @@ import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
-import org.jboss.logging.Logger.Level;
-
-import io.jsd.training.webapp.trainingcenter.dto.SessionDTO;
+import io.jsd.training.webapp.trainingcenter.dao.entity.Evaluation;
+import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
 import io.jsd.training.webapp.trainingcenter.exception.ServiceException;
-import io.jsd.training.webapp.trainingcenter.model.Evaluation;
-import io.jsd.training.webapp.trainingcenter.model.Formateur;
-import io.jsd.training.webapp.trainingcenter.model.Formation;
-import io.jsd.training.webapp.trainingcenter.model.Session;
 import io.jsd.training.webapp.trainingcenter.service.EvaluationService;
-import io.jsd.training.webapp.trainingcenter.service.FormateurService;
-import io.jsd.training.webapp.trainingcenter.service.FormationService;
-import io.jsd.training.webapp.trainingcenter.service.SessionService;
 
 @ManagedBean(name = "dtEvaluationManagedBean")
 @RequestScoped

@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import io.jsd.training.webapp.trainingcenter.model.Formateur;
-import io.jsd.training.webapp.trainingcenter.model.Formation;
+import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
+import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
 
 public class SessionDTO implements Serializable {
 	

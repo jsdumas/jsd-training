@@ -10,10 +10,10 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
+import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
+import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
 import io.jsd.training.webapp.trainingcenter.dto.FormationDTO;
 import io.jsd.training.webapp.trainingcenter.exception.ServiceException;
-import io.jsd.training.webapp.trainingcenter.model.Formateur;
-import io.jsd.training.webapp.trainingcenter.model.Formation;
 import io.jsd.training.webapp.trainingcenter.service.FormateurService;
 import io.jsd.training.webapp.trainingcenter.service.FormationService;
 
