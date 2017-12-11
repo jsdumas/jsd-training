@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import io.jsd.training.webapp.petclinic.model.Animal;
+import io.jsd.training.webapp.petclinic.dao.entity.Animal;
 
 public interface AnimalDAO extends JpaRepository<Animal, Integer> {
 	@Query(

@@ -8,12 +8,12 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import io.jsd.training.webapp.petclinic.model.Animal;
-import io.jsd.training.webapp.petclinic.model.Chat;
-import io.jsd.training.webapp.petclinic.model.Cheval;
-import io.jsd.training.webapp.petclinic.model.Chien;
-import io.jsd.training.webapp.petclinic.model.Proprietaire;
-import io.jsd.training.webapp.petclinic.model.Tortue;
+import io.jsd.training.webapp.petclinic.dao.entity.Animal;
+import io.jsd.training.webapp.petclinic.dao.entity.Chat;
+import io.jsd.training.webapp.petclinic.dao.entity.Cheval;
+import io.jsd.training.webapp.petclinic.dao.entity.Chien;
+import io.jsd.training.webapp.petclinic.dao.entity.Proprietaire;
+import io.jsd.training.webapp.petclinic.dao.entity.Tortue;
 
 public class AnimalDTO {
 	private String type;

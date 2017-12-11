@@ -12,8 +12,8 @@ import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
+import io.jsd.training.webapp.petclinic.dao.entity.Animal;
 import io.jsd.training.webapp.petclinic.exception.ServiceException;
-import io.jsd.training.webapp.petclinic.model.Animal;
 import io.jsd.training.webapp.petclinic.service.AnimalService;
 
 

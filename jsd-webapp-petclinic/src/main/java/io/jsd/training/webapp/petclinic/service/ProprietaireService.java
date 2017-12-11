@@ -20,8 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import io.jsd.training.webapp.petclinic.dao.AnimalDAO;
 import io.jsd.training.webapp.petclinic.dao.ProprietaireDAO;
+import io.jsd.training.webapp.petclinic.dao.entity.Proprietaire;
 import io.jsd.training.webapp.petclinic.exception.ServiceException;
-import io.jsd.training.webapp.petclinic.model.Proprietaire;
 import io.jsd.training.webapp.petclinic.utils.DateUtils;
 
 @Service
