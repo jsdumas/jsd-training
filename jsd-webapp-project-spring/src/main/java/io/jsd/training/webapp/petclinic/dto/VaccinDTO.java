@@ -12,6 +12,7 @@ import io.jsd.training.webapp.petclinic.dao.entity.Animal;
 import io.jsd.training.webapp.petclinic.dao.entity.Vaccin;
 
 public class VaccinDTO {
+	
 	private Integer id;
 	private String type;
 	@Temporal(TemporalType.DATE)
@@ -20,8 +21,8 @@ public class VaccinDTO {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date rappel;
-	
 	private List<Animal> animals;
+	
 	public List<Animal> getAnimals() {
 		return animals;
 	}
@@ -86,6 +87,5 @@ public class VaccinDTO {
 	public void setAnimalId(Integer animalId) {
 		this.animalId = animalId;
 	}
-	
 	
 }

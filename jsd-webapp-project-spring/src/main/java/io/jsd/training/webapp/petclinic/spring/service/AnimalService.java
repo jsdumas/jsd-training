@@ -25,9 +25,7 @@ public class AnimalService {
 
 	@Autowired
 	private AnimalDAO animalDAO;
-	@Autowired
-	private VaccinDAO vaccinDAO;
-
+	
 	@Transactional
 	public Animal save(Animal animal) throws ServiceException {
 		try {
@@ -189,7 +187,6 @@ public class AnimalService {
 					}
 				}
 			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

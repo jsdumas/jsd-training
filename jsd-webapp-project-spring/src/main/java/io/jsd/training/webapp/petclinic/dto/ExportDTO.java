@@ -1,6 +1,7 @@
 package io.jsd.training.webapp.petclinic.dto;
 
 public class ExportDTO {
+	
 	private String choice;
 	private String resultNumber;
 
