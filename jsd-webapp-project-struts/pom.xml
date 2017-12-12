@@ -12,6 +12,9 @@
 	<packaging>war</packaging>
 
 	<dependencies>
+		<!-- ****** -->
+		<!-- STRUTS -->
+		<!-- ****** -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-core</artifactId>
@@ -31,6 +34,20 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-spring-plugin</artifactId>
+			<version>2.3.24</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jgeppert.struts2.jquery</groupId>
+			<artifactId>struts2-jquery-plugin</artifactId>
+			<version>3.7.1</version>
+		</dependency>
+		<!-- ********** -->
+		<!-- SPRING WEB -->
+		<!-- ********** -->
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 		</dependency>
@@ -40,21 +57,27 @@
 			<artifactId>spring-context</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-		</dependency>
-
+		<!-- *********** -->
+		<!-- SPRING TEST -->
+		<!-- *********** -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
-
+		<!-- *********** -->
+		<!-- SPRING JDBC -->
+		<!-- *********** -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+		<!-- ********* -->
+		<!-- HIBERNATE -->
+		<!-- ********* -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -78,21 +101,6 @@
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
-		</dependency>
-		<!-- ****** -->
-		<!-- STRUTS -->
-		<!-- ****** -->
-		<dependency>
-			<groupId>org.apache.struts</groupId>
-			<artifactId>struts2-spring-plugin</artifactId>
-			<version>2.3.24</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.jgeppert.struts2.jquery</groupId>
-			<artifactId>struts2-jquery-plugin</artifactId>
-			<version>3.7.1</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
