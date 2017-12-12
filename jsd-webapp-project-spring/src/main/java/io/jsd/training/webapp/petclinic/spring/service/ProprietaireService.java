@@ -28,9 +28,7 @@ public class ProprietaireService {
 
 	@Autowired
 	private ProprietaireDAO proprietaireDAO;
-	@Autowired
-	private AnimalDAO animalDAO;
-
+	
 	Logger logger = LoggerFactory.getLogger(ProprietaireService.class);
 
 	@Transactional

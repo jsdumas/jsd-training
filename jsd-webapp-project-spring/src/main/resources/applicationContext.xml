@@ -27,8 +27,19 @@
 	<context:annotation-config />
 	<context:component-scan base-package="io.jsd.training.webapp.petclinic" />
 
+<!-- ***************************************** -->
+<!-- ALLOW TO DISPATCH REQUESTS TO CONTROLLERS -->
+<!-- ***************************************** -->
 	<mvc:annotation-driven />
 	<mvc:view-controller path="/login.do" view-name="../login" />
+	
+<!-- ****************************************************************************** -->
+<!-- SPRING DISPATCHER SERVE STATIC RESOURCES UNDER WEB ROOT LIKE JS CSS AND IMAGES -->
+<!-- IT FORWARDS ALL REQUEST TO THE DEFAULT SERVLET -->
+<!-- ****************************************************************************** -->
+	<mvc:default-servlet-handler />
+	<!-- Direct static mappings -->
+	<!-- <mvc:resources mapping="*.html" location="/" /> -->
 
 <!-- *************** -->
 <!-- DAO REPOSITORIE -->
@@ -48,7 +59,9 @@
 		id="multipartResolver">
 		<property name="maxUploadSize" value="10000000" />
 	</bean>
-
+<!-- ************************************ -->
+<!-- MESSAGES BUNDLE FROM PROPERTIE FILES -->
+<!-- ************************************ -->
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="defaultEncoding" value="UTF-8" />
@@ -133,19 +146,12 @@
 		scheduler="emailScheduler" />
 	<task:executor id="emailExecutor" pool-size="1" />
 	<task:scheduler id="emailScheduler" pool-size="1" />
-
-
 <!-- ************** -->
 <!-- SWAGGER CONFIG -->
 <!-- ************** -->
 	<context:property-placeholder location="classpath:swagger.properties" />
 	<bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
 
-
-	<!-- Serve static content -->
-	<mvc:default-servlet-handler />
-	<!-- Direct static mappings -->
-	<!-- <mvc:resources mapping="*.html" location="/" /> -->
 
 <!-- ******** -->
 <!-- SECURITY -->

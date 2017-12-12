@@ -16,8 +16,8 @@ import io.jsd.training.webapp.petclinic.dao.entity.Proprietaire;
 import io.jsd.training.webapp.petclinic.dao.entity.Tortue;
 
 public class AnimalDTO {
-	private String type;
 	
+	private String type;
 	private Integer id;
 	private String nom;
 	@Temporal(TemporalType.DATE)

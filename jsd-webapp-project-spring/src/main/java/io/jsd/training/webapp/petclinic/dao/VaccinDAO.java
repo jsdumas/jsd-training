@@ -12,14 +12,16 @@ import io.jsd.training.webapp.petclinic.dao.entity.Vaccin;
 
 public interface VaccinDAO extends JpaRepository<Vaccin, Integer> {
 	@Query(
-			"select a from Vaccin a"
-					+ " where a.animal.id = :id"
+			"select a "//
+			+ "from Vaccin a"
+			+ " where a.animal.id = :id"
 			)
 	List<Vaccin> findByAnimal(@Param("id") Integer id) throws DataAccessException;
 	
 	@Query(
-			"select a from Vaccin a"
-					+ " where a.rappel = :date"
+			"select a "//
+			+ "from Vaccin a"//
+			+ " where a.rappel = :date"
 			)
 	List<Vaccin> findAllOfRappel(@Param("date") Date date) throws DataAccessException;
 }
