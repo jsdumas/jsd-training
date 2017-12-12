@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.customermanager.model;
+package io.jsd.training.webapp.customermanager.dao.entity;
 
 import java.io.Serializable;
 import java.util.Date;

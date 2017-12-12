@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import io.jsd.training.webapp.realestatemanager.dao.entity.Individu;
+import io.jsd.training.webapp.realestatemanager.dao.entity.Logement;
+import io.jsd.training.webapp.realestatemanager.dao.entity.Quartier;
+import io.jsd.training.webapp.realestatemanager.dao.entity.TypeLogement;
 import io.jsd.training.webapp.realestatemanager.exception.ServiceException;
-import io.jsd.training.webapp.realestatemanager.model.Individu;
-import io.jsd.training.webapp.realestatemanager.model.Logement;
-import io.jsd.training.webapp.realestatemanager.model.Quartier;
-import io.jsd.training.webapp.realestatemanager.model.TypeLogement;
 import io.jsd.training.webapp.realestatemanager.service.IndividuService;
 import io.jsd.training.webapp.realestatemanager.service.LogementService;
 import io.jsd.training.webapp.realestatemanager.service.QuartierService;

@@ -14,7 +14,6 @@ public class MainController {
 
 	@RequestMapping("index.do")
 	public ModelAndView index(){
-
 		return new ModelAndView("index");
 	}
 

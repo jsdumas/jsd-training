@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.jsd.training.webapp.customermanager.dao.ClientDAO;
-import io.jsd.training.webapp.customermanager.model.Client;
+import io.jsd.training.webapp.customermanager.dao.entity.Client;
 
 @Service
 public class ClientService {

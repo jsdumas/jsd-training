@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.jsd.training.webapp.realestatemanager.dao.QuartierDAO;
+import io.jsd.training.webapp.realestatemanager.dao.entity.Commune;
+import io.jsd.training.webapp.realestatemanager.dao.entity.Quartier;
 import io.jsd.training.webapp.realestatemanager.exception.ServiceException;
-import io.jsd.training.webapp.realestatemanager.model.Commune;
-import io.jsd.training.webapp.realestatemanager.model.Quartier;
 
 @Service
 public class QuartierService {

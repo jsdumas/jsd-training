@@ -10,7 +10,19 @@
 	<artifactId>jsd-java-framework-spring-data</artifactId>
 	<name>spring-data</name>
 
-
+	<profiles>
+		<profile>
+			<id>jsd-java-framework-spring-data</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.url>jdbc:mysql://localhost:3306/jsd-springdata</jdbc.url>
+				<jdbc.user>root</jdbc.user>
+				<jdbc.password>root</jdbc.password>
+			</properties>
+		</profile>
+	</profiles>
 
 
 	<dependencies>

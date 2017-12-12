@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import io.jsd.training.webapp.customermanager.model.Client;
+import io.jsd.training.webapp.customermanager.dao.entity.Client;
 
 //Pas de @Repostory : pas sur les interface spring l'implémente
 public interface ClientDAO extends JpaRepository<Client, Integer>{

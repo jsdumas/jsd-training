@@ -41,11 +41,12 @@
 	<!-- <property name="personneDAO" ref="personneDAO"></property> -->
 	<!-- </bean> -->
 
-
-	<!-- Pour les annotations -->
-	<context:component-scan base-package="fr.treeptik" />
+<!-- ****************************** -->
+<!-- ANNOTATION PACKAGE DECLARATION -->
+<!-- ****************************** -->
+	<context:component-scan base-package="io.jsd.training.webapp.customermanager" />
 	<mvc:annotation-driven />
-	<jpa:repositories base-package="fr.treeptik.dao" />
+	<jpa:repositories base-package="io.jsd.training.webapp.customermanager.dao" />
 
 	<!-- Database -->
 	<jdbc:initialize-database data-source="dataSource">
@@ -62,7 +63,7 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="fr.treeptik.model" />
+		<property name="packagesToScan" value="io.jsd.training.webapp.customermanager.dao.entity" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="showSql" value="true" />

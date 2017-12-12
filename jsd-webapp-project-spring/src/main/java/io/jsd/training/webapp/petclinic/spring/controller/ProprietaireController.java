@@ -1,5 +1,8 @@
 package io.jsd.training.webapp.petclinic.spring.controller;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -49,7 +52,7 @@ public class ProprietaireController {
 		return null;
 	}
 	
-	@RequestMapping(value="edit.do", method=RequestMethod.GET)
+	@RequestMapping(value="edit.do", method=GET)
     public ModelAndView initSaveProprietaire()
     {
        
@@ -57,8 +60,13 @@ public class ProprietaireController {
        
     }
    
-    @RequestMapping( value="edit.do", method=RequestMethod.POST)
-    public ModelAndView saveProprietaire(HttpServletRequest request, HttpServletResponse response, @RequestParam("file") MultipartFile file, Proprietaire proprietaire, BindingResult result)
+    @RequestMapping( value="edit.do", method=POST)
+    public ModelAndView saveProprietaire(//
+    		HttpServletRequest request, //
+    		HttpServletResponse response, //
+    		@RequestParam("file") MultipartFile file, //
+    		Proprietaire proprietaire, //
+    		BindingResult result)
     {       
     	
         if(!result.hasErrors())
@@ -100,7 +108,7 @@ public class ProprietaireController {
        
     }
     
-	@RequestMapping(value="remove.do", method=RequestMethod.GET)
+	@RequestMapping(value="remove.do", method=GET)
     public ModelAndView removeProprietaire(HttpServletRequest request, HttpServletResponse response, Integer id)
     {
      		try {

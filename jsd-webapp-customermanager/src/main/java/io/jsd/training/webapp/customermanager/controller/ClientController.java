@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import io.jsd.training.webapp.customermanager.model.Client;
+import io.jsd.training.webapp.customermanager.dao.entity.Client;
 import io.jsd.training.webapp.customermanager.service.ClientService;
 
 @Scope("request")
