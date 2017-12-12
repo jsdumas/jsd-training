@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import io.jsd.training.webapp.realestatemanager.dao.TypeLogementDAO;
 import io.jsd.training.webapp.realestatemanager.dao.entity.Individu;
 import io.jsd.training.webapp.realestatemanager.dao.entity.TypeLogement;
-import io.jsd.training.webapp.realestatemanager.exception.ServiceException;
 
 @Service
 public class TypeLogementService {

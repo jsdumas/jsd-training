@@ -15,7 +15,6 @@ import io.jsd.training.webapp.realestatemanager.dao.QuartierDAO;
 import io.jsd.training.webapp.realestatemanager.dao.entity.Commune;
 import io.jsd.training.webapp.realestatemanager.dao.entity.Logement;
 import io.jsd.training.webapp.realestatemanager.dao.entity.Quartier;
-import io.jsd.training.webapp.realestatemanager.exception.ServiceException;
 
 @Service
 public class LogementService {

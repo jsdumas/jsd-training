@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.realestatemanager.exception;
+package io.jsd.training.webapp.realestatemanager.service;
 
 public class ServiceException extends Exception {
 
