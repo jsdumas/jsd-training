@@ -282,20 +282,21 @@
 						<groupId>org.apache.tomcat.maven</groupId>
 						<artifactId>tomcat7-maven-plugin</artifactId>
 						<version>2.2</version>
-						<executions>
-							<execution>
-								<id>tomcat-run</id>
+<!-- 						<executions> -->
+<!-- 							<execution> -->
+<!-- 								<id>tomcat-run</id> -->
 <!-- 								<goals> -->
 <!-- 									<goal>exec-war-only</goal> -->
 <!-- 								</goals> -->
 <!-- 								<phase>package</phase> -->
 								<configuration>
-									<path>/petclinic</path>
+								<httpPort>8080</httpPort>
+									<path>/jsd-webapp-project-spring</path>
 <!-- 									<attachartifactclassifier>exec-war</attachartifactclassifier> -->
 <!-- 									<attachartifactclassifiertype>jar</attachartifactclassifiertype> -->
 								</configuration>
-							</execution>
-						</executions>
+<!-- 							</execution> -->
+<!-- 						</executions> -->
 					</plugin>
 				</plugins>
 			</build>
