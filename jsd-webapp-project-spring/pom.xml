@@ -9,11 +9,14 @@
 	</parent>
 	<artifactId>jsd-webapp-project-spring</artifactId>
 	<name>webapp-project-spring</name>
-
+	<packaging>war</packaging>
 
 
 	<dependencies>
 
+		<!-- ********** -->
+		<!-- SPRING WEB -->
+		<!-- ********** -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -37,8 +40,12 @@
 
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
+			<artifactId>spring-context-support</artifactId>
 		</dependency>
+		
+		<!-- *********** -->
+		<!-- SPRING JDBC -->
+		<!-- *********** -->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -49,6 +56,20 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+		
+		<!-- *************** -->
+		<!-- SPRING SECURITY -->
+		<!-- *************** -->
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -71,6 +92,19 @@
 			<artifactId>validation-api</artifactId>
 			<version>1.1.0.Final</version>
 		</dependency>
+		
+		<!-- *************** -->
+		<!-- SPRING TEST -->
+		<!-- *************** -->
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+
+		<!-- ********* -->
+		<!-- HIBERNATE -->
+		<!-- ********* -->
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -81,60 +115,50 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>1.8.5</version>
-		</dependency>
+		
+		<!-- ******* -->
+		<!-- SERVLET -->
+		<!-- ******* -->
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
+			</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
 
-
-		<!-- Apache Commons FileUpload -->
+		<!-- ****** -->
+		<!-- UPLOAD -->
+		<!-- ****** -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-		</dependency>
-		
+
+		<!-- **** -->
+		<!-- MAIL -->
+		<!-- **** -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
 
+
+		<!-- ******* -->
+		<!-- SWAGGER -->
+		<!-- ******* -->
 		<dependency>
 			<groupId>com.mangofactory</groupId>
 			<artifactId>swagger-springmvc</artifactId>
@@ -200,6 +224,7 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+
 			<properties>
 				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 				<jdbc.url>jdbc:mysql://localhost:3306/petclinic</jdbc.url>
@@ -211,12 +236,16 @@
 				<jdbc.test.username>root</jdbc.test.username>
 				<jdbc.test.password>root</jdbc.test.password>
 			</properties>
+
 			<build>
 
 				<testResources>
 					<testResource>
 						<filtering>true</filtering>
 						<directory>src/test/resources</directory>
+						<includes>
+							<include>testapplicationContext.xml</include>
+						</includes>
 					</testResource>
 				</testResources>
 
@@ -241,22 +270,24 @@
 										<resource>
 											<filtering>true</filtering>
 											<directory>src/main/resources</directory>
+											<includes>
+												<include>db.properties</include>
+											</includes>
 										</resource>
 									</resources>
 								</configuration>
 							</execution>
 						</executions>
 					</plugin>
-					<plugin>
-						<groupId>org.apache.tomcat.maven</groupId>
-						<artifactId>tomcat7-maven-plugin</artifactId>
-						<version>2.2</version>
-						<configuration>
-							<path>/petclinic</path>
-						</configuration>
-					</plugin>
+					<!-- <plugin> -->
+					<!-- <groupId>org.apache.tomcat.maven</groupId> -->
+					<!-- <artifactId>tomcat7-maven-plugin</artifactId> -->
+					<!-- <version>2.2</version> -->
+					<!-- <configuration> -->
+					<!-- <path>/petclinic</path> -->
+					<!-- </configuration> -->
+					<!-- </plugin> -->
 				</plugins>
-
 			</build>
 		</profile>
 	</profiles>
