@@ -24,11 +24,10 @@ import io.jsd.training.webapp.realestatemanager.dao.entity.Commune;
 import io.jsd.training.webapp.realestatemanager.dao.entity.Logement;
 import io.jsd.training.webapp.realestatemanager.dao.entity.Quartier;
 import io.jsd.training.webapp.realestatemanager.dao.entity.SearchDTO;
-import io.jsd.training.webapp.realestatemanager.exception.ControllerException;
-import io.jsd.training.webapp.realestatemanager.exception.ServiceException;
 import io.jsd.training.webapp.realestatemanager.service.CommuneService;
 import io.jsd.training.webapp.realestatemanager.service.LogementService;
 import io.jsd.training.webapp.realestatemanager.service.QuartierService;
+import io.jsd.training.webapp.realestatemanager.service.ServiceException;
 
 @Controller
 //@RestController

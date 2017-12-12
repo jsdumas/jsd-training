@@ -15,10 +15,10 @@ import io.jsd.training.webapp.realestatemanager.dao.entity.Individu;
 import io.jsd.training.webapp.realestatemanager.dao.entity.Logement;
 import io.jsd.training.webapp.realestatemanager.dao.entity.Quartier;
 import io.jsd.training.webapp.realestatemanager.dao.entity.TypeLogement;
-import io.jsd.training.webapp.realestatemanager.exception.ServiceException;
 import io.jsd.training.webapp.realestatemanager.service.IndividuService;
 import io.jsd.training.webapp.realestatemanager.service.LogementService;
 import io.jsd.training.webapp.realestatemanager.service.QuartierService;
+import io.jsd.training.webapp.realestatemanager.service.ServiceException;
 import io.jsd.training.webapp.realestatemanager.service.TypeLogementService;
 import junit.framework.Assert;
 
