@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import io.jsd.training.webapp.realestatemanager.model.Commune;
-import io.jsd.training.webapp.realestatemanager.model.Logement;
-import io.jsd.training.webapp.realestatemanager.model.Quartier;
+import io.jsd.training.webapp.realestatemanager.dao.entity.Commune;
+import io.jsd.training.webapp.realestatemanager.dao.entity.Logement;
+import io.jsd.training.webapp.realestatemanager.dao.entity.Quartier;
 
 public interface LogementDAO extends JpaRepository<Logement, Integer> {
 	

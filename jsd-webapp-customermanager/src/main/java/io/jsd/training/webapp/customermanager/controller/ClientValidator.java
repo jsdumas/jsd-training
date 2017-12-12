@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import io.jsd.training.webapp.customermanager.model.Client;
+import io.jsd.training.webapp.customermanager.dao.entity.Client;
 
 @Component
 public class ClientValidator implements Validator {

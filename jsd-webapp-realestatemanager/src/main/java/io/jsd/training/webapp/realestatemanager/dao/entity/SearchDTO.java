@@ -1,4 +1,4 @@
-package io.jsd.training.webapp.realestatemanager.model;
+package io.jsd.training.webapp.realestatemanager.dao.entity;
 
 import java.io.Serializable;
 import java.util.HashMap;

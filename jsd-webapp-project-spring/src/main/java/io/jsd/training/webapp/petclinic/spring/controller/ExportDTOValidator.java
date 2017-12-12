@@ -14,12 +14,9 @@ public class ExportDTOValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-
 		ExportDTO exportDTO = (ExportDTO) target;
-
 		try {
 			Integer var = Integer.parseInt(exportDTO.getResultNumber());
-
 			if (var <= 0) {
 				errors.rejectValue("resultNumber", "Superieur0");
 			}

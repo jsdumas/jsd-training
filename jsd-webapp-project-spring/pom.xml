@@ -11,9 +11,7 @@
 	<name>webapp-project-spring</name>
 	<packaging>war</packaging>
 
-
 	<dependencies>
-
 		<!-- ********** -->
 		<!-- SPRING WEB -->
 		<!-- ********** -->
@@ -290,6 +288,24 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<id>johndoe-webapp-petclinic</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+				<jdbc.url>jdbc:mysql://localhost:3306/petclinic</jdbc.url>
+				<jdbc.username>root</jdbc.username>
+				<jdbc.password>stagiaire</jdbc.password>
+
+				<jdbc.test.driverClassName>com.mysql.jdbc.Driver</jdbc.test.driverClassName>
+				<jdbc.test.url>jdbc:mysql://localhost:3306/testpetclinic</jdbc.test.url>
+				<jdbc.test.username>root</jdbc.test.username>
+				<jdbc.test.password>stagiaire</jdbc.test.password>
+			</properties>
+		</profile>
+
 	</profiles>
 
 </project>

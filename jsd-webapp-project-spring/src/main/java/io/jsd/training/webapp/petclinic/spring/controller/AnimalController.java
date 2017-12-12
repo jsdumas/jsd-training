@@ -1,5 +1,8 @@
 package io.jsd.training.webapp.petclinic.spring.controller;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,48 +48,45 @@ public class AnimalController {
 	@RequestMapping("list.do")
 	public ModelAndView listAnimal() {
 		try {
-			return new ModelAndView("list-animal", "animals",
-					animalService.findAll());
+			return new ModelAndView(//
+					"list-animal", //
+					"animals",//
+					animalService.findAll()//
+					);
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	@RequestMapping(value = "edit.do", method = RequestMethod.GET)
+	@RequestMapping(value = "edit.do", method = GET)
 	public ModelAndView initSaveAnimal() {
 		AnimalDTO animalDTO = new AnimalDTO();
 
 		try {
 			animalDTO.setProprietaires(proprietaireService.findAll());
 		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return new ModelAndView("edit-animal", "animalDTO", animalDTO);
 	}
 
-	@RequestMapping(value = "edit.do", method = RequestMethod.POST)
-	public ModelAndView saveAnimal(HttpServletRequest request,
-			HttpServletResponse response,
-			@RequestParam("file") MultipartFile file, AnimalDTO animalDTO,
-			BindingResult result) {
+	@RequestMapping(value = "edit.do", method = POST)
+	public ModelAndView saveAnimal(//
+			HttpServletRequest request,//
+			HttpServletResponse response,//
+			@RequestParam("file") MultipartFile file, AnimalDTO animalDTO, BindingResult result//
+			) {
 		if (!result.hasErrors()) {
-
 			Animal animal = animalDTO.newAnimal();
-
 			try {
-				animal.setProprietaire(proprietaireService.find(animalDTO
-						.getProprietaireId()));
+				animal.setProprietaire(proprietaireService.find(animalDTO.getProprietaireId()));
 				animal = animalService.save(animal);
 
 				if (!file.isEmpty()) {
 					// Creating the directory to store file
-					String rootPath = request.getServletContext().getRealPath(
-							"/");
-					File dir = new File(rootPath + File.separator + "upload"
-							+ File.separator + "animal");
+					String rootPath = request.getServletContext().getRealPath("/");
+					File dir = new File(rootPath + File.separator + "upload" + File.separator + "animal");
 					if (!dir.exists())
 						dir.mkdirs();
 					// Create the file on server
@@ -109,7 +108,7 @@ public class AnimalController {
 		}
 	}
 
-	@RequestMapping(value = "remove.do", method = RequestMethod.GET)
+	@RequestMapping(value = "remove.do", method = GET)
 	public ModelAndView removeAnimal(HttpServletRequest request,
 			HttpServletResponse response, Integer id) {
 		try {
@@ -147,7 +146,7 @@ public class AnimalController {
 
 	}
 
-	@RequestMapping(value = "update.do", method = RequestMethod.GET)
+	@RequestMapping(value = "update.do", method = GET)
 	public ModelAndView initUpdateAnimal(Integer id) {
 		try {
 			AnimalDTO animalDTO = new AnimalDTO(animalService.find(id));

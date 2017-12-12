@@ -1,5 +1,8 @@
 package io.jsd.training.webapp.petclinic.spring.controller;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -7,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,21 +27,20 @@ public class SearchEngineController {
 
 	Logger logger = LoggerFactory.getLogger(SearchEngineController.class);
 
-	@RequestMapping(value = "search-animal.do", method = RequestMethod.GET)
+	@RequestMapping(value = "search-animal.do", method = GET)
 	public ModelAndView initAnimalSearchEngine() {
 
 		try {
 			return new ModelAndView("search-animal", "animals",
 					animalService.findAll());
 		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 
 	}
 
-	@RequestMapping(value = "ajaxListingNomProp.do", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "ajaxListingNomProp.do", method = POST, produces = "application/json")
 	public @ResponseBody List<Animal> listingByNomProp(@RequestParam ("nom_proprietaire") String nomProp) {
 		try {
 			logger.debug("controller ajax");
@@ -55,7 +56,7 @@ public class SearchEngineController {
 
 	}
 	
-	@RequestMapping(value = "ajaxListingTypeAnim.do", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "ajaxListingTypeAnim.do", method = POST, produces = "application/json")
 	public @ResponseBody List<Animal> listingByTypeAnim(@RequestParam ("type_animal") String typeAnim) {
 		try {
 			logger.debug("controller ajax");
@@ -71,7 +72,7 @@ public class SearchEngineController {
 
 	}
 	
-	@RequestMapping(value = "ajaxListingAgeAnim.do", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "ajaxListingAgeAnim.do", method = POST, produces = "application/json")
 	public @ResponseBody List<Animal> listingByAgeAnim(@RequestParam ("age_animal") Integer ageAnim) {
 		try {
 			logger.debug("controller ajax");

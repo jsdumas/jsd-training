@@ -1,12 +1,14 @@
 package io.jsd.training.webapp.petclinic.spring.controller;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.jsd.training.webapp.petclinic.dao.entity.Vaccin;
@@ -36,7 +38,7 @@ public class VaccinController {
 		return null;
 	}
 
-	@RequestMapping(value="edit.do", method=RequestMethod.GET)
+	@RequestMapping(value="edit.do", method=GET)
 	public ModelAndView initSaveVaccin() {
 		VaccinDTO vaccinDTO = new VaccinDTO();
 
@@ -50,21 +52,17 @@ public class VaccinController {
 		return new ModelAndView("edit-vaccin", "vaccinDTO", vaccinDTO);
 	}
 
-	@RequestMapping(value="edit.do", method=RequestMethod.POST)
-	public ModelAndView saveVaccin(VaccinDTO vaccinDTO, BindingResult result)
-	{       
+	@RequestMapping(value="edit.do", method=POST)
+	public ModelAndView saveVaccin(VaccinDTO vaccinDTO, BindingResult result) {       
 		if(!result.hasErrors())
 		{
-
 			Vaccin vaccin = vaccinDTO.newVaccin();
-
 			try {
 				vaccin.setAnimal(animalService.find(vaccinDTO.getAnimalId()));
 				vaccinService.save(vaccin);
 			} catch (ServiceException e) {
 				e.printStackTrace();
 			}
-
 			return listVaccin();
 		}
 		else {
@@ -72,9 +70,8 @@ public class VaccinController {
 		}
 	}
 
-	@RequestMapping(value="remove.do", method=RequestMethod.GET)
-	public ModelAndView removePersonne(Integer id)
-	{
+	@RequestMapping(value="remove.do", method=GET)
+	public ModelAndView removePersonne(Integer id) {
 		try {
 			vaccinService.remove(vaccinService.find(id));
 		} catch (ServiceException e) {
@@ -83,9 +80,8 @@ public class VaccinController {
 		return listVaccin();
 	}
 
-	@RequestMapping(value="update.do", method=RequestMethod.GET)
-	public ModelAndView initUpdateVaccin(Integer id)
-	{
+	@RequestMapping(value="update.do", method=GET)
+	public ModelAndView initUpdateVaccin(Integer id) {
 		try {
 			VaccinDTO vaccinDTO = new VaccinDTO(vaccinService.find(id));
 			vaccinDTO.setAnimals(animalService.findAll());
@@ -96,9 +92,8 @@ public class VaccinController {
 		return null;
 	}
 
-	@RequestMapping(value="update.do", method=RequestMethod.POST)
-	public ModelAndView updateVaccin(VaccinDTO vaccinDTO, BindingResult result)
-	{
+	@RequestMapping(value="update.do", method=POST)
+	public ModelAndView updateVaccin(VaccinDTO vaccinDTO, BindingResult result) {
 		if(!result.hasErrors())
 		{
 			try {
