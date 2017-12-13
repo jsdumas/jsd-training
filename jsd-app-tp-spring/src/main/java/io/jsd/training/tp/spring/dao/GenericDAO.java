@@ -2,8 +2,6 @@ package io.jsd.training.tp.spring.dao;
 
 import java.util.List;
 
-import io.jsd.training.tp.spring.exception.DAOException;
-
 public interface GenericDAO<T, K> {
 	
 	T save(T t) throws DAOException;

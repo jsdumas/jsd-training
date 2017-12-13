@@ -1,8 +1,7 @@
-package io.jsd.training.tp.spring.dao.impl;
+package io.jsd.training.tp.spring.dao;
 
 import org.springframework.stereotype.Repository;
 
-import io.jsd.training.tp.spring.dao.ClientDAO;
 import io.jsd.training.tp.spring.dao.entity.Client;
 
 @Repository

@@ -1,4 +1,4 @@
-package io.jsd.training.tp.spring.dao.impl;
+package io.jsd.training.tp.spring.dao;
 
 import java.util.Date;
 import java.util.List;
@@ -8,9 +8,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
-import io.jsd.training.tp.spring.dao.VoitureDAO;
 import io.jsd.training.tp.spring.dao.entity.Voiture;
-import io.jsd.training.tp.spring.exception.DAOException;
 import io.jsd.training.tp.spring.utils.DateUtils;
 
 @Repository

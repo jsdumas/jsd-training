@@ -1,4 +1,4 @@
-package io.jsd.training.tp.spring.dao.impl;
+package io.jsd.training.tp.spring.dao;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -9,11 +9,9 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
-import io.jsd.training.tp.spring.dao.ReservationDAO;
 import io.jsd.training.tp.spring.dao.entity.Client;
 import io.jsd.training.tp.spring.dao.entity.Reservation;
 import io.jsd.training.tp.spring.dao.entity.Voiture;
-import io.jsd.training.tp.spring.exception.DAOException;
 
 @Repository
 public class ReservationJPADAO extends GenericJPADAO<Reservation, Integer>

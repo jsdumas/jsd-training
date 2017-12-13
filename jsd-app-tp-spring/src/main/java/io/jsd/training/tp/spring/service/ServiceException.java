@@ -1,4 +1,4 @@
-package io.jsd.training.tp.spring.exception;
+package io.jsd.training.tp.spring.service;
 
 public class ServiceException extends Exception {
 	
