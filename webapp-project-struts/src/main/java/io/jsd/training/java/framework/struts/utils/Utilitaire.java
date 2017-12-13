@@ -9,7 +9,6 @@ public class Utilitaire {
 	
 	public static List<Personne> findAll(){
 		List<Personne> personnes = new ArrayList<Personne>();
-		
 		return null;
 	}
 }

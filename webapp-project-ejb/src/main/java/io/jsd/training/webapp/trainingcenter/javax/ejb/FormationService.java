@@ -10,7 +10,6 @@ import io.jsd.training.webapp.trainingcenter.dao.DAOException;
 import io.jsd.training.webapp.trainingcenter.dao.FormationDAO;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
-import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
 
 @Stateless
 public class FormationService {

@@ -6,6 +6,10 @@ public enum Direction {
 
 	private String direction;
 
+	public String getDirection() {
+		return direction;
+	}
+
 	private Direction(String direction) {
 		this.direction = direction;
 	}

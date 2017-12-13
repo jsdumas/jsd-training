@@ -12,13 +12,11 @@ public class Runtime {
 
 	public static void main(String[] args) {
 
-		///////NE PAS OUBLIER DE DÉCLARER L'APPLICATION CONTEXT
-		ApplicationContext context = new ClassPathXmlApplicationContext(
-				"classpath:applicationContext.xml");
-		
-		///////NE PAS OUBLIER DE DÉCLARER LE GET BEAN
-		ClientService clientService = (ClientService) context
-				.getBean("clientService");
+		/////// NE PAS OUBLIER DE DÉCLARER L'APPLICATION CONTEXT
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+
+		/////// NE PAS OUBLIER DE DÉCLARER LE GET BEAN
+		ClientService clientService = (ClientService) context.getBean("clientService");
 
 		Client c1 = new Client();
 		c1.setNom("Durand");
@@ -50,7 +48,7 @@ public class Runtime {
 		Client c10 = new Client();
 		c10.setNom("Durand");
 		c10.setPrenom("Alain");
-		
+
 		clientService.save(c1);
 		clientService.save(c2);
 		clientService.save(c3);
@@ -61,14 +59,14 @@ public class Runtime {
 		clientService.save(c8);
 		clientService.save(c9);
 		clientService.save(c10);
-		
-//		System.out.println(clientService.findByNom("Durand"));
+
+		// System.out.println(clientService.findByNom("Durand"));
 		List<Client> clients = clientService.findAll();
-		
+
 		for (Client c : clients) {
 			System.out.println(c);
 		}
-		
+
 	}
 
 }

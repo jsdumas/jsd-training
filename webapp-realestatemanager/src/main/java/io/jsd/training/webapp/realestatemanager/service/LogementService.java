@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import io.jsd.training.webapp.realestatemanager.dao.CommuneDAO;
 import io.jsd.training.webapp.realestatemanager.dao.LogementDAO;
 import io.jsd.training.webapp.realestatemanager.dao.QuartierDAO;
-import io.jsd.training.webapp.realestatemanager.dao.entity.Commune;
 import io.jsd.training.webapp.realestatemanager.dao.entity.Logement;
 import io.jsd.training.webapp.realestatemanager.dao.entity.Quartier;
 

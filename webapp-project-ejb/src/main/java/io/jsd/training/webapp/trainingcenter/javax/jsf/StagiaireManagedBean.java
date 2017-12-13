@@ -3,7 +3,6 @@ package io.jsd.training.webapp.trainingcenter.javax.jsf;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.model.ListDataModel;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 
 import io.jsd.training.webapp.trainingcenter.dao.entity.Stagiaire;
