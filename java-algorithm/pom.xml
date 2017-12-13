@@ -5,12 +5,12 @@
 	
 	<parent>
 		<groupId>io.jsd.training</groupId>
-		<artifactId>jsd-maven-main</artifactId>
+		<artifactId>maven-main</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../jsd-maven-main/pom.xml</relativePath>
+		<relativePath>../maven-main/pom.xml</relativePath>
 	</parent>
 	
-	<artifactId>jsd-java-algorithm</artifactId>
+	<artifactId>java-algorithm</artifactId>
 	<name>java-algorithm</name>
 	
 </project> 
