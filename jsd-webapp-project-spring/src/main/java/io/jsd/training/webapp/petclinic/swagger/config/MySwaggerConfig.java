@@ -3,6 +3,7 @@ package io.jsd.training.webapp.petclinic.swagger.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
 import com.mangofactory.swagger.models.dto.ApiInfo;
@@ -11,6 +12,7 @@ import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 
 @Configuration
 @EnableSwagger //Loads the spring beans required by the framework
+//@PropertySource("/swagger.properties")
 public class MySwaggerConfig {
 	private SpringSwaggerConfig springSwaggerConfig;
 
