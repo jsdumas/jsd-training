@@ -12,7 +12,7 @@
     <!-- /.row -->
     <div class="row">
     	<div class="col-lg-12">
-    		<img alt="image manquante" src="img/IMG_5059.jpg" class="img-thumbnail"/>
+    		<img alt="image manquante" src="img/petclinic.jpg" class="img-thumbnail"/>
     	</div>
 	</div>
 
