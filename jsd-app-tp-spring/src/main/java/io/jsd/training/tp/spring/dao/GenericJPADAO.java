@@ -1,4 +1,4 @@
-package io.jsd.training.tp.spring.dao.impl;
+package io.jsd.training.tp.spring.dao;
 
 import java.util.List;
 
@@ -8,9 +8,6 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
-
-import io.jsd.training.tp.spring.dao.GenericDAO;
-import io.jsd.training.tp.spring.exception.DAOException;
 
 @Repository
 public abstract class GenericJPADAO<T, K> implements GenericDAO<T, K> {

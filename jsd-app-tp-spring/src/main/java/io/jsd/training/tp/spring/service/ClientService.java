@@ -9,10 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.jsd.training.tp.spring.dao.ClientDAO;
+import io.jsd.training.tp.spring.dao.DAOException;
 import io.jsd.training.tp.spring.dao.entity.Client;
 import io.jsd.training.tp.spring.dao.entity.Reservation;
-import io.jsd.training.tp.spring.exception.DAOException;
-import io.jsd.training.tp.spring.exception.ServiceException;
 
 @Service
 public class ClientService {

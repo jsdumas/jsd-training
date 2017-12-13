@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import io.jsd.training.tp.spring.dao.entity.Voiture;
-import io.jsd.training.tp.spring.exception.DAOException;
 
 public interface VoitureDAO extends GenericDAO<Voiture, Integer>{
 	

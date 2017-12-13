@@ -9,12 +9,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import io.jsd.training.tp.spring.dao.DAOException;
 import io.jsd.training.tp.spring.dao.ReservationDAO;
 import io.jsd.training.tp.spring.dao.entity.Client;
 import io.jsd.training.tp.spring.dao.entity.Reservation;
 import io.jsd.training.tp.spring.dao.entity.Voiture;
-import io.jsd.training.tp.spring.exception.DAOException;
-import io.jsd.training.tp.spring.exception.ServiceException;
 
 @Service
 public class ReservationService {

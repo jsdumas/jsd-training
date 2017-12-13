@@ -1,4 +1,4 @@
-package io.jsd.training.tp.spring.exception;
+package io.jsd.training.tp.spring.dao;
 
 public class DAOException extends Exception {
 	
