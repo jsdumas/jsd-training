@@ -186,8 +186,7 @@
 		</security:authentication-provider>
 	</security:authentication-manager>
 
-	<security:global-method-security
-		secured-annotations="enabled"></security:global-method-security>
+	<security:global-method-security secured-annotations="enabled"/>
 
 <!-- *********** -->
 <!-- MESSAGE AOP -->
@@ -196,19 +195,14 @@
 
 	<aop:config>
 		<aop:aspect id="myMessageAspect" ref="messageAspect">
-			<aop:pointcut id="serviceCreatePointCut"
-				expression="execution(* io.jsd.training.webapp.petclinic.spring.service.*.save(..))" />
-			<aop:after-returning pointcut-ref="serviceCreatePointCut"
-				method="afterServiceCreate" returning="mResult" />
-
-			<aop:pointcut id="serviceRemovePointCut"
-				expression="execution(* io.jsd.training.webapp.petclinic.spring.service.*.remove(..))" />
+			<aop:pointcut id="serviceCreatePointCut" expression="execution(* io.jsd.training.webapp.petclinic.spring.service.*.save(..))" />
+			<aop:after-returning pointcut-ref="serviceCreatePointCut" method="afterServiceCreate" returning="mResult" />
+			
+			<aop:pointcut id="serviceRemovePointCut" expression="execution(* io.jsd.training.webapp.petclinic.spring.service.*.remove(..))" />
 			<aop:after pointcut-ref="serviceRemovePointCut" method="afterServiceRemove" />
-
-			<aop:pointcut id="serviceUpdatePointCut"
-				expression="execution(* io.jsd.training.webapp.petclinic.spring.service.*.update(..))" />
-			<aop:after-returning pointcut-ref="serviceUpdatePointCut"
-				method="afterServiceUpdate" returning="result" />
+			
+			<aop:pointcut id="serviceUpdatePointCut" expression="execution(* io.jsd.training.webapp.petclinic.spring.service.*.update(..))" />
+			<aop:after-returning pointcut-ref="serviceUpdatePointCut" method="afterServiceUpdate" returning="result" />
 		</aop:aspect>
 	</aop:config>
 

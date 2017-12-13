@@ -18,7 +18,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import io.jsd.training.webapp.petclinic.dao.AnimalDAO;
 import io.jsd.training.webapp.petclinic.dao.ProprietaireDAO;
 import io.jsd.training.webapp.petclinic.dao.entity.Proprietaire;
 import io.jsd.training.webapp.petclinic.utils.DateUtils;
@@ -33,9 +32,9 @@ public class ProprietaireService {
 
 	@Transactional
 	public Proprietaire save(Proprietaire proprietaire) throws ServiceException {
-		Locale locale = Locale.getDefault();
-		ResourceBundle res = ResourceBundle.getBundle("messages", locale);
-		String texte = (String) res.getObject("proprietaire.password");
+//		Locale locale = Locale.getDefault();
+//		ResourceBundle res = ResourceBundle.getBundle("messages", locale);
+//		String texte = (String) res.getObject("proprietaire.password");
 
 		try {
 			logger.debug("Propriétaire :" + proprietaire);

@@ -1,6 +1,7 @@
 package io.jsd.training.tp.spring.runtime;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -17,23 +18,16 @@ import io.jsd.training.tp.spring.service.ClientService;
 import io.jsd.training.tp.spring.service.ReservationService;
 import io.jsd.training.tp.spring.service.ServiceException;
 import io.jsd.training.tp.spring.service.VoitureService;
-import io.jsd.training.tp.spring.utils.DateUtils;
-import io.jsd.training.tp.spring.utils.MenuUtil;
 
 public class Runtime {
 
-	public static void main(String[] args) throws ParseException,
-			ServiceException, DAOException {
+	public static void main(String[] args) throws ParseException, ServiceException, DAOException {
 
-		ApplicationContext context = new ClassPathXmlApplicationContext(
-				"classpath:applicationContext.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
 
-		ClientService clientService = (ClientService) context
-				.getBean("clientService");
-		VoitureService voitureService = (VoitureService) context
-				.getBean("voitureService");
-		ReservationService reservationService = (ReservationService) context
-				.getBean("reservationService");
+		ClientService clientService = (ClientService) context.getBean("clientService");
+		VoitureService voitureService = (VoitureService) context.getBean("voitureService");
+		ReservationService reservationService = (ReservationService) context.getBean("reservationService");
 
 		/************************************************************************/
 
@@ -167,9 +161,8 @@ public class Runtime {
 						v1.setCouleur(scanner.nextLine());
 						System.out.println("Entrez une immatriculation : ");
 						v1.setImmatriculation(scanner.nextLine());
-						System.out
-								.println("Entrez une date de mise en circulation : ");
-						Date date = DateUtils.stringToDate(scanner.nextLine());
+						System.out.println("Entrez une date de mise en circulation : ");
+						Date date = stringToDate(scanner.nextLine());
 						v1.setDateDeMiseEnCirculation(date);
 						System.out.println("Entrez un prix journalier : ");
 						v1.setPrix(Integer.parseInt(scanner.nextLine()));
@@ -207,15 +200,12 @@ public class Runtime {
 						couleur = scanner.nextLine();
 						System.out.println("Entrez une immatriculation : ");
 						immatriculation = scanner.nextLine();
-						System.out
-								.println("Entrez une date de mise en circulation : ");
-						dateDeMiseEnCirculation = DateUtils
-								.stringToDate(scanner.nextLine());
+						System.out.println("Entrez une date de mise en circulation : ");
+						dateDeMiseEnCirculation = stringToDate(scanner.nextLine());
 						System.out.println("Entrez un prix journalier : ");
 						prix = Integer.parseInt(scanner.nextLine());
 
-						voitureService.update(id, marque, couleur,
-								immatriculation, dateDeMiseEnCirculation, prix);
+						voitureService.update(id, marque, couleur, immatriculation, dateDeMiseEnCirculation, prix);
 
 						break;
 
@@ -234,64 +224,55 @@ public class Runtime {
 							System.out.println("Voiture :" + voiture);
 						}
 						break;
-						
+
 					case "6":
 						System.out.println("***********************");
 						System.out.println("findByColor");
 						System.out.println("Entrez une couleur : ");
 						String color = scanner.nextLine();
-						List<Voiture> voituresByColor = voitureService
-								.findByColor(color);
+						List<Voiture> voituresByColor = voitureService.findByColor(color);
 						if (!voituresByColor.isEmpty()) {
 							for (Voiture voiture : voituresByColor) {
-								System.out.println("Voiture de couleur "
-										+ color + " " + voiture);
+								System.out.println("Voiture de couleur " + color + " " + voiture);
 							}
 						} else {
-							System.out
-									.println("Il n'y a pas de voiture de cette couleur");
+							System.out.println("Il n'y a pas de voiture de cette couleur");
 						}
 						break;
-						
-					case "7" :
+
+					case "7":
 						System.out.println("***********************");
 						System.out.println("findByBrand");
 						System.out.println("Entrez une marque de voiture : ");
 						String brand = scanner.nextLine();
-						List<Voiture> voituresByBrand = voitureService
-								.findByBrand(brand);
+						List<Voiture> voituresByBrand = voitureService.findByBrand(brand);
 						if (!voituresByBrand.isEmpty()) {
 							for (Voiture voiture : voituresByBrand) {
-								System.out.println("Voiture de marque "
-										+ brand + " " + voiture);
+								System.out.println("Voiture de marque " + brand + " " + voiture);
 							}
 						} else {
-							System.out
-									.println("Il n'y a pas de voiture de cette marque");
+							System.out.println("Il n'y a pas de voiture de cette marque");
 						}
-						
+
 						break;
-						
-					case "8" :
-						
+
+					case "8":
+
 						System.out.println("***********************");
 						System.out.println("findByDate");
 						System.out.println("Entrez la date de mise en circulation : ");
 						String str = scanner.nextLine();
-						Date dateFindByDate = DateUtils.stringToDate(str);
-						
-						List<Voiture> voituresBydate = voitureService
-								.findByDate(dateFindByDate);
+						Date dateFindByDate = stringToDate(str);
+
+						List<Voiture> voituresBydate = voitureService.findByDate(dateFindByDate);
 						if (!voituresBydate.isEmpty()) {
 							for (Voiture voiture : voituresBydate) {
-								System.out.println("Voiture mise en circulation en "
-										+ dateFindByDate + " " + voiture);
+								System.out.println("Voiture mise en circulation en " + dateFindByDate + " " + voiture);
 							}
 						} else {
-							System.out
-									.println("Il n'y a pas de voiture de cette marque");
+							System.out.println("Il n'y a pas de voiture de cette marque");
 						}
-						
+
 						break;
 
 					}
@@ -320,55 +301,46 @@ public class Runtime {
 
 						try {
 
-							/* S√©lectionner un client */
+							/* SÈlectionner un client */
 
 							List<Client> clients = clientService.findAll();
 
 							for (Client c : clients) {
 								System.out.println(c);
 							}
-							System.out
-									.println("S√©lectionnez un client par son ID : ");
+							System.out.println("SÈlectionner un client par son ID : ");
 
-							Integer idClient = Integer.parseInt(scanner
-									.nextLine());
+							Integer idClient = Integer.parseInt(scanner.nextLine());
 
 							// if(reservationService.isReservervationUnderLimit(idClient))
-							// System.out.println("Nombre de r√©servation maximale atteinte");
+							// System.out.println("Nombre de r√©servation
+							// maximale atteinte");
 
-							/* S√©lectionner une date */
+							/* SÈlectionner une date */
 
 							Date dateEnregistrement = new Date();
 
 							System.out.println("Date de d√©part : ");
-							Date dateDePrise = DateUtils.stringToDate(scanner
-									.nextLine());
+							Date dateDePrise = stringToDate(scanner.nextLine());
 
 							System.out.println("Date de retour : ");
-							Date dateDeRetour = DateUtils.stringToDate(scanner
-									.nextLine());
+							Date dateDeRetour = stringToDate(scanner.nextLine());
 
-							/* S√©lectionner une voiture disponible */
+							/* SÈlectionner une voiture disponible */
 
-							List<Voiture> voitures = voitureService
-									.findAllFreeCar(dateDePrise, dateDeRetour);
+							List<Voiture> voitures = voitureService.findAllFreeCar(dateDePrise, dateDeRetour);
 							for (Voiture voiture : voitures) {
 								System.out.println(voiture);
 							}
 
-							System.out
-									.println("S√©lectionnez une voiture par son ID : ");
-							Integer idVoiture = Integer.parseInt(scanner
-									.nextLine());
+							System.out.println("SÈlectionner une voiture par son ID : ");
+							Integer idVoiture = Integer.parseInt(scanner.nextLine());
 
 							/* Calcul */
 
-							Integer total = voitureService
-									.calculDuPrixLocation(dateDePrise,
-											dateDeRetour, idVoiture);
+							Integer total = voitureService.calculDuPrixLocation(dateDePrise, dateDeRetour, idVoiture);
 
-							reservationService.save(dateEnregistrement,
-									dateDePrise, dateDeRetour, total, idClient,
+							reservationService.save(dateEnregistrement, dateDePrise, dateDeRetour, total, idClient,
 									idVoiture);
 
 						} catch (ParseException e) {
@@ -377,8 +349,7 @@ public class Runtime {
 						break;
 
 					case "2":
-						List<Reservation> reservations = reservationService
-								.historiqueReservation();
+						List<Reservation> reservations = reservationService.historiqueReservation();
 						for (Reservation reservation : reservations) {
 							System.out.println(reservation);
 						}
@@ -392,5 +363,10 @@ public class Runtime {
 			}
 		} while (!choix.equalsIgnoreCase("4"));
 
+	}
+
+	public static Date stringToDate(String dateString) throws ParseException {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.parse(dateString);
 	}
 }

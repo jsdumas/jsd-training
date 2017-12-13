@@ -1,4 +1,4 @@
-package io.jsd.training.tp.spring.utils;
+package io.jsd.training.tp.spring.runtime;
 
 public class MenuUtil {
 	

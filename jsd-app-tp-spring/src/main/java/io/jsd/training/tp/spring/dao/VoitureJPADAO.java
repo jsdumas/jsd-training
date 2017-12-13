@@ -9,7 +9,6 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import io.jsd.training.tp.spring.dao.entity.Voiture;
-import io.jsd.training.tp.spring.utils.DateUtils;
 
 @Repository
 public class VoitureJPADAO extends GenericJPADAO<Voiture, Integer> implements
