@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import io.jsd.training.webapp.realestatemanager.dao.IndividuDAO;
 import io.jsd.training.webapp.realestatemanager.dao.entity.Individu;
-import io.jsd.training.webapp.realestatemanager.dao.entity.Logement;
 
 @Service
 public class IndividuService {

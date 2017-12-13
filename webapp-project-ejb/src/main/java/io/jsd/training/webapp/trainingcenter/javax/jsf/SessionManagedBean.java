@@ -10,8 +10,6 @@ import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
-import org.jboss.logging.Logger.Level;
-
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Session;

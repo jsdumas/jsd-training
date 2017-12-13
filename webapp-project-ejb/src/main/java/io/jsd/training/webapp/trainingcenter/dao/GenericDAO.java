@@ -2,10 +2,6 @@ package io.jsd.training.webapp.trainingcenter.dao;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
-
-import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
-
 public interface GenericDAO<T, K> {
 	
 	T save(T t) throws DAOException;

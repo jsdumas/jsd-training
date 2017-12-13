@@ -2,7 +2,6 @@ package io.jsd.training.webapp.realestatemanager.dao.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.ElementCollection;

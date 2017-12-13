@@ -12,14 +12,11 @@
 
 	<profiles>
 		<profile>
-			<id>dev</id>
+			<id>webapp-realestatemanager</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<spring-version>4.1.6.RELEASE</spring-version>
-				<maven.compiler.plugin>3.1</maven.compiler.plugin>
-				<version.java>1.8</version.java>
 				<jdbc.url>jdbc:mysql://localhost:3306/projetImmobilier</jdbc.url>
 				<jdbc.user>root</jdbc.user>
 				<jdbc.password>root</jdbc.password>

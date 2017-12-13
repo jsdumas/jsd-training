@@ -2,11 +2,7 @@ package io.jsd.training.webapp.trainingcenter.dao;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
-
 import io.jsd.training.webapp.trainingcenter.dao.entity.Evaluation;
-import io.jsd.training.webapp.trainingcenter.dao.entity.EvaluationID;
-import io.jsd.training.webapp.trainingcenter.dao.entity.Formation;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Session;
 
 public interface EvaluationDAO extends GenericDAO<Evaluation, Integer> {

@@ -8,7 +8,6 @@ import javax.inject.Inject;
 
 import io.jsd.training.webapp.trainingcenter.dao.DAOException;
 import io.jsd.training.webapp.trainingcenter.dao.FormateurDAO;
-import io.jsd.training.webapp.trainingcenter.dao.FormationDAO;
 import io.jsd.training.webapp.trainingcenter.dao.entity.Formateur;
 
 @Stateless
