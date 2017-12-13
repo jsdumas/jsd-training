@@ -5,7 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@include file="header.jsp"%>
-
 <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header"><fmt:message key="identification" /></h1>
@@ -21,7 +20,6 @@
                  <div class="panel-body">
 	                 <div class="row">
 	                     <div class="col-lg-6">
-	                     
 	                     	<form action="login" method="POST">
 								<div class="form-group">
 									<label><fmt:message key="login" /></label>
@@ -41,5 +39,4 @@
     	
     	</div>
 	</div>
-	
 <%@include file="footer.jsp"%>

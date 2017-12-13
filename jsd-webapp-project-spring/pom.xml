@@ -276,6 +276,7 @@
 											<directory>src/main/resources</directory>
 											<includes>
 												<include>dispatcher-servlet.xml</include>
+												<include>applicationContext.xml</include>
 											</includes>
 										</resource>
 									</resources>
