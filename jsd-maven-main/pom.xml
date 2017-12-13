@@ -27,7 +27,8 @@
 		<module>jsd-client-rest-trainingcenter</module>
 		<module>jsd-client-ws-trainingcenter</module>
 		<module>jsd-codingame</module>
-		<module>jsd-java</module>
+		<module>jsd-java-algorithm</module>
+		<module>jsd-java-design-pattern</module>
 		<module>jsd-java-framework-spring-data</module>
 		<module>jsd-java-framework-spring-ioc</module>
 		<module>jsd-webapp-project-ejb</module>
