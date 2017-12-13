@@ -25,20 +25,20 @@ public class ReservationService {
 	@Autowired
 	private VoitureService voitureService;
 	@Autowired
-	// Mot clÃ© pour injecter un bean dans un autre
+	// Mot clé pour injecter un bean dans un autre
 	private ReservationDAO reservationDAO;
 
 	@Value("#{config.limitereservation}")
 	private Integer limiteReservation;
 	
 	@Transactional
-	// (propagation=Propagation.MANDATORY)//Transaction par dÃ©faut
+	// (propagation=Propagation.MANDATORY)//Transaction par défaut
 	public Reservation save(Date dateEnregistrement,
 							Date dateDePrise,
 							Date dateDeRetour,
 							Integer total,
 							Integer idClient, Integer idVoiture) throws ServiceException {
-//		logger.debug("appel de la mÃ©thode save client" + reservation.getId());
+//		logger.debug("appel de la méthode save client" + reservation.getId());
 		
 		if(this.isReservervationUnderLimit(idClient)) {
 

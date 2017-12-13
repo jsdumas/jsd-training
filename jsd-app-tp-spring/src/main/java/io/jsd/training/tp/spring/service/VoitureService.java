@@ -3,11 +3,8 @@ package io.jsd.training.tp.spring.service;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.TypedQuery;
-
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,16 +18,16 @@ public class VoitureService {
 	private Logger logger = Logger.getLogger(VoitureService.class);
 
 	@Autowired
-	// Mot clÃ© pour injecter un bean dans un autre
-	//@Qualifier("voitureJPADAO") Pas la peine de le prÃ©ciser lorsqu'on a qu'une seule implementation de JPADAO
-	// Mot clÃ© pour switcher l'implÃ©mentation du DAO
+	// Mot clé pour injecter un bean dans un autre
+	//@Qualifier("voitureJPADAO") Pas la peine de le préciser lorsqu'on a qu'une seule implementation de JPADAO
+	// Mot clé pour switcher l'implémentation du DAO
 	private VoitureDAO voitureDAO;
 	
 	
 	@Transactional
-	// (propagation=Propagation.MANDATORY)//Transaction par dÃ©faut
+	// (propagation=Propagation.MANDATORY)//Transaction par défaut
 	public Voiture save(Voiture voiture) throws ServiceException {
-		logger.debug("appel de la mÃ©thode save client" + voiture.getMarque());
+		logger.debug("appel de la méthode save client" + voiture.getMarque());
 		try {
 			return voitureDAO.save(voiture);
 		} catch (DAOException e) {
@@ -39,9 +36,9 @@ public class VoitureService {
 	}
 
 	@Transactional
-	// (propagation=Propagation.MANDATORY)//Transaction par dÃ©faut
+	// (propagation=Propagation.MANDATORY)//Transaction par défaut
 	public void remove(Voiture voiture) throws ServiceException {
-		logger.debug("appel de la mÃ©thode save client" + voiture.getMarque());
+		logger.debug("appel de la méthode save client" + voiture.getMarque());
 		try {
 			voitureDAO.remove(voiture);
 		} catch (DAOException e) {
@@ -50,7 +47,7 @@ public class VoitureService {
 	}
 
 	@Transactional
-	// (propagation=Propagation.MANDATORY)//Transaction par dÃ©faut
+	// (propagation=Propagation.MANDATORY)//Transaction par défaut
 	public void update(Integer id, String marque, String couleur, String immatriculation, Date dateDeMiseEnCirculation, Integer prix)
 			throws ServiceException {
 
@@ -68,10 +65,10 @@ public class VoitureService {
 	}
 
 	@Transactional
-	// (propagation=Propagation.MANDATORY)//Transaction par dÃ©faut
+	// (propagation=Propagation.MANDATORY)//Transaction par défaut
 	public Voiture removeById(Integer id) throws ServiceException {
 
-		logger.debug("appel de la mÃ©thode removeById voiture " + id);
+		logger.debug("appel de la méthode removeById voiture " + id);
 		try {
 			Voiture voiture = this.findById(id);
 			if (voiture != null)
@@ -83,7 +80,7 @@ public class VoitureService {
 	}
 
 	public Voiture findById(Integer id) throws ServiceException {
-		logger.debug("appel de la mÃ©thode findById client" + id);
+		logger.debug("appel de la méthode findById client" + id);
 		try {
 			return voitureDAO.findById(id);
 		} catch (DAOException e) {

@@ -1,11 +1,8 @@
 package io.jsd.training.tp.spring.dao;
 
-import java.util.Date;
 import java.util.List;
 
-import io.jsd.training.tp.spring.dao.entity.Client;
 import io.jsd.training.tp.spring.dao.entity.Reservation;
-import io.jsd.training.tp.spring.dao.entity.Voiture;
 
 public interface ReservationDAO extends GenericDAO<Reservation, Integer>{
 	

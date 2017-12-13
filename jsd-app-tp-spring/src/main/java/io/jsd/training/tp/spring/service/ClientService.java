@@ -19,17 +19,17 @@ public class ClientService {
 	private Logger logger = Logger.getLogger(ClientService.class);
 
 	@Autowired
-	// Mot clÃ© pour injecter un bean dans un autre
+	// Mot clé pour injecter un bean dans un autre
 	@Qualifier("clientJPADAO")
-	// Mot clÃ© pour switcher l'implÃ©mentation du DAO
+	// Mot clé pour switcher l'implémentation du DAO
 	private ClientDAO clientDAO;
 	@Autowired
 	private ReservationService reservationService;
 
 	@Transactional
-	// (propagation=Propagation.MANDATORY)//Transaction par dÃ©faut
+	// (propagation=Propagation.MANDATORY)//Transaction par défaut
 	public Client save(Client client) throws ServiceException {
-		logger.debug("appel de la mÃ©thode save client" + client.getNom());
+		logger.debug("appel de la méthode save client" + client.getNom());
 		try {
 			return clientDAO.save(client);
 		} catch (DAOException e) {
@@ -38,9 +38,9 @@ public class ClientService {
 	}
 
 	@Transactional
-	// (propagation=Propagation.MANDATORY)//Transaction par dÃ©faut
+	// (propagation=Propagation.MANDATORY)//Transaction par défaut
 	public void remove(Client client) throws ServiceException {
-		logger.debug("appel de la mÃ©thode save client" + client.getNom());
+		logger.debug("appel de la méthode save client" + client.getNom());
 		try {
 
 			clientDAO.remove(client);
@@ -50,9 +50,8 @@ public class ClientService {
 	}
 
 	@Transactional
-	// (propagation=Propagation.MANDATORY)//Transaction par dÃ©faut
-	public void update(Integer id, String nom, String prenom)
-			throws ServiceException {
+	// (propagation=Propagation.MANDATORY)//Transaction par défaut
+	public void update(Integer id, String nom, String prenom) throws ServiceException {
 
 		try {
 			Client clientToUpdate = this.findById(id);
@@ -66,21 +65,21 @@ public class ClientService {
 	}
 
 	@Transactional
-	// (propagation=Propagation.MANDATORY)//Transaction par dÃ©faut
+	// (propagation=Propagation.MANDATORY)//Transaction par défaut
 	public Client removeById(Integer id) throws ServiceException {
 
-		logger.debug("appel de la mÃ©thode removeById client" + id);
+		logger.debug("appel de la méthode removeById client" + id);
 		try {
 			Client client = this.findById(id);
 			if (client != null) {
-				List<Reservation> reservations = reservationService
-						.findReservationByClient(id);
+				List<Reservation> reservations = reservationService.findReservationByClient(id);
 				if (!reservations.isEmpty()) {
-					
+
 					for (Reservation res : reservations) {
-						logger.debug("appel de la mÃ©thode removeReservationById reservationService " + res);
+						logger.debug("appel de la méthode removeReservationById reservationService " + res);
 						System.out.println(res);
-						//Pour faire un remove(Client) il faut d'abord faire un findClientByID pour le rattacher au contexte
+						// Pour faire un remove(Client) il faut d'abord faire un
+						// findClientByID pour le rattacher au contexte
 						reservationService.removeReservationById(res.getId());
 					}
 					System.out.println("LE IF MARCHE");
@@ -94,7 +93,7 @@ public class ClientService {
 	}
 
 	public Client findById(Integer id) throws ServiceException {
-		logger.debug("appel de la mÃ©thode findById client" + id);
+		logger.debug("appel de la méthode findById client" + id);
 		try {
 			return clientDAO.findById(id);
 		} catch (DAOException e) {
