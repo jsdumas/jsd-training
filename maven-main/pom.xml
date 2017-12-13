@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.jsd.training</groupId>
-	<artifactId>jsd-maven-main</artifactId>
+	<artifactId>maven-main</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>main</name>
+	<name>maven-main</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,17 +23,17 @@
 	</properties>
 
 	<modules>
-		<module>jsd-client-jms-trainingcenter</module>
-		<module>jsd-client-rest-trainingcenter</module>
-		<module>jsd-client-ws-trainingcenter</module>
-		<module>jsd-codingame</module>
-		<module>jsd-java-algorithm</module>
-		<module>jsd-java-design-pattern</module>
-		<module>jsd-java-framework-spring-data</module>
-		<module>jsd-java-framework-spring-ioc</module>
-		<module>jsd-webapp-project-ejb</module>
-		<module>jsd-webapp-project-spring</module>
-		<module>jsd-webapp-project-struts</module>
+		<module>client-jms-to-project-ejb</module>
+		<module>client-rest-to-project-ejb</module>
+		<module>client-ws-to-project-ejb</module>
+		<module>codingame</module>
+		<module>java-algorithm</module>
+		<module>java-design-pattern</module>
+		<module>java-framework-spring-data</module>
+		<module>java-framework-spring-ioc</module>
+		<module>webapp-project-ejb</module>
+		<module>webapp-project-spring</module>
+		<module>webapp-project-struts</module>
 	</modules>
 
 	<dependencyManagement>

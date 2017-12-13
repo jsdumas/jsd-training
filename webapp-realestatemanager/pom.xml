@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>io.jsd.training</groupId>
-		<artifactId>jsd-maven-main</artifactId>
+		<artifactId>maven-main</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../jsd-maven-main/pom.xml</relativePath>
+		<relativePath>../maven-main/pom.xml</relativePath>
 	</parent>
-	<artifactId>jsd-realestatemanager</artifactId>
+	<artifactId>webapp-realestatemanager</artifactId>
 	<packaging>war</packaging>
 
 	<profiles>
@@ -174,4 +174,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<name>webapp-realestatemanager</name>
 </project>

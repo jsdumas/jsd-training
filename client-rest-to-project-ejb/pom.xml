@@ -3,30 +3,40 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>io.jsd.training</groupId>
-		<artifactId>jsd-maven-main</artifactId>
+		<artifactId>maven-main</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../jsd-maven-main/pom.xml</relativePath>
+		<relativePath>../maven-main/pom.xml</relativePath>
 	</parent>
-	<artifactId>jsd-client-jms-trainingcenter</artifactId>
-	<name>client-jms</name>
+	<artifactId>client-rest-to-project-ejb</artifactId>
+	<name>client-rest-to-project-ejb</name>
 
 	<properties>
-		<version.jboss.jms>1.0.0.Final</version.jboss.jms>
+		<version.httpclient>4.5</version.httpclient>
 	</properties>
 
 	<dependencies>
+
 		<dependency>
-			<groupId>org.jboss.spec.javax.jms</groupId>
-			<artifactId>jboss-jms-api_2.0_spec</artifactId>
-			<version>${version.jboss.jms}</version>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${version.httpclient}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
+
 	</dependencies>
+
 </project>
