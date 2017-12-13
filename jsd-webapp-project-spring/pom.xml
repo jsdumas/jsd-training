@@ -44,7 +44,6 @@
 		<!-- *********** -->
 		<!-- SPRING JDBC -->
 		<!-- *********** -->
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
@@ -64,16 +63,13 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 		</dependency>
-
 		<!-- *************** -->
 		<!-- SPRING SECURITY -->
 		<!-- *************** -->
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -90,7 +86,6 @@
 			<artifactId>validation-api</artifactId>
 			<version>1.1.0.Final</version>
 		</dependency>
-
 		<!-- *** -->
 		<!-- AOP -->
 		<!-- *** -->
@@ -98,20 +93,16 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 		</dependency>
-
-		<!-- *************** -->
+		<!-- *********** -->
 		<!-- SPRING TEST -->
-		<!-- *************** -->
-
+		<!-- *********** -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
-
 		<!-- ********* -->
 		<!-- HIBERNATE -->
 		<!-- ********* -->
-
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
@@ -121,7 +112,9 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
-
+		<!-- *** -->
+		<!-- BDD -->
+		<!-- *** -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -162,6 +155,18 @@
 			<groupId>com.mangofactory</groupId>
 			<artifactId>swagger-springmvc</artifactId>
 			<version>1.0.2</version>
+		</dependency>
+		<!-- *** -->
+		<!-- XML -->
+		<!-- *** -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
 		</dependency>
 
 	</dependencies>
@@ -270,7 +275,7 @@
 											<filtering>true</filtering>
 											<directory>src/main/resources</directory>
 											<includes>
-												<include>applicationContext.xml</include>
+												<include>dispatcher-servlet.xml</include>
 											</includes>
 										</resource>
 									</resources>
@@ -282,21 +287,21 @@
 						<groupId>org.apache.tomcat.maven</groupId>
 						<artifactId>tomcat7-maven-plugin</artifactId>
 						<version>2.2</version>
-<!-- 						<executions> -->
-<!-- 							<execution> -->
-<!-- 								<id>tomcat-run</id> -->
-<!-- 								<goals> -->
-<!-- 									<goal>exec-war-only</goal> -->
-<!-- 								</goals> -->
-<!-- 								<phase>package</phase> -->
-								<configuration>
-								<httpPort>8080</httpPort>
-									<path>/jsd-webapp-project-spring</path>
-<!-- 									<attachartifactclassifier>exec-war</attachartifactclassifier> -->
-<!-- 									<attachartifactclassifiertype>jar</attachartifactclassifiertype> -->
-								</configuration>
-<!-- 							</execution> -->
-<!-- 						</executions> -->
+						<!-- <executions> -->
+						<!-- <execution> -->
+						<!-- <id>tomcat-run</id> -->
+						<!-- <goals> -->
+						<!-- <goal>exec-war-only</goal> -->
+						<!-- </goals> -->
+						<!-- <phase>package</phase> -->
+						<configuration>
+							<httpPort>8080</httpPort>
+							<path>/petclinic</path>
+							<!-- <attachartifactclassifier>exec-war</attachartifactclassifier> -->
+							<!-- <attachartifactclassifiertype>jar</attachartifactclassifiertype> -->
+						</configuration>
+						<!-- </execution> -->
+						<!-- </executions> -->
 					</plugin>
 				</plugins>
 			</build>
