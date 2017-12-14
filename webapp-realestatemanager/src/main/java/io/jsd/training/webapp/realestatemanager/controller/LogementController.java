@@ -31,9 +31,6 @@ import io.jsd.training.webapp.realestatemanager.service.ServiceException;
 // @SessionAttributes("logement")
 public class LogementController implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	Logger logger = Logger.getLogger(LogementController.class);
