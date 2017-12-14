@@ -1,4 +1,4 @@
-package io.jsd.training.java.framework.struts.exception;
+package io.jsd.training.java.framework.struts.service;
 
 
 public class ServiceException extends Exception{
