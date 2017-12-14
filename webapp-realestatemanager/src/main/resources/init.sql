@@ -1,11 +1,72 @@
-delete from Logement_datesAnnonce;
-delete from Logement_datesDebutLocation;
-delete from Logement;
-delete from Quartier;
-delete from Commune;
-delete from TypeLogement;
-delete from Individu;
+USE realestatemanager;
 
+DROP TABLE IF EXISTS Logement_datesAnnonce;
+DROP TABLE IF EXISTS Logement_datesDebutLocation;
+DROP TABLE IF EXISTS Logement;
+DROP TABLE IF EXISTS Quartier;
+DROP TABLE IF EXISTS Commune;
+DROP TABLE IF EXISTS TypeLogement;
+DROP TABLE IF EXISTS Individu;
+
+
+
+CREATE TABLE Logement(
+id INT NOT NULL,
+estDispo TINYINT,
+superficie INT NOT NULL,
+nomRue VARCHAR(40) NOT NULL,
+numeroRue VARCHAR(5),
+loyer DOUBLE,
+proprietaire INT NOT NULL,
+typeLogement INT NOT NULL,
+quartier INT NOT NULL,
+PRIMARY KEY (id)
+);
+
+
+
+CREATE TABLE Quartier(
+id INT NOT NULL,
+libelleQuartier VARCHAR(120) NOT NULL,
+commune INT NOT NULL,
+PRIMARY KEY (id)
+);
+
+
+CREATE TABLE Commune(
+id INT NOT NULL,
+distanceAgence VARCHAR(50) NOT NULL,
+nomCommune VARCHAR(120) NOT NULL,
+nombreHabitants INT,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE TypeLogement(
+id INT NOT NULL,
+charges DOUBLE,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE Individu(
+id INT NOT NULL,
+datedeNaissance DATE NOT NULL,
+nom VARCHAR(50) NOT NULL,
+numeroTelephone VARCHAR(50)NOT NULL,
+prenom VARCHAR(50)NOT NULL,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE Logement_datesAnnonce(
+id INT NOT NULL,
+dateAnnonce DATE NOT NULL,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE Logement_datesDebutLocation(
+id INT NOT NULL,
+dateDebutLocation DATE NOT NULL,
+PRIMARY KEY (id)
+);
 
 
 insert into Commune values (1, 30, 'Marignane', 6000);
@@ -15,10 +76,8 @@ insert into Commune values (3, 20, 'Les Pennes Mirabeau', 4500);
 
 insert into Quartier values (1, 'Méditerranée Parc', 1);
 insert into Quartier values (2, 'Parc Hélène Boucher', 1);
-
 insert into Quartier values (3, 'Bastide blanche', 2);
 insert into Quartier values (4, 'La Frescoule', 2);
-
 insert into Quartier values (5, 'La Cannai', 3);
 insert into Quartier values (6, 'Les Pergolas fleuries', 3);
 
