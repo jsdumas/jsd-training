@@ -10,9 +10,8 @@ import org.springframework.stereotype.Component;
 import com.opensymphony.xwork2.ActionSupport;
 
 import io.jsd.training.java.framework.struts.dao.entity.Personne;
-import io.jsd.training.java.framework.struts.exception.ControllerException;
-import io.jsd.training.java.framework.struts.exception.ServiceException;
 import io.jsd.training.java.framework.struts.service.PersonneService;
+import io.jsd.training.java.framework.struts.service.ServiceException;
 
 @Component
 public class RegisterAction extends ActionSupport {
