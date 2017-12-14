@@ -39,8 +39,7 @@
 
 		<interceptors>
 
-			<interceptor name="loginInterceptor"
-				class="io.jsd.training.java.framework.struts.interceptors.LoginInterceptor" />
+			<interceptor name="loginInterceptor" class="io.jsd.training.java.framework.struts.interceptors.LoginInterceptor" />
 
 			<interceptor-stack name="secureStack">
 				<interceptor-ref name="loginInterceptor" />
