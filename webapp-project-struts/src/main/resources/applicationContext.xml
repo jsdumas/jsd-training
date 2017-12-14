@@ -17,23 +17,32 @@
                            http://www.springframework.org/schema/data/jpa  http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-	<!-- pour utiliser les annotations dans les fichiers java -->
+	<!-- ****************************** -->
+	<!-- ANNOTATION PACKAGE DECLARATION -->
+	<!-- ****************************** -->
 	<context:annotation-config />
 	<context:component-scan base-package="io.jsd.training.java.framework.struts" />
 
-	<!-- Pour créer les DAO -->
+
+	<!-- *************** -->
+	<!-- DAO REPOSITORIE -->
+	<!-- *************** -->
 	<jpa:repositories base-package="io.jsd.training.java.framework.struts.dao" />
 
-	<!-- pour configurer la connection à la base de donnée -->
+
+	<!-- *********** -->
+	<!-- DATA SOURCE -->
+	<!-- *********** -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/struts" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 	</bean>
-	
-	
-	<!-- Pour utiliser hibernate avec spring -->
+
+	<!-- ********************************* -->
+	<!-- ENTITY MANAGER HIBERNATE + SPRING -->
+	<!-- ********************************* -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -47,8 +56,9 @@
 			</bean>
 		</property>
 	</bean>
-
-	<!-- Pour gérer les transaction avec spring -->
+	<!-- ******************* -->
+	<!-- TRANSACTION MANAGER -->
+	<!-- ******************* -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
 		p:entityManagerFactory-ref="entityManagerFactory" />
 
