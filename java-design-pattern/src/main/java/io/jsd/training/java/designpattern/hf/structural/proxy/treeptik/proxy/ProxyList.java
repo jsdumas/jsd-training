@@ -1,4 +1,4 @@
-package io.jsd.training.java.designpattern.treeptik.proxy;
+package io.jsd.training.java.designpattern.hf.structural.proxy.treeptik.proxy;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,7 +22,6 @@ public class ProxyList extends AbstractList {
 		try {
 			nbLine = Files.lines(path2).count();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -36,7 +35,6 @@ public class ProxyList extends AbstractList {
 			try {
 				list = new ArrayList<String>(Files.lines(path2).collect(Collectors.toList()));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -46,7 +44,6 @@ public class ProxyList extends AbstractList {
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
 		return nbLine.intValue();
 	}
 

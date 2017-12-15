@@ -1,13 +1,6 @@
-package io.jsd.training.java.designpattern.reference.app;
-
-import io.jsd.training.java.designpattern.reference.Car;
-import io.jsd.training.java.designpattern.reference.Knight;
-import io.jsd.training.java.designpattern.reference.Movable;
-import io.jsd.training.java.designpattern.reference.MovieCharacter;
+package io.jsd.training.java.designpattern.reference;
 
 public class Runtime {
-
-	private static int size;
 
 	public static void main(String[] args) {
 

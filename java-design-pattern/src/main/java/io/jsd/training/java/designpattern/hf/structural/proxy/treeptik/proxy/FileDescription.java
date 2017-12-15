@@ -1,4 +1,4 @@
-package io.jsd.training.java.designpattern.treeptik.proxy;
+package io.jsd.training.java.designpattern.hf.structural.proxy.treeptik.proxy;
 
 import java.util.List;
 
