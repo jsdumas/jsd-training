@@ -4,9 +4,9 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import io.jsd.training.java.designpattern.hf.behavioural.command.party.homeappliance.Light;
-import io.jsd.training.java.designpattern.hf.behavioural.command.party.pattern.LightOffCommand;
-import io.jsd.training.java.designpattern.hf.behavioural.command.party.pattern.LightOnCommand;
+import io.jsd.training.java.designpattern.behavioural.command.party.homeappliance.Light;
+import io.jsd.training.java.designpattern.behavioural.command.party.pattern.LightOffCommand;
+import io.jsd.training.java.designpattern.behavioural.command.party.pattern.LightOnCommand;
 
 public class LightTest {
 

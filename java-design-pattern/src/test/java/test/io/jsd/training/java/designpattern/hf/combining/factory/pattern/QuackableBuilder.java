@@ -3,11 +3,11 @@ package test.io.jsd.training.java.designpattern.hf.combining.factory.pattern;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.jsd.training.java.designpattern.hf.combining.factory.bird.Goose;
-import io.jsd.training.java.designpattern.hf.combining.factory.bird.Quackable;
-import io.jsd.training.java.designpattern.hf.combining.factory.pattern.AbstractDuckFactory;
-import io.jsd.training.java.designpattern.hf.combining.factory.pattern.CountingDuckFactory;
-import io.jsd.training.java.designpattern.hf.combining.factory.pattern.GooseAdapter;
+import io.jsd.training.java.designpattern.combining.factory.bird.Goose;
+import io.jsd.training.java.designpattern.combining.factory.bird.Quackable;
+import io.jsd.training.java.designpattern.combining.factory.pattern.AbstractDuckFactory;
+import io.jsd.training.java.designpattern.combining.factory.pattern.CountingDuckFactory;
+import io.jsd.training.java.designpattern.combining.factory.pattern.GooseAdapter;
 
 public class QuackableBuilder {
 

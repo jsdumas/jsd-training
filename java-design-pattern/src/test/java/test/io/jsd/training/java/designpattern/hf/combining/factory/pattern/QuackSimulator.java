@@ -2,8 +2,8 @@ package test.io.jsd.training.java.designpattern.hf.combining.factory.pattern;
 
 import java.util.List;
 
-import io.jsd.training.java.designpattern.hf.combining.factory.bird.Quackable;
-import io.jsd.training.java.designpattern.hf.combining.factory.pattern.QuackCounter;
+import io.jsd.training.java.designpattern.combining.factory.bird.Quackable;
+import io.jsd.training.java.designpattern.combining.factory.pattern.QuackCounter;
 
 public class QuackSimulator {
 
