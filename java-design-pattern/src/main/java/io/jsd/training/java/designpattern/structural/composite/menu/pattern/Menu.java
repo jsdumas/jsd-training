@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Menu extends MenuComponent {
-	ArrayList menuComponents = new ArrayList();
+	ArrayList<MenuComponent> menuComponents = new ArrayList<MenuComponent>();
 	String name;
 	String description;
 
@@ -44,9 +44,9 @@ public class Menu extends MenuComponent {
 		System.out.println(", " + getDescription());
 		System.out.println("---------------------");
 
-		Iterator iterator = menuComponents.iterator();
+		Iterator<MenuComponent> iterator = menuComponents.iterator();
 		while (iterator.hasNext()) {
-			MenuComponent menuComponent = (MenuComponent) iterator.next();
+			MenuComponent menuComponent = iterator.next();
 			menuComponent.print();
 		}
 	}
