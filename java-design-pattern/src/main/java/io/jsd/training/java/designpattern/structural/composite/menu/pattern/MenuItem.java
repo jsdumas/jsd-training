@@ -1,6 +1,5 @@
 package io.jsd.training.java.designpattern.structural.composite.menu.pattern;
 
-
 public class MenuItem extends MenuComponent {
 	String name;
 	String description;

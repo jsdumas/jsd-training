@@ -1,11 +1,10 @@
-package io.jsd.training.java.designpattern.structural.composite.menu.app;
+package io.jsd.training.java.designpattern.structural.composite.menu;
 
 import io.jsd.training.java.designpattern.structural.composite.menu.pattern.Menu;
 import io.jsd.training.java.designpattern.structural.composite.menu.pattern.MenuComponent;
 import io.jsd.training.java.designpattern.structural.composite.menu.pattern.MenuItem;
-import io.jsd.training.java.designpattern.structural.composite.menu.pattern.Waitress;
 
-public class MenuTestDrive {
+public class Runtime {
 	public static void main(String args[]) {
 		MenuComponent pancakeHouseMenu = new Menu("PANCAKE HOUSE MENU", "Breakfast");
 		MenuComponent dinerMenu = new Menu("DINER MENU", "Lunch");
