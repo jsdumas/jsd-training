@@ -1,9 +1,9 @@
 package test.io.jsd.training.java.designpattern.hf.behavioural.decorator.starbuzz.beverage;
 
-import io.jsd.training.java.designpattern.hf.behavioural.decorator.starbuzz.beverage.Beverage;
-import io.jsd.training.java.designpattern.hf.behavioural.decorator.starbuzz.pattern.Mocha;
-import io.jsd.training.java.designpattern.hf.behavioural.decorator.starbuzz.pattern.Soy;
-import io.jsd.training.java.designpattern.hf.behavioural.decorator.starbuzz.pattern.Whip;
+import io.jsd.training.java.designpattern.behavioural.decorator.starbuzz.beverage.Beverage;
+import io.jsd.training.java.designpattern.behavioural.decorator.starbuzz.pattern.Mocha;
+import io.jsd.training.java.designpattern.behavioural.decorator.starbuzz.pattern.Soy;
+import io.jsd.training.java.designpattern.behavioural.decorator.starbuzz.pattern.Whip;
 
 public class BeverageBuilder {
 

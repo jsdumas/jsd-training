@@ -4,9 +4,9 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import io.jsd.training.java.designpattern.hf.structural.adapter.ducks.bird.MallardDuck;
-import io.jsd.training.java.designpattern.hf.structural.adapter.ducks.bird.Turkey;
-import io.jsd.training.java.designpattern.hf.structural.adapter.ducks.pattern.DuckAdapter;
+import io.jsd.training.java.designpattern.structural.adapter.ducks.bird.MallardDuck;
+import io.jsd.training.java.designpattern.structural.adapter.ducks.bird.Turkey;
+import io.jsd.training.java.designpattern.structural.adapter.ducks.pattern.DuckAdapter;
 
 public class DuckAdapterTest {
 

@@ -6,7 +6,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import io.jsd.training.java.designpattern.hf.combining.factory.bird.Quackable;
+import io.jsd.training.java.designpattern.combining.factory.bird.Quackable;
 
 public class AbstractDuckFactoryTest {
 

@@ -4,9 +4,9 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import io.jsd.training.java.designpattern.hf.behavioural.decorator.starbuzz.beverage.Beverage;
-import io.jsd.training.java.designpattern.hf.behavioural.decorator.starbuzz.beverage.HouseBlend;
-import io.jsd.training.java.designpattern.hf.behavioural.decorator.starbuzz.pattern.Mocha;
+import io.jsd.training.java.designpattern.behavioural.decorator.starbuzz.beverage.Beverage;
+import io.jsd.training.java.designpattern.behavioural.decorator.starbuzz.beverage.HouseBlend;
+import io.jsd.training.java.designpattern.behavioural.decorator.starbuzz.pattern.Mocha;
 
 public class HouseBlendTest {
 

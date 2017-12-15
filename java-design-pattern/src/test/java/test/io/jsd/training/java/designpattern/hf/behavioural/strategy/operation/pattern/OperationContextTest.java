@@ -4,10 +4,10 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import io.jsd.training.java.designpattern.hf.behavioural.strategy.operation.behaviour.OperationContext;
-import io.jsd.training.java.designpattern.hf.behavioural.strategy.operation.behaviour.operation.OperationAdd;
-import io.jsd.training.java.designpattern.hf.behavioural.strategy.operation.behaviour.operation.OperationMultiply;
-import io.jsd.training.java.designpattern.hf.behavioural.strategy.operation.behaviour.operation.OperationSubstract;
+import io.jsd.training.java.designpattern.behavioural.strategy.operation.behaviour.OperationContext;
+import io.jsd.training.java.designpattern.behavioural.strategy.operation.behaviour.operation.OperationAdd;
+import io.jsd.training.java.designpattern.behavioural.strategy.operation.behaviour.operation.OperationMultiply;
+import io.jsd.training.java.designpattern.behavioural.strategy.operation.behaviour.operation.OperationSubstract;
 
 public class OperationContextTest {
 

@@ -4,10 +4,10 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import io.jsd.training.java.designpattern.hf.combining.decorator.bird.MallardDuck;
-import io.jsd.training.java.designpattern.hf.combining.decorator.bird.Quackable;
-import io.jsd.training.java.designpattern.hf.combining.decorator.bird.RedheadDuck;
-import io.jsd.training.java.designpattern.hf.combining.decorator.pattern.QuackCounter;
+import io.jsd.training.java.designpattern.combining.decorator.bird.MallardDuck;
+import io.jsd.training.java.designpattern.combining.decorator.bird.Quackable;
+import io.jsd.training.java.designpattern.combining.decorator.bird.RedheadDuck;
+import io.jsd.training.java.designpattern.combining.decorator.pattern.QuackCounter;
 
 public class QuackCounterTest {
 
