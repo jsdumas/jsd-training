@@ -6,7 +6,7 @@ import io.jsd.training.codingame.bender.Bender;
 import io.jsd.training.codingame.bender.BenderBuilder;
 import io.jsd.training.codingame.bender.MemorisePath;
 
-public class PathFinderFactory {
+public class PathFinderFactoryTest {
 
 	private static final Bender BENDER_LOOP_WALK_BECAUSE_OF_TIME_OUT = new BenderBuilder(3, 6).withLine(1, Line.LINE_OF_CHARPS.getLine())
 			.withLine(0, Line.AT_AND_THREE_SPACES.getLine()).withLine(1, Line.LINE_OF_CHARPS.getLine()).build();
