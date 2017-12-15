@@ -8,11 +8,11 @@ import org.junit.Test;
 
 import io.jsd.training.codingame.bender.Direction;
 import io.jsd.training.codingame.bender.MemorisePath;
-import io.jsd.training.codingame.bender.PathFinderFactory;
+import io.jsd.training.codingame.bender.PathFinderFactoryTest;
 
 public class PathFinderTest {
 
-	private static final PathFinderFactory PATH_FINDER_FACTORY = new PathFinderFactory();
+	private static final PathFinderFactoryTest PATH_FINDER_FACTORY = new PathFinderFactoryTest();
 	private static final MemorisePath PATH_IS_LOOP_BECAUSE_OF_TIME_OUT = PATH_FINDER_FACTORY.getPath(Path.LOOP_BECAUSE_OF_TIME_OUT);
 	private static final MemorisePath PATH_TO_SOUTH_FROM_START = PATH_FINDER_FACTORY.getPath(Path.TO_SOUTH_FROM_START);
 	private static final MemorisePath PATH_TO_EAST_FROM_START = PATH_FINDER_FACTORY.getPath(Path.TO_EAST_FROM_START);
