@@ -1,0 +1,1 @@
+﻿package io.jsd.training.java.designpattern.book.chap3.ObjetsGraphiques.objetsgraphiquesavecannule;public interface Commande {    public void lance();    public void annule();}
