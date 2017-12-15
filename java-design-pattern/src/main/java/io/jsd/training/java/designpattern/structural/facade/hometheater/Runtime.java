@@ -2,7 +2,7 @@ package io.jsd.training.java.designpattern.structural.facade.hometheater;
 
 import io.jsd.training.java.designpattern.structural.facade.hometheater.pattern.HomeTheaterFacade;
 
-public class HomeTheaterTestDrive {
+public class Runtime {
 	public static void main(String[] args) {
 
 		// Init Objects
