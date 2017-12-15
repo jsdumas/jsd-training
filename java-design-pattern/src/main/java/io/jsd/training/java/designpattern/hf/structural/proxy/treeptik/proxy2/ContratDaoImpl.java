@@ -1,17 +1,15 @@
-package io.jsd.training.java.designpattern.treeptik.proxy2;
+package io.jsd.training.java.designpattern.hf.structural.proxy.treeptik.proxy2;
 
 public class ContratDaoImpl implements ContratDao {
 
 	@Override
 	public void save() {
-		// TODO Auto-generated method stub
 		System.out.println("save Contrat");
 
 	}
 
 	@Override
 	public void remove() {
-		// TODO Auto-generated method stub
 		System.out.println("remove Contrat");
 	}
 

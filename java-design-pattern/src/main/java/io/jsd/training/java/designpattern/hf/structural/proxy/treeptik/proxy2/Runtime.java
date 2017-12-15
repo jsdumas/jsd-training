@@ -1,4 +1,4 @@
-package io.jsd.training.java.designpattern.treeptik.proxy2;
+package io.jsd.training.java.designpattern.hf.structural.proxy.treeptik.proxy2;
 
 public class Runtime {
 
