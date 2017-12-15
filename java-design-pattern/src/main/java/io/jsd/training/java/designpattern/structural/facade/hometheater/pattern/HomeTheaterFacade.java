@@ -1,4 +1,4 @@
-package io.jsd.training.java.designpattern.structural.facade.pattern;
+package io.jsd.training.java.designpattern.structural.facade.hometheater.pattern;
 
 import io.jsd.training.java.designpattern.structural.facade.hometheater.Amplifier;
 import io.jsd.training.java.designpattern.structural.facade.hometheater.CdPlayer;

@@ -1,5 +1,9 @@
 package io.jsd.training.java.designpattern.structural.facade.shape.pattern;
 
+import io.jsd.training.java.designpattern.structural.facade.shape.Circle;
+import io.jsd.training.java.designpattern.structural.facade.shape.Rectangle;
+import io.jsd.training.java.designpattern.structural.facade.shape.Shape;
+import io.jsd.training.java.designpattern.structural.facade.shape.Square;
 
 public class ShapeMaker {
 	private final Shape circle;
