@@ -1,14 +1,6 @@
-package io.jsd.training.java.designpattern.structural.facade.app;
+package io.jsd.training.java.designpattern.structural.facade.hometheater;
 
-import io.jsd.training.java.designpattern.structural.facade.hometheater.Amplifier;
-import io.jsd.training.java.designpattern.structural.facade.hometheater.CdPlayer;
-import io.jsd.training.java.designpattern.structural.facade.hometheater.DvdPlayer;
-import io.jsd.training.java.designpattern.structural.facade.hometheater.PopcornPopper;
-import io.jsd.training.java.designpattern.structural.facade.hometheater.Projector;
-import io.jsd.training.java.designpattern.structural.facade.hometheater.Screen;
-import io.jsd.training.java.designpattern.structural.facade.hometheater.TheaterLights;
-import io.jsd.training.java.designpattern.structural.facade.hometheater.Tuner;
-import io.jsd.training.java.designpattern.structural.facade.pattern.HomeTheaterFacade;
+import io.jsd.training.java.designpattern.structural.facade.hometheater.pattern.HomeTheaterFacade;
 
 public class HomeTheaterTestDrive {
 	public static void main(String[] args) {

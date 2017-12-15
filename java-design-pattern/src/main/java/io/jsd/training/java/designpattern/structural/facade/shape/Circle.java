@@ -1,4 +1,4 @@
-package io.jsd.training.java.designpattern.structural.facade.shape.pattern;
+package io.jsd.training.java.designpattern.structural.facade.shape;
 
 
 public class Circle implements Shape {
