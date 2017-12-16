@@ -10,27 +10,27 @@
 	<constant name="struts.custom.i18n.resources" value="applicationResources" />
 
 	<package name="default" namespace="/" extends="struts-default">
-<!-- 		<action name="hello"> -->
-<!-- 			<result>/pages/hello.jsp</result> -->
-<!-- 		</action> -->
+		<action name="index">
+			<result>/pages/index.jsp</result>
+		</action>
 
-<!-- 		<action name="register"> -->
-<!-- 			<result>/pages/register.jsp</result> -->
-<!-- 		</action> -->
+		<action name="register">
+			<result>/pages/register.jsp</result>
+		</action>
 
-<!-- 		<action name="registration" class="io.jsd.training.java.framework.struts.action.RegisterAction"> -->
-<!-- 			<result name="success">/pages/registration-ok.jsp</result> -->
-<!-- 			<result name="input">/pages/register.jsp</result> -->
-<!-- 			<result name="error">/pages/register-error.jsp</result> -->
-<!-- 		</action> -->
+		<action name="registration" class="io.jsd.training.java.framework.struts.action.RegisterAction">
+			<result name="success">/pages/registration-ok.jsp</result>
+			<result name="input">/pages/register.jsp</result>
+			<result name="error">/pages/register-error.jsp</result>
+		</action>
 		
-<!-- 		<action name="loginForm"> -->
-<!-- 			<result>/pages/loginForm.jsp</result> -->
-<!-- 		</action> -->
+		<action name="loginForm">
+			<result>/pages/loginForm.jsp</result>
+		</action>
 		
-<!-- 		<action name="login" class="io.jsd.training.java.framework.struts.action.LoginAction"> -->
-<!-- 			<result name="success">/pages/login-success.jsp</result> -->
-<!-- 		</action> -->
+		<action name="login" class="io.jsd.training.java.framework.struts.action.LoginAction">
+			<result name="success">/pages/login-success.jsp</result>
+		</action>
 		
 	</package>
 
