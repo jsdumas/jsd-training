@@ -11,6 +11,10 @@ public class Customer {
 		this.name = name;
 	}
 	
+	public Customer(Customer oldCustomer) {
+		this.name=oldCustomer.getName();
+	}
+	
 		public String toString() {
 		return name;
 	}
