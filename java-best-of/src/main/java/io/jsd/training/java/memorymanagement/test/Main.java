@@ -1,4 +1,4 @@
-package io.jsd.training.java.memorymanagement;
+package io.jsd.training.java.memorymanagement.test;
 
 public class Main {
 
