@@ -27,8 +27,11 @@ public class BookCollection {
 		 books.add(new Book(10,"The Count of Monte Christo","Alexandre Dumas",3.99));
 	}
 	
-	public Book findBookByName(String title) {
-		for (Book book : books) {
+	// Book has setPrice method. Reference to Book is not immutable
+	// public Book findBookByName(String title) {
+	// fix escaping reference of Book
+	public BookReadOnly findBookByName(String title) {
+		for (BookReadOnly book : books) {
 			if (book.getTitle().equals(title)) {
 				return book;
 			}
@@ -37,7 +40,7 @@ public class BookCollection {
 	}
 	
 	public void printAllBooks() {
-		for (Book book : books) {
+		for (BookReadOnly book : books) {
 			System.out.println(book.getTitle() + ": " + book.getPrice());
 		}
 	}
