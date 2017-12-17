@@ -24,8 +24,11 @@ public class Price {
 		}
 		else {
 			Double conversion = rates.get("USD") / rates.get(toCurrency);
-			value = conversion * value;
-			return value;
+			//We appear to be mutating a value in a get method
+			//value = conversion * value;
+			//return value;
+			//Fix : 
+			return conversion * value;
 		}
 	}
 	
@@ -33,8 +36,10 @@ public class Price {
 		return this.value.toString();
 	}
 	
-	public Map<String,Double> getRates() {
-		return rates;
+	//TODO: Definintely an escaping reference
+//	public Map<String,Double> getRates() {
+		public Double getRates(String currency) {
+		return rates.get(currency);
 	}
 	
 }
