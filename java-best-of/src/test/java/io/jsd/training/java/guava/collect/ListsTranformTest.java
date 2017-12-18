@@ -1,9 +1,10 @@
 package io.jsd.training.java.guava.collect;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+
 import java.util.List;
 
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import com.google.common.base.Function;
@@ -32,7 +33,7 @@ public class ListsTranformTest {
 		        }
 		);
 		System.out.println(transformedWords);
-		MatcherAssert.assertThat(transformedWords, Matchers.contains("LOR", "IPS", "DOL", "SIT", "AME", "CON", "ADI", "ELI"));
+		assertThat(transformedWords, contains("LOR", "IPS", "DOL", "SIT", "AME", "CON", "ADI", "ELI"));
 	}
 
 }
