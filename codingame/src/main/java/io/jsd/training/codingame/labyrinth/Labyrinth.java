@@ -3,25 +3,19 @@ package io.jsd.training.codingame.labyrinth;
 public class Labyrinth {
 
 	private final int alarm;
-	private final int columns;
-	private final int rows;
+	private final String[][] grid;
 
-	public Labyrinth(int rows, int columns, int alarm) {
-		this.rows = rows;
-		this.columns = columns;
+	public Labyrinth(String[][] grid, int alarm) {
+		this.grid = grid;
 		this.alarm = alarm;
 	}
 
 	public int getAlarm() {
 		return alarm;
 	}
-
-	public int getColumns() {
-		return columns;
-	}
-
-	public int getRows() {
-		return rows;
+	
+	public String[][] getGrid() {
+		return grid;
 	}
 
 }
