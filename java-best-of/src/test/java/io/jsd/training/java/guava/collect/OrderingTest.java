@@ -79,13 +79,13 @@ public class OrderingTest {
 	@Test
 	public void whenCollectionIsOrderedWithNullLasOfThenReturnCollectionOrderedWithNullAtEnd() {
 	    System.out.println(Ordering.from(byLength).nullsLast().sortedCopy(RANDOM));
-	    assertThat(Ordering.from(byLength).nullsLast().sortedCopy(RANDOM), Matchers.contains("to","welcome", "leveluplunch", null, null, null));
+	    assertThat(Ordering.from(byLength).nullsLast().sortedCopy(RANDOM), contains("to","welcome", "leveluplunch", null, null, null));
 	}
 	
 	@Test
 	public void whenCollectionIsOrderedWithNullFirstOfThenReturnCollectionOrderedWithNullAtFirst() {
 	    System.out.println(Ordering.from(byLength).nullsLast().sortedCopy(RANDOM));
-	    assertThat(Ordering.from(byLength).nullsFirst().sortedCopy(RANDOM), Matchers.contains(null,null,null,"to","welcome", "leveluplunch"));
+	    assertThat(Ordering.from(byLength).nullsFirst().sortedCopy(RANDOM), contains(null,null,null,"to","welcome", "leveluplunch"));
 	}
 	
 	@Test
