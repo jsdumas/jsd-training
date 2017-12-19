@@ -22,6 +22,7 @@ public class LabyrinthTest {
 	private final String[][] grid = new String[ROWS][COLUMNS];
 
 	private Labyrinth labyrinth;
+	private Game game;
 	
 	@Before
 	public void initGrid() {
@@ -31,11 +32,12 @@ public class LabyrinthTest {
 		grid[3] = LINE_3.split("");
 		grid[4] = LINE_4.split("");
 		labyrinth = new Labyrinth(grid, ALARM_COUNT);
+		game = new Game(labyrinth);
 	}
 
 	@Test
 	public void whenInitLabyrinthWithAlarmAt7ThenLabyrinthRowsIs7() {
-		assertThat(labyrinth.getAlarmCount(), Matchers.is(ALARM_COUNT));
+		assertThat(labyrinth.getAlarmCount(), is(ALARM_COUNT));
 	}
 
 	@Test
@@ -46,6 +48,16 @@ public class LabyrinthTest {
 	@Test
 	public void whenInitLabyrinthWith9ColumnsThenLabyrinthColumnsIs9() {
 		assertThat(labyrinth.getGrid()[0].length, is(COLUMNS));
+	}
+	
+	@Test
+	public void whenKirkGetInCommandRoomThenAlarmIsTrigered() {
+		Jetpack jetpack = new Jetpack();
+		KirkState state = new KirkState(jetpack);
+		Kirk kirk = new Kirk(state);
+		state.setPosition(new Position(2,6));
+		game.isKirkGetInCommandRoom(kirk);
+		assertThat(labyrinth.isAlarmActive(), is(true));
 	}
 
 }

@@ -9,13 +9,13 @@ public enum CellType {
 	UNKOWN_CELL("?");
 	
 	private String code;
-
+	
 	private CellType(String code) {
 		this.code = code;
 	}
-
+	
 	public String getCode() {
 		return code;
 	}
-
+	
 }
