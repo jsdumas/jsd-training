@@ -3,6 +3,7 @@ package io.jsd.training.java.guava.collect;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import com.google.common.collect.BiMap;
@@ -16,15 +17,19 @@ import com.google.common.collect.HashBiMap;
 
 public class BiMapTest {
 	
-	@Test
-	public void bimap() {
-	 
-		HashBiMap<String, Integer> daltonsSizeByName = HashBiMap.create();
+	private HashBiMap<String, Integer> daltonsSizeByName;
+	
+	@Before
+	public void setUp() {
+		daltonsSizeByName = HashBiMap.create();
 		daltonsSizeByName.put("Joe", 1);
 		daltonsSizeByName.put("Jack", 2);
 		daltonsSizeByName.put("William", 3);
 		daltonsSizeByName.put("Averell", 4);
-	 
+	}
+	
+	@Test
+	public void bimap() {
 		// Inverse map
 		BiMap<Integer,String> daltonsNameBySize = daltonsSizeByName.inverse();
 		assertThat(daltonsSizeByName.size(), equalTo(daltonsNameBySize.size()));
