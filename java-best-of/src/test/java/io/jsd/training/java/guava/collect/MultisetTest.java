@@ -7,12 +7,12 @@ import org.junit.Test;
 
 import com.google.common.collect.HashMultiset;
 
-//"Multiset" est un nom un peu trompeur pour cette classe. En réalité, il s'agit plutôt d'un bag, c'est-à-dire une collection non ordonnée autorisant les doublons.
-//
-//Cette collection a pour particularité de compter le nombre d'occurrences de chaque élément qui y est inséré. Elle est pratique pour collecter des statistiques sur la fréquence d'apparition des éléments au sein d'un ensemble.
-//
-//Plusieurs versions existent : HashMultiset, LinkedHashMultiset et TreeMultiset. Elles sont toutes instanciées via leur méthode factory create().
-//
+//"Multiset" est un nom un peu trompeur pour cette classe. 
+//En réalité, il s'agit plutôt d'un bag, c'est-à-dire une collection non ordonnée autorisant les doublons.
+//Cette collection a pour particularité de compter le nombre d'occurrences de chaque élément qui y est inséré. 
+//Elle est pratique pour collecter des statistiques sur la fréquence d'apparition des éléments au sein d'un ensemble.
+//Plusieurs versions existent : HashMultiset, LinkedHashMultiset et TreeMultiset. 
+//Elles sont toutes instanciées via leur méthode factory create().
 //Enfin, il est possible de retransformer un Multiset en Set grâce à la méthode elementSet() (les doublons sont éliminés au passage).
 
 public class MultisetTest {

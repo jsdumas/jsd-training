@@ -18,14 +18,11 @@ import com.google.common.collect.ListMultimap;
 import com.google.common.collect.SetMultimap;
 
 //Une Multimap associe plusieurs valeurs à chaque clé. Ces valeurs sont contenues dans une List ou un Set, créés automatiquement à la première insertion.
-//
-//En tant que développeur, vous n'avez donc plus à vous soucier de l'existence ou de la création des collections contenant vos valeurs : il suffit d'appeler put(K,V) ou remove(K,V) comme d'habitude.
-//
+//En tant que développeur, vous n'avez donc plus à vous soucier de l'existence ou de la création des collections contenant vos valeurs : 
+//il suffit d'appeler put(K,V) ou remove(K,V) comme d'habitude.
 //Il existe deux familles de Multimap :
-//
 //    Les ListMultimap, qui utilisent au choix une LinkedList (LinkedListMultimap) ou une ArrayList (ArrayListMultimap)pour stocker les valeurs.
 //    Les SetMultimap, qui associent à chaque clé un Set de valeurs : HashMultimap, LinkedHashMultimap et TreeMultimap.
-//
 //Chacune de ces classes est instanciée via une méthode factory appelée create().
 
 public class MultimapTest {
