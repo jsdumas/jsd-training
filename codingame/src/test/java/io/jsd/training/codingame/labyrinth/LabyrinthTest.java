@@ -17,7 +17,7 @@ public class LabyrinthTest {
 
 	private final static int ROWS = 5;
 	private final static int COLUMNS = 9;
-	private final static int ALARM = 7;
+	private final static int ALARM_COUNT = 7;
 
 	private final String[][] grid = new String[ROWS][COLUMNS];
 
@@ -30,12 +30,12 @@ public class LabyrinthTest {
 		grid[2] = LINE_2.split("");
 		grid[3] = LINE_3.split("");
 		grid[4] = LINE_4.split("");
-		labyrinth = new Labyrinth(grid, ALARM);
+		labyrinth = new Labyrinth(grid, ALARM_COUNT);
 	}
 
 	@Test
 	public void whenInitLabyrinthWithAlarmAt7ThenLabyrinthRowsIs7() {
-		assertThat(labyrinth.getAlarm(), Matchers.is(ALARM));
+		assertThat(labyrinth.getAlarmCount(), Matchers.is(ALARM_COUNT));
 	}
 
 	@Test

@@ -2,16 +2,16 @@ package io.jsd.training.codingame.labyrinth;
 
 public class Labyrinth {
 
-	private final int alarm;
+	private final int alarmCount;
 	private final String[][] grid;
 
-	public Labyrinth(String[][] grid, int alarm) {
+	public Labyrinth(String[][] grid, int alarmCount) {
 		this.grid = grid;
-		this.alarm = alarm;
+		this.alarmCount = alarmCount;
 	}
 
-	public int getAlarm() {
-		return alarm;
+	public int getAlarmCount() {
+		return alarmCount;
 	}
 	
 	public String[][] getGrid() {

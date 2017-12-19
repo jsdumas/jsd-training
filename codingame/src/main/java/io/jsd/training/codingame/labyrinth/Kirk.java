@@ -2,20 +2,31 @@ package io.jsd.training.codingame.labyrinth;
 
 public class Kirk {
 
-	public Direction mouveLeft() {
-		return Direction.LEFT;
+	private final KirkState state;
+
+	public Kirk(KirkState state) {
+		this.state = state;
 	}
 
-	public Direction mouveUp() {
-		return Direction.UP;
+	public Direction mouve(Direction direction) {
+		state.energyDecrease();
+		return direction;
 	}
 
-	public Direction mouveRight() {
-		return Direction.RIGHT;
+	public Position getPosition() {
+		return state.getPosition();
 	}
 
-	public Direction mouveDown() {
-		return Direction.DOWN;
+	public int getX() {
+		return state.getX();
+	}
+
+	public int getY() {
+		return state.getX();
+	}
+
+	public int getJetPackEnergy() {
+		return state.getJetPackEnergy();
 	}
 
 }

@@ -1,32 +1,68 @@
 package io.jsd.training.codingame.labyrinth;
 
+import static io.jsd.training.codingame.labyrinth.Direction.DOWN;
 import static io.jsd.training.codingame.labyrinth.Direction.LEFT;
+import static io.jsd.training.codingame.labyrinth.Direction.RIGHT;
+import static io.jsd.training.codingame.labyrinth.Direction.UP;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Test;
 
 public class KirkTest {
 	
-	private static final Kirk KIRK = new Kirk();
+	private final Jetpack jetpack = new Jetpack();
+	private final KirkState state = new KirkState(jetpack);
+	private final Kirk kirk = new Kirk(state);
+	
+	@Before
+	public void setUp() {
+		state.setPosition(new Position(0,0));
+	}
 
 	@Test
 	public void whenKirkMoveLeftThenitShouldPrintLeft() {
-		MatcherAssert.assertThat(KIRK.mouveLeft(), Matchers.equalTo(LEFT));
+		MatcherAssert.assertThat(kirk.mouve(LEFT), equalTo(LEFT));
 	}
 	
 	@Test
 	public void whenKirkMoveUpThenitShouldPrintUp() {
-		MatcherAssert.assertThat(KIRK.mouveUp(), Matchers.equalTo(Direction.UP));
+		MatcherAssert.assertThat(kirk.mouve(UP), equalTo(UP));
 	}
 	
 	@Test
 	public void whenKirkMoveRightThenitShouldPrintRight() {
-		MatcherAssert.assertThat(KIRK.mouveRight(), Matchers.equalTo(Direction.RIGHT));
+		MatcherAssert.assertThat(kirk.mouve(RIGHT), equalTo(RIGHT));
 	}
 	
 	@Test
 	public void whenKirkMoveDownThenitShouldPrintDown() {
-		MatcherAssert.assertThat(KIRK.mouveDown(), Matchers.equalTo(Direction.DOWN));
+		assertThat(kirk.mouve(DOWN), equalTo(DOWN));
+	}
+	
+	@Test
+	public void whenKirkIsOnXEqual0ThenHisXPositionIs0() {
+		assertThat(kirk.getX(), equalTo(0));
+	}
+	
+	@Test
+	public void whenKirkIsOnYEqual0ThenHisYPositionIs0() {
+		assertThat(kirk.getY(), equalTo(0));
+	}
+	
+	@Test
+	public void whenKirkStartThenHisJetPackEnergyIs1200() {
+		assertThat(kirk.getJetPackEnergy(), equalTo(1200));
+	}
+	
+	@Test
+	public void whenKirkMouve1200TimesThenHisJetPackHasNoMoreEnergy() {
+		assertThat(kirk.getJetPackEnergy(), equalTo(1200));
+		for(int i=0; i<1200; i++) {
+			kirk.mouve(UP);
+		}
+		assertThat(kirk.getJetPackEnergy(), equalTo(0));
 	}
 }
