@@ -11,14 +11,9 @@ import static org.hamcrest.Matchers.hasEntry;
 
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.Set;
 
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
-
-import io.jsd.training.java.typing.EnumMapTest.MealType;
 
 public class EnumMapTest {
 
