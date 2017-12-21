@@ -1,5 +1,11 @@
 package io.jsd.training.java8;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.equalTo;
+
+import java.util.Arrays;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -23,22 +29,30 @@ public class LambdaTest {
 
 	@Test 
 	public void when5Moins5ThenEquals0(){
-		MatcherAssert.assertThat(difference.calculer(5, 5), Matchers.equalTo(0));
+		assertThat(difference.calculer(5, 5), equalTo(0));
 	}
 	
 	@Test 
 	public void when5PlusThenEquals10(){
-		MatcherAssert.assertThat(addition.calculer(5, 5), Matchers.equalTo(10));
+		assertThat(addition.calculer(5, 5), equalTo(10));
 	}
 	
 	@Test 
 	public void when5divise5ThenEquals1(){
-		MatcherAssert.assertThat(division.calculer(5, 5), Matchers.equalTo(1));
+		assertThat(division.calculer(5, 5), equalTo(1));
 	}
 	
 	@Test 
 	public void when5Multiplie5ThenEquals25(){
-		MatcherAssert.assertThat(multiplication.calculer(5, 5), Matchers.equalTo(25));
+		assertThat(multiplication.calculer(5, 5), equalTo(25));
 	}
-
+	
+	@Test
+	public void whenThen() {
+		String[] myArray = {"one", "two", "three", "four"};
+		//compareToIgnoreCase is a method of String instance
+		Arrays.sort(myArray, String::compareToIgnoreCase);
+		assertThat(Arrays.asList(myArray), contains("four", "one", "three", "two" ));
+	}
+	
 }
