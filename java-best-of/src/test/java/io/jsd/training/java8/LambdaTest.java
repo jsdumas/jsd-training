@@ -48,7 +48,7 @@ public class LambdaTest {
 	}
 	
 	@Test
-	public void whenThen() {
+	public void whenArraysSortOnStringCompareToIgnoreCaseThenReturnOrderedStringList() {
 		String[] myArray = {"one", "two", "three", "four"};
 		//compareToIgnoreCase is a method of String instance
 		Arrays.sort(myArray, String::compareToIgnoreCase);
