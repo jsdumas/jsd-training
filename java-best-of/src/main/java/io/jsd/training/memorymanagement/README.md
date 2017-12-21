@@ -89,3 +89,5 @@ L'API Java contient une quatrième sorte de référence, les PhantomReference do
 
 #WeakHashMap<K,V>
 Map<Book,BookImage> imageCache = WeakHashMap<Book,BookImage>();
+
+#Apache Jmeter
