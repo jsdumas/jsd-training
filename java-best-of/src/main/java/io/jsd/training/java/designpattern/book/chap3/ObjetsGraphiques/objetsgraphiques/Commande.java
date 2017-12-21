@@ -1,1 +1,0 @@
-﻿package io.jsd.training.java.designpattern.book.chap3.ObjetsGraphiques.objetsgraphiques;public interface Commande {    public void lance();}
