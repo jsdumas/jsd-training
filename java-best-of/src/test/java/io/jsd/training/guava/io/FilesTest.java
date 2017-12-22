@@ -4,9 +4,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,6 +21,9 @@ public class FilesTest {
 	private File destFile = new File(tmpDir, "dest.txt");
 	private File tmpSubDir = new File(tmpDir, "/subdir");
 
+	private static final byte[] DATA = { 42, 42, 42, 42, 42 };
+	private File file = new File(tmpDir, "test.bin");
+
 	@Before
 	public void prepareTest() throws IOException {
 		tmpDir.mkdir();
@@ -29,6 +34,12 @@ public class FilesTest {
 		FileWriter fw = new FileWriter(sourceFile);
 		fw.write("Hello World");
 		fw.close();
+
+		file.delete();
+		FileOutputStream fos = new FileOutputStream(file);
+		fos.write(DATA);
+		fos.close();
+
 	}
 
 	@Test
@@ -55,6 +66,12 @@ public class FilesTest {
 		assertThat(sourceFile.exists(), is(true));
 		assertThat(destFile.exists(), is(true));
 		assertThat(Files.equal(sourceFile, destFile), is(true));
+	}
+
+	@Test
+	public void toByteArray() throws IOException {
+		byte[] bytes = Files.toByteArray(file);
+		assertThat(DATA, Matchers.equalTo(bytes));
 	}
 
 }
