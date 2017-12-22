@@ -1,7 +1,8 @@
 package io.jsd.training.guava.base;
 
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+
 import org.junit.Test;
 
 import com.google.common.base.MoreObjects;
@@ -45,6 +46,6 @@ public class MoreObjectsTest {
 	@Test
 	public void whenMoreObjectstoStringHelperThenWeCanOveridedEasilyTostringMethod() {
 		Car car = new Car(99L, "Opel", 10000);
-		MatcherAssert.assertThat(car.toString(), Matchers.equalTo("Car{id=99, name=Opel, price=10000}"));
+		assertThat(car.toString(), equalTo("Car{id=99, name=Opel, price=10000}"));
 	}
 }
