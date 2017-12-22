@@ -6,8 +6,6 @@ import static org.hamcrest.Matchers.equalTo;
 
 import java.util.Arrays;
 
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
 public class LambdaTest {
@@ -15,44 +13,47 @@ public class LambdaTest {
 	interface Operation {
 		public Integer calculer(Integer x, Integer y);
 	}
-	
-	Operation difference = (x,y)->x-y;
-	Operation division = (x,y)-> {
-		if(y==0 || x==0) {
+
+	Operation difference = (x, y) -> x - y;
+	Operation division = (x, y) -> {
+		if (y == 0 || x == 0) {
 			return 0;
 		} else {
-			return x/y;
+			return x / y;
 		}
 	};
-	Operation addition = (x,y)->x+y;
-	Operation multiplication = (x,y)->x*y;
+	Operation addition = (x, y) -> x + y;
+	Operation multiplication = (x, y) -> x * y;
 
-	@Test 
-	public void when5Moins5ThenEquals0(){
+	@Test
+	public void when5Moins5ThenEquals0() {
 		assertThat(difference.calculer(5, 5), equalTo(0));
 	}
-	
-	@Test 
-	public void when5PlusThenEquals10(){
+
+	@Test
+	public void when5PlusThenEquals10() {
 		assertThat(addition.calculer(5, 5), equalTo(10));
 	}
-	
-	@Test 
-	public void when5divise5ThenEquals1(){
+
+	@Test
+	public void when5divise5ThenEquals1() {
 		assertThat(division.calculer(5, 5), equalTo(1));
 	}
-	
-	@Test 
-	public void when5Multiplie5ThenEquals25(){
+
+	@Test
+	public void when5Multiplie5ThenEquals25() {
 		assertThat(multiplication.calculer(5, 5), equalTo(25));
 	}
-	
+
 	@Test
 	public void whenArraysSortOnStringCompareToIgnoreCaseThenReturnOrderedStringList() {
-		String[] myArray = {"one", "two", "three", "four"};
-		//compareToIgnoreCase is a method of String instance
+		String[] myArray = { "one", "two", "three", "four" };
+		// instance reference
+		// static or instance method like String compareToIgnoreCase
+		// intance method should be defined in every collection items that lambda will
+		// apply on them
 		Arrays.sort(myArray, String::compareToIgnoreCase);
-		assertThat(Arrays.asList(myArray), contains("four", "one", "three", "two" ));
+		assertThat(Arrays.asList(myArray), contains("four", "one", "three", "two"));
 	}
-	
+
 }
