@@ -11,7 +11,7 @@ import com.google.common.base.Function;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 
-public class ListsTranformTest {
+public class FunctionTest {
 	
 	 // Given words list
 	private final List<String> words = Splitter.onPattern(" ").splitToList( "Lorem ipsum dolor sit amet consectetur adipisicing elit");
