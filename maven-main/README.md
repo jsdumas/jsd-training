@@ -14,3 +14,6 @@ http://www.sonatype.org/nexus/resources/resources-book-links-and-downloads/
 
 ### Maven cheat sheet
 https://zeroturnaround.com/rebellabs/maven-cheat-sheet/
+
+
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
