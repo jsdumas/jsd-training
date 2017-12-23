@@ -3,9 +3,15 @@ package io.jsd.training.codingame.labyrinth;
 public class Kirk {
 
 	private final KirkSituation kirkSituation;
+	private final Mission searchAndGetCommandRoom;
+	private final GoBackToStartCell goBackToStartCell;
+	private Mission mission;
 
 	public Kirk() {
 		this.kirkSituation = new KirkSituation();
+		this.searchAndGetCommandRoom = new SearchAndGetCommandRoom(this);
+		this.goBackToStartCell = new GoBackToStartCell(this);
+		this.mission = searchAndGetCommandRoom;
 	}
 
 	public Direction mouve(Direction direction) {
@@ -35,6 +41,14 @@ public class Kirk {
 
 	public KirkSituation getKirksituation() {
 		return kirkSituation;
+	}
+	
+	public Mission getMission() {
+		return mission;
+	}
+
+	public void firstMissionFinished() {
+		this.mission = goBackToStartCell;
 	}
 
 }

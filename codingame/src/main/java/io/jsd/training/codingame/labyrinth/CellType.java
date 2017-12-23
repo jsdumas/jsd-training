@@ -8,7 +8,7 @@ public enum CellType {
 	COMMAND_ROOM("C"),
 	UNKOWN_CELL("?");
 	
-	private String code;
+	private final String code;
 	
 	private CellType(String code) {
 		this.code = code;

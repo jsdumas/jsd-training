@@ -2,11 +2,11 @@ package io.jsd.training.codingame.labyrinth;
 
 import static io.jsd.training.codingame.labyrinth.CellType.COMMAND_ROOM;
 
-public class FirstPartOfMission implements Mission {
+public class SearchAndGetCommandRoom implements Mission {
 	
 	private final Kirk kirk;
 	
-	public FirstPartOfMission(Kirk kirk) {
+	public SearchAndGetCommandRoom(Kirk kirk) {
 		this.kirk = kirk;
 	}
 

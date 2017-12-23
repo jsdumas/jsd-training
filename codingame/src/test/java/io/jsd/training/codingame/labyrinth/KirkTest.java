@@ -7,6 +7,7 @@ import static io.jsd.training.codingame.labyrinth.Direction.RIGHT;
 import static io.jsd.training.codingame.labyrinth.Direction.UP;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 import org.hamcrest.MatcherAssert;
 import org.junit.Before;
@@ -63,9 +64,15 @@ public class KirkTest extends KirkSetUp{
 		assertThat(kirk.getJetPackEnergy(), equalTo(0));
 	}
 	
-//	@Test
-//	public void whenKirkScanesZoneThenHeKnowZoneAreaAroundHimOnFiveCells() {
-//		assertThat(kirk.scan(), assertion);
-//	}
+	@Test
+	public void WhenKirkStartToPlayThenHisFirstMissionIsToGetToCommandRoom() {
+		assertThat(kirk.getMission() instanceof SearchAndGetCommandRoom, is(true));
+	}
+	
+	@Test
+	public void WhenKirkFinishFirstMissionThenHisSecondMissionIsToGetBackToStartCell() {
+		kirk.firstMissionFinished();
+		assertThat(kirk.getMission() instanceof GoBackToStartCell, is(true));
+	}
 	
 }

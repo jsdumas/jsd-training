@@ -7,21 +7,21 @@ import static org.hamcrest.Matchers.is;
 
 import org.junit.Test;
 
-public class FirstPartOfMissionTest extends KirkSetUp{
+public class GoBackToStartCellTest extends KirkSetUp{
 	
 	
 	@Test
-	public void whenKirkGetCommandRoomThenHeSuccessFirstPartOfMission() {
-		kirkSituation.newPosition(new Position(99,99, COMMAND_ROOM));
-		Mission mission = new FirstPartOfMission(kirk);
+	public void whenKirkGetBackStartCellThenHeSuccessSecondPartOfMission() {
+		kirkSituation.newPosition(new Position(0,0, START_CELL));
+		Mission mission = new GoBackToStartCell(kirk);
 		assertThat(mission.isMissionSuccessed(), is(true));
 	}
 	
 	@Test
-	public void whenKirkIsNotONCommandRoomCellThenHeDoesNotSuccessSecondPartOfMission() {
-		kirkSituation.newPosition(new Position(0,0, START_CELL));
-		Mission mission = new FirstPartOfMission (kirk);
+	public void whenKirkIsNotONStartCellThenHeDoesNotSuccessSecondPartOfMission() {
+		kirkSituation.newPosition(new Position(99,99, COMMAND_ROOM));
+		Mission mission = new GoBackToStartCell(kirk);
 		assertThat(mission.isMissionSuccessed(), is(false));
 	}
-	
+
 }

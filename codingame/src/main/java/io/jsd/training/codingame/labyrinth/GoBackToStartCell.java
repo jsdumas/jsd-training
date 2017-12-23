@@ -2,11 +2,11 @@ package io.jsd.training.codingame.labyrinth;
 
 import static io.jsd.training.codingame.labyrinth.CellType.START_CELL;
 
-public class SecondPartOfMission implements Mission {
+public class GoBackToStartCell implements Mission {
 
 	private final Kirk kirk;
 
-	public SecondPartOfMission(Kirk kirk) {
+	public GoBackToStartCell(Kirk kirk) {
 		this.kirk = kirk;
 	}
 
