@@ -63,4 +63,9 @@ public class KirkTest extends KirkSetUp{
 		assertThat(kirk.getJetPackEnergy(), equalTo(0));
 	}
 	
+//	@Test
+//	public void whenKirkScanesZoneThenHeKnowZoneAreaAroundHimOnFiveCells() {
+//		assertThat(kirk.scan(), assertion);
+//	}
+	
 }

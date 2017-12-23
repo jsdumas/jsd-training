@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.is;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LabyrinthTest extends KirkSetUp{
+public class GameTest extends KirkSetUp{
 
 	private final static String LINE_0 = "?????????";
 	private final static String LINE_1 = "?#######?";
@@ -20,6 +20,7 @@ public class LabyrinthTest extends KirkSetUp{
 	private final static int ALARM_COUNT = 7;
 
 	private final String[][] grid = new String[ROWS][COLUMNS];
+	private final Alarm alarm = new Alarm(ALARM_COUNT);
 
 	private Labyrinth labyrinth;
 	private Game game;
@@ -31,13 +32,13 @@ public class LabyrinthTest extends KirkSetUp{
 		grid[2] = LINE_2.split("");
 		grid[3] = LINE_3.split("");
 		grid[4] = LINE_4.split("");
-		labyrinth = new Labyrinth(grid, ALARM_COUNT);
-		game = new Game(labyrinth);
+		labyrinth = new Labyrinth(grid);
+		game = new Game(labyrinth, alarm);
 	}
 
 	@Test
 	public void whenInitLabyrinthWithAlarmAt7ThenLabyrinthRowsIs7() {
-		assertThat(labyrinth.getAlarmCount(), is(ALARM_COUNT));
+		assertThat(alarm.getCount(), is(ALARM_COUNT));
 	}
 
 	@Test
@@ -51,10 +52,10 @@ public class LabyrinthTest extends KirkSetUp{
 	}
 	
 	@Test
-	public void whenKirkGetInCommandRoomThenAlarmIsTrigered() {
+	public void whenKirkGetInCommandRoomThenCountAlarmStart() {
 		kirkSituation.newPosition(new Position(2,6, COMMAND_ROOM));
 		game.isKirkGetInCommandRoom(kirk);
-		assertThat(labyrinth.isAlarmActive(), is(true));
+		assertThat(alarm.isCountStarted(), is(true));
 	}
 
 }
