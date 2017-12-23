@@ -1,5 +1,6 @@
 package io.jsd.training.codingame.labyrinth;
 
+import static io.jsd.training.codingame.labyrinth.CellType.COMMAND_ROOM;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -55,7 +56,7 @@ public class LabyrinthTest {
 		Jetpack jetpack = new Jetpack();
 		KirkState state = new KirkState(jetpack);
 		Kirk kirk = new Kirk(state);
-		state.setPosition(new Position(2,6));
+		state.setPosition(new Position(2,6, COMMAND_ROOM));
 		game.isKirkGetInCommandRoom(kirk);
 		assertThat(labyrinth.isAlarmActive(), is(true));
 	}

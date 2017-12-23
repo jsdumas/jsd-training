@@ -1,5 +1,6 @@
 package io.jsd.training.codingame.labyrinth;
 
+import static io.jsd.training.codingame.labyrinth.CellType.START_CELL;
 import static io.jsd.training.codingame.labyrinth.Direction.DOWN;
 import static io.jsd.training.codingame.labyrinth.Direction.LEFT;
 import static io.jsd.training.codingame.labyrinth.Direction.RIGHT;
@@ -11,15 +12,11 @@ import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class KirkTest {
-	
-	private final Jetpack jetpack = new Jetpack();
-	private final KirkState state = new KirkState(jetpack);
-	private final Kirk kirk = new Kirk(state);
+public class KirkTest extends KirkSetUp{
 	
 	@Before
 	public void setUp() {
-		state.setPosition(new Position(0,0));
+		state.setPosition(new Position(0,0, START_CELL));
 	}
 
 	@Test
@@ -65,4 +62,5 @@ public class KirkTest {
 		}
 		assertThat(kirk.getJetPackEnergy(), equalTo(0));
 	}
+	
 }

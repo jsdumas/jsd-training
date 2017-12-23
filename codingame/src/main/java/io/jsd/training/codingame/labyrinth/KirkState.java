@@ -38,4 +38,8 @@ public class KirkState {
 		jetpack.energyDecrease();
 	}
 
+	public CellType getCellTypeOfCurrentPosition() {
+		return position.getCellType();
+	}
+
 }

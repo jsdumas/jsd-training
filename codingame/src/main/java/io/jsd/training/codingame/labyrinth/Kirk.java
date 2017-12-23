@@ -29,4 +29,8 @@ public class Kirk {
 		return state.getJetPackEnergy();
 	}
 
+	public CellType getCellTypeOfCurrentPosition() {
+		return state.getCellTypeOfCurrentPosition();
+	}
+
 }

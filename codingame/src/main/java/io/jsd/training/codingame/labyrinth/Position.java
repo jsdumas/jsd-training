@@ -4,10 +4,12 @@ public class Position {
 
 	private final int x;
 	private final int y;
+	private final CellType cellType;
 
-	public Position(int x, int y) {
+	public Position(int x, int y, CellType cellType) {
 		this.x = x;
 		this.y = y;
+		this.cellType = cellType;
 	}
 
 	public int getX() {
@@ -16,6 +18,10 @@ public class Position {
 
 	public int getY() {
 		return y;
+	}
+
+	public CellType getCellType() {
+		return cellType;
 	}
 
 }
