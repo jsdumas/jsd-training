@@ -4,11 +4,10 @@ import static io.jsd.training.codingame.labyrinth.CellType.COMMAND_ROOM;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LabyrinthTest {
+public class LabyrinthTest extends KirkSetUp{
 
 	private final static String LINE_0 = "?????????";
 	private final static String LINE_1 = "?#######?";
@@ -53,10 +52,7 @@ public class LabyrinthTest {
 	
 	@Test
 	public void whenKirkGetInCommandRoomThenAlarmIsTrigered() {
-		Jetpack jetpack = new Jetpack();
-		KirkState state = new KirkState(jetpack);
-		Kirk kirk = new Kirk(state);
-		state.setPosition(new Position(2,6, COMMAND_ROOM));
+		kirkSituation.newPosition(new Position(2,6, COMMAND_ROOM));
 		game.isKirkGetInCommandRoom(kirk);
 		assertThat(labyrinth.isAlarmActive(), is(true));
 	}

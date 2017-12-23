@@ -16,7 +16,7 @@ public class KirkTest extends KirkSetUp{
 	
 	@Before
 	public void setUp() {
-		state.setPosition(new Position(0,0, START_CELL));
+		kirkSituation.newPosition(new Position(0,0, START_CELL));
 	}
 
 	@Test

@@ -2,35 +2,39 @@ package io.jsd.training.codingame.labyrinth;
 
 public class Kirk {
 
-	private final KirkState state;
+	private final KirkSituation kirkSituation;
 
-	public Kirk(KirkState state) {
-		this.state = state;
+	public Kirk() {
+		this.kirkSituation = new KirkSituation();
 	}
 
 	public Direction mouve(Direction direction) {
-		state.energyDecrease();
+		kirkSituation.energyDecrease();
 		return direction;
 	}
 
 	public Position getPosition() {
-		return state.getPosition();
+		return kirkSituation.getPosition();
 	}
 
 	public int getX() {
-		return state.getX();
+		return kirkSituation.getX();
 	}
 
 	public int getY() {
-		return state.getX();
+		return kirkSituation.getY();
 	}
 
 	public int getJetPackEnergy() {
-		return state.getJetPackEnergy();
+		return kirkSituation.getJetPackEnergy();
 	}
 
 	public CellType getCellTypeOfCurrentPosition() {
-		return state.getCellTypeOfCurrentPosition();
+		return kirkSituation.getCellTypeOfCurrentPosition();
+	}
+
+	public KirkSituation getKirksituation() {
+		return kirkSituation;
 	}
 
 }
