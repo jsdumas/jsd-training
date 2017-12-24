@@ -12,7 +12,13 @@ public class Scanner {
 		Vertex root = new Vertex(currentPosition);
 		for (int x = 0; x < labyrinth.getLength(); x++) {
 			for (int y = 0; y < labyrinth.getColLength(); y++) {
-				Vertex vertex = new Vertex(new Cell(x, y, labyrinth.getCellType(x, y)));
+				Vertex vertex;
+				if(root.getCellX()==x && root.getCellY()==y) {
+					vertex = root;
+				} else {
+					vertex = new Vertex(new Cell(x, y, labyrinth.getCellType(x, y)));
+				}
+				
 				if (x - 1 > 0) {
 					Cell cell = new Cell((x - 1), y, labyrinth.getCellType((x - 1), y));
 					vertex.addNeighbour(new Vertex(cell));
