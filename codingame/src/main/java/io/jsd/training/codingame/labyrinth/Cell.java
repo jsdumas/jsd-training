@@ -2,7 +2,6 @@ package io.jsd.training.codingame.labyrinth;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 public class Cell {
 
@@ -56,32 +55,32 @@ public class Cell {
 		return (y + 1) < colLength;
 	}
 
-	public void addNeighbours(Set<Cell> map, Labyrinth labyrinth) {
+	public void addNeighbours(LabyrinthMap labyrinthMap, Labyrinth labyrinth) {
 		if (hasLeftNeighbour()) {
 			Cell leftNeighbour = new Cell((x - 1), y, labyrinth.getCellType((x - 1), y));
-			if (!map.contains(leftNeighbour)) {
-				map.add(leftNeighbour);
+			if (!labyrinthMap.contains(leftNeighbour)) {
+				labyrinthMap.addCell(leftNeighbour);
 				this.neighbours.add(leftNeighbour);
 			}
 		}
 		if (hasRightNeighbour(labyrinth.getLength())) {
 			Cell rightNeighbour = new Cell((x + 1), y, labyrinth.getCellType((x + 1), y));
-			if (!map.contains(rightNeighbour)) {
-				map.add(rightNeighbour);
+			if (!labyrinthMap.contains(rightNeighbour)) {
+				labyrinthMap.addCell(rightNeighbour);
 				this.neighbours.add(rightNeighbour);
 			}
 		}
 		if (hasUpperNeighbour()) {
 			Cell upperNeighbour = new Cell(x, (y - 1), labyrinth.getCellType(x, (y - 1)));
-			if (!map.contains(upperNeighbour)) {
-				map.add(upperNeighbour);
+			if (!labyrinthMap.contains(upperNeighbour)) {
+				labyrinthMap.addCell(upperNeighbour);
 				this.neighbours.add(upperNeighbour);
 			}
 		}
 		if (hasBottomNeighbour(labyrinth.getColLength())) {
 			Cell bottomNeighbour = new Cell(x, (y + 1), labyrinth.getCellType(x, (y + 1)));
-			if (!map.contains(bottomNeighbour)) {
-				map.add(bottomNeighbour);
+			if (!labyrinthMap.contains(bottomNeighbour)) {
+				labyrinthMap.addCell(bottomNeighbour);
 				this.neighbours.add(bottomNeighbour);
 			}
 		}

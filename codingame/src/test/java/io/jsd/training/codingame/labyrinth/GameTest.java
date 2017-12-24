@@ -3,6 +3,7 @@ package io.jsd.training.codingame.labyrinth;
 import static io.jsd.training.codingame.labyrinth.CellType.COMMAND_ROOM;
 import static io.jsd.training.codingame.labyrinth.CellType.START_CELL;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 import org.hamcrest.Matchers;
@@ -36,6 +37,20 @@ public class GameTest extends GameSetUp{
 	public void whenKirkScanLabyrinthThenHeGetsAMap() {
 		kirkSituation.newPosition(new Cell(2,3, START_CELL));
 		assertThat(kirk.scanLabyrinth(labyrinth).size(), Matchers.is(40));
+	}
+	
+	@Test
+	public void whenKirkScanLabyrynthThenHeKnowsHisCurrentPosition() {
+		kirkSituation.newPosition(new Cell(2,3, START_CELL));
+		LabyrinthMap labyrinthMap = kirk.scanLabyrinth(labyrinth);
+		assertThat(labyrinthMap.getStartCell(), equalTo(new Cell(2,3, START_CELL)));
+	}
+	
+	@Test
+	public void whenKirkScanLabyrynthAndFindCommandRoomThenHeKnowsCurrentRoomPosition() {
+		kirkSituation.newPosition(new Cell(2,3, START_CELL));
+		LabyrinthMap labyrinthMap = kirk.scanLabyrinth(labyrinth);
+		assertThat(labyrinthMap.getCommandRoom(), equalTo(new Cell(2,5, COMMAND_ROOM)));
 	}
 
 }

@@ -1,7 +1,5 @@
 package io.jsd.training.codingame.labyrinth;
 
-import java.util.Set;
-
 public class KirkSituation {
 	
 	private final Jetpack jetpack;
@@ -43,7 +41,7 @@ public class KirkSituation {
 		positionState.setPosition(position);
 	}
 
-	public Set<Cell> scanLabyrinth(Labyrinth labyrinth) {
+	public LabyrinthMap scanLabyrinth(Labyrinth labyrinth) {
 		return scanner.scanLabyrinth(positionState.getCurrentPosition(), labyrinth);
 	}
 

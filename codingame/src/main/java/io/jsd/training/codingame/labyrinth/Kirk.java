@@ -1,7 +1,5 @@
 package io.jsd.training.codingame.labyrinth;
 
-import java.util.Set;
-
 public class Kirk {
 
 	private final KirkSituation kirkSituation;
@@ -53,7 +51,7 @@ public class Kirk {
 		this.mission = goBackToStartCell;
 	}
 
-	public Set<Cell> scanLabyrinth(Labyrinth labyrinth) {
+	public LabyrinthMap scanLabyrinth(Labyrinth labyrinth) {
 		return kirkSituation.scanLabyrinth(labyrinth);
 	}
 
