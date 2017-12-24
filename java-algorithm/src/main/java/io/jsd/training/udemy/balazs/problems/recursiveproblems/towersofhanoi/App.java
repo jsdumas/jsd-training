@@ -1,6 +1,6 @@
 package io.jsd.training.udemy.balazs.problems.recursiveproblems.towersofhanoi;
 
-import test.io.jsd.training.udemy.balazs.problems.recursiveproblems.towersofhanoi.TowerOfHanoiBuilder;
+import io.jsd.training.udemy.balazs.problems.recursiveproblems.towersofhanoi.TowerOfHanoiBuilder;
 
 public class App {
 

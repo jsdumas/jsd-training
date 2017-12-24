@@ -1,6 +1,6 @@
 package io.jsd.training.practice.graph;
 
-import test.io.jsd.training.practice.graph.AdjListBuilder;
+import io.jsd.training.practice.graph.AdjListBuilder;
 
 public class AdjListApp {
 
