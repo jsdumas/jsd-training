@@ -16,6 +16,7 @@ public class Game {
 		String cellType = labyrinth.getCellType(kirk.getPosition());
 		if(cellType.equals(COMMAND_ROOM.getCode())) {
 			alarm.sartCount();
+			kirk.firstMissionFinished();
 		}
 	}
 

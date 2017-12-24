@@ -13,11 +13,11 @@ import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class KirkTest extends KirkSetUp{
+public class KirkTest extends GameSetUp{
 	
 	@Before
 	public void setUp() {
-		kirkSituation.newPosition(new Position(0,0, START_CELL));
+		kirkSituation.newPosition(new Cell(0,0, START_CELL));
 	}
 
 	@Test

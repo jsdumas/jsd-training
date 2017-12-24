@@ -2,26 +2,26 @@ package io.jsd.training.codingame.labyrinth;
 
 public class PositionState {
 	
-	private Position position;
+	private Cell cell;
 	
-	public void setPosition(Position position) {
-		this.position = position;
+	public void setPosition(Cell cell) {
+		this.cell = cell;
 	}
 
-	public Position getPosition() {
-		return position;
+	public Cell getCurrentPosition() {
+		return cell;
 	}
 
-	public int getX() {
-		return position.getX();
+	public int getCurrentX() {
+		return cell.getX();
 	}
 
-	public int getY() {
-		return position.getY();
+	public int getCurrentY() {
+		return cell.getY();
 	}
 
-	public CellType getCellType() {
-		return position.getCellType();
+	public CellType getCurrentCellType() {
+		return cell.getCellType();
 	}
 
 }

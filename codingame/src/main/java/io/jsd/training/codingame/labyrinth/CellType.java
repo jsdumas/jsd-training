@@ -18,4 +18,15 @@ public enum CellType {
 		return code;
 	}
 	
+	public static CellType getCellTypeByKey(String key){
+	    for(CellType cellType : values()){
+	        if( cellType.getCode().equals(key)){
+	            return cellType;
+	        }
+	    }
+	    return null;
+	}
+	
+	
+	
 }

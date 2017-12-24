@@ -1,42 +1,50 @@
 package io.jsd.training.codingame.labyrinth;
 
+import java.util.List;
+
 public class KirkSituation {
 	
-	private final JetpackState jetpackState;
+	private final Jetpack jetpack;
 	private final PositionState positionState;
+	private final Scanner scanner;
 	
 
 	public KirkSituation() {
-		this.jetpackState = new JetpackState();
+		this.jetpack = new Jetpack();
 		this.positionState = new PositionState();
+		this.scanner = new Scanner();
 	}
 
-	public Position getPosition() {
-		return positionState.getPosition();
+	public Cell geCurrenttPosition() {
+		return positionState.getCurrentPosition();
 	}
 
 	public int getX() {
-		return positionState.getX();
+		return positionState.getCurrentX();
 	}
 
 	public int getY() {
-		return positionState.getY();
+		return positionState.getCurrentY();
 	}
 	
 	public CellType getCellTypeOfCurrentPosition() {
-		return positionState.getCellType();
+		return positionState.getCurrentCellType();
 	}
 
 	public int getJetPackEnergy() {
-		return jetpackState.getEnergy();
+		return jetpack.getEnergy();
 	}
 
 	public void energyDecrease() {
-		jetpackState.energyDecrease();
+		jetpack.energyDecrease();
 	}
 
-	public void newPosition(Position position) {
+	public void newPosition(Cell position) {
 		positionState.setPosition(position);
+	}
+
+	public List<Vertex> scanLabyrinth(Labyrinth labyrinth) {
+		return scanner.scanLabyrinth(positionState.getCurrentPosition(), labyrinth);
 	}
 
 	

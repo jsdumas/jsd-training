@@ -1,29 +1,16 @@
 package io.jsd.training.codingame.labyrinth;
 
 import static io.jsd.training.codingame.labyrinth.CellType.COMMAND_ROOM;
+import static io.jsd.training.codingame.labyrinth.CellType.START_CELL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
-public class GameTest extends KirkSetUp{
+public class GameTest extends GameSetUp{
 
-	private final static String LINE_0 = "?????????";
-	private final static String LINE_1 = "?#######?";
-	private final static String LINE_2 = "?#T...C#?";
-	private final static String LINE_3 = "?#######?";
-	private final static String LINE_4 = "?????????";
-
-	private final static int ROWS = 5;
-	private final static int COLUMNS = 9;
-	private final static int ALARM_COUNT = 7;
-
-	private final String[][] grid = new String[ROWS][COLUMNS];
-	private final Alarm alarm = new Alarm(ALARM_COUNT);
-
-	private Labyrinth labyrinth;
-	private Game game;
 	
 	@Before
 	public void initGrid() {
@@ -36,26 +23,19 @@ public class GameTest extends KirkSetUp{
 		game = new Game(labyrinth, alarm);
 	}
 
+		
 	@Test
-	public void whenInitLabyrinthWithAlarmAt7ThenLabyrinthRowsIs7() {
-		assertThat(alarm.getCount(), is(ALARM_COUNT));
-	}
-
-	@Test
-	public void whenInitLabyrinthWith5RowsThenLabyrinthRowsIs5() {
-		assertThat(labyrinth.getGrid().length, is(ROWS));
-	}
-
-	@Test
-	public void whenInitLabyrinthWith9ColumnsThenLabyrinthColumnsIs9() {
-		assertThat(labyrinth.getGrid()[0].length, is(COLUMNS));
+	public void whenKirkGetInCommandRoomThenCountAlarmStartAndFirstMissionIsFinished() {
+		kirkSituation.newPosition(new Cell(2,5, COMMAND_ROOM));
+		game.isKirkGetInCommandRoom(kirk);
+		assertThat(alarm.isCountStarted(), is(true));
+		assertThat(kirk.getMission() instanceof GoBackToStartCell, is(true));
 	}
 	
 	@Test
-	public void whenKirkGetInCommandRoomThenCountAlarmStart() {
-		kirkSituation.newPosition(new Position(2,6, COMMAND_ROOM));
-		game.isKirkGetInCommandRoom(kirk);
-		assertThat(alarm.isCountStarted(), is(true));
+	public void whenKirkScanLabyrinthThenHeGetsAMap() {
+		kirkSituation.newPosition(new Cell(2,3, START_CELL));
+		assertThat(kirk.scanLabyrinth(labyrinth).size(), Matchers.is(1));
 	}
 
 }

@@ -1,12 +1,12 @@
 package io.jsd.training.codingame.labyrinth;
 
-public class Position {
+public class Cell {
 
 	private final int x;
 	private final int y;
 	private final CellType cellType;
 
-	public Position(int x, int y, CellType cellType) {
+	public Cell(int x, int y, CellType cellType) {
 		this.x = x;
 		this.y = y;
 		this.cellType = cellType;

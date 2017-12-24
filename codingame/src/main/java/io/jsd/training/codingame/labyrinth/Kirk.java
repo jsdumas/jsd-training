@@ -1,5 +1,7 @@
 package io.jsd.training.codingame.labyrinth;
 
+import java.util.List;
+
 public class Kirk {
 
 	private final KirkSituation kirkSituation;
@@ -19,8 +21,8 @@ public class Kirk {
 		return direction;
 	}
 
-	public Position getPosition() {
-		return kirkSituation.getPosition();
+	public Cell getPosition() {
+		return kirkSituation.geCurrenttPosition();
 	}
 
 	public int getX() {
@@ -49,6 +51,10 @@ public class Kirk {
 
 	public void firstMissionFinished() {
 		this.mission = goBackToStartCell;
+	}
+
+	public List<Vertex> scanLabyrinth(Labyrinth labyrinth) {
+		return kirkSituation.scanLabyrinth(labyrinth);
 	}
 
 }

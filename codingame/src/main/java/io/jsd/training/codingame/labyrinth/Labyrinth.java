@@ -12,8 +12,20 @@ public class Labyrinth {
 		return grid;
 	}
 
-	public String getCellType(Position position) {
+	public String getCellType(Cell position) {
 		return grid[position.getX()][position.getY()];
+	}
+
+	public int getLength() {
+		return grid.length;
+	}
+
+	public int getColLength() {
+		return grid[0].length;
+	}
+
+	public CellType getCellType(int x, int y) {
+		return CellType.getCellTypeByKey(grid[x][y]);
 	}
 
 }
