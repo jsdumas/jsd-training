@@ -1,6 +1,6 @@
 package io.jsd.training.codingame.labyrinth;
 
-import java.util.List;
+import java.util.Set;
 
 public class KirkSituation {
 	
@@ -43,7 +43,7 @@ public class KirkSituation {
 		positionState.setPosition(position);
 	}
 
-	public List<Vertex> scanLabyrinth(Labyrinth labyrinth) {
+	public Set<Cell> scanLabyrinth(Labyrinth labyrinth) {
 		return scanner.scanLabyrinth(positionState.getCurrentPosition(), labyrinth);
 	}
 

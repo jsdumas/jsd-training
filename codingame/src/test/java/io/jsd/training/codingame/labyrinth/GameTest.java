@@ -35,7 +35,7 @@ public class GameTest extends GameSetUp{
 	@Test
 	public void whenKirkScanLabyrinthThenHeGetsAMap() {
 		kirkSituation.newPosition(new Cell(2,3, START_CELL));
-		assertThat(kirk.scanLabyrinth(labyrinth).size(), Matchers.is(1));
+		assertThat(kirk.scanLabyrinth(labyrinth).size(), Matchers.is(40));
 	}
 
 }

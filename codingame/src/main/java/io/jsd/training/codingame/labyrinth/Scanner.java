@@ -1,70 +1,40 @@
 package io.jsd.training.codingame.labyrinth;
 
+import static io.jsd.training.codingame.labyrinth.CellType.UNKOWN_CELL;
 import static io.jsd.training.codingame.labyrinth.CellType.WALL;
 
+import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 
 public class Scanner {
 
-	public List<Vertex> scanLabyrinth(Cell currentPosition, Labyrinth labyrinth) {
-		Vertex root = new Vertex(currentPosition);
-		for (int x = 0; x < labyrinth.getLength(); x++) {
-			for (int y = 0; y < labyrinth.getColLength(); y++) {
-				Vertex vertex;
-				if(root.getCellX()==x && root.getCellY()==y) {
-					vertex = root;
-				} else {
-					vertex = new Vertex(new Cell(x, y, labyrinth.getCellType(x, y)));
-				}
-				
-				if (x - 1 > 0) {
-					Cell cell = new Cell((x - 1), y, labyrinth.getCellType((x - 1), y));
-					vertex.addNeighbour(new Vertex(cell));
-				}
-				if (x + 1 < labyrinth.getLength()) {
-					Cell cell = new Cell((x + 1), y, labyrinth.getCellType((x + 1), y));
-					vertex.addNeighbour(new Vertex(cell));
-				}
-				if (y - 1 > 0) {
-					Cell cell = new Cell(x , (y - 1), labyrinth.getCellType(x, (y-1)));
-					vertex.addNeighbour(new Vertex(cell));
-				}
-				if (y + 1 < labyrinth.getColLength()) {
-					Cell cell = new Cell(x , (y + 1), labyrinth.getCellType(x, (y+1)));
-					vertex.addNeighbour(new Vertex(cell));
-				}
-			}
-		}
-		return breadthFirstSearch(root);
-	}
-
-	private List<Vertex> breadthFirstSearch(Vertex root) {
-		List<Vertex> vertices = new LinkedList<Vertex>();
-		// Fifo data structure
-		Queue<Vertex> queue = new LinkedList<Vertex>();
-		root.setVisited(true);
-		queue.add(root);
+	public Set<Cell> scanLabyrinth(Cell currentPosition, Labyrinth labyrinth) {
+		Set<Cell> map = new HashSet<Cell>();
+		Queue<Cell> queue = new LinkedList<Cell>();
+		currentPosition.scanCell();
+		queue.add(currentPosition);
 		while (!queue.isEmpty()) {
-			Vertex actualVertex = queue.remove();
-			addvertex(vertices, actualVertex);
-			for (Vertex neighbour : actualVertex.getNeighbourList()) {
-				if (!neighbour.isVisited()) {
-					neighbour.setVisited(true);
+			Cell actualCell = queue.remove();
+//			addScannedCells(map, actualCell);
+			map.add(actualCell);
+			actualCell.addNeighbours(map, labyrinth);
+			for (Cell neighbour : actualCell.getNeighbours()) {
+				if (!neighbour.isScanned()) {
+					neighbour.scanCell();
 					queue.add(neighbour);
-					addvertex(vertices, actualVertex);
 				}
 			}
 		}
-		return vertices;
+		return map;
 	}
 
-	private void addvertex(List<Vertex> vertices, Vertex vertex) {
-		if (vertex.getCellType().equals(WALL)) {
+	private void addScannedCells(Set<Cell> cells, Cell cell) {
+		if (cell.getCellType().equals(WALL) || cell.getCellType().equals(UNKOWN_CELL)) {
 			return;
 		}
-		vertices.add(vertex);
+		cells.add(cell);
 	}
 
 }
