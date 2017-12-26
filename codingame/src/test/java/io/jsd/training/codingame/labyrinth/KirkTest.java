@@ -66,13 +66,7 @@ public class KirkTest extends GameSetUp{
 	
 	@Test
 	public void WhenKirkStartToPlayThenHisFirstMissionIsToGetToCommandRoom() {
-		assertThat(kirk.getMission() instanceof SearchAndGetCommandRoom, is(true));
-	}
-	
-	@Test
-	public void WhenKirkFinishFirstMissionThenHisSecondMissionIsToGetBackToStartCell() {
-		kirk.firstMissionFinished();
-		assertThat(kirk.getMission() instanceof GoBackToStartCell, is(true));
+		assertThat(kirk.getMission() instanceof GetInCommandRoom, is(true));
 	}
 	
 }

@@ -24,7 +24,7 @@ public class LabyrinthMap {
 	}
 
 
-	public int size() {
+	public int getSize() {
 		return allcells.size();
 	}
 
@@ -47,6 +47,13 @@ public class LabyrinthMap {
 	
 	public Cell getCommandRoom() {
 		return this.commandRoom;
+	}
+
+	public boolean isCommandRoomPositionKnown() {
+		if(commandRoom==null) {
+			return false;
+		}
+		return true;
 	}
 
 }

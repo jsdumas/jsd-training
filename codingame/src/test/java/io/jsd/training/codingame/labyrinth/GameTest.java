@@ -6,7 +6,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,33 +23,56 @@ public class GameTest extends GameSetUp{
 		game = new Game(labyrinth, alarm);
 	}
 
-		
+	
 	@Test
-	public void whenKirkGetInCommandRoomThenCountAlarmStartAndFirstMissionIsFinished() {
-		kirkSituation.newPosition(new Cell(2,5, COMMAND_ROOM));
-		game.isKirkGetInCommandRoom(kirk);
-		assertThat(alarm.isCountStarted(), is(true));
-		assertThat(kirk.getMission() instanceof GoBackToStartCell, is(true));
+	public void whenKirkScanLabyrinthThenLabyrinthmapDisplayAllKnownCells() {
+		kirk.newPosition(new Cell(2,3, START_CELL));
+		kirk.scanLabyrinth(labyrinth, alarm);
+		assertThat(kirk.getSizeOfLabyrinthMap(), is(40));
 	}
 	
 	@Test
-	public void whenKirkScanLabyrinthThenHeGetsAMap() {
-		kirkSituation.newPosition(new Cell(2,3, START_CELL));
-		assertThat(kirk.scanLabyrinth(labyrinth).size(), Matchers.is(40));
-	}
-	
-	@Test
-	public void whenKirkScanLabyrynthThenHeKnowsHisCurrentPosition() {
-		kirkSituation.newPosition(new Cell(2,3, START_CELL));
-		LabyrinthMap labyrinthMap = kirk.scanLabyrinth(labyrinth);
+	public void whenKirkScanLabyrinthThenHeKnowsHisCurrentPosition() {
+		kirk.newPosition(new Cell(2,3, START_CELL));
+		kirk.scanLabyrinth(labyrinth, alarm);
+		LabyrinthMap labyrinthMap = kirk.getLabyrinthMap();
 		assertThat(labyrinthMap.getStartCell(), equalTo(new Cell(2,3, START_CELL)));
 	}
 	
 	@Test
-	public void whenKirkScanLabyrynthAndFindCommandRoomThenHeKnowsCurrentRoomPosition() {
-		kirkSituation.newPosition(new Cell(2,3, START_CELL));
-		LabyrinthMap labyrinthMap = kirk.scanLabyrinth(labyrinth);
+	public void whenKirkScanLabyrinthAndFindCommandRoomThenHeKnowsCurrentRoomPosition() {
+		kirk.newPosition(new Cell(2,3, START_CELL));
+		kirk.scanLabyrinth(labyrinth, alarm);
+		LabyrinthMap labyrinthMap = kirk.getLabyrinthMap();
 		assertThat(labyrinthMap.getCommandRoom(), equalTo(new Cell(2,5, COMMAND_ROOM)));
 	}
-
+	
+	@Test
+	public void whenKirkScansLabyrinthAndFindCommandRoomThenFirstMissionIsCompleted() {
+		kirk.newPosition(new Cell(2,3, START_CELL));
+		kirk.scanLabyrinth(labyrinth, alarm);
+		assertThat(kirk.knowsCommandRoomPosition(), is(true));
+	}
+	
+	@Test
+	public void whenKirkKnowsCommandRoomPositionThenHeFocusesOnSecondMission() {
+		kirk.newPosition(new Cell(2,3, START_CELL));
+		kirk.scanLabyrinth(labyrinth, alarm);
+		assertThat(kirk.getMission() instanceof GetInCommandRoom, is(true));
+	}
+	
+	@Test
+	public void whenKirkGetInCommandRoomThenCountAlarmStart() {
+		kirk.newPosition(new Cell(2,5, COMMAND_ROOM));
+		kirk.scanLabyrinth(labyrinth, alarm);
+		assertThat(alarm.isCountStarted(), is(true));
+	}
+	
+	@Test
+	public void whenKirkGetInCommandRoomThenHeFocusesOnThirdMission() {
+		kirk.newPosition(new Cell(2,5, COMMAND_ROOM));
+		kirk.scanLabyrinth(labyrinth, alarm);
+		assertThat(kirk.getMission() instanceof GoBackToStartCell, is(true));
+	}
+	
 }

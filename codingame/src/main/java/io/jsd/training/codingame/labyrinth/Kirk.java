@@ -3,15 +3,17 @@ package io.jsd.training.codingame.labyrinth;
 public class Kirk {
 
 	private final KirkSituation kirkSituation;
-	private final Mission searchAndGetCommandRoom;
-	private final GoBackToStartCell goBackToStartCell;
+	private final Mission findCommadRoom;
+	private final Mission getInCommandRoom;
+	private final Mission goBackToStartCell;
 	private Mission mission;
 
 	public Kirk() {
 		this.kirkSituation = new KirkSituation();
-		this.searchAndGetCommandRoom = new SearchAndGetCommandRoom(this);
+		this.findCommadRoom = new FindCommandRoom(this);
+		this.getInCommandRoom = new GetInCommandRoom(this);
 		this.goBackToStartCell = new GoBackToStartCell(this);
-		this.mission = searchAndGetCommandRoom;
+		this.mission = findCommadRoom;
 	}
 
 	public Direction mouve(Direction direction) {
@@ -46,13 +48,54 @@ public class Kirk {
 	public Mission getMission() {
 		return mission;
 	}
+	
+	private void firstMissionFinished() {
+		this.mission = getInCommandRoom;
+	}
 
-	public void firstMissionFinished() {
+	private void secondMissionFinished(Alarm alarm) {
+		alarm.sartCount();
 		this.mission = goBackToStartCell;
 	}
 
-	public LabyrinthMap scanLabyrinth(Labyrinth labyrinth) {
-		return kirkSituation.scanLabyrinth(labyrinth);
+	public void scanLabyrinth(Labyrinth labyrinth, Alarm alarm) {
+		kirkSituation.scanLabyrinth(labyrinth);
+		if(knowsCommandRoomPosition()) {
+			firstMissionFinished();
+		}
+		if(isKirkGetInCommandRoom()) {
+			secondMissionFinished(alarm);
+		}
+	}
+
+	private boolean isKirkGetInCommandRoom() {
+		if(kirkSituation.isKirkGetInCommandRoom()) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean knowsCommandRoomPosition() {
+		if(kirkSituation.isCommandRoomPositionKnown()) {
+			return true;
+		}
+		return false;
+	}
+
+	public void newPosition(Cell cell) {
+		kirkSituation.newPosition(cell);
+	}
+
+	public boolean isFindCommandCellFinished() {
+		return findCommadRoom.isMissionSuccessed();
+	}
+
+	public int getSizeOfLabyrinthMap() {
+		return kirkSituation.getSizeOfLabyrinthMap();
+	}
+
+	public LabyrinthMap getLabyrinthMap() {
+		return kirkSituation.getLabyrinthMap();
 	}
 
 }
