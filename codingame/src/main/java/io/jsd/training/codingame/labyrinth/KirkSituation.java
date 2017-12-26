@@ -1,6 +1,5 @@
 package io.jsd.training.codingame.labyrinth;
 
-import static io.jsd.training.codingame.labyrinth.CellType.COMMAND_ROOM;
 
 public class KirkSituation {
 	
@@ -62,12 +61,18 @@ public class KirkSituation {
 	}
 
 	public boolean isKirkGetInCommandRoom() {
-		if(currentPosition.getCurrentCellType().equals(COMMAND_ROOM)) {
+		if(currentPosition.getCurrentCellType().equals(CellType.COMMAND_ROOM)) {
 			return true;
 		}
 		return false;
 	}
 
-	
+	public Cell getCommandRoom() {
+		return labyrinthMap.getCommandRoom();
+	}
+
+	public Cell getStartCell() {
+		return labyrinthMap.getStartCell();
+	}
 
 }

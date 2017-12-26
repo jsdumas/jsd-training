@@ -2,7 +2,8 @@ package io.jsd.training.codingame.labyrinth;
 
 public interface Mission {
 
-	boolean isMissionSuccessed();
+	void throwMission(Labyrinth labyrinth, Alarm alarm);
+	Direction getDirection();
 
 }
 

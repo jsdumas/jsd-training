@@ -16,11 +16,6 @@ public class Kirk {
 		this.mission = findCommadRoom;
 	}
 
-	public Direction mouve(Direction direction) {
-		kirkSituation.energyDecrease();
-		return direction;
-	}
-
 	public Cell getPosition() {
 		return kirkSituation.geCurrenttPosition();
 	}
@@ -49,30 +44,22 @@ public class Kirk {
 		return mission;
 	}
 	
-	private void firstMissionFinished() {
+	void firstMissionFinished() {
 		this.mission = getInCommandRoom;
 	}
 
-	private void secondMissionFinished(Alarm alarm) {
+	void secondMissionFinished(Alarm alarm) {
 		alarm.sartCount();
 		this.mission = goBackToStartCell;
 	}
 
-	public void scanLabyrinth(Labyrinth labyrinth, Alarm alarm) {
-		kirkSituation.scanLabyrinth(labyrinth);
-		if(knowsCommandRoomPosition()) {
-			firstMissionFinished();
-		}
-		if(isKirkGetInCommandRoom()) {
-			secondMissionFinished(alarm);
-		}
+	public void throwMission(Labyrinth labyrinth, Alarm alarm) {
+		kirkSituation.energyDecrease();
+		mission.throwMission(labyrinth, alarm);
 	}
-
-	private boolean isKirkGetInCommandRoom() {
-		if(kirkSituation.isKirkGetInCommandRoom()) {
-			return true;
-		}
-		return false;
+	
+	public Direction getDirection() {
+		return mission.getDirection();
 	}
 
 	public boolean knowsCommandRoomPosition() {
@@ -86,16 +73,24 @@ public class Kirk {
 		kirkSituation.newPosition(cell);
 	}
 
-	public boolean isFindCommandCellFinished() {
-		return findCommadRoom.isMissionSuccessed();
-	}
-
 	public int getSizeOfLabyrinthMap() {
 		return kirkSituation.getSizeOfLabyrinthMap();
 	}
 
 	public LabyrinthMap getLabyrinthMap() {
 		return kirkSituation.getLabyrinthMap();
+	}
+
+	public void scanLabyrinth(Labyrinth labyrinth) {
+		kirkSituation.scanLabyrinth(labyrinth);
+	}
+
+	public Cell getCommandRoom() {
+		return kirkSituation.getCommandRoom();
+	}
+
+	public Cell getStartCell() {
+		return kirkSituation.getStartCell();
 	}
 
 }

@@ -1,9 +1,8 @@
 package io.jsd.training.codingame.labyrinth;
 
-import static io.jsd.training.codingame.labyrinth.CellType.COMMAND_ROOM;
-import static io.jsd.training.codingame.labyrinth.CellType.START_CELL;
 
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
 public class Scanner {
@@ -15,20 +14,23 @@ public class Scanner {
 		queue.add(currentPosition);
 		while (!queue.isEmpty()) {
 			Cell actualCell = queue.remove();
-			if(actualCell.getCellType().equals(START_CELL)) {
+			if (actualCell.getCellType().equals(CellType.START_CELL)) {
 				labyrinthMap.setStartCell(actualCell);
 			}
-			if(actualCell.getCellType().equals(COMMAND_ROOM)) {
+			if (actualCell.getCellType().equals(CellType.COMMAND_ROOM)) {
 				labyrinthMap.setCommandRoom(actualCell);
 			}
 			labyrinthMap.addCell(actualCell);
 			actualCell.addNeighbours(labyrinthMap, labyrinth);
-			for (Cell neighbour : actualCell.getNeighbours()) {
-				if (!neighbour.isScanned()) {
-					neighbour.scanCell();
-					queue.add(neighbour);
+
+			Map<Direction, Cell> neighbours = actualCell.getNeighbours();
+			for (Map.Entry<Direction, Cell> neighbour: neighbours.entrySet()) {
+				if (!neighbour.getValue().isScanned()) {
+					neighbour.getValue().scanCell();
+					queue.add(neighbour.getValue());
 				}
 			}
+
 		}
 		return labyrinthMap;
 	}

@@ -1,72 +1,134 @@
 package io.jsd.training.codingame.labyrinth;
 
+import static io.jsd.training.codingame.labyrinth.CellType.COMMAND_ROOM;
 import static io.jsd.training.codingame.labyrinth.CellType.START_CELL;
-import static io.jsd.training.codingame.labyrinth.Direction.DOWN;
-import static io.jsd.training.codingame.labyrinth.Direction.LEFT;
-import static io.jsd.training.codingame.labyrinth.Direction.RIGHT;
-import static io.jsd.training.codingame.labyrinth.Direction.UP;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class KirkTest extends GameSetUp{
 	
 	@Before
-	public void setUp() {
-		kirkSituation.newPosition(new Cell(0,0, START_CELL));
+	public void initGrid() {
+		grid[0] = LINE_0.split("");
+		grid[1] = LINE_1.split("");
+		grid[2] = LINE_2.split("");
+		grid[3] = LINE_3.split("");
+		grid[4] = LINE_4.split("");
+		labyrinth = new Labyrinth(grid);
 	}
+	
 
-	@Test
-	public void whenKirkMoveLeftThenitShouldPrintLeft() {
-		MatcherAssert.assertThat(kirk.mouve(LEFT), equalTo(LEFT));
-	}
-	
-	@Test
-	public void whenKirkMoveUpThenitShouldPrintUp() {
-		MatcherAssert.assertThat(kirk.mouve(UP), equalTo(UP));
-	}
-	
-	@Test
-	public void whenKirkMoveRightThenitShouldPrintRight() {
-		MatcherAssert.assertThat(kirk.mouve(RIGHT), equalTo(RIGHT));
-	}
-	
-	@Test
-	public void whenKirkMoveDownThenitShouldPrintDown() {
-		assertThat(kirk.mouve(DOWN), equalTo(DOWN));
-	}
+//	@Test
+//	public void whenKirkMoveLeftThenitShouldPrintLeft() {
+//		kirkSituation.newPosition(new Cell(0,0, START_CELL));
+//		MatcherAssert.assertThat(kirk.mouve(LEFT), equalTo(LEFT));
+//	}
+//	
+//	@Test
+//	public void whenKirkMoveUpThenitShouldPrintUp() {
+//		kirkSituation.newPosition(new Cell(0,0, START_CELL));
+//		MatcherAssert.assertThat(kirk.mouve(UP), equalTo(UP));
+//	}
+//	
+//	@Test
+//	public void whenKirkMoveRightThenitShouldPrintRight() {
+//		kirkSituation.newPosition(new Cell(0,0, START_CELL));
+//		MatcherAssert.assertThat(kirk.mouve(RIGHT), equalTo(RIGHT));
+//	}
+//	
+//	@Test
+//	public void whenKirkMoveDownThenitShouldPrintDown() {
+//		kirkSituation.newPosition(new Cell(0,0, START_CELL));
+//		assertThat(kirk.mouve(DOWN), equalTo(DOWN));
+//	}
 	
 	@Test
 	public void whenKirkIsOnXEqual0ThenHisXPositionIs0() {
+		kirkSituation.newPosition(new Cell(0,0, START_CELL));
 		assertThat(kirk.getX(), equalTo(0));
 	}
 	
 	@Test
 	public void whenKirkIsOnYEqual0ThenHisYPositionIs0() {
+		kirkSituation.newPosition(new Cell(0,0, START_CELL));
 		assertThat(kirk.getY(), equalTo(0));
 	}
 	
 	@Test
 	public void whenKirkStartThenHisJetPackEnergyIs1200() {
+		kirkSituation.newPosition(new Cell(0,0, START_CELL));
 		assertThat(kirk.getJetPackEnergy(), equalTo(1200));
 	}
 	
+//	@Test
+//	public void whenKirkMouve1200TimesThenHisJetPackHasNoMoreEnergy() {
+//		kirkSituation.newPosition(new Cell(0,0, START_CELL));
+//		assertThat(kirk.getJetPackEnergy(), equalTo(1200));
+//		for(int i=0; i<1200; i++) {
+//			kirk.throwMission(labyrinth, alarm);
+//		}
+//		assertThat(kirk.getJetPackEnergy(), equalTo(0));
+//	}
+	
 	@Test
-	public void whenKirkMouve1200TimesThenHisJetPackHasNoMoreEnergy() {
-		assertThat(kirk.getJetPackEnergy(), equalTo(1200));
-		for(int i=0; i<1200; i++) {
-			kirk.mouve(UP);
-		}
-		assertThat(kirk.getJetPackEnergy(), equalTo(0));
+	public void WhenKirkStartToPlayThenHisFirstMissionIsToFindCommandRoom() {
+		kirkSituation.newPosition(new Cell(0,0, START_CELL));
+		assertThat(kirk.getMission() instanceof FindCommandRoom, is(true));
 	}
 	
 	@Test
-	public void WhenKirkStartToPlayThenHisFirstMissionIsToGetToCommandRoom() {
-		assertThat(kirk.getMission() instanceof GetInCommandRoom, is(true));
+	public void whenKirkScanLabyrinthThenLabyrinthmapDisplayAllKnownCells() {
+		kirk.newPosition(new Cell(2,3, START_CELL));
+		kirk.throwMission(labyrinth, alarm);
+		assertThat(kirk.getSizeOfLabyrinthMap(), is(40));
+	}
+	
+	@Test
+	public void whenKirkScanLabyrinthThenHeKnowsHisCurrentPosition() {
+		kirk.newPosition(new Cell(2,3, START_CELL));
+		kirk.throwMission(labyrinth, alarm);
+		LabyrinthMap labyrinthMap = kirk.getLabyrinthMap();
+		assertThat(labyrinthMap.getStartCell(), equalTo(new Cell(2,3, START_CELL)));
+	}
+	
+	@Test
+	public void whenKirkScanLabyrinthAndFindCommandRoomThenHeKnowsCurrentRoomPosition() {
+		kirk.newPosition(new Cell(2,3, START_CELL));
+		kirk.throwMission(labyrinth, alarm);
+		LabyrinthMap labyrinthMap = kirk.getLabyrinthMap();
+		assertThat(labyrinthMap.getCommandRoom(), equalTo(new Cell(2,5, COMMAND_ROOM)));
+	}
+	
+	@Test
+	public void whenKirkScansLabyrinthAndFindCommandRoomThenFirstMissionIsCompleted() {
+		kirk.newPosition(new Cell(2,3, START_CELL));
+		kirk.throwMission(labyrinth, alarm);
+		assertThat(kirk.knowsCommandRoomPosition(), is(true));
+	}
+	
+	@Test
+	public void whenKirkKnowsCommandRoomPositionAndGetItThenHeFocusesOnThirdMission() {
+		kirk.newPosition(new Cell(2,3, START_CELL));
+		kirk.throwMission(labyrinth, alarm);
+		assertThat(kirk.getMission() instanceof GoBackToStartCell, is(true));
+	}
+	
+	@Test
+	public void whenKirkGetInCommandRoomThenCountAlarmStart() {
+		kirk.newPosition(new Cell(2,5, COMMAND_ROOM));
+		kirk.throwMission(labyrinth, alarm);
+		assertThat(alarm.isCountStarted(), is(true));
+	}
+	
+	@Test
+	public void whenKirkGetInCommandRoomThenHeFocusesOnThirdMission() {
+		kirk.newPosition(new Cell(2,5, COMMAND_ROOM));
+		kirk.throwMission(labyrinth, alarm);
+		assertThat(kirk.getMission() instanceof GoBackToStartCell, is(true));
 	}
 	
 }

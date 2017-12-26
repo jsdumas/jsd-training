@@ -1,11 +1,6 @@
 package io.jsd.training.codingame.labyrinth;
 
-import static io.jsd.training.codingame.labyrinth.CellType.START_CELL;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-
 import org.junit.Before;
-import org.junit.Test;
 
 public class FindCommandRoomTest extends GameSetUp{
 	
@@ -17,22 +12,7 @@ public class FindCommandRoomTest extends GameSetUp{
 		grid[3] = LINE_3.split("");
 		grid[4] = LINE_4.split("");
 		labyrinth = new Labyrinth(grid);
-		game = new Game(labyrinth, alarm);
 	}
 	
-	
-	@Test
-	public void whenAllCellsAreNotScannedThenFirstMissionIsNotFinished() {
-		kirk.newPosition(new Cell(0,0, START_CELL));
-		kirk.scanLabyrinth(labyrinth, alarm);
-		assertThat(kirk.getMission() instanceof FindCommandRoom, is(true));
-		assertThat(kirk.knowsCommandRoomPosition(), is(true));
-	}
-	
-//	@Test
-//	public void whenAllCellsAreScannedThenFirstMissionIsFinished() {
-//		kirkSituation.newPosition(new Cell(0,0, START_CELL));
-//		Mission mission = new ScanAllCells (kirk);
-//		assertThat(mission.isMissionSuccessed(), is(true));
-//	}
+
 }

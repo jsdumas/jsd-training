@@ -16,7 +16,6 @@ public class LabyrinthTest extends GameSetUp{
 		grid[3] = LINE_3.split("");
 		grid[4] = LINE_4.split("");
 		labyrinth = new Labyrinth(grid);
-		game = new Game(labyrinth, alarm);
 	}
 
 	@Test

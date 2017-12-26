@@ -19,6 +19,5 @@ public abstract class GameSetUp {
 	protected final Alarm alarm = new Alarm(ALARM_COUNT);
 
 	protected Labyrinth labyrinth;
-	protected Game game;
 
 }

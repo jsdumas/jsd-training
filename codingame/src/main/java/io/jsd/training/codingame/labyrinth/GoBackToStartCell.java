@@ -1,21 +1,28 @@
 package io.jsd.training.codingame.labyrinth;
 
-import static io.jsd.training.codingame.labyrinth.CellType.START_CELL;
+import java.util.Stack;
 
 public class GoBackToStartCell implements Mission {
 
 	private final Kirk kirk;
+	private Stack<Direction> pathToStartCell;
+	private Astar aStar;
 
 	public GoBackToStartCell(Kirk kirk) {
 		this.kirk = kirk;
 	}
 
 	@Override
-	public boolean isMissionSuccessed() {
-		if(kirk.getCellTypeOfCurrentPosition().equals(START_CELL)){
-			return true;
+	public void throwMission(Labyrinth labyrinth, Alarm alarm) {
+		if (aStar == null && pathToStartCell==null) {
+			aStar = new Astar();
+			pathToStartCell = aStar.getShortestPath(kirk.getCommandRoom(), kirk.getStartCell());
 		}
-		return false;
+	}
+
+	@Override
+	public Direction getDirection() {
+		return pathToStartCell.pop();
 	}
 
 }
