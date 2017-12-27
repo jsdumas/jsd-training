@@ -5,14 +5,12 @@ public class KirkSituation {
 	
 	private final Jetpack jetpack;
 	private final PositionState currentPosition;
-	private final Scanner scanner;
 	private LabyrinthMap labyrinthMap;
 	
 
 	public KirkSituation() {
 		this.jetpack = new Jetpack();
 		this.currentPosition = new PositionState();
-		this.scanner = new Scanner();
 		this.labyrinthMap = new LabyrinthMap();
 	}
 
@@ -45,7 +43,9 @@ public class KirkSituation {
 	}
 
 	public void scanLabyrinth(Labyrinth labyrinth) {
-		labyrinthMap = scanner.scanLabyrinth(currentPosition.getCurrentPosition(), labyrinth);
+		MapScanner mapScanner = new MapScanner();
+		mapScanner.scanLabyrinth(currentPosition.getCurrentPosition(), labyrinth);
+		labyrinthMap = mapScanner.getLabyrinthMap();
 	}
 
 	public boolean isCommandRoomPositionKnown() {

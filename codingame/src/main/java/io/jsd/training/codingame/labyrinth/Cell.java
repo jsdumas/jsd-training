@@ -23,40 +23,6 @@ public class Cell {
 		this.neighbours = new HashMap<Direction, Cell>();
 	}
 	
-	
-	private boolean hasLeftNeighbour() {
-		return (x - 1) >= 0;
-	}
-
-	private boolean hasRightNeighbour(int length) {
-		return (x + 1) < length;
-	}
-
-	private boolean hasUpperNeighbour() {
-		return (y - 1) >= 0;
-	}
-
-	private boolean hasBottomNeighbour(int colLength) {
-		return (y + 1) < colLength;
-	}
-	
-	private CellType getBottomCellType(Labyrinth labyrinth) {
-		return labyrinth.getCellType(x, (y+1));
-	}
-
-	private CellType getRightCellType(Labyrinth labyrinth) {
-		return labyrinth.getCellType((x+1), y);
-	}
-
-	private CellType getLeftCellType(Labyrinth labyrinth) {
-		return labyrinth.getCellType((x-1), y);
-	}
-
-	private CellType getUpperCellType(Labyrinth labyrinth) {
-		return labyrinth.getCellType(x, (y-1));
-	}
-	
-
 	public int getX() {
 		return x;
 	}
@@ -75,37 +41,6 @@ public class Cell {
 
 	public boolean isScanned() {
 		return isScanned;
-	}
-
-	public void addNeighbours(LabyrinthMap labyrinthMap, Labyrinth labyrinth) {
-		if (hasLeftNeighbour()) {
-			Cell leftNeighbour = new Cell((x - 1), y, labyrinth.getCellType((x - 1), y));
-			if (!labyrinthMap.contains(leftNeighbour)) {
-				labyrinthMap.addCell(leftNeighbour);
-				this.neighbours.put(Direction.RIGHT, leftNeighbour);
-			}
-		}
-		if (hasRightNeighbour(labyrinth.getLength())) {
-			Cell rightNeighbour = new Cell((x + 1), y, labyrinth.getCellType((x + 1), y));
-			if (!labyrinthMap.contains(rightNeighbour)) {
-				labyrinthMap.addCell(rightNeighbour);
-				this.neighbours.put(Direction.LEFT, rightNeighbour);
-			}
-		}
-		if (hasUpperNeighbour()) {
-			Cell upperNeighbour = new Cell(x, (y - 1), labyrinth.getCellType(x, (y - 1)));
-			if (!labyrinthMap.contains(upperNeighbour)) {
-				labyrinthMap.addCell(upperNeighbour);
-				this.neighbours.put(Direction.DOWN, upperNeighbour);
-			}
-		}
-		if (hasBottomNeighbour(labyrinth.getColLength())) {
-			Cell bottomNeighbour = new Cell(x, (y + 1), labyrinth.getCellType(x, (y + 1)));
-			if (!labyrinthMap.contains(bottomNeighbour)) {
-				labyrinthMap.addCell(bottomNeighbour);
-				this.neighbours.put(Direction.UP, bottomNeighbour);
-			}
-		}
 	}
 
 	public Map<Direction, Cell> getNeighbours() {
@@ -137,65 +72,13 @@ public class Cell {
 		return true;
 	}
 
-	public boolean hasCommandRoomAtLeftCell(Labyrinth labyrinth) {
-		if(hasLeftNeighbour() && getLeftCellType(labyrinth).equals(CellType.COMMAND_ROOM))
-			return true;
-		return false;
-	}
-	
-	public boolean hasCommandRoomAtUpperCase(Labyrinth labyrinth) {
-		if(hasUpperNeighbour() && getUpperCellType(labyrinth).equals(CellType.COMMAND_ROOM))
-			return true;
-		return false;
-	}
-	
-	public boolean hasCommandRoomAtRightCase(Labyrinth labyrinth) {
-		if(hasRightNeighbour(labyrinth.getLength()) && getRightCellType(labyrinth).equals(CellType.COMMAND_ROOM))
-			return true;
-		return false;
-	}
-	
-	public boolean hasCommandRoomAtBottomCase(Labyrinth labyrinth) {
-		if(hasBottomNeighbour(labyrinth.getColLength()) && getBottomCellType(labyrinth).equals(CellType.COMMAND_ROOM))
-			return true;
-		return false;
-	}
-
-
-	public boolean isLeftCellMouvable(Labyrinth labyrinth) {
-		if(hasLeftNeighbour() && !getLeftCellType(labyrinth).equals(CellType.EMPTY_SPACE))
-			return true;
-		return false;
-	}
-
-	public boolean isUpperCellMouvable(Labyrinth labyrinth) {
-		if(hasUpperNeighbour() && !getLeftCellType(labyrinth).equals(CellType.EMPTY_SPACE))
-			return true;
-		return false;
-	}
-
-	public boolean isRightCellMouvable(Labyrinth labyrinth) {
-		if(hasRightNeighbour(labyrinth.getLength()) && !getLeftCellType(labyrinth).equals(CellType.EMPTY_SPACE))
-			return true;
-		return false;
-	}
-
-	public boolean isBottomCellMouvable(Labyrinth labyrinth) {
-		if(hasBottomNeighbour(labyrinth.getColLength()) && !getLeftCellType(labyrinth).equals(CellType.EMPTY_SPACE))
-			return true;
-		return false;
-	}
-
-
 	public void setgScore(double cost) {
 		this.howFarAwayThatCellIsFromTheStartingCell=cost;
 	}
 
-
 	public double getgScore() {
 		return howFarAwayThatCellIsFromTheStartingCell;
 	}
-
 
 	public double getfScore() {
 		return lowestCostPath;
@@ -206,8 +89,6 @@ public class Cell {
 		this.lowestCostPath=lowestCostPath;
 	}
 
-
-
 	public ParentCell getParentCellForShortestPath() {
 		return this.parentCellForShortestPath;
 	}
@@ -217,16 +98,16 @@ public class Cell {
 		this.parentCellForShortestPath=parentCellForShortestPath;
 	}
 
-
 	public Cell getParentCell() {
 		return parentCellForShortestPath.getParentCell();
 	}
-
 
 	public Direction getFrom() {
 		return parentCellForShortestPath.getFrom();
 	}
 
+	public void putNeighbour(Direction direction, Cell neighbour) {
+		neighbours.put(direction,  neighbour);
+	}
 
-	
 }

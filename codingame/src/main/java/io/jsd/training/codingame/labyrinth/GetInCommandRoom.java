@@ -16,17 +16,8 @@ public class GetInCommandRoom implements Mission {
 	}
 
 	public void setDirection(Labyrinth labyrinth) {
-		direction = null;
-		Cell currentCell = kirk.getPosition();
-		if(currentCell.hasCommandRoomAtLeftCell(labyrinth)) {
-			direction =  Direction.LEFT;
-		} else  if(currentCell.hasCommandRoomAtUpperCase(labyrinth)) {
-			direction =  Direction.UP;
-		} else  if(currentCell.hasCommandRoomAtRightCase(labyrinth)) {
-			direction =  Direction.RIGHT;
-		} else  if(currentCell.hasCommandRoomAtBottomCase(labyrinth)) {
-			direction =  Direction.DOWN;
-		}
+		SearchCell searchCommandRoom = new SearchCommandRoom(kirk.getPosition(), labyrinth);
+		direction = searchCommandRoom.getCell();
 	}
 
 

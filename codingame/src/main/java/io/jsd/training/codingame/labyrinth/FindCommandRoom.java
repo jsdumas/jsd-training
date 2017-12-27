@@ -20,17 +20,8 @@ public class FindCommandRoom implements Mission {
 	}
 
 	private void setDirection(Labyrinth labyrinth) {
-		direction =  null;
-		Cell currentCell = kirk.getPosition();
-		if (currentCell.isLeftCellMouvable(labyrinth)) {
-			direction = Direction.LEFT;
-		} else if (currentCell.isUpperCellMouvable(labyrinth)) {
-			direction = Direction.UP;
-		} else if (currentCell.isRightCellMouvable(labyrinth)) {
-			direction = Direction.RIGHT;
-		} else if (currentCell.isBottomCellMouvable(labyrinth)) {
-			direction = Direction.DOWN;
-		}
+		SearchCell mouvable = new SearchMouvableCell(kirk.getPosition(), labyrinth);
+		direction =  mouvable.getCell();
 	}
 
 	@Override
