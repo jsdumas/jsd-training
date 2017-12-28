@@ -3,17 +3,17 @@ package io.jsd.training.codingame.labyrinth;
 public class Kirk {
 
 	private final KirkSituation kirkSituation;
-	private final Mission findCommadRoom;
+	private final Mission findCommandRoom;
 	private final Mission getInCommandRoom;
 	private final Mission goBackToStartCell;
 	private Mission mission;
 
 	public Kirk() {
 		this.kirkSituation = new KirkSituation();
-		this.findCommadRoom = new FindCommandRoom(this);
+		this.findCommandRoom = new FindCommandRoom(this);
 		this.getInCommandRoom = new GetInCommandRoom(this);
 		this.goBackToStartCell = new GoBackToStartCell(this);
-		this.mission = findCommadRoom;
+		this.mission = findCommandRoom;
 	}
 
 	public Cell getPosition() {
@@ -39,31 +39,32 @@ public class Kirk {
 	public KirkSituation getKirksituation() {
 		return kirkSituation;
 	}
-	
+
 	public Mission getMission() {
 		return mission;
-	}
-	
-	void firstMissionFinished() {
-		this.mission = getInCommandRoom;
-	}
-
-	void secondMissionFinished(Alarm alarm) {
-		alarm.sartCount();
-		this.mission = goBackToStartCell;
 	}
 
 	public void throwMission(Labyrinth labyrinth, Alarm alarm) {
 		kirkSituation.energyDecrease();
-		mission.throwMission(labyrinth, alarm);
+		
+		if(knowsCommandRoomPosition()) {
+			mission = getInCommandRoom;
+		}
+		
+		if(getCellTypeOfCurrentPosition().equals(CellType.COMMAND_ROOM)) {
+			alarm.sartCount();
+			mission = goBackToStartCell;
+		}
+		
+		mission.throwMission(labyrinth);
 	}
-	
-	public Direction getDirection() {
+
+	public Direction getDirection(Alarm alarm) {
 		return mission.getDirection();
 	}
 
 	public boolean knowsCommandRoomPosition() {
-		if(kirkSituation.isCommandRoomPositionKnown()) {
+		if (kirkSituation.isCommandRoomPositionKnown()) {
 			return true;
 		}
 		return false;

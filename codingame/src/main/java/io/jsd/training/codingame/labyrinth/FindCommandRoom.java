@@ -1,6 +1,6 @@
 package io.jsd.training.codingame.labyrinth;
 
-public class FindCommandRoom implements Mission {
+public class FindCommandRoom implements Mission{
 
 	private final Kirk kirk;
 	private Direction direction;
@@ -10,12 +10,8 @@ public class FindCommandRoom implements Mission {
 	}
 
 	@Override
-	public void throwMission(Labyrinth labyrinth, Alarm alarm) {
+	public void throwMission(Labyrinth labyrinth) {
 		kirk.scanLabyrinth(labyrinth);
-		if (kirk.knowsCommandRoomPosition()) {
-			kirk.firstMissionFinished();
-			kirk.throwMission(labyrinth, alarm);
-		}
 		setDirection(labyrinth);
 	}
 

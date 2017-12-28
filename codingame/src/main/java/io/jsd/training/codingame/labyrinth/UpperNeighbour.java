@@ -10,13 +10,13 @@ public class UpperNeighbour implements Neighbour {
 	public UpperNeighbour(Cell cell, Labyrinth labyrinth) {
 		this.cell = cell;
 		this.labyrinth = labyrinth;
-		x=cell.getX();
-		y=cell.getY()-1;
+		x=cell.getX()-1;
+		y=cell.getY();
 	}
 
 	@Override
 	public boolean isExist() {
-		return y >= UPPER_LIMIT;
+		return x >= UPPER_LIMIT;
 	}
 
 	@Override

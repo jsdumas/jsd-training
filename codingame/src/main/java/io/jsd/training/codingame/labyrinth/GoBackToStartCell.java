@@ -13,7 +13,7 @@ public class GoBackToStartCell implements Mission {
 	}
 
 	@Override
-	public void throwMission(Labyrinth labyrinth, Alarm alarm) {
+	public void throwMission(Labyrinth labyrinth) {
 		if (aStar == null && pathToStartCell==null) {
 			aStar = new Astar();
 			pathToStartCell = aStar.getShortestPath(kirk.getCommandRoom(), kirk.getStartCell());

@@ -10,9 +10,8 @@ public class GetInCommandRoom implements Mission {
 	}
 
 	@Override
-	public void throwMission(Labyrinth labyrinth, Alarm alarm) {
+	public void throwMission(Labyrinth labyrinth) {
 		setDirection(labyrinth);
-		kirk.secondMissionFinished(alarm);
 	}
 
 	public void setDirection(Labyrinth labyrinth) {

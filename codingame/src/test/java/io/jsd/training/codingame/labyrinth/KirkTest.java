@@ -22,29 +22,12 @@ public class KirkTest extends GameSetUp{
 	}
 	
 
-//	@Test
-//	public void whenKirkMoveLeftThenitShouldPrintLeft() {
-//		kirkSituation.newPosition(new Cell(0,0, START_CELL));
-//		MatcherAssert.assertThat(kirk.mouve(LEFT), equalTo(LEFT));
-//	}
-//	
-//	@Test
-//	public void whenKirkMoveUpThenitShouldPrintUp() {
-//		kirkSituation.newPosition(new Cell(0,0, START_CELL));
-//		MatcherAssert.assertThat(kirk.mouve(UP), equalTo(UP));
-//	}
-//	
-//	@Test
-//	public void whenKirkMoveRightThenitShouldPrintRight() {
-//		kirkSituation.newPosition(new Cell(0,0, START_CELL));
-//		MatcherAssert.assertThat(kirk.mouve(RIGHT), equalTo(RIGHT));
-//	}
-//	
-//	@Test
-//	public void whenKirkMoveDownThenitShouldPrintDown() {
-//		kirkSituation.newPosition(new Cell(0,0, START_CELL));
-//		assertThat(kirk.mouve(DOWN), equalTo(DOWN));
-//	}
+	@Test
+	public void whenKirkCanOnlyMouveOnRightThenHeShouldMouveOnRight() {
+		kirkSituation.newPosition(new Cell(2,3, START_CELL));
+		 kirk.throwMission(labyrinth, alarm);
+		assertThat(kirk.getDirection(alarm), equalTo(Direction.RIGHT));
+	}
 	
 	@Test
 	public void whenKirkIsOnXEqual0ThenHisXPositionIs0() {
@@ -63,16 +46,6 @@ public class KirkTest extends GameSetUp{
 		kirkSituation.newPosition(new Cell(0,0, START_CELL));
 		assertThat(kirk.getJetPackEnergy(), equalTo(1200));
 	}
-	
-//	@Test
-//	public void whenKirkMouve1200TimesThenHisJetPackHasNoMoreEnergy() {
-//		kirkSituation.newPosition(new Cell(0,0, START_CELL));
-//		assertThat(kirk.getJetPackEnergy(), equalTo(1200));
-//		for(int i=0; i<1200; i++) {
-//			kirk.throwMission(labyrinth, alarm);
-//		}
-//		assertThat(kirk.getJetPackEnergy(), equalTo(0));
-//	}
 	
 	@Test
 	public void WhenKirkStartToPlayThenHisFirstMissionIsToFindCommandRoom() {
@@ -112,8 +85,9 @@ public class KirkTest extends GameSetUp{
 	
 	@Test
 	public void whenKirkKnowsCommandRoomPositionAndGetItThenHeFocusesOnThirdMission() {
-		kirk.newPosition(new Cell(2,3, START_CELL));
+		kirk.newPosition(new Cell(2,5, COMMAND_ROOM));
 		kirk.throwMission(labyrinth, alarm);
+		kirk.getDirection(alarm);
 		assertThat(kirk.getMission() instanceof GoBackToStartCell, is(true));
 	}
 	

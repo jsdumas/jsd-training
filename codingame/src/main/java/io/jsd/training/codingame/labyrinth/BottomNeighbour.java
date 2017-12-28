@@ -10,13 +10,13 @@ public class BottomNeighbour implements Neighbour {
 	public BottomNeighbour(Cell cell, Labyrinth labyrinth) {
 		this.cell = cell;
 		this.labyrinth = labyrinth;
-		x=cell.getX();
-		y=cell.getY()+1;
+		x=cell.getX()+1;
+		y=cell.getY();
 	}
 
 	@Override
 	public boolean isExist() {
-		return y < labyrinth.getColLength();
+		return x < labyrinth.getLength();
 	}
 
 	@Override

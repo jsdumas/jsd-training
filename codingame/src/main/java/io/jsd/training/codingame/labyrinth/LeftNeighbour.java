@@ -10,13 +10,13 @@ public class LeftNeighbour implements Neighbour {
 	public LeftNeighbour(Cell cell, Labyrinth labyrinth) {
 		this.cell = cell;
 		this.labyrinth = labyrinth;
-		x = cell.getX() - 1;
-		y = cell.getY();
+		x = cell.getX();
+		y = cell.getY()-1;
 	}
 
 	@Override
 	public boolean isExist() {
-		return x >= LEFT_LIMIT;
+		return y >= LEFT_LIMIT;
 	}
 
 	@Override
