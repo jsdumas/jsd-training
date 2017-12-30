@@ -113,8 +113,21 @@ public class KirkTest extends GameSetUp{
 	}
 	
 	@Test
-	public void whenThen() {
+	public void whenKirkCanOnlyMouveOnRigthThenHeMouvesOnRight() {
 		kirk.newPosition(new Cell(1,2, CellType.EMPTY_SPACE));
+		kirk.throwMission(labyrinthInLine, alarm);
+		assertThat(kirk.getDirection(), Matchers.equalTo(Direction.RIGHT));
+	}
+	
+	@Test
+	public void whenKirkCanMouveOnUnvisitedCellThenHeMouvesOnUnvisitedCell() {
+		kirk.newPosition(new Cell(1,1, CellType.START_CELL));
+		kirk.throwMission(labyrinthInLine, alarm);
+		assertThat(kirk.getDirection(), Matchers.equalTo(Direction.RIGHT));
+		kirk.newPosition(new Cell(1,2, CellType.EMPTY_SPACE));
+		kirk.throwMission(labyrinthInLine, alarm);
+		assertThat(kirk.getDirection(), Matchers.equalTo(Direction.RIGHT));
+		kirk.newPosition(new Cell(1,3, CellType.EMPTY_SPACE));
 		kirk.throwMission(labyrinthInLine, alarm);
 		assertThat(kirk.getDirection(), Matchers.equalTo(Direction.RIGHT));
 	}
