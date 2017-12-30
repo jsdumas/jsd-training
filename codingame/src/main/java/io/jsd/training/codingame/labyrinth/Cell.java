@@ -1,10 +1,9 @@
 package io.jsd.training.codingame.labyrinth;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
-public class Cell {
+public class Cell implements Comparable<Cell> {
 
 	private final int x;
 	private final int y;
@@ -22,7 +21,7 @@ public class Cell {
 		this.isScanned = false;
 		this.neighbours = new HashMap<Direction, Cell>();
 	}
-	
+
 	public int getX() {
 		return x;
 	}
@@ -73,7 +72,7 @@ public class Cell {
 	}
 
 	public void setgScore(double cost) {
-		this.howFarAwayThatCellIsFromTheStartingCell=cost;
+		this.howFarAwayThatCellIsFromTheStartingCell = cost;
 	}
 
 	public double getgScore() {
@@ -84,18 +83,16 @@ public class Cell {
 		return lowestCostPath;
 	}
 
-
 	public void setfScore(double lowestCostPath) {
-		this.lowestCostPath=lowestCostPath;
+		this.lowestCostPath = lowestCostPath;
 	}
 
 	public ParentCell getParentCellForShortestPath() {
 		return this.parentCellForShortestPath;
 	}
 
-
 	public void setParentCellForShortestPath(ParentCell parentCellForShortestPath) {
-		this.parentCellForShortestPath=parentCellForShortestPath;
+		this.parentCellForShortestPath = parentCellForShortestPath;
 	}
 
 	public Cell getParentCell() {
@@ -107,7 +104,12 @@ public class Cell {
 	}
 
 	public void putNeighbour(Direction direction, Cell neighbour) {
-		neighbours.put(direction,  neighbour);
+		neighbours.put(direction, neighbour);
+	}
+
+	@Override
+	public int compareTo(Cell otherCell) {
+		return Double.compare(this.lowestCostPath, otherCell.getfScore());
 	}
 
 }

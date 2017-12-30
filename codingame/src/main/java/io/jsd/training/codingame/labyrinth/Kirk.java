@@ -17,7 +17,7 @@ public class Kirk {
 	}
 
 	public Cell getPosition() {
-		return kirkSituation.geCurrenttPosition();
+		return kirkSituation.getCurrentPosition();
 	}
 
 	public int getX() {
@@ -59,7 +59,7 @@ public class Kirk {
 		mission.throwMission(labyrinth);
 	}
 
-	public Direction getDirection(Alarm alarm) {
+	public Direction getDirection() {
 		return mission.getDirection();
 	}
 

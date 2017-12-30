@@ -7,22 +7,19 @@ import java.util.Queue;
 
 public class MapScanner {
 	
-	private final LabyrinthMap labyrinthMap;
 	private final Queue<Cell> queue;
 	
 	public MapScanner() {
-		labyrinthMap = new LabyrinthMap();
 		queue = new LinkedList<Cell>();
 	}
 
-	public void scanLabyrinth(Cell currentPosition, Labyrinth labyrinth) {
+	public void scanLabyrinth(Cell currentPosition, Labyrinth labyrinth, LabyrinthMap labyrinthMap) {
 		currentPosition.scanCell();
 		queue.add(currentPosition);
 		while (!queue.isEmpty()) {
 			Cell currentCell = queue.remove();
-			comapareCellTypeAndAdd(currentCell);
+			addStartCellAndCommandRoom(currentCell, labyrinthMap);
 			labyrinthMap.addCell(currentCell);
-//			currentCell.addNeighbours(labyrinthMap, labyrinth);
 			NeighbourCells neighbourCells = new NeighbourCells(currentCell, labyrinth);
 			neighbourCells.addToCurentCell(currentCell, labyrinthMap, labyrinth);
 			Map<Direction, Cell> neighbours = currentCell.getNeighbours();
@@ -36,7 +33,7 @@ public class MapScanner {
 		}
 	}
 
-	private void comapareCellTypeAndAdd(Cell cell) {
+	private void addStartCellAndCommandRoom(Cell cell, LabyrinthMap labyrinthMap) {
 		if (cell.getCellType().equals(CellType.START_CELL)) {
 			labyrinthMap.setStartCell(cell);
 		}
@@ -45,8 +42,4 @@ public class MapScanner {
 		}
 	}
 	
-	public LabyrinthMap getLabyrinthMap() {
-		return labyrinthMap;
-	}
-
 }

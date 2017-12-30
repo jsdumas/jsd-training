@@ -25,6 +25,9 @@ public class Astar {
 
 			Map<Direction, Cell> neighbours = currentCell.getNeighbours();
 			for (Map.Entry<Direction, Cell> neighbour : neighbours.entrySet()) {
+				if(neighbour.getValue()==null) {
+					continue;
+				}
 				double cost=0;
 				if (neighbour.getValue().getCellType().equals(CellType.EMPTY_SPACE)
 						|| neighbour.getValue().getCellType().equals(CellType.START_CELL)
@@ -60,7 +63,7 @@ public class Astar {
 
 	public Stack<Direction> printPath(Cell startCell) {
 		Stack<Direction> pathList = new Stack<Direction>();
-		for (Cell cell = startCell; cell != null; cell = cell.getParentCell()) {
+		for (Cell cell = startCell; cell.getCellType() != CellType.COMMAND_ROOM; cell = cell.getParentCell()) {
 			pathList.add(cell.getFrom());
 		}
 		return pathList;

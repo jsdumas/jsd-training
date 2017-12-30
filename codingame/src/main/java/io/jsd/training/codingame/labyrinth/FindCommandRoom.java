@@ -12,11 +12,10 @@ public class FindCommandRoom implements Mission{
 	@Override
 	public void throwMission(Labyrinth labyrinth) {
 		kirk.scanLabyrinth(labyrinth);
-		setDirection(labyrinth);
-	}
-
-	private void setDirection(Labyrinth labyrinth) {
-		SearchCell mouvable = new SearchMouvableCell(kirk.getPosition(), labyrinth);
+		SearchCell mouvable = new SearchCommandRoom(kirk.getPosition(), labyrinth);
+		if(mouvable.getCell()==null) {
+			mouvable = new SearchMouvableCell(kirk.getPosition(), labyrinth);
+		}
 		direction =  mouvable.getCell();
 	}
 
