@@ -10,8 +10,6 @@ public interface Neighbour {
 	boolean isCommandRoom();
 	void addToMap(LabyrinthMap labyrinthMap);
 	CellType getCellType();
-	Cell getCell();
-	Cell getNeighbour();
 
 }
 

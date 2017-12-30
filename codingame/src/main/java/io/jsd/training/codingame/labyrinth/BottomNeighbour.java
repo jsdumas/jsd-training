@@ -56,14 +56,4 @@ public class BottomNeighbour implements Neighbour {
 		return getCellType().equals(CellType.COMMAND_ROOM);
 	}
 	
-	@Override
-	public Cell getCell() {
-		return cell;
-	}
-
-	@Override
-	public Cell getNeighbour() {
-		return bottomNeighbour;
-	}
-
 }
