@@ -6,6 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -109,6 +110,13 @@ public class KirkTest extends GameSetUp{
 		kirk.scanLabyrinth(labyrinth);
 		kirk.throwMission(labyrinth, alarm);
 		assertThat(kirk.getMission() instanceof GoBackToStartCell, is(true));
+	}
+	
+	@Test
+	public void whenThen() {
+		kirk.newPosition(new Cell(1,2, CellType.EMPTY_SPACE));
+		kirk.throwMission(labyrinthInLine, alarm);
+		assertThat(kirk.getDirection(), Matchers.equalTo(Direction.RIGHT));
 	}
 	
 }

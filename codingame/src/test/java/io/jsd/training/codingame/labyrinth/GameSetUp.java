@@ -9,15 +9,15 @@ public abstract class GameSetUp {
 	protected final static String LINE_2 = "#T.C#";
 	protected final static String LINE_3 = "#####";
 	
-	protected final static String LINE_OF_CHARP = "##########";
-	protected final static String LINE_5 = "#T......C#";
+	protected final static String LINE_OF_CHARP = "######";
+	protected final static String LINE_5 = "#T..C#";
 
 	protected final static int ALARM_COUNT = 7;
 
 	protected final String[][] grid = new String[3][5];
 	protected Labyrinth labyrinth;
 
-	protected final String[][] gridInLine = new String[3][10];
+	protected final String[][] gridInLine = new String[3][6];
 	protected Labyrinth labyrinthInLine;
 
 	protected final Alarm alarm = new Alarm(ALARM_COUNT);
