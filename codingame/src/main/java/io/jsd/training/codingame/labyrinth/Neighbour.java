@@ -6,9 +6,12 @@ public interface Neighbour {
 	public static final int UPPER_LIMIT = 0;
 	
 	boolean isExist();
-	boolean isMouvable(Labyrinth labyrinth);
+	boolean isMouvable(Cell previousCell, Labyrinth labyrinth);
 	boolean isCommandRoom();
 	void addToMap(LabyrinthMap labyrinthMap);
 	CellType getCellType();
+	Cell getCell();
+	Cell getNeighbour();
 
 }
+

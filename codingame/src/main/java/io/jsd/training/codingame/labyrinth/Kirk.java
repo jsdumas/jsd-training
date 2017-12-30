@@ -16,8 +16,8 @@ public class Kirk {
 		this.mission = findCommandRoom;
 	}
 
-	public Cell getPosition() {
-		return kirkSituation.getCurrentPosition();
+	public Cell getCurrentCell() {
+		return kirkSituation.getCurrentCell();
 	}
 
 	public int getX() {
@@ -92,6 +92,10 @@ public class Kirk {
 
 	public Cell getStartCell() {
 		return kirkSituation.getStartCell();
+	}
+
+	public Cell getPreviousCell() {
+		return kirkSituation.getPreviousCell();
 	}
 
 }

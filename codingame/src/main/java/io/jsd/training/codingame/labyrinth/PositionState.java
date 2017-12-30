@@ -8,7 +8,7 @@ public class PositionState {
 		this.cell = cell;
 	}
 
-	public Cell getCurrentPosition() {
+	public Cell getCell() {
 		return cell;
 	}
 
@@ -20,7 +20,7 @@ public class PositionState {
 		return cell.getY();
 	}
 
-	public CellType getCurrentCellType() {
+	public CellType getCellType() {
 		return cell.getCellType();
 	}
 

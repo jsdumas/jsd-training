@@ -4,18 +4,20 @@ package io.jsd.training.codingame.labyrinth;
 public class KirkSituation {
 	
 	private final Jetpack jetpack;
+	private final PositionState previousPosition;
 	private final PositionState currentPosition;
 	private final LabyrinthMap labyrinthMap;
 	
 
 	public KirkSituation() {
 		this.jetpack = new Jetpack();
+		this.previousPosition = new PositionState();
 		this.currentPosition = new PositionState();
 		this.labyrinthMap = new LabyrinthMap();
 	}
 
-	public Cell getCurrentPosition() {
-		return currentPosition.getCurrentPosition();
+	public Cell getCurrentCell() {
+		return currentPosition.getCell();
 	}
 
 	public int getX() {
@@ -27,7 +29,7 @@ public class KirkSituation {
 	}
 	
 	public CellType getCellTypeOfCurrentPosition() {
-		return currentPosition.getCurrentCellType();
+		return currentPosition.getCellType();
 	}
 
 	public int getJetPackEnergy() {
@@ -39,12 +41,13 @@ public class KirkSituation {
 	}
 
 	public void newPosition(Cell position) {
+		previousPosition.setPosition(currentPosition.getCell());
 		currentPosition.setPosition(position);
 	}
 
 	public void scanLabyrinth(Labyrinth labyrinth) {
 		MapScanner mapScanner = new MapScanner();
-		mapScanner.scanLabyrinth(currentPosition.getCurrentPosition(), labyrinth, labyrinthMap);
+		mapScanner.scanLabyrinth(currentPosition.getCell(), labyrinth, labyrinthMap);
 	}
 
 	public boolean isCommandRoomPositionKnown() {
@@ -60,7 +63,7 @@ public class KirkSituation {
 	}
 
 	public boolean isKirkGetInCommandRoom() {
-		if(currentPosition.getCurrentCellType().equals(CellType.COMMAND_ROOM)) {
+		if(currentPosition.getCellType().equals(CellType.COMMAND_ROOM)) {
 			return true;
 		}
 		return false;
@@ -72,6 +75,10 @@ public class KirkSituation {
 
 	public Cell getStartCell() {
 		return labyrinthMap.getStartCell();
+	}
+
+	public Cell getPreviousCell() {
+		return previousPosition.getCell();
 	}
 
 }

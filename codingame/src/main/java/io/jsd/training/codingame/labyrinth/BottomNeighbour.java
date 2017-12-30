@@ -4,14 +4,20 @@ public class BottomNeighbour implements Neighbour {
 	
 	private final int x;
 	private final int y;
-	private Cell cell;
+	private final Cell bottomNeighbour;
+	private final Cell cell;
 	private Labyrinth labyrinth;
 
 	public BottomNeighbour(Cell cell, Labyrinth labyrinth) {
 		this.cell = cell;
 		this.labyrinth = labyrinth;
-		x=cell.getX()+1;
-		y=cell.getY();
+		this.x=cell.getX()+1;
+		this.y=cell.getY();
+		if(isExist()) {
+			this.bottomNeighbour = new Cell(x, y, labyrinth.getCellType(x, y));
+		} else {
+			bottomNeighbour=null ;
+		}
 	}
 
 	@Override
@@ -22,7 +28,6 @@ public class BottomNeighbour implements Neighbour {
 	@Override
 	public void addToMap(LabyrinthMap labyrinthMap) {
 		if (isExist()) {
-			Cell bottomNeighbour = new Cell(x, y, labyrinth.getCellType(x, y));
 			if (!labyrinthMap.contains(bottomNeighbour)) {
 				labyrinthMap.addCell(bottomNeighbour);
 				cell.putNeighbour(Direction.UP, bottomNeighbour);
@@ -31,8 +36,12 @@ public class BottomNeighbour implements Neighbour {
 	}
 
 	@Override
-	public boolean isMouvable(Labyrinth labyrinth) {
-		if(isExist() && getCellType().equals(CellType.EMPTY_SPACE))
+	public boolean isMouvable(Cell previousCell, Labyrinth labyrinth) {
+		boolean isPreviousCell=false;
+		if(previousCell!=null) {
+			isPreviousCell=previousCell.equals(bottomNeighbour);
+		}
+		if(isExist() && getCellType().equals(CellType.EMPTY_SPACE) && !isPreviousCell)
 			return true;
 		return false;
 	}
@@ -45,6 +54,16 @@ public class BottomNeighbour implements Neighbour {
 	@Override
 	public boolean isCommandRoom() {
 		return getCellType().equals(CellType.COMMAND_ROOM);
+	}
+	
+	@Override
+	public Cell getCell() {
+		return cell;
+	}
+
+	@Override
+	public Cell getNeighbour() {
+		return bottomNeighbour;
 	}
 
 }

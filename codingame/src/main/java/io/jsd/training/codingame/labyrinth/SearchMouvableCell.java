@@ -7,8 +7,10 @@ public class SearchMouvableCell implements SearchCell {
 	private final Neighbour upperNeighbour;
 	private final Neighbour rightNeighbour;
 	private final Neighbour bottomNeighbour;
+	private final Cell previousCell;
 
-	public SearchMouvableCell(Cell currentCell, Labyrinth labyrinth) {
+	public SearchMouvableCell(Cell previousCell, Cell currentCell, Labyrinth labyrinth) {
+		this.previousCell = previousCell;
 		this.labyrinth = labyrinth;
 		this.leftNeighbour = new LeftNeighbour(currentCell, labyrinth);
 		this.upperNeighbour = new UpperNeighbour(currentCell, labyrinth);
@@ -16,17 +18,18 @@ public class SearchMouvableCell implements SearchCell {
 		this.bottomNeighbour = new BottomNeighbour(currentCell, labyrinth);
 	}
 
+	@Override
 	public Direction getCell() {
-		if (leftNeighbour.isMouvable(labyrinth)) {
+		if (leftNeighbour.isMouvable(previousCell, labyrinth)) {
 			return Direction.LEFT;
 		}
-		if (upperNeighbour.isMouvable(labyrinth)) {
+		if (upperNeighbour.isMouvable(previousCell, labyrinth)) {
 			return Direction.UP;
 		}
-		if (rightNeighbour.isMouvable(labyrinth)) {
+		if (rightNeighbour.isMouvable(previousCell, labyrinth)) {
 			return Direction.RIGHT;
 		}
-		if (bottomNeighbour.isMouvable(labyrinth)) {
+		if (bottomNeighbour.isMouvable(previousCell, labyrinth)) {
 			return Direction.DOWN;
 		}
 		return null;
