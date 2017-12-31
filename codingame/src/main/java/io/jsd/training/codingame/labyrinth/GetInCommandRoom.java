@@ -12,6 +12,9 @@ public class GetInCommandRoom implements Mission {
 	@Override
 	public void throwMission(Labyrinth labyrinth) {
 		SearchCell searchCommandRoom = new SearchCommandRoom(kirk.getCurrentCell(), labyrinth);
+//		if(searchCommandRoom.getCell()==null) {
+//			Astar
+//		}
 		direction = searchCommandRoom.getCell();
 	}
 

@@ -11,6 +11,7 @@ public abstract class GameSetUp {
 	
 	protected final static String LINE_OF_CHARP = "#######";
 	protected final static String LINE_5 = "#T...?#";
+	protected final static String LINE_6 = "#T...C#";
 
 	protected final static int ALARM_COUNT = 7;
 
@@ -19,6 +20,9 @@ public abstract class GameSetUp {
 
 	protected final String[][] gridInLine = new String[3][7];
 	protected Labyrinth labyrinthInLine;
+	
+	protected final String[][] gridInLineWithCommandRoom = new String[3][7];
+	protected Labyrinth labyrinthInLineWithCommandRoom;
 
 	protected final Alarm alarm = new Alarm(ALARM_COUNT);
 }

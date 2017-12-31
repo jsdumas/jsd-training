@@ -27,6 +27,4 @@ public enum CellType {
 	    return null;
 	}
 	
-	
-	
 }

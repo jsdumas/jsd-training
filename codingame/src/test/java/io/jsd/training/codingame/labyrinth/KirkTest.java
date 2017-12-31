@@ -23,6 +23,11 @@ public class KirkTest extends GameSetUp{
 		gridInLine[1] = LINE_5.split("");
 		gridInLine[2] = LINE_OF_CHARP.split("");
 		labyrinthInLine = new Labyrinth(gridInLine);
+		
+		gridInLineWithCommandRoom[0] = LINE_OF_CHARP.split("");
+		gridInLineWithCommandRoom[1] = LINE_6.split("");
+		gridInLineWithCommandRoom[2] = LINE_OF_CHARP.split("");
+		labyrinthInLineWithCommandRoom = new Labyrinth(gridInLineWithCommandRoom);
 	}
 	
 
@@ -129,6 +134,25 @@ public class KirkTest extends GameSetUp{
 		assertThat(kirk.getDirection(), Matchers.equalTo(Direction.RIGHT));
 		kirk.newPosition(new Cell(1,3, CellType.EMPTY_SPACE));
 		kirk.throwMission(labyrinthInLine, alarm);
+		assertThat(kirk.getDirection(), Matchers.equalTo(Direction.RIGHT));
+	}
+	
+	@Test
+	public void whenThen() {
+		kirk.newPosition(new Cell(1,1, CellType.START_CELL));
+		kirk.throwMission(labyrinthInLineWithCommandRoom, alarm);
+		assertThat(kirk.getDirection(), Matchers.equalTo(Direction.RIGHT));
+		kirk.newPosition(new Cell(1,2, CellType.EMPTY_SPACE));
+		kirk.throwMission(labyrinthInLineWithCommandRoom, alarm);
+		assertThat(kirk.getDirection(), Matchers.equalTo(Direction.RIGHT));
+		kirk.newPosition(new Cell(1,3, CellType.EMPTY_SPACE));
+		kirk.throwMission(labyrinthInLineWithCommandRoom, alarm);
+		assertThat(kirk.getDirection(), Matchers.equalTo(Direction.RIGHT));
+		kirk.newPosition(new Cell(1,4, CellType.EMPTY_SPACE));
+		kirk.throwMission(labyrinthInLineWithCommandRoom, alarm);
+		assertThat(kirk.getDirection(), Matchers.equalTo(Direction.RIGHT));
+		kirk.newPosition(new Cell(1,5, CellType.COMMAND_ROOM));
+		kirk.throwMission(labyrinthInLineWithCommandRoom, alarm);
 		assertThat(kirk.getDirection(), Matchers.equalTo(Direction.RIGHT));
 	}
 	
