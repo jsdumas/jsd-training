@@ -71,6 +71,9 @@ public class Kirk {
 	}
 
 	public void newPosition(Cell cell) {
+		if(cell.getCellType().equals(CellType.COMMAND_ROOM)) {
+			kirkSituation.setCommandRoom(cell);
+		}
 		kirkSituation.newPosition(cell);
 	}
 

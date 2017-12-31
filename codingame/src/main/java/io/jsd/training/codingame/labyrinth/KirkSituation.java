@@ -81,4 +81,8 @@ public class KirkSituation {
 		return previousPosition.getCell();
 	}
 
+	public void setCommandRoom(Cell cell) {
+		labyrinthMap.setCommandRoom(cell);
+	}
+
 }
