@@ -8,18 +8,28 @@ import java.util.Stack;
 
 public class Astar {
 
-	public Stack<Direction> getShortestPath(Cell commandRoom, Cell startCell) {
+	private final Cell currentCell;
+	private final Cell destination;
+	private final Set<CellType> cellsToAvoid;
+
+	public Astar(Cell currentCell, Cell destination, Set<CellType> cellsToAvoid) {
+		this.currentCell = currentCell;
+		this.destination = destination;
+		this.cellsToAvoid = cellsToAvoid;
+	}
+
+	public Stack<Direction> getShortestPath() {
 		Set<Cell> exploredCells = new HashSet<Cell>();
 		PriorityQueue<Cell> unexploredCellsQueue = new PriorityQueue<Cell>();
-		commandRoom.setgScore(0);
-		unexploredCellsQueue.add(commandRoom);
+		currentCell.setgScore(0);
+		unexploredCellsQueue.add(currentCell);
 		boolean found = false;
 
 		while (!unexploredCellsQueue.isEmpty() && !found) {
 			Cell currentCell = unexploredCellsQueue.poll();
 			exploredCells.add(currentCell);
 
-			if (currentCell.getCellType().equals(startCell.getCellType())) {
+			if (currentCell.equals(destination)) {
 				found = true;
 			}
 
@@ -28,18 +38,16 @@ public class Astar {
 				if(neighbour.getValue()==null) {
 					continue;
 				}
-				double cost=0;
-				if (neighbour.getValue().getCellType().equals(CellType.EMPTY_SPACE)
-						|| neighbour.getValue().getCellType().equals(CellType.START_CELL)
-						|| neighbour.getValue().getCellType().equals(CellType.COMMAND_ROOM)) {
-					cost = 1;
-				} else if (neighbour.getValue().getCellType().equals(CellType.UNKOWN_CELL)
-						|| neighbour.getValue().getCellType().equals(CellType.WALL)) {
-					cost = Double.MAX_VALUE;
-				}
+				
+				if (cellsToAvoid.contains(neighbour.getValue().getCellType())) {
+//					cost = Double.MAX_VALUE;
+					continue;
+				} 
+
+				double cost = 10;
 
 				double tempGScore = currentCell.getgScore() + cost;
-				double tempFScore = tempGScore + heuristic(neighbour.getValue(), startCell);
+				double tempFScore = tempGScore + heuristic(neighbour.getValue(), destination);
 
 				if (exploredCells.contains(neighbour.getValue()) && (tempFScore >= neighbour.getValue().getfScore())) {
 					continue;
@@ -58,13 +66,13 @@ public class Astar {
 			}
 		}
 		
-		return printPath(startCell);
+		return printPath();
 	}
 
-	public Stack<Direction> printPath(Cell startCell) {
+	public Stack<Direction> printPath() {
 		Stack<Direction> pathList = new Stack<Direction>();
-		for (Cell cell = startCell; cell.getCellType() != CellType.COMMAND_ROOM; cell = cell.getParentCell()) {
-			pathList.add(cell.getFrom());
+		for (Cell dest = destination; dest.getCellType() != CellType.COMMAND_ROOM; dest = dest.getParentCell()) {
+			pathList.add(dest.getFrom());
 		}
 		return pathList;
 	}

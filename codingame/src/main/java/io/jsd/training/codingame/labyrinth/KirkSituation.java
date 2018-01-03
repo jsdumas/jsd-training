@@ -6,14 +6,13 @@ public class KirkSituation {
 	private final Jetpack jetpack;
 	private final PositionState previousPosition;
 	private final PositionState currentPosition;
-	private final LabyrinthMap labyrinthMap;
+	private LabyrinthMap labyrinthMap;
 	
 
 	public KirkSituation() {
 		this.jetpack = new Jetpack();
 		this.previousPosition = new PositionState();
 		this.currentPosition = new PositionState();
-		this.labyrinthMap = new LabyrinthMap();
 	}
 
 	public Cell getCurrentCell() {
@@ -43,11 +42,6 @@ public class KirkSituation {
 	public void newPosition(Cell position) {
 		previousPosition.setPosition(currentPosition.getCell());
 		currentPosition.setPosition(position);
-	}
-
-	public void scanLabyrinth(Labyrinth labyrinth) {
-		MapScanner mapScanner = new MapScanner();
-		mapScanner.scanLabyrinth(currentPosition.getCell(), labyrinth, labyrinthMap);
 	}
 
 	public boolean isCommandRoomPositionKnown() {
@@ -83,6 +77,14 @@ public class KirkSituation {
 
 	public void setCommandRoom(Cell cell) {
 		labyrinthMap.setCommandRoom(cell);
+	}
+
+	public boolean areAllCellsScanned() {
+		return labyrinthMap.areAllCellsScanned();
+	}
+
+	public void setLabyrinthMap(LabyrinthMap labyrinthMap) {
+		this.labyrinthMap = labyrinthMap;
 	}
 
 }

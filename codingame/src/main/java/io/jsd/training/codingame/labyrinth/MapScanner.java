@@ -8,12 +8,18 @@ import java.util.Queue;
 public class MapScanner {
 	
 	private final Queue<Cell> queue;
+	private final Labyrinth labyrinth;
+	private final Cell currentPosition;
+	private LabyrinthMap labyrinthMap;
 	
-	public MapScanner() {
+	public MapScanner(Labyrinth labyrinth, Cell currentPosition) {
+		this.currentPosition = currentPosition;
 		queue = new LinkedList<Cell>();
+		this.labyrinth = labyrinth;
 	}
 
-	public void scanLabyrinth(Cell currentPosition, Labyrinth labyrinth, LabyrinthMap labyrinthMap) {
+	public void scanLabyrinth() {
+		this.labyrinthMap = new LabyrinthMap();
 		currentPosition.scanCell();
 		queue.add(currentPosition);
 		while (!queue.isEmpty()) {
@@ -24,9 +30,10 @@ public class MapScanner {
 			neighbourCells.addToCurentCell(currentCell, labyrinthMap, labyrinth);
 			Map<Direction, Cell> neighbours = currentCell.getNeighbours();
 			for (Map.Entry<Direction, Cell> neighbour: neighbours.entrySet()) {
-				if (!neighbour.getValue().isScanned()) {
-					neighbour.getValue().scanCell();
-					queue.add(neighbour.getValue());
+				Cell cell = neighbour.getValue();
+				if (!cell.isScanned()) {
+					cell.scanCell();
+					queue.add(cell);
 				}
 			}
 
@@ -40,6 +47,10 @@ public class MapScanner {
 		if (cell.getCellType().equals(CellType.COMMAND_ROOM)) {
 			labyrinthMap.setCommandRoom(cell);
 		}
+	}
+
+	public LabyrinthMap getLabyrinthMap() {
+		return labyrinthMap;
 	}
 	
 }

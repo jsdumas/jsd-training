@@ -10,7 +10,7 @@ public class Kirk {
 
 	public Kirk() {
 		this.kirkSituation = new KirkSituation();
-		this.findCommandRoom = new FindCommandRoom(this);
+		this.findCommandRoom = new ScanAllCells(this);
 		this.getInCommandRoom = new GetInCommandRoom(this);
 		this.goBackToStartCell = new GoBackToStartCell(this);
 		this.mission = findCommandRoom;
@@ -47,13 +47,13 @@ public class Kirk {
 	public void throwMission(Labyrinth labyrinth, Alarm alarm) {
 		kirkSituation.energyDecrease();
 		
-		if(knowsCommandRoomPosition()) {
-			mission = getInCommandRoom;
-		}
-		
-		if(getCellTypeOfCurrentPosition().equals(CellType.COMMAND_ROOM)) {
-			alarm.sartCount();
-			mission = goBackToStartCell;
+		if(!kirkSituation.areAllCellsScanned() ) {
+			if(getCellTypeOfCurrentPosition().equals(CellType.COMMAND_ROOM)) {
+				alarm.sartCount();
+				mission = goBackToStartCell;
+			} else {
+				mission = getInCommandRoom;
+			}
 		}
 		
 		mission.throwMission(labyrinth);
@@ -61,13 +61,6 @@ public class Kirk {
 
 	public Direction getDirection() {
 		return mission.getDirection();
-	}
-
-	public boolean knowsCommandRoomPosition() {
-		if (kirkSituation.isCommandRoomPositionKnown()) {
-			return true;
-		}
-		return false;
 	}
 
 	public void newPosition(Cell cell) {
@@ -85,10 +78,6 @@ public class Kirk {
 		return kirkSituation.getLabyrinthMap();
 	}
 
-	public void scanLabyrinth(Labyrinth labyrinth) {
-		kirkSituation.scanLabyrinth(labyrinth);
-	}
-
 	public Cell getCommandRoom() {
 		return kirkSituation.getCommandRoom();
 	}
@@ -99,6 +88,10 @@ public class Kirk {
 
 	public Cell getPreviousCell() {
 		return kirkSituation.getPreviousCell();
+	}
+
+	public void setLabyrinthMap(LabyrinthMap labyrinthMap) {
+		kirkSituation.setLabyrinthMap(labyrinthMap);
 	}
 
 }

@@ -36,12 +36,8 @@ public class UpperNeighbour implements Neighbour {
 	}
 
 	@Override
-	public boolean isMouvable(Cell previousCell, Labyrinth labyrinth) {
-		boolean isPreviousCell=false;
-		if(previousCell!=null) {
-			isPreviousCell=previousCell.equals(upperNeighbour);
-		}
-		if (isExist() && getCellType().equals(CellType.EMPTY_SPACE) && !isPreviousCell)
+	public boolean isMouvable(Labyrinth labyrinth) {
+		if (isExist() && getCellType().equals(CellType.EMPTY_SPACE))
 			return true;
 		return false;
 	}
