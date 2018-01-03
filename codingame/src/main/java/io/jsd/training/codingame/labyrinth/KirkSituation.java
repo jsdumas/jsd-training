@@ -1,13 +1,14 @@
 package io.jsd.training.codingame.labyrinth;
 
+import java.util.Stack;
 
 public class KirkSituation {
-	
+
 	private final Jetpack jetpack;
 	private final PositionState previousPosition;
 	private final PositionState currentPosition;
 	private LabyrinthMap labyrinthMap;
-	
+	private Stack<Direction> path;
 
 	public KirkSituation() {
 		this.jetpack = new Jetpack();
@@ -26,7 +27,7 @@ public class KirkSituation {
 	public int getY() {
 		return currentPosition.getCurrentY();
 	}
-	
+
 	public CellType getCellTypeOfCurrentPosition() {
 		return currentPosition.getCellType();
 	}
@@ -57,7 +58,7 @@ public class KirkSituation {
 	}
 
 	public boolean isKirkGetInCommandRoom() {
-		if(currentPosition.getCellType().equals(CellType.COMMAND_ROOM)) {
+		if (currentPosition.getCellType().equals(CellType.COMMAND_ROOM)) {
 			return true;
 		}
 		return false;
@@ -85,6 +86,14 @@ public class KirkSituation {
 
 	public void setLabyrinthMap(LabyrinthMap labyrinthMap) {
 		this.labyrinthMap = labyrinthMap;
+	}
+
+	public void setPath(Stack<Direction> path) {
+		this.path = path;
+	}
+
+	public Stack<Direction> getPath() {
+		return path;
 	}
 
 }

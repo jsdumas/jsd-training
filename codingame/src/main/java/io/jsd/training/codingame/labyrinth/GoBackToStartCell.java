@@ -1,28 +1,26 @@
 package io.jsd.training.codingame.labyrinth;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 public class GoBackToStartCell implements Mission {
 
 	private final Kirk kirk;
-	private Stack<Direction> pathToStartCell;
-	private Astar aStar;
 
 	public GoBackToStartCell(Kirk kirk) {
 		this.kirk = kirk;
 	}
 
 	@Override
-	public void throwMission(Labyrinth labyrinth) {
-		if (aStar == null && pathToStartCell==null) {
-			aStar = new Astar();
-			pathToStartCell = aStar.getShortestPath(kirk.getCommandRoom(), kirk.getStartCell());
+	public Stack<Direction> throwMission(Labyrinth labyrinth) {
+		if (!kirk.isCommandRoomPositionKnown()) {
+			return new Stack<Direction>();
 		}
-	}
-
-	@Override
-	public Direction getDirection() {
-		return pathToStartCell.pop();
+		Set<CellType> cellsToAvoid = new HashSet<CellType>();
+		cellsToAvoid.add(CellType.WALL);
+		Astar astar = new Astar(kirk.getCurrentCell(), kirk.getStartCell(), cellsToAvoid);
+		return astar.getShortestPath();
 	}
 
 }

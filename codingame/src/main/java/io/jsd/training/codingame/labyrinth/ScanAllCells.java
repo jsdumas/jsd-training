@@ -1,27 +1,36 @@
 package io.jsd.training.codingame.labyrinth;
 
-public class ScanAllCells implements Mission{
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Stack;
+
+public class ScanAllCells implements Mission {
 
 	private final Kirk kirk;
-	private Direction direction;
+	private final Set<CellType> cellsToAvoid;
 
 	public ScanAllCells(Kirk kirk) {
 		this.kirk = kirk;
+		this.cellsToAvoid = new HashSet<CellType>();
+		cellsToAvoid.add(CellType.COMMAND_ROOM);
+		cellsToAvoid.add(CellType.WALL);
 	}
 
 	@Override
-	public void throwMission(Labyrinth labyrinth) {
+	public Stack<Direction> throwMission(Labyrinth labyrinth) {
 		MapScanner mapScanner = new MapScanner(labyrinth, kirk.getCurrentCell());
 		mapScanner.scanLabyrinth();
 		LabyrinthMap labyrinthMap = mapScanner.getLabyrinthMap();
 		kirk.setLabyrinthMap(labyrinthMap);
-		MapExplorer	mapExplorer = new MapExplorer(kirk.getCurrentCell(), labyrinthMap);
-		direction =  mapExplorer.getCell();
-	}
 
-	@Override
-	public Direction getDirection() {
-		return direction;
+		for (Cell destination : labyrinthMap.getUnknownCells()) {
+			Astar astar = new Astar(kirk.getCurrentCell(), destination, cellsToAvoid);
+			Stack<Direction> directions = astar.getShortestPath();
+			if (!directions.isEmpty()) {
+				return directions;
+			}
+		}
+		return new Stack<Direction>();
 	}
 
 }

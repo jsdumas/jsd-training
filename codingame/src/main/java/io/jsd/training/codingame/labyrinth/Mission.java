@@ -1,9 +1,9 @@
 package io.jsd.training.codingame.labyrinth;
 
+import java.util.Stack;
+
 public interface Mission {
 
-	void throwMission(Labyrinth labyrinth);
-	Direction getDirection();
+	Stack<Direction> throwMission(Labyrinth labyrinth);
 
 }
-
