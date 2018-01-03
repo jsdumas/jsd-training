@@ -5,19 +5,20 @@ public class UpperNeighbour implements Neighbour {
 	private final int x;
 	private final int y;
 	private final Cell upperNeighbour;
-	private final Cell cell;
+	private final Cell currentCell;
 	private Labyrinth labyrinth;
 
-	public UpperNeighbour(Cell cell, Labyrinth labyrinth) {
-		this.cell = cell;
+	public UpperNeighbour(Cell currentCell, Labyrinth labyrinth) {
+		this.currentCell = currentCell;
 		this.labyrinth = labyrinth;
-		this.x = cell.getX() - 1;
-		this.y = cell.getY();
+		this.x = currentCell.getX() - 1;
+		this.y = currentCell.getY();
 		if (isExist()) {
 			this.upperNeighbour = new Cell(x, (y), labyrinth.getCellType(x, y));
 		} else {
 			this.upperNeighbour = null;
 		}
+		this.currentCell.putNeighbour(Direction.DOWN, upperNeighbour);
 	}
 
 	@Override
@@ -30,7 +31,6 @@ public class UpperNeighbour implements Neighbour {
 		if (isExist()) {
 			if (!labyrinthMap.contains(upperNeighbour)) {
 				labyrinthMap.addCell(upperNeighbour);
-				cell.putNeighbour(Direction.DOWN, upperNeighbour);
 			}
 		}
 	}

@@ -4,20 +4,21 @@ public class LeftNeighbour implements Neighbour {
 
 	private final int x;
 	private final int y;
-	private final Cell cell;
+	private final Cell currentCell;
 	private final Cell leftNeighbour;
 	private Labyrinth labyrinth;
 
-	public LeftNeighbour(Cell cell, Labyrinth labyrinth) {
-		this.cell = cell;
+	public LeftNeighbour(Cell currentCell, Labyrinth labyrinth) {
+		this.currentCell = currentCell;
 		this.labyrinth = labyrinth;
-		this.x = cell.getX();
-		this.y = cell.getY() - 1;
+		this.x = currentCell.getX();
+		this.y = currentCell.getY() - 1;
 		if (isExist()) {
 			this.leftNeighbour = new Cell(x, y, labyrinth.getCellType(x, y));
 		} else {
 			this.leftNeighbour = null;
 		}
+		this.currentCell.putNeighbour(Direction.RIGHT, leftNeighbour);
 	}
 
 	@Override
@@ -30,7 +31,6 @@ public class LeftNeighbour implements Neighbour {
 		if (isExist()) {
 			if (!labyrinthMap.contains(leftNeighbour)) {
 				labyrinthMap.addCell(leftNeighbour);
-				cell.putNeighbour(Direction.RIGHT, leftNeighbour);
 			}
 		}
 	}

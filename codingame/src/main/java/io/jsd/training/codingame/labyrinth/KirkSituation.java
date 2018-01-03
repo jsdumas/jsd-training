@@ -14,6 +14,7 @@ public class KirkSituation {
 		this.jetpack = new Jetpack();
 		this.previousPosition = new PositionState();
 		this.currentPosition = new PositionState();
+		this.labyrinthMap = new LabyrinthMap();
 	}
 
 	public Cell getCurrentCell() {

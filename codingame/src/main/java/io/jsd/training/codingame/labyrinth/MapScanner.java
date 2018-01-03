@@ -1,17 +1,16 @@
 package io.jsd.training.codingame.labyrinth;
 
-
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
 public class MapScanner {
-	
+
 	private final Queue<Cell> queue;
 	private final Labyrinth labyrinth;
 	private final Cell currentPosition;
 	private LabyrinthMap labyrinthMap;
-	
+
 	public MapScanner(Labyrinth labyrinth, Cell currentPosition) {
 		this.currentPosition = currentPosition;
 		queue = new LinkedList<Cell>();
@@ -26,10 +25,12 @@ public class MapScanner {
 			Cell currentCell = queue.remove();
 			addStartCellAndCommandRoom(currentCell, labyrinthMap);
 			labyrinthMap.addCell(currentCell);
+
 			NeighbourCells neighbourCells = new NeighbourCells(currentCell, labyrinth);
 			neighbourCells.addToCurentCell(currentCell, labyrinthMap, labyrinth);
+
 			Map<Direction, Cell> neighbours = currentCell.getNeighbours();
-			for (Map.Entry<Direction, Cell> neighbour: neighbours.entrySet()) {
+			for (Map.Entry<Direction, Cell> neighbour : neighbours.entrySet()) {
 				Cell cell = neighbour.getValue();
 				if (!cell.isScanned()) {
 					cell.scanCell();
@@ -52,5 +53,5 @@ public class MapScanner {
 	public LabyrinthMap getLabyrinthMap() {
 		return labyrinthMap;
 	}
-	
+
 }

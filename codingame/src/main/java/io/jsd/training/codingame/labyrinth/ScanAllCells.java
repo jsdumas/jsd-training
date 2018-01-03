@@ -18,6 +18,7 @@ public class ScanAllCells implements Mission {
 
 	@Override
 	public Stack<Direction> throwMission(Labyrinth labyrinth) {
+
 		MapScanner mapScanner = new MapScanner(labyrinth, kirk.getCurrentCell());
 		mapScanner.scanLabyrinth();
 		LabyrinthMap labyrinthMap = mapScanner.getLabyrinthMap();

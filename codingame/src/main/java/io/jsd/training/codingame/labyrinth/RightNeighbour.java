@@ -4,20 +4,21 @@ public class RightNeighbour implements Neighbour {
 
 	private final int x;
 	private final int y;
-	private final Cell cell;
+	private final Cell currentCell;
 	private final Cell rightNeighbour;
 	private Labyrinth labyrinth;
 
-	public RightNeighbour(Cell cell, Labyrinth labyrinth) {
-		this.cell = cell;
+	public RightNeighbour(Cell currentCell, Labyrinth labyrinth) {
+		this.currentCell = currentCell;
 		this.labyrinth = labyrinth;
-		this.x=cell.getX();
-		this.y=cell.getY()+1;
-		if(isExist()) {
-		this.rightNeighbour = new Cell(x, y, labyrinth.getCellType(x, y));
+		this.x = currentCell.getX();
+		this.y = currentCell.getY() + 1;
+		if (isExist()) {
+			this.rightNeighbour = new Cell(x, y, labyrinth.getCellType(x, y));
 		} else {
 			this.rightNeighbour = null;
 		}
+		this.currentCell.putNeighbour(Direction.LEFT, rightNeighbour);
 	}
 
 	@Override
@@ -30,14 +31,13 @@ public class RightNeighbour implements Neighbour {
 		if (isExist()) {
 			if (!labyrinthMap.contains(rightNeighbour)) {
 				labyrinthMap.addCell(rightNeighbour);
-				cell.putNeighbour(Direction.LEFT, rightNeighbour);
 			}
 		}
 	}
 
 	@Override
 	public boolean isMouvable(Labyrinth labyrinth) {
-		if(isExist() && getCellType().equals(CellType.EMPTY_SPACE))
+		if (isExist() && getCellType().equals(CellType.EMPTY_SPACE))
 			return true;
 		return false;
 	}
@@ -51,5 +51,5 @@ public class RightNeighbour implements Neighbour {
 	public boolean isCommandRoom() {
 		return getCellType().equals(CellType.COMMAND_ROOM);
 	}
-	
+
 }

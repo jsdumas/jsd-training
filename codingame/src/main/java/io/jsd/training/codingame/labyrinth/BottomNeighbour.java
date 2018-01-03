@@ -1,23 +1,24 @@
 package io.jsd.training.codingame.labyrinth;
 
 public class BottomNeighbour implements Neighbour {
-	
+
 	private final int x;
 	private final int y;
 	private final Cell bottomNeighbour;
-	private final Cell cell;
+	private final Cell currentCell;
 	private Labyrinth labyrinth;
 
-	public BottomNeighbour(Cell cell, Labyrinth labyrinth) {
-		this.cell = cell;
+	public BottomNeighbour(Cell currentcell, Labyrinth labyrinth) {
+		this.currentCell = currentcell;
 		this.labyrinth = labyrinth;
-		this.x=cell.getX()+1;
-		this.y=cell.getY();
-		if(isExist()) {
+		this.x = currentcell.getX() + 1;
+		this.y = currentcell.getY();
+		if (isExist()) {
 			this.bottomNeighbour = new Cell(x, y, labyrinth.getCellType(x, y));
 		} else {
-			bottomNeighbour=null ;
+			bottomNeighbour = null;
 		}
+		this.currentCell.putNeighbour(Direction.UP, bottomNeighbour);
 	}
 
 	@Override
@@ -30,14 +31,13 @@ public class BottomNeighbour implements Neighbour {
 		if (isExist()) {
 			if (!labyrinthMap.contains(bottomNeighbour)) {
 				labyrinthMap.addCell(bottomNeighbour);
-				cell.putNeighbour(Direction.UP, bottomNeighbour);
 			}
 		}
 	}
 
 	@Override
 	public boolean isMouvable(Labyrinth labyrinth) {
-		if(isExist() && getCellType().equals(CellType.EMPTY_SPACE))
+		if (isExist() && getCellType().equals(CellType.EMPTY_SPACE))
 			return true;
 		return false;
 	}
@@ -51,5 +51,5 @@ public class BottomNeighbour implements Neighbour {
 	public boolean isCommandRoom() {
 		return getCellType().equals(CellType.COMMAND_ROOM);
 	}
-	
+
 }
