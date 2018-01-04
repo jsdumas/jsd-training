@@ -13,6 +13,7 @@ public class ScanAllCells implements Mission {
 		this.kirk = kirk;
 		this.cellsToAvoid = new HashSet<CellType>();
 		cellsToAvoid.add(CellType.COMMAND_ROOM);
+		cellsToAvoid.add(CellType.UNKOWN_CELL);
 		cellsToAvoid.add(CellType.WALL);
 	}
 

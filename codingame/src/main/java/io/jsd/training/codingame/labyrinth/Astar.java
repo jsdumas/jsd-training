@@ -24,15 +24,13 @@ public class Astar {
 		originCell.setgScore(0);
 		unexploredCellsQueue.add(originCell);
 		boolean found = false;
-
+		boolean doesExistsAPath = false;
 		while (!unexploredCellsQueue.isEmpty() && !found) {
 			Cell currentCell = unexploredCellsQueue.poll();
 			exploredCells.add(currentCell);
-
 			if (currentCell.equals(destinationCell)) {
 				found = true;
 			}
-
 			Map<Direction, Cell> neighboursMap = currentCell.getNeighboursMap();
 			for (Map.Entry<Direction, Cell> entry : neighboursMap.entrySet()) {
 				Cell neighbourCell = entry.getValue();
@@ -45,6 +43,7 @@ public class Astar {
 				if (exploredCells.contains(neighbourCell) && (tempFScore >= neighbourCell.getfScore())) {
 					continue;
 				} else if (!unexploredCellsQueue.contains(neighbourCell) || (tempFScore < neighbourCell.getfScore())) {
+					doesExistsAPath = true;
 					neighbourCell.setShortestPath(entry);
 					neighbourCell.setgScore(tempGScore);
 					neighbourCell.setfScore(tempFScore);
@@ -56,11 +55,14 @@ public class Astar {
 			}
 		}
 
-		return printPath();
+		return printPath(doesExistsAPath);
 	}
 
-	public Stack<Direction> printPath() {
+	public Stack<Direction> printPath(boolean doesExistsAPath) {
 		Stack<Direction> pathList = new Stack<Direction>();
+		if (!doesExistsAPath || destinationCell.getShortestPath() == null) {
+			return pathList;
+		}
 		for (Cell currentCell = destinationCell; currentCell != originCell; currentCell = currentCell
 				.getParentFromShortestPath()) {
 			pathList.add(currentCell.getFromShortestPath());

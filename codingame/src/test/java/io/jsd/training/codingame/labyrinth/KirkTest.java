@@ -13,7 +13,6 @@ public class KirkTest extends GameSetUp {
 
 	@Before
 	public void initGrid() {
-
 		gridWithLeftEmptyCell[0] = ASTAR_UNKNOWN_LINE.split("");
 		gridWithLeftEmptyCell[1] = ASTAR_LEFT_EMPTY_CELL.split("");
 		gridWithLeftEmptyCell[2] = ASTAR_UNKNOWN_LINE.split("");
@@ -40,13 +39,13 @@ public class KirkTest extends GameSetUp {
 		unknownLabyrinth = new Labyrinth(unknownGrid);
 	}
 
-	// @Test
-	// public void
-	// whenKirkCanOnlyMouveOnLeftThenHisPathContainsOneDirectionWhichIsLeft() {
-	// kirkSituation.newPosition(new Cell(1, 2, START_CELL));
-	// kirk.throwMission(labyrinth, alarm);
-	// assertThat(kirk.getPath().isEmpty(), Matchers.is(true));
-	// }
+	@Test
+	public void whenKirkCanOnlyMouveOnLeftThenHisPathContainsOneDirectionWhichIsLeft() {
+		kirkSituation.newPosition(new Cell(1, 2, START_CELL));
+		kirk.throwMission(labyrinthWithLeftEmptyCell, alarm);
+		assertThat(kirk.getPath().size(), Matchers.is(1));
+		// assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+	}
 
 	@Test
 	public void whenKirkdoesntKnowMapThenHeDoesntKnowWhereToGo() {

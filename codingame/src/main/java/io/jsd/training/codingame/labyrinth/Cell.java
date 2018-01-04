@@ -104,6 +104,8 @@ public class Cell implements Comparable<Cell> {
 	}
 
 	public void setShortestPath(Entry<Direction, Cell> entry) {
+		// this.shortestPath = new ShortestPath(entry.getKey(), entry.getValue());
+
 		if (entry.getKey().equals(Direction.DOWN))
 			this.shortestPath = new ShortestPath(Direction.UP, entry.getValue());
 		if (entry.getKey().equals(Direction.LEFT))
@@ -120,6 +122,10 @@ public class Cell implements Comparable<Cell> {
 
 	public Cell getParentFromShortestPath() {
 		return this.shortestPath.getParent();
+	}
+
+	public ShortestPath getShortestPath() {
+		return this.shortestPath;
 	}
 
 }
