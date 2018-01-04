@@ -49,7 +49,7 @@ public class Kirk {
 	public void throwMission(Labyrinth labyrinth, Alarm alarm) {
 		kirkSituation.energyDecrease();
 
-		if (!kirkSituation.areAllCellsScanned()) {
+		if (kirkSituation.isCommandRoomPositionKnown()) {
 			if (getCellTypeOfCurrentPosition().equals(CellType.COMMAND_ROOM)) {
 				alarm.sartCount();
 				mission = goBackToStartCell;

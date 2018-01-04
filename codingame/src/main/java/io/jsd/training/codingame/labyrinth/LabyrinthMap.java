@@ -66,13 +66,14 @@ public class LabyrinthMap {
 	}
 
 	public boolean areAllCellsScanned() {
-		for (Map.Entry<Integer, Cell> item : cellsMap.entrySet()) {
-			Cell cell = item.getValue();
-			if (cell.getCellType().equals(CellType.UNKOWN_CELL)) {
-				return false;
-			}
-		}
-		return true;
+//		for (Map.Entry<Integer, Cell> item : cellsMap.entrySet()) {
+//			Cell cell = item.getValue();
+//			if (cell.getCellType().equals(CellType.UNKOWN_CELL)) {
+//				return false;
+//			}
+//		}
+//		return true;
+		return unknownCells.isEmpty();
 	}
 
 	public Set<Cell> getUnknownCells() {

@@ -27,8 +27,8 @@ public class ScanAllCells implements Mission {
 
 		for (Cell destination : labyrinthMap.getUnknownCells()) {
 			Astar astar = new Astar(kirk.getCurrentCell(), destination, cellsToAvoid);
-			astar.getShortestPath();
-			Stack<Direction> directions = astar.scanUnknownCell();
+			astar.setShortestPath();
+			Stack<Direction> directions = astar.getShortestPath(true);
 			if (!directions.isEmpty()) {
 				return directions;
 			}

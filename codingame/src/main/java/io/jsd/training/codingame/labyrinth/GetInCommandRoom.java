@@ -7,9 +7,12 @@ import java.util.Stack;
 public class GetInCommandRoom implements Mission {
 
 	private final Kirk kirk;
+	private final Set<CellType> cellsToAvoid;
 
 	public GetInCommandRoom(Kirk kirk) {
 		this.kirk = kirk;
+		this.cellsToAvoid = new HashSet<CellType>();
+		cellsToAvoid.add(CellType.WALL);
 	}
 
 	@Override
@@ -17,11 +20,9 @@ public class GetInCommandRoom implements Mission {
 		if (!kirk.isCommandRoomPositionKnown()) {
 			return new Stack<Direction>();
 		}
-		Set<CellType> cellsToAvoid = new HashSet<CellType>();
-		cellsToAvoid.add(CellType.WALL);
 		Astar astar = new Astar(kirk.getCurrentCell(), kirk.getCommandRoom(), cellsToAvoid);
-		astar.getShortestPath();
-		return astar.scanUnknownCell();
+		astar.setShortestPath();
+		return astar.getShortestPath(false);
 	}
 
 }

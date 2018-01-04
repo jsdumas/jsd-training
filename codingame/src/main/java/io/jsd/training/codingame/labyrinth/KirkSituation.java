@@ -15,6 +15,7 @@ public class KirkSituation {
 		this.previousPosition = new PositionState();
 		this.currentPosition = new PositionState();
 		this.labyrinthMap = new LabyrinthMap();
+		this.path = new Stack<Direction>();
 	}
 
 	public Cell getCurrentCell() {

@@ -11,22 +11,19 @@ public class Astar {
 	private final Cell originCell;
 	private final Cell destinationCell;
 	private final Set<CellType> cellsToAvoid;
-//	private boolean doesExistsAPath;
 
 	public Astar(Cell currentCell, Cell destination, Set<CellType> cellsToAvoid) {
 		this.originCell = currentCell;
 		this.destinationCell = destination;
 		this.cellsToAvoid = cellsToAvoid;
-//		this.doesExistsAPath = false;
 	}
 
-	public void getShortestPath() {
+	public void setShortestPath() {
 		Set<Cell> exploredCells = new HashSet<Cell>();
 		PriorityQueue<Cell> unexploredCellsQueue = new PriorityQueue<Cell>();
 		originCell.setgScore(0);
 		unexploredCellsQueue.add(originCell);
 		boolean found = false;
-//		boolean doesExistsAPath = false;
 		while (!unexploredCellsQueue.isEmpty() && !found) {
 			Cell currentCell = unexploredCellsQueue.poll();
 			exploredCells.add(currentCell);
@@ -46,7 +43,6 @@ public class Astar {
 				if (exploredCells.contains(neighbourCell) && (tempFScore >= neighbourCell.getfScore())) {
 					continue;
 				} else if (!unexploredCellsQueue.contains(neighbourCell) || (tempFScore < neighbourCell.getfScore())) {
-//					doesExistsAPath = true;
 					ShortestPath shortestPath = new ShortestPath(directionTo, currentCell);
 					neighbourCell.setShortestPath(shortestPath);
 					neighbourCell.setgScore(tempGScore);
@@ -60,14 +56,14 @@ public class Astar {
 		}
 	}
 
-	public Stack<Direction> scanUnknownCell() {
+	public Stack<Direction> getShortestPath(boolean isPathToUnknownCell) {
 		Stack<Direction> pathList = new Stack<Direction>();
 		if (destinationCell.getShortestPath() == null) {
 			return pathList;
 		}
 		for (Cell currentCell = destinationCell; currentCell != originCell; currentCell = currentCell
 				.getParentFromShortestPath()) {
-			if(currentCell==destinationCell)
+			if(currentCell==destinationCell && isPathToUnknownCell)
 				continue;
 			pathList.add(currentCell.getFromShortestPath());
 		}
