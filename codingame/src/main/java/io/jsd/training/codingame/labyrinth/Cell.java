@@ -2,24 +2,27 @@ package io.jsd.training.codingame.labyrinth;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Cell implements Comparable<Cell> {
 
+	private final Integer id;
 	private final int x;
 	private final int y;
 	private final CellType cellType;
+	private final Map<Direction, Cell> neighboursMap;
 	private boolean isScanned;
-	private Map<Direction, Cell> neighbours;
 	private double howFarAwayThatCellIsFromTheStartingCell;
 	private double lowestCostPath;
-	private ParentCell parentCellForShortestPath;
+	private ShortestPath shortestPath;
 
 	public Cell(int x, int y, CellType cellType) {
+		this.id = Integer.parseInt(String.valueOf(x) + String.valueOf(y));
 		this.x = x;
 		this.y = y;
 		this.cellType = cellType;
 		this.isScanned = false;
-		this.neighbours = new HashMap<Direction, Cell>();
+		this.neighboursMap = new HashMap<Direction, Cell>();
 	}
 
 	public int getX() {
@@ -42,8 +45,8 @@ public class Cell implements Comparable<Cell> {
 		return isScanned;
 	}
 
-	public Map<Direction, Cell> getNeighbours() {
-		return neighbours;
+	public Map<Direction, Cell> getNeighboursMap() {
+		return neighboursMap;
 	}
 
 	public void setgScore(double cost) {
@@ -62,26 +65,10 @@ public class Cell implements Comparable<Cell> {
 		this.lowestCostPath = lowestCostPath;
 	}
 
-	public ParentCell getParentCellForShortestPath() {
-		return this.parentCellForShortestPath;
-	}
-
-	public void setParentCellForShortestPath(ParentCell parentCellForShortestPath) {
-		this.parentCellForShortestPath = parentCellForShortestPath;
-	}
-
-	public Cell getParentCell() {
-		return parentCellForShortestPath.getParentCell();
-	}
-
-	public Direction getFrom() {
-		return parentCellForShortestPath.getFrom();
-	}
-
 	public void putNeighbour(Direction direction, Cell neighbour) {
-		neighbours.put(direction, neighbour);
+		neighboursMap.put(direction, neighbour);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -110,6 +97,29 @@ public class Cell implements Comparable<Cell> {
 	@Override
 	public int compareTo(Cell otherCell) {
 		return Double.compare(this.lowestCostPath, otherCell.getfScore());
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setShortestPath(Entry<Direction, Cell> entry) {
+		if (entry.getKey().equals(Direction.DOWN))
+			this.shortestPath = new ShortestPath(Direction.UP, entry.getValue());
+		if (entry.getKey().equals(Direction.LEFT))
+			this.shortestPath = new ShortestPath(Direction.RIGHT, entry.getValue());
+		if (entry.getKey().equals(Direction.RIGHT))
+			this.shortestPath = new ShortestPath(Direction.LEFT, entry.getValue());
+		if (entry.getKey().equals(Direction.UP))
+			this.shortestPath = new ShortestPath(Direction.DOWN, entry.getValue());
+	}
+
+	public Direction getFromShortestPath() {
+		return this.shortestPath.getFrom();
+	}
+
+	public Cell getParentFromShortestPath() {
+		return this.shortestPath.getParent();
 	}
 
 }

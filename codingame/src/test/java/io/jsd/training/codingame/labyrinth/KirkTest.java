@@ -13,31 +13,45 @@ public class KirkTest extends GameSetUp {
 
 	@Before
 	public void initGrid() {
-		grid[0] = LINE_1.split("");
+
+		gridWithLeftEmptyCell[0] = ASTAR_UNKNOWN_LINE.split("");
+		gridWithLeftEmptyCell[1] = ASTAR_LEFT_EMPTY_CELL.split("");
+		gridWithLeftEmptyCell[2] = ASTAR_UNKNOWN_LINE.split("");
+		labyrinthWithLeftEmptyCell = new Labyrinth(gridWithLeftEmptyCell);
+
+		grid[0] = LINE_5_CHARP.split("");
 		grid[1] = LINE_2.split("");
-		grid[2] = LINE_3.split("");
+		grid[2] = LINE_5_CHARP.split("");
 		labyrinth = new Labyrinth(grid);
 
-		gridInLine[0] = LINE_OF_CHARP.split("");
+		gridInLine[0] = LINE_7_CHARP.split("");
 		gridInLine[1] = LINE_5.split("");
-		gridInLine[2] = LINE_OF_CHARP.split("");
+		gridInLine[2] = LINE_7_CHARP.split("");
 		labyrinthInLine = new Labyrinth(gridInLine);
 
-		gridInLineWithCommandRoom[0] = LINE_OF_CHARP.split("");
+		gridInLineWithCommandRoom[0] = LINE_7_CHARP.split("");
 		gridInLineWithCommandRoom[1] = LINE_6.split("");
-		gridInLineWithCommandRoom[2] = LINE_OF_CHARP.split("");
+		gridInLineWithCommandRoom[2] = LINE_7_CHARP.split("");
 		labyrinthInLineWithCommandRoom = new Labyrinth(gridInLineWithCommandRoom);
 
-		unknownGrid[0] = ASTAR_0.split("");
-		unknownGrid[1] = ASTAR_1.split("");
-		unknownGrid[2] = ASTAR_2.split("");
+		unknownGrid[0] = ASTAR_UNKNOWN_LINE.split("");
+		unknownGrid[1] = ASTAR_START_CELL_WITH_UKNOWN_CELL.split("");
+		unknownGrid[2] = ASTAR_UNKNOWN_LINE.split("");
 		unknownLabyrinth = new Labyrinth(unknownGrid);
 	}
+
+	// @Test
+	// public void
+	// whenKirkCanOnlyMouveOnLeftThenHisPathContainsOneDirectionWhichIsLeft() {
+	// kirkSituation.newPosition(new Cell(1, 2, START_CELL));
+	// kirk.throwMission(labyrinth, alarm);
+	// assertThat(kirk.getPath().isEmpty(), Matchers.is(true));
+	// }
 
 	@Test
 	public void whenKirkdoesntKnowMapThenHeDoesntKnowWhereToGo() {
 		kirkSituation.newPosition(new Cell(1, 2, START_CELL));
-		kirk.throwMission(labyrinth, alarm);
+		kirk.throwMission(unknownLabyrinth, alarm);
 		assertThat(kirk.getPath().isEmpty(), Matchers.is(true));
 	}
 

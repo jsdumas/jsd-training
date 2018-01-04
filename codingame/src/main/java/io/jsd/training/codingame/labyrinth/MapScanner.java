@@ -26,13 +26,13 @@ public class MapScanner {
 			addStartCellAndCommandRoom(currentCell, labyrinthMap);
 			labyrinthMap.addCell(currentCell);
 
-			NeighbourCells neighbourCells = new NeighbourCells(currentCell, labyrinth);
-			neighbourCells.addToCurentCell(currentCell, labyrinthMap, labyrinth);
+			NeighbourCells neighbourCells = new NeighbourCells(currentCell, labyrinth, labyrinthMap);
+			neighbourCells.addToMapThenAddToCurrentCell();
 
-			Map<Direction, Cell> neighbours = currentCell.getNeighbours();
+			Map<Direction, Cell> neighbours = currentCell.getNeighboursMap();
 			for (Map.Entry<Direction, Cell> neighbour : neighbours.entrySet()) {
 				Cell cell = neighbour.getValue();
-				if (!cell.isScanned()) {
+				if (cell != null && !cell.isScanned()) {
 					cell.scanCell();
 					queue.add(cell);
 				}

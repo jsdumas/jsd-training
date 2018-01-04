@@ -8,71 +8,62 @@ import java.util.Stack;
 
 public class Astar {
 
-	private final Cell currentCell;
-	private final Cell destination;
+	private final Cell originCell;
+	private final Cell destinationCell;
 	private final Set<CellType> cellsToAvoid;
 
 	public Astar(Cell currentCell, Cell destination, Set<CellType> cellsToAvoid) {
-		this.currentCell = currentCell;
-		this.destination = destination;
+		this.originCell = currentCell;
+		this.destinationCell = destination;
 		this.cellsToAvoid = cellsToAvoid;
 	}
 
 	public Stack<Direction> getShortestPath() {
 		Set<Cell> exploredCells = new HashSet<Cell>();
 		PriorityQueue<Cell> unexploredCellsQueue = new PriorityQueue<Cell>();
-		currentCell.setgScore(0);
-		unexploredCellsQueue.add(currentCell);
+		originCell.setgScore(0);
+		unexploredCellsQueue.add(originCell);
 		boolean found = false;
 
 		while (!unexploredCellsQueue.isEmpty() && !found) {
 			Cell currentCell = unexploredCellsQueue.poll();
 			exploredCells.add(currentCell);
 
-			if (currentCell.equals(destination)) {
+			if (currentCell.equals(destinationCell)) {
 				found = true;
 			}
 
-			Map<Direction, Cell> neighbours = currentCell.getNeighbours();
-			for (Map.Entry<Direction, Cell> neighbour : neighbours.entrySet()) {
-				if(neighbour.getValue()==null) {
+			Map<Direction, Cell> neighboursMap = currentCell.getNeighboursMap();
+			for (Map.Entry<Direction, Cell> entry : neighboursMap.entrySet()) {
+				Cell neighbourCell = entry.getValue();
+				if (neighbourCell == null || cellsToAvoid.contains(neighbourCell.getCellType())) {
 					continue;
 				}
-				
-				if (cellsToAvoid.contains(neighbour.getValue().getCellType())) {
-//					cost = Double.MAX_VALUE;
-					continue;
-				} 
-
 				double cost = 10;
-
 				double tempGScore = currentCell.getgScore() + cost;
-				double tempFScore = tempGScore + heuristic(neighbour.getValue(), destination);
-
-				if (exploredCells.contains(neighbour.getValue()) && (tempFScore >= neighbour.getValue().getfScore())) {
+				double tempFScore = tempGScore + heuristic(neighbourCell, destinationCell);
+				if (exploredCells.contains(neighbourCell) && (tempFScore >= neighbourCell.getfScore())) {
 					continue;
-				} else if (!unexploredCellsQueue.contains(neighbour.getValue()) || (tempFScore < neighbour.getValue().getfScore())) {
-					ParentCell parentCell = new ParentCell(neighbour.getKey(), currentCell);
-					neighbour.getValue().setParentCellForShortestPath(parentCell);
-					neighbour.getValue().setgScore(tempGScore);
-					neighbour.getValue().setfScore(tempFScore);
-
-					if (unexploredCellsQueue.contains(neighbour.getValue())) {
-						unexploredCellsQueue.remove(neighbour.getValue());
+				} else if (!unexploredCellsQueue.contains(neighbourCell) || (tempFScore < neighbourCell.getfScore())) {
+					neighbourCell.setShortestPath(entry);
+					neighbourCell.setgScore(tempGScore);
+					neighbourCell.setfScore(tempFScore);
+					if (unexploredCellsQueue.contains(neighbourCell)) {
+						unexploredCellsQueue.remove(neighbourCell);
 					}
-
-					unexploredCellsQueue.add(neighbour.getValue());
+					unexploredCellsQueue.add(neighbourCell);
 				}
 			}
 		}
-		
+
 		return printPath();
 	}
 
 	public Stack<Direction> printPath() {
 		Stack<Direction> pathList = new Stack<Direction>();
-		for (Cell dest = destination; dest.getCellType() != CellType.COMMAND_ROOM; dest = dest.getParentCell()) {
-			pathList.add(dest.getFrom());
+		for (Cell currentCell = destinationCell; currentCell != originCell; currentCell = currentCell
+				.getParentFromShortestPath()) {
+			pathList.add(currentCell.getFromShortestPath());
 		}
 		return pathList;
 	}

@@ -6,13 +6,13 @@ import static org.hamcrest.Matchers.is;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LabyrinthTest extends GameSetUp{
+public class LabyrinthTest extends GameSetUp {
 
 	@Before
 	public void initGrid() {
-		grid[0] = LINE_1.split("");
+		grid[0] = LINE_5_CHARP.split("");
 		grid[1] = LINE_2.split("");
-		grid[2] = LINE_3.split("");
+		grid[2] = LINE_5_CHARP.split("");
 		labyrinth = new Labyrinth(grid);
 	}
 
@@ -30,5 +30,5 @@ public class LabyrinthTest extends GameSetUp{
 	public void whenInitLabyrinthWith9ColumnsThenLabyrinthColumnsIs9() {
 		assertThat(labyrinth.getGrid()[0].length, is(5));
 	}
-	
+
 }

@@ -4,40 +4,28 @@ public class RightNeighbour implements Neighbour {
 
 	private final int x;
 	private final int y;
-	private final Cell currentCell;
 	private final Cell rightNeighbour;
 	private Labyrinth labyrinth;
 
 	public RightNeighbour(Cell currentCell, Labyrinth labyrinth) {
-		this.currentCell = currentCell;
 		this.labyrinth = labyrinth;
 		this.x = currentCell.getX();
 		this.y = currentCell.getY() + 1;
-		if (isExist()) {
+		if (isInMap()) {
 			this.rightNeighbour = new Cell(x, y, labyrinth.getCellType(x, y));
 		} else {
 			this.rightNeighbour = null;
 		}
-		this.currentCell.putNeighbour(Direction.LEFT, rightNeighbour);
 	}
 
 	@Override
-	public boolean isExist() {
+	public boolean isInMap() {
 		return y < labyrinth.getColLength();
 	}
 
 	@Override
-	public void addToMap(LabyrinthMap labyrinthMap) {
-		if (isExist()) {
-			if (!labyrinthMap.contains(rightNeighbour)) {
-				labyrinthMap.addCell(rightNeighbour);
-			}
-		}
-	}
-
-	@Override
 	public boolean isMouvable(Labyrinth labyrinth) {
-		if (isExist() && getCellType().equals(CellType.EMPTY_SPACE))
+		if (isInMap() && getCellType().equals(CellType.EMPTY_SPACE))
 			return true;
 		return false;
 	}
@@ -50,6 +38,19 @@ public class RightNeighbour implements Neighbour {
 	@Override
 	public boolean isCommandRoom() {
 		return getCellType().equals(CellType.COMMAND_ROOM);
+	}
+
+	@Override
+	public Cell getCell() {
+		return rightNeighbour;
+	}
+
+	@Override
+	public Integer getIdCell() {
+		if (rightNeighbour == null) {
+			return Integer.MAX_VALUE;
+		}
+		return rightNeighbour.getId();
 	}
 
 }
