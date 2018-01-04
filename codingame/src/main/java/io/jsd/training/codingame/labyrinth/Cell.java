@@ -2,7 +2,6 @@ package io.jsd.training.codingame.labyrinth;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class Cell implements Comparable<Cell> {
 
@@ -103,17 +102,8 @@ public class Cell implements Comparable<Cell> {
 		return id;
 	}
 
-	public void setShortestPath(Entry<Direction, Cell> entry) {
-		// this.shortestPath = new ShortestPath(entry.getKey(), entry.getValue());
-
-		if (entry.getKey().equals(Direction.DOWN))
-			this.shortestPath = new ShortestPath(Direction.UP, entry.getValue());
-		if (entry.getKey().equals(Direction.LEFT))
-			this.shortestPath = new ShortestPath(Direction.RIGHT, entry.getValue());
-		if (entry.getKey().equals(Direction.RIGHT))
-			this.shortestPath = new ShortestPath(Direction.LEFT, entry.getValue());
-		if (entry.getKey().equals(Direction.UP))
-			this.shortestPath = new ShortestPath(Direction.DOWN, entry.getValue());
+	public void setShortestPath(ShortestPath shortestPath) {
+		this.shortestPath = shortestPath;
 	}
 
 	public Direction getFromShortestPath() {

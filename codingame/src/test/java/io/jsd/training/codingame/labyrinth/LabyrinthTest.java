@@ -10,9 +10,9 @@ public class LabyrinthTest extends GameSetUp {
 
 	@Before
 	public void initGrid() {
-		grid[0] = LINE_5_CHARP.split("");
-		grid[1] = LINE_2.split("");
-		grid[2] = LINE_5_CHARP.split("");
+		grid[0] = LINE_5_CHARPS.split("");
+		grid[1] = LINE_1_CHARP_1_T_1_EMPTY_1_COMMAND_1_CHARP.split("");
+		grid[2] = LINE_5_CHARPS.split("");
 		labyrinth = new Labyrinth(grid);
 	}
 

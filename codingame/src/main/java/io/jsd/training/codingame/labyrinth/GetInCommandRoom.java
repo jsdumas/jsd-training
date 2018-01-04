@@ -20,7 +20,8 @@ public class GetInCommandRoom implements Mission {
 		Set<CellType> cellsToAvoid = new HashSet<CellType>();
 		cellsToAvoid.add(CellType.WALL);
 		Astar astar = new Astar(kirk.getCurrentCell(), kirk.getCommandRoom(), cellsToAvoid);
-		return astar.getShortestPath();
+		astar.getShortestPath();
+		return astar.scanUnknownCell();
 	}
 
 }

@@ -12,9 +12,9 @@ public class MapScannerTest extends GameSetUp {
 	@Before
 	public void initGrid() {
 
-		unknownGrid[0] = ASTAR_UNKNOWN_LINE.split("");
-		unknownGrid[1] = ASTAR_START_CELL_WITH_UKNOWN_CELL.split("");
-		unknownGrid[2] = ASTAR_UNKNOWN_LINE.split("");
+		unknownGrid[0] = LINE_5_QUESTIONS.split("");
+		unknownGrid[1] = LINE_2_QUESTIONS_1_T_2_QUESTIONS.split("");
+		unknownGrid[2] = LINE_5_QUESTIONS.split("");
 		unknownLabyrinth = new Labyrinth(unknownGrid);
 	}
 

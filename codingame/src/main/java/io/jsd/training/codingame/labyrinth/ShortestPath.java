@@ -6,8 +6,16 @@ public class ShortestPath {
 	private final Cell parent;
 
 	public ShortestPath(Direction from, Cell parent) {
-		this.from = from;
 		this.parent = parent;
+		this.from = from;
+//		if (from.equals(Direction.DOWN))
+//			this.from = Direction.UP;
+//		else if (from.equals(Direction.LEFT))
+//			this.from = Direction.RIGHT;
+//		else if (from.equals(Direction.RIGHT))
+//			this.from = Direction.LEFT;
+//		else
+//			this.from = Direction.DOWN;
 	}
 
 	public Direction getFrom() {

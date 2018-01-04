@@ -13,14 +13,21 @@ public class KirkTest extends GameSetUp {
 
 	@Before
 	public void initGrid() {
-		gridWithLeftEmptyCell[0] = ASTAR_UNKNOWN_LINE.split("");
-		gridWithLeftEmptyCell[1] = ASTAR_LEFT_EMPTY_CELL.split("");
-		gridWithLeftEmptyCell[2] = ASTAR_UNKNOWN_LINE.split("");
+		gridWithTwoEmptyCells[0] = LINE_5_QUESTIONS.split("");
+		gridWithTwoEmptyCells[1] = LINE_1_CHARP_1_EMPTY_3_CHARPS.split("");
+		gridWithTwoEmptyCells[2] = LINE_1_CHARP_1_EMPTY_1_T_2_CHARPS.split("");
+		gridWithTwoEmptyCells[3] = LINE_5_CHARPS.split("");
+		labyrinthWithTwoEmptyCells = new Labyrinth(gridWithTwoEmptyCells);
+		
+		
+		gridWithLeftEmptyCell[0] = LINE_5_QUESTIONS.split("");
+		gridWithLeftEmptyCell[1] = LINE_1_QUESTION_1_EMPTY__1_T_2_QUESTIONS.split("");
+		gridWithLeftEmptyCell[2] = LINE_5_QUESTIONS.split("");
 		labyrinthWithLeftEmptyCell = new Labyrinth(gridWithLeftEmptyCell);
 
-		grid[0] = LINE_5_CHARP.split("");
-		grid[1] = LINE_2.split("");
-		grid[2] = LINE_5_CHARP.split("");
+		grid[0] = LINE_5_CHARPS.split("");
+		grid[1] = LINE_1_CHARP_1_T_1_EMPTY_1_COMMAND_1_CHARP.split("");
+		grid[2] = LINE_5_CHARPS.split("");
 		labyrinth = new Labyrinth(grid);
 
 		gridInLine[0] = LINE_7_CHARP.split("");
@@ -33,18 +40,28 @@ public class KirkTest extends GameSetUp {
 		gridInLineWithCommandRoom[2] = LINE_7_CHARP.split("");
 		labyrinthInLineWithCommandRoom = new Labyrinth(gridInLineWithCommandRoom);
 
-		unknownGrid[0] = ASTAR_UNKNOWN_LINE.split("");
-		unknownGrid[1] = ASTAR_START_CELL_WITH_UKNOWN_CELL.split("");
-		unknownGrid[2] = ASTAR_UNKNOWN_LINE.split("");
+		unknownGrid[0] = LINE_5_QUESTIONS.split("");
+		unknownGrid[1] = LINE_2_QUESTIONS_1_T_2_QUESTIONS.split("");
+		unknownGrid[2] = LINE_5_QUESTIONS.split("");
 		unknownLabyrinth = new Labyrinth(unknownGrid);
 	}
 
+	
+	@Test
+	public void whenKirkShouldMoveTwiceForScanningCellThenHeMovesTwice() {
+		kirkSituation.newPosition(new Cell(2, 2, START_CELL));
+		kirk.throwMission(labyrinthWithTwoEmptyCells, alarm);
+		assertThat(kirk.getPath().size(), Matchers.is(2));
+		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.UP));
+	}
+	
 	@Test
 	public void whenKirkCanOnlyMouveOnLeftThenHisPathContainsOneDirectionWhichIsLeft() {
 		kirkSituation.newPosition(new Cell(1, 2, START_CELL));
 		kirk.throwMission(labyrinthWithLeftEmptyCell, alarm);
 		assertThat(kirk.getPath().size(), Matchers.is(1));
-		// assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+		 assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
 	}
 
 	@Test
