@@ -107,12 +107,6 @@ public class KirkTest extends GameSetUp {
 	}
 
 	@Test
-	public void whenKirkStartThenHisJetPackEnergyIs1200() {
-		kirkSituation.newPosition(new Cell(1, 1, START_CELL));
-		assertThat(kirk.getJetPackEnergy(), equalTo(1200));
-	}
-
-	@Test
 	public void whenKirkStartToPlayThenHisFirstMissionIsToFindCommandRoom() {
 		kirkSituation.newPosition(new Cell(1, 1, START_CELL));
 		assertThat(kirk.getMission() instanceof ScanAllCells, is(true));

@@ -1,21 +1,40 @@
 package io.jsd.training.codingame.labyrinth;
 
-public class ShortestPath {
+import java.util.Stack;
 
-	private final Direction from;
-	private final Cell parent;
+public class ShortestPath implements Comparable<ShortestPath> {
 
-	public ShortestPath(Direction from, Cell parent) {
-		this.parent = parent;
-		this.from = from;
+	private final Stack<Direction> pathList;
+
+	public ShortestPath() {
+		this.pathList = new Stack<Direction>();
 	}
 
-	public Direction getFrom() {
-		return this.from;
+	public void add(Direction fromParent) {
+		this.pathList.add(fromParent);
 	}
 
-	public Cell getParent() {
-		return this.parent;
+	public boolean isEmpty() {
+		return this.pathList.isEmpty();
+	}
+
+	public Stack<Direction> getPath() {
+		return pathList;
+	}
+
+	public int getSize() {
+		return pathList.size();
+	}
+
+	@Override
+	public int compareTo(ShortestPath other) {
+		if (this.getSize() < other.getSize()) {
+			return -1;
+		}
+		if (this.getSize() < other.getSize()) {
+			return 0;
+		}
+		return 1;
 	}
 
 }

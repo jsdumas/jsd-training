@@ -21,8 +21,8 @@ public class GoBackToStartCell implements Mission {
 			return new Stack<Direction>();
 		}
 		Astar astar = new Astar(kirk.getCurrentCell(), kirk.getStartCell(), cellsToAvoid);
-		astar.setShortestPath();
-		return astar.getShortestPath(false);
+		ShortestPath shortestPath = astar.getShortestPath(false);
+		return shortestPath.getPath();
 	}
 
 }

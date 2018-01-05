@@ -12,7 +12,7 @@ public class GetInCommandRoom implements Mission {
 	public GetInCommandRoom(Kirk kirk) {
 		this.kirk = kirk;
 		this.cellsToAvoid = new HashSet<CellType>();
-		cellsToAvoid.add(CellType.WALL);
+		this.cellsToAvoid.add(CellType.WALL);
 	}
 
 	@Override
@@ -21,8 +21,8 @@ public class GetInCommandRoom implements Mission {
 			return new Stack<Direction>();
 		}
 		Astar astar = new Astar(kirk.getCurrentCell(), kirk.getCommandRoom(), cellsToAvoid);
-		astar.setShortestPath();
-		return astar.getShortestPath(false);
+		ShortestPath shortestPath = astar.getShortestPath(false);
+		return shortestPath.getPath();
 	}
 
 }

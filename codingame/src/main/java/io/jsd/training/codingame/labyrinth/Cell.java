@@ -13,7 +13,7 @@ public class Cell implements Comparable<Cell> {
 	private boolean isScanned;
 	private double howFarAwayThatCellIsFromTheStartingCell;
 	private double lowestCostPath;
-	private ShortestPath shortestPath;
+	private Parent parent;
 
 	public Cell(int x, int y, CellType cellType) {
 		this.id = Integer.parseInt(String.valueOf(x) + String.valueOf(y));
@@ -102,20 +102,20 @@ public class Cell implements Comparable<Cell> {
 		return id;
 	}
 
-	public void setShortestPath(ShortestPath shortestPath) {
-		this.shortestPath = shortestPath;
+	public void setParent(Parent parent) {
+		this.parent = parent;
 	}
 
-	public Direction getFromShortestPath() {
-		return this.shortestPath.getFrom();
+	public Direction getFromParent() {
+		return this.parent.getFrom();
 	}
 
-	public Cell getParentFromShortestPath() {
-		return this.shortestPath.getParent();
+	public Cell getCellParent() {
+		return this.parent.getCell();
 	}
 
-	public ShortestPath getShortestPath() {
-		return this.shortestPath;
+	public Parent getParent() {
+		return this.parent;
 	}
 
 }

@@ -3,6 +3,7 @@ package io.jsd.training.codingame.labyrinth;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
+import java.util.TreeSet;
 
 public class ScanAllCells implements Mission {
 
@@ -19,16 +20,19 @@ public class ScanAllCells implements Mission {
 
 	@Override
 	public Stack<Direction> throwMission(Labyrinth labyrinth) {
-
+		TreeSet<ShortestPath> paths = new TreeSet<ShortestPath>();
 		for (Cell destination : kirk.getUnknownCells()) {
 			Astar astar = new Astar(kirk.getCurrentCell(), destination, cellsToAvoid);
-			astar.setShortestPath();
-			Stack<Direction> directions = astar.getShortestPath(true);
-			if (!directions.isEmpty()) {
-				return directions;
+			ShortestPath shortestPath = astar.getShortestPath(true);
+			if (!shortestPath.isEmpty()) {
+				paths.add(shortestPath);
 			}
 		}
-		return new Stack<Direction>();
+		if (paths.isEmpty()) {
+			return new Stack<Direction>();
+		}
+		ShortestPath path = paths.first();
+		return path.getPath();
 	}
 
 }

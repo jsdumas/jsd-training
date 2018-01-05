@@ -4,17 +4,20 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 
 public class LabyrinthMap {
 
-	private final Map<Integer, Cell> cellsMap;
-	private final Set<Cell> unknownCells;
+	private Map<Integer, Cell> cellsMap;
+	private Set<Cell> unknownCells;
 	private Cell startCell;
 	private Cell commandRoom;
+	private Stack<Direction> path;
 
 	public LabyrinthMap() {
 		this.cellsMap = new HashMap<Integer, Cell>();
 		this.unknownCells = new HashSet<Cell>();
+		this.path = new Stack<Direction>();
 	}
 
 	public Map<Integer, Cell> getAllcells() {
@@ -25,8 +28,14 @@ public class LabyrinthMap {
 		if (cell == null) {
 			return;
 		}
+		if (cell.getCellType().equals(CellType.START_CELL)) {
+			this.startCell = cell;
+		}
 		if (cell.getCellType().equals(CellType.UNKOWN_CELL)) {
 			unknownCells.add(cell);
+		}
+		if (cell.getCellType().equals(CellType.COMMAND_ROOM)) {
+			this.commandRoom = cell;
 		}
 		cellsMap.put(cell.getId(), cell);
 	}
@@ -42,16 +51,8 @@ public class LabyrinthMap {
 		return cellsMap.containsKey(cell.getId());
 	}
 
-	public void setStartCell(Cell startCell) {
-		this.startCell = startCell;
-	}
-
 	public Cell getStartCell() {
 		return this.startCell;
-	}
-
-	public void setCommandRoom(Cell commandRoom) {
-		this.commandRoom = commandRoom;
 	}
 
 	public Cell getCommandRoom() {
@@ -66,13 +67,6 @@ public class LabyrinthMap {
 	}
 
 	public boolean areAllCellsScanned() {
-//		for (Map.Entry<Integer, Cell> item : cellsMap.entrySet()) {
-//			Cell cell = item.getValue();
-//			if (cell.getCellType().equals(CellType.UNKOWN_CELL)) {
-//				return false;
-//			}
-//		}
-//		return true;
 		return unknownCells.isEmpty();
 	}
 
@@ -88,6 +82,19 @@ public class LabyrinthMap {
 
 	public Cell getCell(Integer cellId) {
 		return cellsMap.get(cellId);
+	}
+
+	public void setPath(Stack<Direction> path) {
+		this.path = path;
+	}
+
+	public Stack<Direction> getPath() {
+		return path;
+	}
+
+	public void removeAllCellsCollections() {
+		this.cellsMap = new HashMap<Integer, Cell>();
+		this.unknownCells = new HashSet<Cell>();
 	}
 
 }

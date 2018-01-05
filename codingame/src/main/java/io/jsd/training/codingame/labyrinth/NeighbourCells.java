@@ -18,11 +18,14 @@ public class NeighbourCells {
 		this.bottomNeighbour = new BottomNeighbour(currentCell, labyrinth);
 	}
 
-	public void addToMapThenAddToCurrentCell() {
+	public void addToMap() {
 		addToMap(leftNeighbour);
 		addToMap(rightNeighbour);
 		addToMap(upperNeighbour);
 		addToMap(bottomNeighbour);
+	}
+
+	public void addToCurrentCell() {
 		currentCell.putNeighbour(Direction.LEFT, labyrinthMap.getCell(leftNeighbour.getIdCell()));
 		currentCell.putNeighbour(Direction.UP, labyrinthMap.getCell(upperNeighbour.getIdCell()));
 		currentCell.putNeighbour(Direction.RIGHT, labyrinthMap.getCell(rightNeighbour.getIdCell()));

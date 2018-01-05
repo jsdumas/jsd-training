@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
-import java.util.Stack;
 
 public class Astar {
 
@@ -16,9 +15,10 @@ public class Astar {
 		this.originCell = currentCell;
 		this.destinationCell = destination;
 		this.cellsToAvoid = cellsToAvoid;
+		setShortestPath();
 	}
 
-	public void setShortestPath() {
+	private void setShortestPath() {
 		Set<Cell> exploredCells = new HashSet<Cell>();
 		PriorityQueue<Cell> unexploredCellsQueue = new PriorityQueue<Cell>();
 		originCell.setgScore(0);
@@ -34,7 +34,8 @@ public class Astar {
 			for (Map.Entry<Direction, Cell> entry : neighboursMap.entrySet()) {
 				Direction directionTo = entry.getKey();
 				Cell neighbourCell = entry.getValue();
-				if (neighbourCell == null || (cellsToAvoid.contains(neighbourCell.getCellType()) && neighbourCell!=destinationCell)) {
+				if (neighbourCell == null
+						|| (cellsToAvoid.contains(neighbourCell.getCellType()) && neighbourCell != destinationCell)) {
 					continue;
 				}
 				double cost = 10;
@@ -43,8 +44,8 @@ public class Astar {
 				if (exploredCells.contains(neighbourCell) && (tempFScore >= neighbourCell.getfScore())) {
 					continue;
 				} else if (!unexploredCellsQueue.contains(neighbourCell) || (tempFScore < neighbourCell.getfScore())) {
-					ShortestPath shortestPath = new ShortestPath(directionTo, currentCell);
-					neighbourCell.setShortestPath(shortestPath);
+					Parent shortestPath = new Parent(directionTo, currentCell);
+					neighbourCell.setParent(shortestPath);
 					neighbourCell.setgScore(tempGScore);
 					neighbourCell.setfScore(tempFScore);
 					if (unexploredCellsQueue.contains(neighbourCell)) {
@@ -56,23 +57,22 @@ public class Astar {
 		}
 	}
 
-	public Stack<Direction> getShortestPath(boolean isPathToUnknownCell) {
-		Stack<Direction> pathList = new Stack<Direction>();
-		if (destinationCell.getShortestPath() == null) {
-			return pathList;
+	public ShortestPath getShortestPath(boolean isPathToUnknownCell) {
+		ShortestPath shortestPath = new ShortestPath();
+		if (destinationCell.getParent() == null) {
+			return shortestPath;
 		}
-		for (Cell currentCell = destinationCell; currentCell != originCell; currentCell = currentCell
-				.getParentFromShortestPath()) {
-			if(currentCell==destinationCell && isPathToUnknownCell)
+		for (Cell currentCell = destinationCell; currentCell != originCell; currentCell = currentCell.getCellParent()) {
+			if (currentCell == destinationCell && isPathToUnknownCell)
 				continue;
-			pathList.add(currentCell.getFromShortestPath());
+			shortestPath.add(currentCell.getFromParent());
 		}
-		return pathList;
+		return shortestPath;
 	}
 
 	// Manhattan heuristic/distance !!!
-	public double heuristic(Cell neighbourCell, Cell startCell) {
-		return Math.abs(neighbourCell.getX() - startCell.getX()) + Math.abs(startCell.getY() - startCell.getY());
+	public double heuristic(Cell neighbourCell, Cell destination) {
+		return Math.abs(neighbourCell.getX() - destination.getX()) + Math.abs(destination.getY() - destination.getY());
 	}
 
 }
