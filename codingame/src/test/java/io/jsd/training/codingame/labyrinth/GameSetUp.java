@@ -14,7 +14,9 @@ public abstract class GameSetUp {
 	protected final static String LINE_5_CHARPS = "#####";
 	protected final static String LINE_1_CHARP_1_T_1_EMPTY_1_COMMAND_1_CHARP = "#T.C#";
 
-	protected final static String LINE_7_CHARP = "#######";
+	protected final static String LINE_7_CHARPS = "#######";
+	protected final static String LINE_CHARP_T_3_EMPTY_C_CHARP = "#T...C#";
+
 	protected final static String LINE_5 = "#T...?#";
 	protected final static String LINE_6 = "#T...C#";
 
@@ -34,9 +36,12 @@ public abstract class GameSetUp {
 
 	protected final String[][] gridWithLeftEmptyCell = new String[3][5];
 	protected Labyrinth labyrinthWithLeftEmptyCell;
-	
+
 	protected final String[][] gridWithTwoEmptyCells = new String[4][5];
 	protected Labyrinth labyrinthWithTwoEmptyCells;
+
+	protected final String[][] gridWithStraightAheadLine = new String[3][7];
+	protected Labyrinth labyrinthWithStraightAheadLine;
 
 	protected final Alarm alarm = new Alarm(ALARM_COUNT);
 }

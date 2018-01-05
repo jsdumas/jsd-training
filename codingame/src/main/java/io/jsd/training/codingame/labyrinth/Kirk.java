@@ -1,5 +1,6 @@
 package io.jsd.training.codingame.labyrinth;
 
+import java.util.Set;
 import java.util.Stack;
 
 public class Kirk {
@@ -48,7 +49,12 @@ public class Kirk {
 
 	public void throwMission(Labyrinth labyrinth, Alarm alarm) {
 		kirkSituation.energyDecrease();
-
+		// if (!kirkSituation.isCommandRoomPositionKnown()) {
+		MapScanner mapScanner = new MapScanner(labyrinth, getCurrentCell());
+		mapScanner.scanLabyrinth();
+		LabyrinthMap labyrinthMap = mapScanner.getLabyrinthMap();
+		setLabyrinthMap(labyrinthMap);
+		// }
 		if (kirkSituation.isCommandRoomPositionKnown()) {
 			if (getCellTypeOfCurrentPosition().equals(CellType.COMMAND_ROOM)) {
 				alarm.sartCount();
@@ -57,7 +63,6 @@ public class Kirk {
 				mission = getInCommandRoom;
 			}
 		}
-
 		kirkSituation.setPath(mission.throwMission(labyrinth));
 	}
 
@@ -66,9 +71,6 @@ public class Kirk {
 	}
 
 	public void newPosition(Cell cell) {
-		if (cell.getCellType().equals(CellType.COMMAND_ROOM)) {
-			kirkSituation.setCommandRoom(cell);
-		}
 		kirkSituation.newPosition(cell);
 	}
 
@@ -88,16 +90,16 @@ public class Kirk {
 		return kirkSituation.getStartCell();
 	}
 
-	public Cell getPreviousCell() {
-		return kirkSituation.getPreviousCell();
-	}
-
 	public void setLabyrinthMap(LabyrinthMap labyrinthMap) {
 		kirkSituation.setLabyrinthMap(labyrinthMap);
 	}
 
 	public boolean isCommandRoomPositionKnown() {
 		return kirkSituation.isCommandRoomPositionKnown();
+	}
+
+	public Set<Cell> getUnknownCells() {
+		return kirkSituation.getUnknownCells();
 	}
 
 }

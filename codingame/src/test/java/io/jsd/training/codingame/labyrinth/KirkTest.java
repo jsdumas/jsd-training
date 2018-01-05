@@ -1,5 +1,6 @@
 package io.jsd.training.codingame.labyrinth;
 
+import static io.jsd.training.codingame.labyrinth.CellType.COMMAND_ROOM;
 import static io.jsd.training.codingame.labyrinth.CellType.START_CELL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -13,13 +14,17 @@ public class KirkTest extends GameSetUp {
 
 	@Before
 	public void initGrid() {
+		gridWithStraightAheadLine[0] = LINE_7_CHARPS.split("");
+		gridWithStraightAheadLine[1] = LINE_CHARP_T_3_EMPTY_C_CHARP.split("");
+		gridWithStraightAheadLine[2] = LINE_7_CHARPS.split("");
+		labyrinthWithStraightAheadLine = new Labyrinth(gridWithStraightAheadLine);
+
 		gridWithTwoEmptyCells[0] = LINE_5_QUESTIONS.split("");
 		gridWithTwoEmptyCells[1] = LINE_1_CHARP_1_EMPTY_3_CHARPS.split("");
 		gridWithTwoEmptyCells[2] = LINE_1_CHARP_1_EMPTY_1_T_2_CHARPS.split("");
 		gridWithTwoEmptyCells[3] = LINE_5_CHARPS.split("");
 		labyrinthWithTwoEmptyCells = new Labyrinth(gridWithTwoEmptyCells);
-		
-		
+
 		gridWithLeftEmptyCell[0] = LINE_5_QUESTIONS.split("");
 		gridWithLeftEmptyCell[1] = LINE_1_QUESTION_1_EMPTY__1_T_2_QUESTIONS.split("");
 		gridWithLeftEmptyCell[2] = LINE_5_QUESTIONS.split("");
@@ -30,14 +35,14 @@ public class KirkTest extends GameSetUp {
 		grid[2] = LINE_5_CHARPS.split("");
 		labyrinth = new Labyrinth(grid);
 
-		gridInLine[0] = LINE_7_CHARP.split("");
+		gridInLine[0] = LINE_7_CHARPS.split("");
 		gridInLine[1] = LINE_5.split("");
-		gridInLine[2] = LINE_7_CHARP.split("");
+		gridInLine[2] = LINE_7_CHARPS.split("");
 		labyrinthInLine = new Labyrinth(gridInLine);
 
-		gridInLineWithCommandRoom[0] = LINE_7_CHARP.split("");
+		gridInLineWithCommandRoom[0] = LINE_7_CHARPS.split("");
 		gridInLineWithCommandRoom[1] = LINE_6.split("");
-		gridInLineWithCommandRoom[2] = LINE_7_CHARP.split("");
+		gridInLineWithCommandRoom[2] = LINE_7_CHARPS.split("");
 		labyrinthInLineWithCommandRoom = new Labyrinth(gridInLineWithCommandRoom);
 
 		unknownGrid[0] = LINE_5_QUESTIONS.split("");
@@ -46,7 +51,18 @@ public class KirkTest extends GameSetUp {
 		unknownLabyrinth = new Labyrinth(unknownGrid);
 	}
 
-	
+	@Test
+	public void whenThen() {
+		kirkSituation.newPosition(new Cell(1, 5, COMMAND_ROOM));
+		// kirkSituation.setStartCell(new Cell(1, 5, STa));
+		kirk.throwMission(labyrinthWithStraightAheadLine, alarm);
+		assertThat(kirk.getPath().size(), Matchers.is(4));
+		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+	}
+
 	@Test
 	public void whenKirkShouldMoveTwiceForScanningCellThenHeMovesTwice() {
 		kirkSituation.newPosition(new Cell(2, 2, START_CELL));
@@ -55,13 +71,13 @@ public class KirkTest extends GameSetUp {
 		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
 		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.UP));
 	}
-	
+
 	@Test
 	public void whenKirkCanOnlyMouveOnLeftThenHisPathContainsOneDirectionWhichIsLeft() {
 		kirkSituation.newPosition(new Cell(1, 2, START_CELL));
 		kirk.throwMission(labyrinthWithLeftEmptyCell, alarm);
 		assertThat(kirk.getPath().size(), Matchers.is(1));
-		 assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
 	}
 
 	@Test

@@ -20,12 +20,7 @@ public class ScanAllCells implements Mission {
 	@Override
 	public Stack<Direction> throwMission(Labyrinth labyrinth) {
 
-		MapScanner mapScanner = new MapScanner(labyrinth, kirk.getCurrentCell());
-		mapScanner.scanLabyrinth();
-		LabyrinthMap labyrinthMap = mapScanner.getLabyrinthMap();
-		kirk.setLabyrinthMap(labyrinthMap);
-
-		for (Cell destination : labyrinthMap.getUnknownCells()) {
+		for (Cell destination : kirk.getUnknownCells()) {
 			Astar astar = new Astar(kirk.getCurrentCell(), destination, cellsToAvoid);
 			astar.setShortestPath();
 			Stack<Direction> directions = astar.getShortestPath(true);
