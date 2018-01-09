@@ -13,13 +13,11 @@ public class GetInCommandRoom implements Mission {
 		this.kirk = kirk;
 		this.cellsToAvoid = new HashSet<CellType>();
 		this.cellsToAvoid.add(CellType.WALL);
+		cellsToAvoid.add(CellType.UNKOWN_CELL);
 	}
 
 	@Override
 	public Stack<Direction> throwMission(Labyrinth labyrinth) {
-		if (!kirk.isCommandRoomPositionKnown()) {
-			return new Stack<Direction>();
-		}
 		Astar astar = new Astar(kirk.getCurrentCell(), kirk.getCommandRoom(), cellsToAvoid);
 		ShortestPath shortestPath = astar.getShortestPath(false);
 		return shortestPath.getPath();

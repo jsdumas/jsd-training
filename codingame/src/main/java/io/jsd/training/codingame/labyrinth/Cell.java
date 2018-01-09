@@ -1,7 +1,8 @@
 package io.jsd.training.codingame.labyrinth;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Cell implements Comparable<Cell> {
 
@@ -9,9 +10,9 @@ public class Cell implements Comparable<Cell> {
 	private final int x;
 	private final int y;
 	private final CellType cellType;
-	private final Map<Direction, Cell> neighboursMap;
+	private final List<Edge> neighbours;
 	private boolean isScanned;
-	private double howFarAwayThatCellIsFromTheStartingCell;
+	private double distanceToDestination;
 	private double lowestCostPath;
 	private Parent parent;
 
@@ -21,7 +22,9 @@ public class Cell implements Comparable<Cell> {
 		this.y = y;
 		this.cellType = cellType;
 		this.isScanned = false;
-		this.neighboursMap = new HashMap<Direction, Cell>();
+		this.neighbours = new ArrayList<>();
+		this.distanceToDestination=0;
+		this.lowestCostPath=0;
 	}
 
 	public int getX() {
@@ -44,28 +47,29 @@ public class Cell implements Comparable<Cell> {
 		return isScanned;
 	}
 
-	public Map<Direction, Cell> getNeighboursMap() {
-		return neighboursMap;
+	public List<Edge> getNeighbours() {
+		return neighbours;
 	}
 
-	public void setgScore(double cost) {
-		this.howFarAwayThatCellIsFromTheStartingCell = cost;
+	public void setDistanceToDestination(double cost) {
+		this.distanceToDestination = cost;
 	}
 
-	public double getgScore() {
-		return howFarAwayThatCellIsFromTheStartingCell;
+	public double getDistanceToDestination() {
+		return distanceToDestination;
 	}
 
-	public double getfScore() {
+	public double getLowerCostPath() {
 		return lowestCostPath;
 	}
 
-	public void setfScore(double lowestCostPath) {
+	public void setLowerCostPath(double lowestCostPath) {
 		this.lowestCostPath = lowestCostPath;
 	}
 
-	public void putNeighbour(Direction direction, Cell neighbour) {
-		neighboursMap.put(direction, neighbour);
+	public void addNeighbour(Direction direction, Cell neighbour) {
+		if(neighbour!=null)
+			neighbours.add(new Edge(direction, neighbour));
 	}
 
 	@Override
@@ -95,7 +99,7 @@ public class Cell implements Comparable<Cell> {
 
 	@Override
 	public int compareTo(Cell otherCell) {
-		return Double.compare(this.lowestCostPath, otherCell.getfScore());
+		return Double.compare(this.lowestCostPath, otherCell.getLowerCostPath());
 	}
 
 	public Integer getId() {

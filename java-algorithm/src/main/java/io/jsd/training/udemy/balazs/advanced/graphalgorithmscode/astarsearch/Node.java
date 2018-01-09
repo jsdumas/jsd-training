@@ -15,7 +15,7 @@ public class Node implements Comparable<Node> {
 
 	public Node(String value) {
 		this.value = value;
-		this.adjacenciesList = new ArrayList<>();
+		this.adjacenciesList = new ArrayList<Edge>();
 	}
 
 	public double getgScore() {

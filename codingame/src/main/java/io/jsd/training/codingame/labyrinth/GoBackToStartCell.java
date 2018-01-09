@@ -12,14 +12,12 @@ public class GoBackToStartCell implements Mission {
 	public GoBackToStartCell(Kirk kirk) {
 		this.kirk = kirk;
 		this.cellsToAvoid = new HashSet<CellType>();
-		cellsToAvoid.add(CellType.WALL);
+		this.cellsToAvoid.add(CellType.WALL);
+		this.cellsToAvoid.add(CellType.UNKOWN_CELL);
 	}
 
 	@Override
 	public Stack<Direction> throwMission(Labyrinth labyrinth) {
-		if (!kirk.isCommandRoomPositionKnown()) {
-			return new Stack<Direction>();
-		}
 		Astar astar = new Astar(kirk.getCurrentCell(), kirk.getStartCell(), cellsToAvoid);
 		ShortestPath shortestPath = astar.getShortestPath(false);
 		return shortestPath.getPath();

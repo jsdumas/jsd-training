@@ -26,10 +26,10 @@ public class NeighbourCells {
 	}
 
 	public void addToCurrentCell() {
-		currentCell.putNeighbour(Direction.LEFT, labyrinthMap.getCell(leftNeighbour.getIdCell()));
-		currentCell.putNeighbour(Direction.UP, labyrinthMap.getCell(upperNeighbour.getIdCell()));
-		currentCell.putNeighbour(Direction.RIGHT, labyrinthMap.getCell(rightNeighbour.getIdCell()));
-		currentCell.putNeighbour(Direction.DOWN, labyrinthMap.getCell(bottomNeighbour.getIdCell()));
+		currentCell.addNeighbour(Direction.LEFT, labyrinthMap.getCell(leftNeighbour.getIdCell()));
+		currentCell.addNeighbour(Direction.UP, labyrinthMap.getCell(upperNeighbour.getIdCell()));
+		currentCell.addNeighbour(Direction.RIGHT, labyrinthMap.getCell(rightNeighbour.getIdCell()));
+		currentCell.addNeighbour(Direction.DOWN, labyrinthMap.getCell(bottomNeighbour.getIdCell()));
 	}
 
 	private void addToMap(Neighbour neighbour) {

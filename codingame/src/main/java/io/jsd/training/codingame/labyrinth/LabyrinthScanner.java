@@ -1,7 +1,7 @@
 package io.jsd.training.codingame.labyrinth;
 
 import java.util.LinkedList;
-import java.util.Map;
+import java.util.List;
 import java.util.Queue;
 
 public abstract class LabyrinthScanner {
@@ -15,9 +15,9 @@ public abstract class LabyrinthScanner {
 			Cell currentCell = queue.remove();
 			labyrinthMap.addCell(currentCell);
 			setNeighbours(labyrinth, labyrinthMap, currentCell);
-			Map<Direction, Cell> neighbours = currentCell.getNeighboursMap();
-			for (Map.Entry<Direction, Cell> neighbour : neighbours.entrySet()) {
-				Cell cell = neighbour.getValue();
+			List<Edge> edges = currentCell.getNeighbours();
+			for (Edge edge : edges) {
+				Cell cell = edge.getNeighbourCell();
 				if (cell != null && !cell.isScanned()) {
 					cell.scanCell();
 					queue.add(cell);

@@ -28,9 +28,9 @@ public class ScanAllCells implements Mission {
 				paths.add(shortestPath);
 			}
 		}
-		if (paths.isEmpty()) {
-			return new Stack<Direction>();
-		}
+//		if (paths.isEmpty()) {
+//			return new Stack<Direction>();
+//		}
 		ShortestPath path = paths.first();
 		return path.getPath();
 	}

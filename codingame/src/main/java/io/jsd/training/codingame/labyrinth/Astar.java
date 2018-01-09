@@ -1,7 +1,7 @@
 package io.jsd.training.codingame.labyrinth;
 
 import java.util.HashSet;
-import java.util.Map;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Set;
 
@@ -9,10 +9,10 @@ public class Astar {
 
 	private final Cell originCell;
 	private final Cell destinationCell;
-	private final Set<CellType> cellsToAvoid;
+	private Set<CellType> cellsToAvoid;
 
-	public Astar(Cell currentCell, Cell destination, Set<CellType> cellsToAvoid) {
-		this.originCell = currentCell;
+	public Astar(Cell originCell, Cell destination, Set<CellType> cellsToAvoid) {
+		this.originCell = originCell;
 		this.destinationCell = destination;
 		this.cellsToAvoid = cellsToAvoid;
 		setShortestPath();
@@ -21,33 +21,32 @@ public class Astar {
 	private void setShortestPath() {
 		Set<Cell> exploredCells = new HashSet<Cell>();
 		PriorityQueue<Cell> unexploredCellsQueue = new PriorityQueue<Cell>();
-		originCell.setgScore(0);
+		originCell.setDistanceToDestination(0);
 		unexploredCellsQueue.add(originCell);
-		boolean found = false;
+		boolean found=false;
 		while (!unexploredCellsQueue.isEmpty() && !found) {
 			Cell currentCell = unexploredCellsQueue.poll();
 			exploredCells.add(currentCell);
 			if (currentCell.equals(destinationCell)) {
 				found = true;
 			}
-			Map<Direction, Cell> neighboursMap = currentCell.getNeighboursMap();
-			for (Map.Entry<Direction, Cell> entry : neighboursMap.entrySet()) {
-				Direction directionTo = entry.getKey();
-				Cell neighbourCell = entry.getValue();
-				if (neighbourCell == null
-						|| (cellsToAvoid.contains(neighbourCell.getCellType()) && neighbourCell != destinationCell)) {
+			List<Edge> edges = currentCell.getNeighbours();
+			for (Edge edge : edges) {
+				Cell neighbourCell = edge.getNeighbourCell();
+				if (cellsToAvoid.contains(neighbourCell.getCellType()) && neighbourCell != destinationCell) {
 					continue;
 				}
-				double cost = 10;
-				double tempGScore = currentCell.getgScore() + cost;
+				double cost = edge.getCost();
+				double tempGScore = currentCell.getDistanceToDestination() + cost;
 				double tempFScore = tempGScore + heuristic(neighbourCell, destinationCell);
-				if (exploredCells.contains(neighbourCell) && (tempFScore >= neighbourCell.getfScore())) {
+				if (exploredCells.contains(neighbourCell) && (tempFScore >= neighbourCell.getLowerCostPath())) {
 					continue;
-				} else if (!unexploredCellsQueue.contains(neighbourCell) || (tempFScore < neighbourCell.getfScore())) {
-					Parent shortestPath = new Parent(directionTo, currentCell);
-					neighbourCell.setParent(shortestPath);
-					neighbourCell.setgScore(tempGScore);
-					neighbourCell.setfScore(tempFScore);
+				}
+				if (!unexploredCellsQueue.contains(neighbourCell) || (tempFScore < neighbourCell.getLowerCostPath())) {
+					Parent parent = new Parent(edge.getDirection(), currentCell);
+					neighbourCell.setParent(parent);
+					neighbourCell.setDistanceToDestination(tempGScore);
+					neighbourCell.setLowerCostPath(tempFScore);
 					if (unexploredCellsQueue.contains(neighbourCell)) {
 						unexploredCellsQueue.remove(neighbourCell);
 					}
@@ -72,7 +71,7 @@ public class Astar {
 
 	// Manhattan heuristic/distance !!!
 	public double heuristic(Cell neighbourCell, Cell destination) {
-		return Math.abs(neighbourCell.getX() - destination.getX()) + Math.abs(destination.getY() - destination.getY());
+		return Math.abs(neighbourCell.getX() - destination.getX()) + Math.abs(neighbourCell.getY() - destination.getY());
 	}
 
 }
