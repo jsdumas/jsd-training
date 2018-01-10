@@ -18,24 +18,19 @@ public class NeighbourCells {
 		this.bottomNeighbour = new BottomNeighbour(currentCell, labyrinth);
 	}
 
-	public void addToMap() {
-		addToMap(leftNeighbour);
-		addToMap(rightNeighbour);
-		addToMap(upperNeighbour);
-		addToMap(bottomNeighbour);
+	private void addToMap() {
+		labyrinthMap.addNeighbourCell(leftNeighbour);
+		labyrinthMap.addNeighbourCell(rightNeighbour);
+		labyrinthMap.addNeighbourCell(upperNeighbour);
+		labyrinthMap.addNeighbourCell(bottomNeighbour);
 	}
 
 	public void addToCurrentCell() {
-		currentCell.addNeighbour(Direction.LEFT, labyrinthMap.getCell(leftNeighbour.getIdCell()));
-		currentCell.addNeighbour(Direction.UP, labyrinthMap.getCell(upperNeighbour.getIdCell()));
-		currentCell.addNeighbour(Direction.RIGHT, labyrinthMap.getCell(rightNeighbour.getIdCell()));
-		currentCell.addNeighbour(Direction.DOWN, labyrinthMap.getCell(bottomNeighbour.getIdCell()));
-	}
-
-	private void addToMap(Neighbour neighbour) {
-		if (!labyrinthMap.contains(neighbour.getCell())) {
-			labyrinthMap.addCell(neighbour.getCell());
-		}
+		addToMap();
+		currentCell.addNeighbour(Direction.LEFT, labyrinthMap.getNeighbourCell(leftNeighbour));
+		currentCell.addNeighbour(Direction.UP, labyrinthMap.getNeighbourCell(upperNeighbour));
+		currentCell.addNeighbour(Direction.RIGHT, labyrinthMap.getNeighbourCell(rightNeighbour));
+		currentCell.addNeighbour(Direction.DOWN, labyrinthMap.getNeighbourCell(bottomNeighbour));
 	}
 
 }

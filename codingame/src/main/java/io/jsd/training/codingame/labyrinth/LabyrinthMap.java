@@ -28,13 +28,13 @@ public class LabyrinthMap {
 		if (cell == null) {
 			return;
 		}
-		if (cell.getCellType().equals(CellType.START_CELL)) {
+		if (cell.getCellType().equals(CellType.START_CELL) && this.startCell == null) {
 			this.startCell = cell;
 		}
 		if (cell.getCellType().equals(CellType.UNKOWN_CELL)) {
-			unknownCells.add(cell);
+			this.unknownCells.add(cell);
 		}
-		if (cell.getCellType().equals(CellType.COMMAND_ROOM)) {
+		if (cell.getCellType().equals(CellType.COMMAND_ROOM) && this.commandRoom == null) {
 			this.commandRoom = cell;
 		}
 		cellsMap.put(cell.getId(), cell);
@@ -42,13 +42,6 @@ public class LabyrinthMap {
 
 	public int getSize() {
 		return cellsMap.size();
-	}
-
-	public boolean contains(Cell cell) {
-		if (cell == null) {
-			return false;
-		}
-		return cellsMap.containsKey(cell.getId());
 	}
 
 	public Cell getStartCell() {
@@ -95,6 +88,14 @@ public class LabyrinthMap {
 	public void removeAllCellsCollections() {
 		this.cellsMap = new HashMap<Integer, Cell>();
 		this.unknownCells = new HashSet<Cell>();
+	}
+
+	public Cell getNeighbourCell(Neighbour neighbour) {
+		return getCell(neighbour.getIdCell());
+	}
+
+	public void addNeighbourCell(Neighbour neighbour) {
+		this.addCell(neighbour.getCell());
 	}
 
 }

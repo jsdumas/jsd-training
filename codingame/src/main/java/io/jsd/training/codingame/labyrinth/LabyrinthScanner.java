@@ -7,7 +7,7 @@ import java.util.Queue;
 public abstract class LabyrinthScanner {
 
 	public void breadthFirstSearch(Labyrinth labyrinth, LabyrinthMap labyrinthMap, Cell currentPosition) {
-		labyrinthMap.removeAllCellsCollections();
+		// labyrinthMap.removeAllCellsCollections();
 		Queue<Cell> queue = new LinkedList<Cell>();
 		currentPosition.scanCell();
 		queue.add(currentPosition);
@@ -29,7 +29,6 @@ public abstract class LabyrinthScanner {
 
 	private void setNeighbours(Labyrinth labyrinth, LabyrinthMap labyrinthMap, Cell currentCell) {
 		NeighbourCells neighbourCells = new NeighbourCells(currentCell, labyrinth, labyrinthMap);
-		neighbourCells.addToMap();
 		neighbourCells.addToCurrentCell();
 	}
 
