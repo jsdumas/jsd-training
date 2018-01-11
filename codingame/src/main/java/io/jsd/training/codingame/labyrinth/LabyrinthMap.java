@@ -31,13 +31,30 @@ public class LabyrinthMap {
 		if (cell.getCellType().equals(CellType.START_CELL) && this.startCell == null) {
 			this.startCell = cell;
 		}
-		if (cell.getCellType().equals(CellType.UNKOWN_CELL)) {
-			this.unknownCells.add(cell);
-		}
 		if (cell.getCellType().equals(CellType.COMMAND_ROOM) && this.commandRoom == null) {
 			this.commandRoom = cell;
 		}
-		cellsMap.put(cell.getId(), cell);
+		if (cell.getCellType().equals(CellType.UNKOWN_CELL)) {
+			this.unknownCells.add(cell);
+		}
+		memorize(cell);
+	}
+
+	private void memorize(Cell cell) {
+		if (cellsMap.containsKey(cell.getId())) {
+			updateCell(cell);
+		} else {
+			cellsMap.put(cell.getId(), cell);
+		}
+	}
+
+	private void updateCell(Cell cell) {
+		Cell memorizedCell = cellsMap.get(cell.getId());
+		CellType memorizedCellType = memorizedCell.getCellType();
+		if (memorizedCellType.equals(CellType.UNKOWN_CELL) && !memorizedCellType.equals(cell.getCellType())) {
+			memorizedCell.setCellType(cell.getCellType());
+			unknownCells.remove(memorizedCell);
+		}
 	}
 
 	public int getSize() {

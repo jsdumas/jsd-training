@@ -3,14 +3,13 @@ package io.jsd.training.codingame.labyrinth;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Cell implements Comparable<Cell> {
 
 	private final Integer id;
 	private final int x;
 	private final int y;
-	private final CellType cellType;
 	private final List<Edge> neighbours;
+	private CellType cellType;
 	private boolean isScanned;
 	private double distanceToDestination;
 	private double lowestCostPath;
@@ -23,8 +22,8 @@ public class Cell implements Comparable<Cell> {
 		this.cellType = cellType;
 		this.isScanned = false;
 		this.neighbours = new ArrayList<>();
-		this.distanceToDestination=0;
-		this.lowestCostPath=0;
+		this.distanceToDestination = 0;
+		this.lowestCostPath = 0;
 	}
 
 	public int getX() {
@@ -68,7 +67,7 @@ public class Cell implements Comparable<Cell> {
 	}
 
 	public void addNeighbour(Direction direction, Cell neighbour) {
-		if(neighbour!=null)
+		if (neighbour != null)
 			neighbours.add(new Edge(direction, neighbour));
 	}
 
@@ -120,6 +119,10 @@ public class Cell implements Comparable<Cell> {
 
 	public Parent getParent() {
 		return this.parent;
+	}
+
+	public void setCellType(CellType cellType) {
+		this.cellType = cellType;
 	}
 
 }
