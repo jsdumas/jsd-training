@@ -35,11 +35,11 @@ public class Astar {
 				if (cellsToAvoid.contains(neighbourCell.getCellType()) && neighbourCell != destinationCell) {
 					continue;
 				}
-				Distance distance = new Distance(edge.getCost(), currentCell, neighbourCell, destinationCell);
+				Distance distance = new Distance(edge, currentCell, destinationCell);
 				if (exploredCells.contains(neighbourCell) && distance.isLongerThanNeighbourDistance()) {
 					continue;
 				}
-				if (!unexploredCellsQueue.contains(neighbourCell) || distance.isShorterThanNeighbourDistance()) {
+				if (!unexploredCellsQueue.contains(neighbourCell) || distance.isShorterThanNeighbourDistance() || neighbourCell == destinationCell) {
 					Parent parent = new Parent(edge.getDirection(), currentCell);
 					setPathInNeigbourCell(neighbourCell, parent, distance);
 					updatePriotyInUnexploredCell(neighbourCell);

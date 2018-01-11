@@ -29,7 +29,8 @@ public abstract class LabyrinthScanner {
 
 	private void setNeighbours(Labyrinth labyrinth, LabyrinthMap labyrinthMap, Cell currentCell) {
 		NeighbourCells neighbourCells = new NeighbourCells(currentCell, labyrinth, labyrinthMap);
-		neighbourCells.addToCurrentCell();
+		if(currentCell.getNeighbours().isEmpty())
+			neighbourCells.addToCurrentCell();
 	}
 
 }

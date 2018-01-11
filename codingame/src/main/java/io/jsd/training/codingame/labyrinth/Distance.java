@@ -4,14 +4,12 @@ public class Distance {
 
 	private final double cost;
 	private final Cell neighbourCell;
-	private final Cell destinationCell;
 	private final double distanceToDestination;
 	private final double distance;
 
-	public Distance(double cost, Cell currentCell, Cell neighbourCell, Cell destinationCell) {
-		this.cost = cost;
-		this.neighbourCell = neighbourCell;
-		this.destinationCell = destinationCell;
+	public Distance(Edge edge, Cell currentCell, Cell destinationCell) {
+		this.cost = edge.getCost();
+		this.neighbourCell = edge.getNeighbourCell();
 		this.distanceToDestination = currentCell.getDistanceToDestination() + cost;
 		this.distance = distanceToDestination + heuristic(neighbourCell, destinationCell);
 	}
