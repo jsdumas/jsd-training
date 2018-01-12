@@ -9,11 +9,11 @@ import io.jsd.training.codingame.labyrinth.bean.Direction;
 
 public class GoBackToStartCell implements Mission {
 
-	private final Kirk kirk;
+	private final LabyrinthMap labyrinthMap;
 	private final Set<CellType> cellsToAvoid;
 
-	public GoBackToStartCell(Kirk kirk) {
-		this.kirk = kirk;
+	public GoBackToStartCell(LabyrinthMap labyrinthMap) {
+		this.labyrinthMap = labyrinthMap;
 		this.cellsToAvoid = new HashSet<CellType>();
 		this.cellsToAvoid.add(CellType.WALL);
 		this.cellsToAvoid.add(CellType.UNKOWN_CELL);

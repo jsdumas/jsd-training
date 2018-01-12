@@ -11,11 +11,11 @@ import io.jsd.training.codingame.labyrinth.bean.Direction;
 
 public class SearchCommandRoom implements Mission {
 
-	private final Kirk kirk;
 	private final Set<CellType> cellsToAvoid;
+	private final LabyrinthMap labyrinthMap;
 
-	public SearchCommandRoom(Kirk kirk) {
-		this.kirk = kirk;
+	public SearchCommandRoom(LabyrinthMap labyrinthMap) {
+		this.labyrinthMap = labyrinthMap;
 		this.cellsToAvoid = new HashSet<CellType>();
 		cellsToAvoid.add(CellType.COMMAND_ROOM);
 		cellsToAvoid.add(CellType.UNKOWN_CELL);
