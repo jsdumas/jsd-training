@@ -2,6 +2,8 @@ package io.jsd.training.codingame.labyrinth;
 
 import java.util.Stack;
 
+import io.jsd.training.codingame.labyrinth.bean.Direction;
+
 public class ShortestPath implements Comparable<ShortestPath> {
 
 	private final Stack<Direction> pathList;

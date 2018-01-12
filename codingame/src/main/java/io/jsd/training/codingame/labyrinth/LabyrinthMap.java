@@ -1,64 +1,57 @@
 package io.jsd.training.codingame.labyrinth;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
 import java.util.Stack;
+
+import io.jsd.training.codingame.labyrinth.bean.CellType;
+import io.jsd.training.codingame.labyrinth.bean.Direction;
 
 public class LabyrinthMap {
 
-	private Map<Integer, Cell> cellsMap;
-	private Set<Cell> unknownCells;
+	private final int rows;
+	private final int columns;
+	private final Map<Integer, Cell> cellsMap;
 	private Cell startCell;
 	private Cell commandRoom;
 	private Stack<Direction> path;
 
-	public LabyrinthMap() {
+	public LabyrinthMap(int rows, int columns) {
+		this.rows = rows;
+		this.columns = columns;
 		this.cellsMap = new HashMap<Integer, Cell>();
-		this.unknownCells = new HashSet<Cell>();
 		this.path = new Stack<Direction>();
+		initCells();
+		linkNeighbours();
 	}
 
-	public Map<Integer, Cell> getAllcells() {
-		return cellsMap;
+	private void linkNeighbours() {
+		for (Entry<Integer, Cell> entry : cellsMap.entrySet()) {
+			Neighbours neighbours = new Neighbours(entry.getValue(), cellsMap);
+			neighbours.addToCell();
+		}
+
 	}
 
-	public void addCell(Cell cell) {
-		if (cell == null) {
-			return;
-		}
-		if (cell.getCellType().equals(CellType.START_CELL) && this.startCell == null) {
-			this.startCell = cell;
-		}
-		if (cell.getCellType().equals(CellType.COMMAND_ROOM) && this.commandRoom == null) {
-			this.commandRoom = cell;
-		}
-		if (cell.getCellType().equals(CellType.UNKOWN_CELL)) {
-			this.unknownCells.add(cell);
-		}
-		memorize(cell);
-	}
-
-	private void memorize(Cell cell) {
-		if (cellsMap.containsKey(cell.getId())) {
-			updateCell(cell);
-		} else {
-			cellsMap.put(cell.getId(), cell);
+	private void initCells() {
+		for (int x = 0; x < rows; x++) {
+			for (int y = 0; y < columns; y++) {
+				Cell cell = new Cell(x, y, CellType.UNKOWN_CELL);
+				this.cellsMap.put(cell.getId(), cell);
+			}
 		}
 	}
 
-	private void updateCell(Cell cell) {
-		Cell memorizedCell = cellsMap.get(cell.getId());
-		CellType memorizedCellType = memorizedCell.getCellType();
-		if (memorizedCellType.equals(CellType.UNKOWN_CELL) && !memorizedCellType.equals(cell.getCellType())) {
-			memorizedCell.setCellType(cell.getCellType());
-			unknownCells.remove(memorizedCell);
+	public void scanCell(Cell currentCell) {
+		if (currentCell.getCellType().equals(CellType.START_CELL) && this.startCell == null) {
+			this.startCell = currentCell;
 		}
-	}
-
-	public int getSize() {
-		return cellsMap.size();
+		if (currentCell.getCellType().equals(CellType.COMMAND_ROOM) && this.commandRoom == null) {
+			this.commandRoom = currentCell;
+		}
+		Cell cellToUpdate = cellsMap.get(currentCell.getId());
+		cellToUpdate.scanCell(currentCell.getCellType());
 	}
 
 	public Cell getStartCell() {
@@ -76,43 +69,12 @@ public class LabyrinthMap {
 		return true;
 	}
 
-	public boolean areAllCellsScanned() {
-		return unknownCells.isEmpty();
-	}
-
-	public Set<Cell> getUnknownCells() {
-		Set<Cell> cells = new HashSet<Cell>();
-		cells.addAll(unknownCells);
-		return cells;
-	}
-
-	public boolean isExist(Integer cellId) {
-		return cellsMap.containsKey(cellId);
-	}
-
-	public Cell getCell(Integer cellId) {
-		return cellsMap.get(cellId);
-	}
-
 	public void setPath(Stack<Direction> path) {
 		this.path = path;
 	}
 
 	public Stack<Direction> getPath() {
 		return path;
-	}
-
-	public void removeAllCellsCollections() {
-		this.cellsMap = new HashMap<Integer, Cell>();
-		this.unknownCells = new HashSet<Cell>();
-	}
-
-	public Cell getNeighbourCell(Neighbour neighbour) {
-		return getCell(neighbour.getIdCell());
-	}
-
-	public void addNeighbourCell(Neighbour neighbour) {
-		this.addCell(neighbour.getCell());
 	}
 
 }

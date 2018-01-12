@@ -6,6 +6,8 @@ import static org.hamcrest.Matchers.is;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.jsd.training.codingame.labyrinth.bean.Labyrinth;
+
 public class LabyrinthTest extends GameSetUp {
 
 	@Before
@@ -14,11 +16,6 @@ public class LabyrinthTest extends GameSetUp {
 		grid[1] = LINE_1_CHARP_1_T_1_EMPTY_1_COMMAND_1_CHARP.split("");
 		grid[2] = LINE_5_CHARPS.split("");
 		labyrinth = new Labyrinth(grid);
-	}
-
-	@Test
-	public void whenInitLabyrinthWithAlarmAt7ThenLabyrinthRowsIs7() {
-		assertThat(alarm.getCount(), is(ALARM_COUNT));
 	}
 
 	@Test

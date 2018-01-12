@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
 
+import io.jsd.training.codingame.labyrinth.bean.CellType;
+import io.jsd.training.codingame.labyrinth.bean.Direction;
+
 public class GoBackToStartCell implements Mission {
 
 	private final Kirk kirk;
@@ -17,9 +20,9 @@ public class GoBackToStartCell implements Mission {
 	}
 
 	@Override
-	public Stack<Direction> throwMission(Labyrinth labyrinth) {
+	public Stack<Direction> throwMission() {
 		Astar astar = new Astar(kirk.getCurrentCell(), kirk.getStartCell(), cellsToAvoid);
-		ShortestPath shortestPath = astar.getShortestPath(false);
+		ShortestPath shortestPath = astar.getShortestPath();
 		return shortestPath.getPath();
 	}
 

@@ -1,66 +1,49 @@
 package io.jsd.training.codingame.labyrinth;
 
-import java.util.Set;
 import java.util.Stack;
 
-public class Kirk extends LabyrinthScanner {
+import io.jsd.training.codingame.labyrinth.bean.CellType;
+import io.jsd.training.codingame.labyrinth.bean.Direction;
+import io.jsd.training.codingame.labyrinth.bean.Labyrinth;
+import io.jsd.training.codingame.labyrinth.bean.PositionState;
 
-	private final KirkSituation kirkSituation;
-	private final Mission findCommandRoom;
+public class Kirk {
+
+	private final Mission searchCommandRoom;
 	private final Mission getInCommandRoom;
 	private final Mission goBackToStartCell;
+	private final PositionState currentPosition;
 	private final LabyrinthMap labyrinthMap;
 	private Mission mission;
 
-	public Kirk() {
-		this.findCommandRoom = new ScanAllCells(this);
+	public Kirk(LabyrinthMap labyrinthMap) {
+		this.labyrinthMap = labyrinthMap;
+		this.searchCommandRoom = new SearchCommandRoom(this);
 		this.getInCommandRoom = new GetInCommandRoom(this);
 		this.goBackToStartCell = new GoBackToStartCell(this);
-		this.mission = findCommandRoom;
-		this.kirkSituation = new KirkSituation();
-		this.labyrinthMap = new LabyrinthMap();
-	}
-
-	public Cell getCurrentCell() {
-		return kirkSituation.getCurrentCell();
-	}
-
-	public int getX() {
-		return kirkSituation.getX();
-	}
-
-	public int getY() {
-		return kirkSituation.getY();
-	}
-
-	public KirkSituation getKirksituation() {
-		return kirkSituation;
+		this.mission = searchCommandRoom;
+		this.currentPosition = new PositionState();
 	}
 
 	public Mission getMission() {
 		return mission;
 	}
 
-	public void throwMission(Labyrinth labyrinth, Alarm alarm) {
-		kirkSituation.energyDecrease();
-		breadthFirstSearch(labyrinth, labyrinthMap, getCurrentCell());
+	public void throwMission(Labyrinth labyrinth) {
+		LabyrinthScanner labyrinthScanner = new LabyrinthScanner(labyrinth, labyrinthMap, getCurrentCell());
+		labyrinthScanner.breadthFirstSearch();
 		if (labyrinthMap.isCommandRoomPositionKnown()) {
-			if (kirkSituation.getCellTypeOfCurrentPosition().equals(CellType.COMMAND_ROOM)) {
-				alarm.sartCount();
+			if (getCellTypeOfCurrentPosition().equals(CellType.COMMAND_ROOM)) {
 				mission = goBackToStartCell;
 			} else {
 				mission = getInCommandRoom;
 			}
 		}
-		labyrinthMap.setPath(mission.throwMission(labyrinth));
+		labyrinthMap.setPath(mission.throwMission());
 	}
 
 	public Stack<Direction> getPath() {
 		return labyrinthMap.getPath();
-	}
-
-	public void newPosition(Cell cell) {
-		kirkSituation.newPosition(cell);
 	}
 
 	public boolean isCommandRoomPositionKnown() {
@@ -75,8 +58,31 @@ public class Kirk extends LabyrinthScanner {
 		return labyrinthMap.getCommandRoom();
 	}
 
-	public Set<Cell> getUnknownCells() {
-		return labyrinthMap.getUnknownCells();
+	public Cell getCurrentCell() {
+		return currentPosition.getCell();
+	}
+
+	public int getX() {
+		return currentPosition.getCurrentX();
+	}
+
+	public int getY() {
+		return currentPosition.getCurrentY();
+	}
+
+	public CellType getCellTypeOfCurrentPosition() {
+		return currentPosition.getCellType();
+	}
+
+	public void newPosition(Cell position) {
+		currentPosition.setPosition(position);
+	}
+
+	public boolean isKirkGetInCommandRoom() {
+		if (currentPosition.getCellType().equals(CellType.COMMAND_ROOM)) {
+			return true;
+		}
+		return false;
 	}
 
 }

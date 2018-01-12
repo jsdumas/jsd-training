@@ -1,4 +1,6 @@
-package io.jsd.training.codingame.labyrinth;
+package io.jsd.training.codingame.labyrinth.bean;
+
+import io.jsd.training.codingame.labyrinth.Cell;
 
 public class Parent {
 

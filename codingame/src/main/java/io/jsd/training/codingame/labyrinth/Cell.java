@@ -1,16 +1,19 @@
 package io.jsd.training.codingame.labyrinth;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+
+import io.jsd.training.codingame.labyrinth.bean.CellType;
+import io.jsd.training.codingame.labyrinth.bean.Direction;
+import io.jsd.training.codingame.labyrinth.bean.Parent;
 
 public class Cell implements Comparable<Cell> {
 
 	private final Integer id;
 	private final int x;
 	private final int y;
-	private final List<Edge> neighbours;
+	private final Set<Edge> neighbours;
 	private CellType cellType;
-	private boolean isScanned;
 	private double distanceToDestination;
 	private double lowestCostPath;
 	private Parent parent;
@@ -20,8 +23,7 @@ public class Cell implements Comparable<Cell> {
 		this.x = x;
 		this.y = y;
 		this.cellType = cellType;
-		this.isScanned = false;
-		this.neighbours = new ArrayList<>();
+		this.neighbours = new HashSet<Edge>();
 		this.distanceToDestination = 0;
 		this.lowestCostPath = 0;
 	}
@@ -38,15 +40,11 @@ public class Cell implements Comparable<Cell> {
 		return cellType;
 	}
 
-	public void scanCell() {
-		this.isScanned = true;
+	public void scanCell(CellType cellType) {
+		this.cellType = cellType;
 	}
 
-	public boolean isScanned() {
-		return isScanned;
-	}
-
-	public List<Edge> getNeighbours() {
+	public Set<Edge> getNeighbours() {
 		return neighbours;
 	}
 
@@ -119,10 +117,6 @@ public class Cell implements Comparable<Cell> {
 
 	public Parent getParent() {
 		return this.parent;
-	}
-
-	public void setCellType(CellType cellType) {
-		this.cellType = cellType;
 	}
 
 }

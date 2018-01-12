@@ -1,9 +1,11 @@
 package io.jsd.training.codingame.labyrinth;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Set;
+
+import io.jsd.training.codingame.labyrinth.bean.CellType;
+import io.jsd.training.codingame.labyrinth.bean.Parent;
 
 public class Astar {
 
@@ -29,7 +31,7 @@ public class Astar {
 	private void setShortestPath() {
 		while (!unexploredCellsQueue.isEmpty() && !found) {
 			Cell currentCell = getCurrentCell();
-			List<Edge> edges = currentCell.getNeighbours();
+			Set<Edge> edges = currentCell.getNeighbours();
 			for (Edge edge : edges) {
 				Cell neighbourCell = edge.getNeighbourCell();
 				if (cellsToAvoid.contains(neighbourCell.getCellType()) && neighbourCell != destinationCell) {
@@ -39,7 +41,8 @@ public class Astar {
 				if (exploredCells.contains(neighbourCell) && distance.isLongerThanNeighbourDistance()) {
 					continue;
 				}
-				if (!unexploredCellsQueue.contains(neighbourCell) || distance.isShorterThanNeighbourDistance() || neighbourCell == destinationCell) {
+				if (!unexploredCellsQueue.contains(neighbourCell) || distance.isShorterThanNeighbourDistance()
+						|| neighbourCell == destinationCell) {
 					Parent parent = new Parent(edge.getDirection(), currentCell);
 					setPathInNeigbourCell(neighbourCell, parent, distance);
 					updatePriotyInUnexploredCell(neighbourCell);
@@ -70,13 +73,13 @@ public class Astar {
 		return currentCell;
 	}
 
-	public ShortestPath getShortestPath(boolean isPathToUnknownCell) {
+	public ShortestPath getShortestPath() {
 		ShortestPath shortestPath = new ShortestPath();
 		if (destinationCell.getParent() == null) {
 			return shortestPath;
 		}
 		for (Cell currentCell = destinationCell; currentCell != originCell; currentCell = currentCell.getCellParent()) {
-			if (currentCell == destinationCell && isPathToUnknownCell)
+			if (currentCell == destinationCell)
 				continue;
 			shortestPath.add(currentCell.getFromParent());
 		}

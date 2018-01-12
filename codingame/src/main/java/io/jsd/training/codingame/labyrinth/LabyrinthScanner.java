@@ -1,36 +1,39 @@
 package io.jsd.training.codingame.labyrinth;
 
+import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 
-public abstract class LabyrinthScanner {
+import io.jsd.training.codingame.labyrinth.bean.Labyrinth;
 
-	public void breadthFirstSearch(Labyrinth labyrinth, LabyrinthMap labyrinthMap, Cell currentPosition) {
-		// labyrinthMap.removeAllCellsCollections();
-		Queue<Cell> queue = new LinkedList<Cell>();
-		currentPosition.scanCell();
-		queue.add(currentPosition);
-		while (!queue.isEmpty()) {
-			Cell currentCell = queue.remove();
-			labyrinthMap.addCell(currentCell);
-			setNeighbours(labyrinth, labyrinthMap, currentCell);
-			List<Edge> edges = currentCell.getNeighbours();
-			for (Edge edge : edges) {
-				Cell cell = edge.getNeighbourCell();
-				if (cell != null && !cell.isScanned()) {
-					cell.scanCell();
-					queue.add(cell);
-				}
-			}
+public class LabyrinthScanner {
 
-		}
+	private final LabyrinthMap labyrinthMap;
+	private final Queue<Cell> queue;
+	private final Set<Cell> visitedCells;
+	private final Labyrinth labyrinth;
+
+	public LabyrinthScanner(Labyrinth labyrinth, LabyrinthMap labyrinthMap, Cell currentPosition) {
+		this.labyrinth = labyrinth;
+		this.labyrinthMap = labyrinthMap;
+		this.queue = new LinkedList<Cell>();
+		this.queue.add(currentPosition);
+		this.visitedCells = new HashSet<Cell>();
 	}
 
-	private void setNeighbours(Labyrinth labyrinth, LabyrinthMap labyrinthMap, Cell currentCell) {
-		NeighbourCells neighbourCells = new NeighbourCells(currentCell, labyrinth, labyrinthMap);
-		if(currentCell.getNeighbours().isEmpty())
-			neighbourCells.addToCurrentCell();
+	public void breadthFirstSearch() {
+		while (!queue.isEmpty()) {
+			Cell currentCell = queue.remove();
+			labyrinthMap.scanCell(currentCell);
+			visitedCells.add(currentCell);
+			Set<Cell> neighbours = labyrinth.getNeighbours(currentCell);
+			for (Cell neighbour : neighbours) {
+				if (neighbour != null && !visitedCells.contains(neighbour)) {
+					queue.add(labyrinth.getCell(neighbour));
+				}
+			}
+		}
 	}
 
 }

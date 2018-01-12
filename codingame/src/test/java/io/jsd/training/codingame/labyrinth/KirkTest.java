@@ -1,7 +1,7 @@
 package io.jsd.training.codingame.labyrinth;
 
-import static io.jsd.training.codingame.labyrinth.CellType.COMMAND_ROOM;
-import static io.jsd.training.codingame.labyrinth.CellType.START_CELL;
+import static io.jsd.training.codingame.labyrinth.bean.CellType.COMMAND_ROOM;
+import static io.jsd.training.codingame.labyrinth.bean.CellType.START_CELL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -9,6 +9,9 @@ import static org.hamcrest.Matchers.is;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
+
+import io.jsd.training.codingame.labyrinth.bean.Direction;
+import io.jsd.training.codingame.labyrinth.bean.Labyrinth;
 
 public class KirkTest extends GameSetUp {
 
@@ -53,63 +56,63 @@ public class KirkTest extends GameSetUp {
 
 	@Test
 	public void whenThen() {
-		kirkSituation.newPosition(new Cell(1, 5, COMMAND_ROOM));
+		kirkStraightAheadLine.newPosition(new Cell(1, 5, COMMAND_ROOM));
 		// kirkSituation.setStartCell(new Cell(1, 5, STa));
-		kirk.throwMission(labyrinthWithStraightAheadLine, alarm);
-		assertThat(kirk.getPath().size(), Matchers.is(4));
-		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
-		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
-		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
-		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+		kirkStraightAheadLine.throwMission(labyrinthWithStraightAheadLine);
+		assertThat(kirkStraightAheadLine.getPath().size(), Matchers.is(4));
+		assertThat(kirkStraightAheadLine.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+		assertThat(kirkStraightAheadLine.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+		assertThat(kirkStraightAheadLine.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+		assertThat(kirkStraightAheadLine.getPath().pop(), Matchers.equalTo(Direction.LEFT));
 	}
 
 	@Test
 	public void whenKirkShouldMoveTwiceForScanningCellThenHeMovesTwice() {
-		kirkSituation.newPosition(new Cell(2, 2, START_CELL));
-		kirk.throwMission(labyrinthWithTwoEmptyCells, alarm);
-		assertThat(kirk.getPath().size(), Matchers.is(2));
-		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
-		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.UP));
+		kirkTwoEmptyCells.newPosition(new Cell(2, 2, START_CELL));
+		kirkTwoEmptyCells.throwMission(labyrinthWithTwoEmptyCells);
+		assertThat(kirkTwoEmptyCells.getPath().size(), Matchers.is(2));
+		assertThat(kirkTwoEmptyCells.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+		assertThat(kirkTwoEmptyCells.getPath().pop(), Matchers.equalTo(Direction.UP));
 	}
 
 	@Test
 	public void whenKirkCanOnlyMouveOnLeftThenHisPathContainsOneDirectionWhichIsLeft() {
-		kirkSituation.newPosition(new Cell(1, 2, START_CELL));
-		kirk.throwMission(labyrinthWithLeftEmptyCell, alarm);
-		assertThat(kirk.getPath().size(), Matchers.is(1));
-		assertThat(kirk.getPath().pop(), Matchers.equalTo(Direction.LEFT));
+		kirkLeftEmptyCell.newPosition(new Cell(1, 2, START_CELL));
+		kirkLeftEmptyCell.throwMission(labyrinthWithLeftEmptyCell);
+		assertThat(kirkLeftEmptyCell.getPath().size(), Matchers.is(1));
+		assertThat(kirkLeftEmptyCell.getPath().pop(), Matchers.equalTo(Direction.LEFT));
 	}
 
 	@Test
 	public void whenKirkdoesntKnowMapThenHeDoesntKnowWhereToGo() {
-		kirkSituation.newPosition(new Cell(1, 2, START_CELL));
-		kirk.throwMission(unknownLabyrinth, alarm);
-		assertThat(kirk.getPath().isEmpty(), Matchers.is(true));
+		kirkUnknownLabyrinth.newPosition(new Cell(1, 2, START_CELL));
+		kirkUnknownLabyrinth.throwMission(unknownLabyrinth);
+		assertThat(kirkUnknownLabyrinth.getPath().isEmpty(), Matchers.is(true));
 	}
 
 	@Test
 	public void whenKirkCanOnlyMouveOnRightThenHeShouldMouveOnRight() {
-		kirkSituation.newPosition(new Cell(1, 1, START_CELL));
+		kirk.newPosition(new Cell(1, 1, START_CELL));
 		// kirk.throwMission(labyrinth, alarm);
 		// assertThat(kirk.getPath(), equalTo(Direction.RIGHT));
 	}
 
 	@Test
 	public void whenKirkIsOnXEqual1ThenHisXPositionIs1() {
-		kirkSituation.newPosition(new Cell(1, 1, START_CELL));
+		kirk.newPosition(new Cell(1, 1, START_CELL));
 		assertThat(kirk.getX(), equalTo(1));
 	}
 
 	@Test
 	public void whenKirkIsOnYEqual1ThenHisYPositionIs1() {
-		kirkSituation.newPosition(new Cell(1, 1, START_CELL));
+		kirk.newPosition(new Cell(1, 1, START_CELL));
 		assertThat(kirk.getY(), equalTo(1));
 	}
 
 	@Test
 	public void whenKirkStartToPlayThenHisFirstMissionIsToFindCommandRoom() {
-		kirkSituation.newPosition(new Cell(1, 1, START_CELL));
-		assertThat(kirk.getMission() instanceof ScanAllCells, is(true));
+		kirk.newPosition(new Cell(1, 1, START_CELL));
+		assertThat(kirk.getMission() instanceof SearchCommandRoom, is(true));
 	}
 
 	@Test

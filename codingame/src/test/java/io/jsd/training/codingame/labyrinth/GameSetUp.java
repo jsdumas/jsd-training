@@ -1,9 +1,8 @@
 package io.jsd.training.codingame.labyrinth;
 
-public abstract class GameSetUp {
+import io.jsd.training.codingame.labyrinth.bean.Labyrinth;
 
-	protected final Kirk kirk = new Kirk();
-	protected final KirkSituation kirkSituation = kirk.getKirksituation();
+public abstract class GameSetUp {
 
 	protected final static String LINE_5_QUESTIONS = "?????";
 	protected final static String LINE_2_QUESTIONS_1_T_2_QUESTIONS = "??T??";
@@ -24,6 +23,7 @@ public abstract class GameSetUp {
 
 	protected final String[][] grid = new String[3][5];
 	protected Labyrinth labyrinth;
+	protected Kirk kirk = new Kirk(new LabyrinthMap(3, 5));
 
 	protected final String[][] gridInLine = new String[3][7];
 	protected Labyrinth labyrinthInLine;
@@ -33,15 +33,18 @@ public abstract class GameSetUp {
 
 	protected final String[][] unknownGrid = new String[3][5];
 	protected Labyrinth unknownLabyrinth;
+	protected Kirk kirkUnknownLabyrinth = new Kirk(new LabyrinthMap(3, 5));
 
 	protected final String[][] gridWithLeftEmptyCell = new String[3][5];
 	protected Labyrinth labyrinthWithLeftEmptyCell;
+	protected Kirk kirkLeftEmptyCell = new Kirk(new LabyrinthMap(3, 5));
 
 	protected final String[][] gridWithTwoEmptyCells = new String[4][5];
 	protected Labyrinth labyrinthWithTwoEmptyCells;
+	protected Kirk kirkTwoEmptyCells = new Kirk(new LabyrinthMap(4, 5));
 
 	protected final String[][] gridWithStraightAheadLine = new String[3][7];
 	protected Labyrinth labyrinthWithStraightAheadLine;
+	protected Kirk kirkStraightAheadLine = new Kirk(new LabyrinthMap(3, 7));
 
-	protected final Alarm alarm = new Alarm(ALARM_COUNT);
 }
