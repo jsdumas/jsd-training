@@ -14,11 +14,11 @@ public class LabyrinthScanner {
 	private final Set<Cell> visitedCells;
 	private final Labyrinth labyrinth;
 
-	public LabyrinthScanner(Labyrinth labyrinth, LabyrinthMap labyrinthMap, Cell currentPosition) {
+	public LabyrinthScanner(Labyrinth labyrinth, LabyrinthMap labyrinthMap) {
 		this.labyrinth = labyrinth;
 		this.labyrinthMap = labyrinthMap;
 		this.queue = new LinkedList<Cell>();
-		this.queue.add(currentPosition);
+		this.queue.add(this.labyrinthMap.getCurrentPosition());
 		this.visitedCells = new HashSet<Cell>();
 	}
 

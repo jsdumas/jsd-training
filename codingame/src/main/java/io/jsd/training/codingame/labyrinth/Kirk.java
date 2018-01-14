@@ -5,24 +5,21 @@ import java.util.Stack;
 import io.jsd.training.codingame.labyrinth.bean.CellType;
 import io.jsd.training.codingame.labyrinth.bean.Direction;
 import io.jsd.training.codingame.labyrinth.bean.Labyrinth;
-import io.jsd.training.codingame.labyrinth.bean.PositionState;
 
 public class Kirk {
 
 	private final Mission searchCommandRoom;
 	private final Mission getInCommandRoom;
 	private final Mission goBackToStartCell;
-	private final PositionState currentPosition;
 	private final LabyrinthMap labyrinthMap;
 	private Mission mission;
 
 	public Kirk(LabyrinthMap labyrinthMap) {
 		this.labyrinthMap = labyrinthMap;
-		this.searchCommandRoom = new SearchCommandRoom(this);
-		this.getInCommandRoom = new GetInCommandRoom(this);
-		this.goBackToStartCell = new GoBackToStartCell(this);
+		this.searchCommandRoom = new SearchCommandRoom(this.labyrinthMap);
+		this.getInCommandRoom = new GetInCommandRoom(this.labyrinthMap);
+		this.goBackToStartCell = new GoBackToStartCell(this.labyrinthMap);
 		this.mission = searchCommandRoom;
-		this.currentPosition = new PositionState();
 	}
 
 	public Mission getMission() {
@@ -30,10 +27,10 @@ public class Kirk {
 	}
 
 	public void throwMission(Labyrinth labyrinth) {
-		LabyrinthScanner labyrinthScanner = new LabyrinthScanner(labyrinth, labyrinthMap, getCurrentCell());
+		LabyrinthScanner labyrinthScanner = new LabyrinthScanner(labyrinth, labyrinthMap);
 		labyrinthScanner.breadthFirstSearch();
 		if (labyrinthMap.isCommandRoomPositionKnown()) {
-			if (getCellTypeOfCurrentPosition().equals(CellType.COMMAND_ROOM)) {
+			if (labyrinthMap.getCellTypeOfCurrentPosition().equals(CellType.COMMAND_ROOM)) {
 				mission = goBackToStartCell;
 			} else {
 				mission = getInCommandRoom;
@@ -58,28 +55,8 @@ public class Kirk {
 		return labyrinthMap.getCommandRoom();
 	}
 
-	public Cell getCurrentCell() {
-		return currentPosition.getCell();
-	}
-
-	public int getX() {
-		return currentPosition.getCurrentX();
-	}
-
-	public int getY() {
-		return currentPosition.getCurrentY();
-	}
-
-	public CellType getCellTypeOfCurrentPosition() {
-		return currentPosition.getCellType();
-	}
-
-	public void newPosition(Cell position) {
-		currentPosition.setPosition(position);
-	}
-
 	public boolean isKirkGetInCommandRoom() {
-		if (currentPosition.getCellType().equals(CellType.COMMAND_ROOM)) {
+		if (labyrinthMap.getCellTypeOfCurrentPosition().equals(CellType.COMMAND_ROOM)) {
 			return true;
 		}
 		return false;

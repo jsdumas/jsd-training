@@ -7,12 +7,14 @@ import java.util.Stack;
 
 import io.jsd.training.codingame.labyrinth.bean.CellType;
 import io.jsd.training.codingame.labyrinth.bean.Direction;
+import io.jsd.training.codingame.labyrinth.bean.PositionState;
 
 public class LabyrinthMap {
 
 	private final int rows;
 	private final int columns;
 	private final Map<Integer, Cell> cellsMap;
+	private final PositionState currentPosition;
 	private Cell startCell;
 	private Cell commandRoom;
 	private Stack<Direction> path;
@@ -22,6 +24,7 @@ public class LabyrinthMap {
 		this.columns = columns;
 		this.cellsMap = new HashMap<Integer, Cell>();
 		this.path = new Stack<Direction>();
+		this.currentPosition = new PositionState();
 		initCells();
 		linkNeighbours();
 	}
@@ -74,7 +77,19 @@ public class LabyrinthMap {
 	}
 
 	public Stack<Direction> getPath() {
-		return path;
+		return this.path;
+	}
+
+	public Cell getCurrentPosition() {
+		return this.currentPosition.getCell();
+	}
+	
+	public CellType getCellTypeOfCurrentPosition() {
+		return this.currentPosition.getCellType();
+	}
+
+	public void newPosition(Cell position) {
+		this.currentPosition.setPosition(position);
 	}
 
 }

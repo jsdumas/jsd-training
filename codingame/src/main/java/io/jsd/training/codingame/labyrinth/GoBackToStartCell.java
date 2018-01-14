@@ -21,7 +21,7 @@ public class GoBackToStartCell implements Mission {
 
 	@Override
 	public Stack<Direction> throwMission() {
-		Astar astar = new Astar(kirk.getCurrentCell(), kirk.getStartCell(), cellsToAvoid);
+		Astar astar = new Astar(labyrinthMap.getCurrentPosition(), labyrinthMap.getStartCell(), cellsToAvoid);
 		ShortestPath shortestPath = astar.getShortestPath();
 		return shortestPath.getPath();
 	}

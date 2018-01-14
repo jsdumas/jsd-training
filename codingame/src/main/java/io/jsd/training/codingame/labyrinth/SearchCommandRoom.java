@@ -25,7 +25,7 @@ public class SearchCommandRoom implements Mission {
 	@Override
 	public Stack<Direction> throwMission() {
 		Queue<Cell> queue = new LinkedList<>();
-		queue.add(kirk.getCurrentCell());
+		queue.add(labyrinthMap.getCurrentPosition());
 		Cell destination = null;
 		while (!queue.isEmpty()) {
 			Cell currentCell = queue.poll();
@@ -35,7 +35,7 @@ public class SearchCommandRoom implements Mission {
 				queue.add(neighbour);
 				if (neighbour.getCellType().equals(CellType.EMPTY_SPACE)) {
 					destination = currentCell;
-					Astar astar = new Astar(kirk.getCurrentCell(), destination, cellsToAvoid);
+					Astar astar = new Astar(labyrinthMap.getCurrentPosition(), destination, cellsToAvoid);
 					ShortestPath shortestPath = astar.getShortestPath();
 					if (!shortestPath.getPath().isEmpty())
 						return shortestPath.getPath();
