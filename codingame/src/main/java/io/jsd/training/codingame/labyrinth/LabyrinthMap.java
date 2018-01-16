@@ -47,11 +47,15 @@ public class LabyrinthMap {
 	}
 
 	public void scanCell(Cell currentCell) {
+		String id = String.valueOf(currentCell.getX()) + String.valueOf(currentCell.getY());
+		Integer key = Integer.parseInt(id);
 		if (currentCell.getCellType().equals(CellType.START_CELL) && this.startCell == null) {
-			this.startCell = currentCell;
+			Cell newPosition = cellsMap.get(key);
+			this.startCell = newPosition;
 		}
 		if (currentCell.getCellType().equals(CellType.COMMAND_ROOM) && this.commandRoom == null) {
-			this.commandRoom = currentCell;
+			Cell newPosition = cellsMap.get(key);
+			this.commandRoom = newPosition;
 		}
 		Cell cellToUpdate = cellsMap.get(currentCell.getId());
 		cellToUpdate.scanCell(currentCell.getCellType());
@@ -83,13 +87,17 @@ public class LabyrinthMap {
 	public Cell getCurrentPosition() {
 		return this.currentPosition.getCell();
 	}
-	
+
 	public CellType getCellTypeOfCurrentPosition() {
 		return this.currentPosition.getCellType();
 	}
 
 	public void newPosition(Cell position) {
-		this.currentPosition.setPosition(position);
+		scanCell(position);
+		String id = String.valueOf(position.getX()) + String.valueOf(position.getY());
+		Integer key = Integer.parseInt(id);
+		Cell newPosition = cellsMap.get(key);
+		this.currentPosition.setPosition(newPosition);
 	}
 
 }

@@ -20,20 +20,32 @@ public class Neighbours {
 		this.bottomNeighbour = cellsMap.get(getBottomNeighbourId());
 	}
 
-	private Object getBottomNeighbourId() {
-		return Integer.parseInt(String.valueOf(cell.getX() + 1) + String.valueOf(cell.getY()));
+	private Integer getBottomNeighbourId() {
+		int x = cell.getX() + 1;
+		String id = String.valueOf(x) + String.valueOf(cell.getY());
+		return Integer.parseInt(id);
 	}
 
-	private Object getRightNeighbourId() {
-		return Integer.parseInt(String.valueOf(cell.getX()) + String.valueOf(cell.getY() + 1));
+	private Integer getRightNeighbourId() {
+		int y = cell.getY() + 1;
+		String id = String.valueOf(cell.getX()) + String.valueOf(y);
+		return Integer.parseInt(id);
 	}
 
-	private Object getUpperNeighbourId() {
-		return Integer.parseInt(String.valueOf(cell.getX() - 1) + String.valueOf(cell.getY()));
+	private Integer getUpperNeighbourId() {
+		int x = cell.getX() - 1;
+		if (x < 0)
+			return null;
+		String id = String.valueOf(x) + String.valueOf(cell.getY());
+		return Integer.parseInt(id);
 	}
 
 	private Integer getLeftNeighbourId() {
-		return Integer.parseInt(String.valueOf(cell.getX()) + String.valueOf(cell.getY() - 1));
+		int y = cell.getY() - 1;
+		if (y < 0)
+			return null;
+		String id = String.valueOf(cell.getX()) + String.valueOf(y);
+		return Integer.parseInt(id);
 	}
 
 	public void addToCell() {

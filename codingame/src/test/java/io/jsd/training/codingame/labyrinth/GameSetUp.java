@@ -23,7 +23,8 @@ public abstract class GameSetUp {
 
 	protected final String[][] grid = new String[3][5];
 	protected Labyrinth labyrinth;
-	protected Kirk kirk = new Kirk(new LabyrinthMap(3, 5));
+	protected LabyrinthMap labyrinthMap = new LabyrinthMap(3, 5);
+	protected Kirk kirk = new Kirk(labyrinthMap);
 
 	protected final String[][] gridInLine = new String[3][7];
 	protected Labyrinth labyrinthInLine;
@@ -33,18 +34,22 @@ public abstract class GameSetUp {
 
 	protected final String[][] unknownGrid = new String[3][5];
 	protected Labyrinth unknownLabyrinth;
-	protected Kirk kirkUnknownLabyrinth = new Kirk(new LabyrinthMap(3, 5));
+	protected LabyrinthMap unknownLabyrinthMap = new LabyrinthMap(3, 5);
+	protected Kirk kirkUnknownLabyrinth = new Kirk(unknownLabyrinthMap);
 
 	protected final String[][] gridWithLeftEmptyCell = new String[3][5];
 	protected Labyrinth labyrinthWithLeftEmptyCell;
-	protected Kirk kirkLeftEmptyCell = new Kirk(new LabyrinthMap(3, 5));
+	protected LabyrinthMap labyrinthMapWithLeftEmptyCell = new LabyrinthMap(3, 5);
+	protected Kirk kirkLeftEmptyCell = new Kirk(labyrinthMapWithLeftEmptyCell);
 
 	protected final String[][] gridWithTwoEmptyCells = new String[4][5];
 	protected Labyrinth labyrinthWithTwoEmptyCells;
-	protected Kirk kirkTwoEmptyCells = new Kirk(new LabyrinthMap(4, 5));
+	protected LabyrinthMap labyrinthMapWithTwoEmptyCells = new LabyrinthMap(4, 5);
+	protected Kirk kirkTwoEmptyCells = new Kirk(labyrinthMapWithTwoEmptyCells);
 
 	protected final String[][] gridWithStraightAheadLine = new String[3][7];
 	protected Labyrinth labyrinthWithStraightAheadLine;
-	protected Kirk kirkStraightAheadLine = new Kirk(new LabyrinthMap(3, 7));
+	protected LabyrinthMap labyrinthMapWithStraightAheadLine = new LabyrinthMap(3, 7);
+	protected Kirk kirkStraightAheadLine = new Kirk(labyrinthMapWithStraightAheadLine);
 
 }
