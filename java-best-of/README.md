@@ -3,7 +3,9 @@
 
 ## OOP PRINCIPLES
 
-Tell, don't Ask
+### Tell, don't Ask
+This principle states that instead of asking (ask) an object for information to exploit, 
+it is better to say (tell) to this object what one wants to do and he will do it himself.
 
 ### ABSTRACTION
 
@@ -31,6 +33,7 @@ You ain't Gonna Need It
 
 #### Single Responsibility Principle : 
 A class, function or method must have one and only one responsibility
+Avoid God Class and God Method
 
 #### Open/closed principle :
 A class must be open to extension, but closed to modification
