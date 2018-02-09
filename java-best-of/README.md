@@ -1,35 +1,36 @@
 # JAVA DEV PRACTICE
 
-
+####################
 ## OOP PRINCIPLES
-
-### Tell, don't Ask
-This principle states that instead of asking (ask) an object for information to exploit, 
-it is better to say (tell) to this object what one wants to do and he will do it himself.
+####################
 
 ### ABSTRACTION
+
+### ECAPSULATION
+
+### POLYMORPHISM
+
+### TELL, DON'T ASK
+This principle states that instead of asking (ask) an object for information to exploit, 
+it is better to say (tell) to this object what to do and it will do it itself.
 
 ### DRY
 Don't Repeat Yourself
 
-### Encapsulation
-
 ### KISS
 Keep it Stupid-Simple
-
-### Law of Demeter
-We trust only his friends, not the friends of his friends.
-
-### MoSCcoW Method
-
-### Polymorphism
 
 ### YAGNI
 You ain't Gonna Need It
 
+### LAW OF DEMETER
+We trust only his friends, not the friends of his friends.
 
+### MoSCcoW Method
 
-### SOLID
+##########
+## SOLID
+##########
 
 #### Single Responsibility Principle : 
 A class, function or method must have one and only one responsibility
@@ -50,9 +51,9 @@ Prefer multiple specific interfaces for each client rather than one general inte
 #### Dependency Inversion Principle
 
 
-
-## Links
-
+#########
+## LINKS
+#########
 
 * [POO introduction](http://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep)
 * [SOLID principle](http://williamdurand.fr/2013/07/30/from-stupid-to-solid-code/)
