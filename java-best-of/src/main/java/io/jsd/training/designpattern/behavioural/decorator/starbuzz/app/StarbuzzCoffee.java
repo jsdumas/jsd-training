@@ -11,22 +11,37 @@ import io.jsd.training.designpattern.behavioural.decorator.starbuzz.pattern.Whip
 public class StarbuzzCoffee {
 
 	public static void main(String args[]) {
-		Beverage beverage = new Espresso();
-		System.out.println(beverage.getDescription() + " $" + beverage.cost());
 
-		Beverage beverage2 = new DarkRoast();
-		beverage2 = new Mocha(beverage2);
-		beverage2 = new Mocha(beverage2);
-		beverage2 = new Whip(beverage2);
-		System.out.println(beverage2.getDescription() + " $" + beverage2.cost());
+		// Espresso declaration
+		// Espresso is a beverage
+		Beverage espresso = new Espresso();
+		System.out.println(espresso.getDescription() + " $" + espresso.cost());
 
-		Beverage beverage3 = new HouseBlend();
-		beverage3 = new Soy(beverage3);
-		beverage3 = new Mocha(beverage3);
-		beverage3 = new Whip(beverage3);
-		System.out.println(beverage3.getDescription() + " $" + beverage3.cost());
-		System.out.println(beverage3 instanceof HouseBlend);
-		System.out.println(beverage3 instanceof Whip);
+		// DarkRoast declaration
+		// DarkRoast is a beverage
+		Beverage darkRoast = new DarkRoast();
+		// DarkRoast injection in Mocha
+		darkRoast = new Mocha(darkRoast);
+		// DarkRoast injection in Mocha
+		darkRoast = new Mocha(darkRoast);
+		// DarkRoast injection in Whip
+		darkRoast = new Whip(darkRoast);
+		System.out.println(darkRoast.getDescription() + " $" + darkRoast.cost());
+
+		// HouseBlend declaration
+		// HouseBlend is a beverage
+		Beverage houseBlend = new HouseBlend();
+		// HouseBlend injection in Soy
+		houseBlend = new Soy(houseBlend);
+		System.out.println(houseBlend instanceof Soy);
+		// HouseBlend injection in Mocha
+		houseBlend = new Mocha(houseBlend);
+		// HouseBlend injection in Whip
+		houseBlend = new Whip(houseBlend);
+		System.out.println(houseBlend.getDescription() + " $" + houseBlend.cost());
+		System.out.println(houseBlend instanceof HouseBlend);
+		System.out.println(houseBlend instanceof Soy);
+		System.out.println(houseBlend instanceof Whip);
 
 	}
 }
