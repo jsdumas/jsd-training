@@ -7,11 +7,11 @@ import java.io.InputStream;
 
 public class InputTest {
 	public static void main(String[] args) throws IOException {
-		int c;
+		int count;
 		try {
 			InputStream in = new LowerCaseInputStream(new BufferedInputStream(new FileInputStream("test.txt")));
-			while ((c = in.read()) >= 0) {
-				System.out.print((char) c);
+			while ((count = in.read()) >= 0) {
+				System.out.print((char) count);
 			}
 			in.close();
 		} catch (IOException e) {

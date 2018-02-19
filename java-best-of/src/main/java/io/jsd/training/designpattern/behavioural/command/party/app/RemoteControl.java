@@ -1,4 +1,7 @@
-package io.jsd.training.designpattern.behavioural.command.party.pattern;
+package io.jsd.training.designpattern.behavioural.command.party.app;
+
+import io.jsd.training.designpattern.behavioural.command.party.pattern.Command;
+import io.jsd.training.designpattern.behavioural.command.party.pattern.NoCommand;
 
 //
 // This is the invoker
