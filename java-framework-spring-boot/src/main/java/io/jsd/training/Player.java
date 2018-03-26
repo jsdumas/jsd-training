@@ -1,18 +1,17 @@
-package io.jsd.training.entity;
+package io.jsd.training;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Team {
+public class Player {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String name;
-	private String location;
-	private String mascot;
+	private String position;
 
 	public Long getId() {
 		return id;
@@ -30,20 +29,12 @@ public class Team {
 		this.name = name;
 	}
 
-	public String getLocation() {
-		return location;
+	public String getPosition() {
+		return position;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public String getMascot() {
-		return mascot;
-	}
-
-	public void setMascot(String mascot) {
-		this.mascot = mascot;
+	public void setPosition(String position) {
+		this.position = position;
 	}
 
 }

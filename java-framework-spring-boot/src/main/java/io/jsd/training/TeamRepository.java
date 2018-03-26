@@ -1,9 +1,9 @@
-package io.jsd.training.dao;
+package io.jsd.training;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-import io.jsd.training.entity.Team;
-
+@Repository
 interface TeamRepository extends CrudRepository<Team, Long> {
 
 }

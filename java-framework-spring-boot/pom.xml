@@ -78,14 +78,16 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<release>8</release>
-					<verbose>true</verbose>
-				</configuration>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-compiler-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<release>8</release> -->
+<!-- 					<verbose>true</verbose> -->
+<!-- 						<executable>path-to-javac</executable> -->
+<!--           <compilerVersion>VERSION</compilerVersion> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 
 		</plugins>
 	</build>
