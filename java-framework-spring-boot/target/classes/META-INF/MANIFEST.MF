@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: spring-boot
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: jsdumas
+Implementation-Vendor-Id: io.jsd.training
+Build-Jdk: 1.8.0_131
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/java-framework-spring-boot
+Created-By: Maven Integration for Eclipse
+Main-Class: io.jsd.training.config.Application
+
