@@ -10,7 +10,6 @@ import io.jsd.training.designpattern.behavioural.command.party.pattern.HottubOnC
 import io.jsd.training.designpattern.behavioural.command.party.pattern.LightOffCommand;
 import io.jsd.training.designpattern.behavioural.command.party.pattern.LightOnCommand;
 import io.jsd.training.designpattern.behavioural.command.party.pattern.MacroCommand;
-import io.jsd.training.designpattern.behavioural.command.party.pattern.RemoteControl;
 import io.jsd.training.designpattern.behavioural.command.party.pattern.StereoOffCommand;
 import io.jsd.training.designpattern.behavioural.command.party.pattern.StereoOnCommand;
 import io.jsd.training.designpattern.behavioural.command.party.pattern.TVOffCommand;
@@ -20,13 +19,13 @@ public class RemoteLoader {
 
 	public static void main(String[] args) {
 
-		RemoteControl remoteControl = new RemoteControl();
-
+		// Devices
 		Light light = new Light("Living Room");
 		TV tv = new TV("Living Room");
 		Stereo stereo = new Stereo("Living Room");
 		Hottub hottub = new Hottub();
- 
+
+		// Command
 		LightOnCommand lightOn = new LightOnCommand(light);
 		StereoOnCommand stereoOn = new StereoOnCommand(stereo);
 		TVOnCommand tvOn = new TVOnCommand(tv);
@@ -36,14 +35,18 @@ public class RemoteLoader {
 		TVOffCommand tvOff = new TVOffCommand(tv);
 		HottubOffCommand hottubOff = new HottubOffCommand(hottub);
 
-		Command[] partyOn = { lightOn, stereoOn, tvOn, hottubOn};
-		Command[] partyOff = { lightOff, stereoOff, tvOff, hottubOff};
-  
+		// Interface array
+		Command[] partyOn = { lightOn, stereoOn, tvOn, hottubOn };
+		Command[] partyOff = { lightOff, stereoOff, tvOff, hottubOff };
+
+		// Massive execution command
 		MacroCommand partyOnMacro = new MacroCommand(partyOn);
 		MacroCommand partyOffMacro = new MacroCommand(partyOff);
- 
+
+		// Control
+		RemoteControl remoteControl = new RemoteControl();
 		remoteControl.setCommand(0, partyOnMacro, partyOffMacro);
-  
+
 		System.out.println(remoteControl);
 		System.out.println("--- Pushing Macro On---");
 		remoteControl.onButtonWasPushed(0);

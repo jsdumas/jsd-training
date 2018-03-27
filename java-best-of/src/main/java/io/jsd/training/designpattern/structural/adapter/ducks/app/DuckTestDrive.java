@@ -7,24 +7,22 @@ import io.jsd.training.designpattern.structural.adapter.ducks.pattern.TurkeyAdap
 
 public class DuckTestDrive {
 	public static void main(String[] args) {
-		MallardDuck duck = new MallardDuck();
+		MallardDuck mallardDuck = new MallardDuck();
 
 		WildTurkey turkey = new WildTurkey();
-		Duck turkeyAdapter = new TurkeyAdapter(turkey);
 
 		System.out.println("The Turkey says...");
 		turkey.gobble();
 		turkey.fly();
 
 		System.out.println("\nThe Duck says...");
-		testDuck(duck);
+		mallardDuck.quack();
+		mallardDuck.fly();
 
 		System.out.println("\nThe TurkeyAdapter says...");
-		testDuck(turkeyAdapter);
-	}
-
-	static void testDuck(Duck duck) {
+		Duck duck = new TurkeyAdapter(turkey);
 		duck.quack();
 		duck.fly();
 	}
+
 }
