@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -16,20 +17,20 @@ import javax.persistence.OneToMany;
 @Entity
 public class Team {
 
-	@Id
-	@GeneratedValue
-	private Long id;
+	private Long idTeam;
 	private String name;
 	private String location;
 	private String mascot;
 	private Set<Player> players;
 
-	public Long getId() {
-		return id;
+	@Id
+	@GeneratedValue
+	public Long getIdTeam() {
+		return idTeam;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdTeam(Long idTeam) {
+		this.idTeam = idTeam;
 	}
 
 	public String getName() {
@@ -56,7 +57,7 @@ public class Team {
 		this.mascot = mascot;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Player.class)
 	@JoinColumn(name = "id")
 	public Set<Player> getPlayers() {
 		return players;

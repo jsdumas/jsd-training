@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-interface TeamRepository extends CrudRepository<Team, Long> {
+public interface PlayerRepository extends CrudRepository<Player, Long> {
 
 }

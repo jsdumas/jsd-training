@@ -26,19 +26,22 @@ public class Application {
 
 	@PostConstruct
 	public void init() {
-		List<Team> list = new ArrayList<>();
+		List<Team> list = new ArrayList<Team>();
 
 		Player player1 = new Player();
+		// player1.setId(0L);
 		player1.setName("Big Easy");
 		player1.setPosition("Showman");
 		Player player2 = new Player();
+		// player2.setId(1L);
 		player2.setName("Buckets");
 		player2.setPosition("Guard");
 		Player player3 = new Player();
+		// player3.setId(2L);
 		player3.setName("Dizzy");
 		player3.setPosition("Guard");
 
-		Set<Player> players = new HashSet<>();
+		Set<Player> players = new HashSet<Player>();
 		players.add(player1);
 		players.add(player2);
 		players.add(player3);
