@@ -2,7 +2,7 @@ package io.jsd.training.multithreading;
 
 public class ThreadDemo extends Thread {
 
-	private Thread t;
+	private Thread thread;
 	private String threadName;
 
 	ThreadDemo(String name) {
@@ -28,9 +28,9 @@ public class ThreadDemo extends Thread {
 	@Override
 	public void start() {
 		System.out.println("Starting " + threadName);
-		if (t == null) {
-			t = new Thread(this, threadName);
-			t.start();
+		if (thread == null) {
+			thread = new Thread(this, threadName);
+			thread.start();
 		}
 	}
 
