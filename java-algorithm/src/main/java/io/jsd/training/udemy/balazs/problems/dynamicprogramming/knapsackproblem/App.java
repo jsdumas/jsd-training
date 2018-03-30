@@ -2,6 +2,13 @@ package io.jsd.training.udemy.balazs.problems.dynamicprogramming.knapsackproblem
 
 public class App {
 
+	// (items) //
+	// - | 0 | 1 | 2 | 3 | 4- | 5 --------------(weight)
+	// 0 | 0 | 0 | 0 | 0 | 0- | 0 --------------(value)
+	// 1 | 0 | 0 | 0 | 0 | 10 | 10 -------------(value)
+	// 2 | 0 | 0 | 4 | 4 | 10 | 10 -------------(value)
+	// 3 | 0 | 0 | 4 | 7 | 10 | 11 ->(7+4)------(value)
+
 	public static void main(String[] args) {
 
 		int numOfItems = 3;
