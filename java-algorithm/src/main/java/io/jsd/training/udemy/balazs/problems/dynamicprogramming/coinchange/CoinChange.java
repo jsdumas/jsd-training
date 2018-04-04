@@ -3,38 +3,38 @@ package io.jsd.training.udemy.balazs.problems.dynamicprogramming.coinchange;
 public class CoinChange {
 
 	// recursive coin change EXPONENTIAL RUNNING TIME O(2^N)
-	public int naiveCoinChange(int M, int[] v, int index) {
+	public int naiveCoinChange(int amount, int[] coins, int index) {
 		
-		if( M < 0 ) return 0;
-		if( M == 0 ) return 1;
+		if( amount < 0 ) return 0;
+		if( amount == 0 ) return 1;
 		
-		if( v.length == index ) return 0;
+		if( coins.length == index ) return 0;
 		
-		return naiveCoinChange(M-v[index], v, index) + naiveCoinChange(M, v, index+1);
+		return naiveCoinChange(amount-coins[index], coins, index) + naiveCoinChange(amount, coins, index+1);
 	}
 	
-	public void dynamicProgrammingCoinChange(int[] v, int M) {
+	public void dynamicProgrammingCoinChange(int[] coins, int amount) {
 		
-		int[][] dpTable = new int[v.length+1][M+1];
+		int[][] dpTable = new int[coins.length+1][amount+1];
 		
-		for(int i=0;i<=v.length;i++)
+		for(int i=0;i<=coins.length;i++)
 			dpTable[i][0] = 1;
 		
-		for(int i=1;i<=M;i++)
+		for(int i=1;i<=amount;i++)
 			dpTable[0][i] = 0;
 		
 		// O(v*M)
-		for(int i=1;i<=v.length;i++) {
-			for(int j=1;j<=M;j++) {
+		for(int i=1;i<=coins.length;i++) {
+			for(int j=1;j<=amount;j++) {
 				
-				if( v[i-1] <= j ) {
-					dpTable[i][j] = dpTable[i-1][j] + dpTable[i][j-v[i-1]];
+				if( coins[i-1] <= j ) {
+					dpTable[i][j] = dpTable[i-1][j] + dpTable[i][j-coins[i-1]];
 				} else {
 					dpTable[i][j] = dpTable[i-1][j];
 				}
 			}
 		}
 
-		System.out.println("Solution: " + dpTable[v.length][M]);
+		System.out.println("Solution: " + dpTable[coins.length][amount]);
 	}
 }
