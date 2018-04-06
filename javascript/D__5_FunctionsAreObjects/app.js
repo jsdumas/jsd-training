@@ -1,5 +1,6 @@
 
 //First-class Object
+//First-class Function
 
 function greet() {
     console.log('hi');   
