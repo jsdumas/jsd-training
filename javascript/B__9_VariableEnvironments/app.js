@@ -4,7 +4,10 @@ function b() {
 }
 
 function a() {
+	//private var
 	var myVar = 2;
+	//global var
+	globalVariable="globalVariable";
     console.log(myVar);
 	b();
 }
@@ -13,6 +16,8 @@ var myVar = 1;
 console.log(myVar);
 a();
 console.log(myVar);
+//a global var is attached to Window Object
+console.log(window.globalVariable);
 
 
 // var = variable déclarée,
