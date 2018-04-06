@@ -2,6 +2,7 @@
 var a = 3;
 var b;
 
+//By value an affectation is a copy of a value
 b = a;
 a = 2;
 
@@ -12,6 +13,7 @@ console.log(b);
 var c = { greeting: 'hi' };
 var d;
 
+//by reference, a variable point on the same object
 d = c;
 c.greeting = 'hello'; // mutate
 

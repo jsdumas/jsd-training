@@ -1,3 +1,6 @@
+
+//First-class Object
+
 function greet() {
     console.log('hi');   
 }
