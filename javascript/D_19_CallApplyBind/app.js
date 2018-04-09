@@ -17,10 +17,13 @@ var logName = function(lang1, lang2) {
     
 }
 
+//bind an object to a function (this into the function refer to this object)
 var logPersonName = logName.bind(person);
 logPersonName('en');
 
+//call an object and param to a function
 logName.call(person, 'en', 'es');
+//apply an object and an array of param to a function
 logName.apply(person, ['en', 'es']);
 
 (function(lang1, lang2) {
@@ -37,6 +40,7 @@ var person2 = {
     lastname: 'Doe'
 }
 
+//apply can substitute an object to another one
 console.log(person.getFullName.apply(person2));
 
 // function currying
@@ -44,6 +48,7 @@ function multiply(a, b) {
     return a*b;   
 }
 
+//bind allow to fix an immutable value to a function
 var multipleByTwo = multiply.bind(this, 2);
 console.log(multipleByTwo(4));
 
