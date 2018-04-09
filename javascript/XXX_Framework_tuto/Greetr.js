@@ -1,6 +1,7 @@
 ;(function(global, $) {
     
     // 'new' an object
+	//this function return a object, this is not a function constructor
     var Greetr = function(firstName, lastName, language) {
         return new Greetr.init(firstName, lastName, language);   
     }
@@ -27,6 +28,7 @@
     };
     
     // prototype holds methods (to save memory space)
+    //Properties and chainable methods
     Greetr.prototype = {
         
         // 'this' refers to the calling object at execution time
@@ -121,9 +123,11 @@
     };
     
     // the actual object is created here, allowing us to 'new' an object without calling 'new'
+    //this is a function constructor
     Greetr.init = function(firstName, lastName, language) {
-        
+    	// self memorise this
         var self = this;
+     // init property with default value if needed
         self.firstName = firstName || '';
         self.lastName = lastName || '';
         self.language = language || 'en';
@@ -136,6 +140,7 @@
     Greetr.init.prototype = Greetr.prototype;
     
     // attach our Greetr to the global object, and provide a shorthand '$G' for ease our poor fingers
+    //adding jquery support
     global.Greetr = global.G$ = Greetr;
     
 }(window, jQuery));
