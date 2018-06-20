@@ -14,5 +14,11 @@ public class ConversionTest {
 		System.out.println(new String(byteArray));
 		System.out.println("" + (char)byteArray[9] + (char)byteArray[10]);
 	}
+	
+	@Test
+	public void test2() {
+		System.out.println((0x3 & 0x3) << 8);
+		System.out.println((0x5 & 0x3) << 8);
+	}
 
 }
