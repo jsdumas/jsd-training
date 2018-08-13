@@ -1,8 +1,11 @@
 .metadata/
 .classpath
 .project
-/.settings
+.settings/
 /META-INF
 /bin
 build.properties
 /target
+org.eclipse*
+pom.properties
+MANIFEST.MF
