@@ -11,5 +11,13 @@ public class Conversion {
 	    }
 	    return byteArray;
 	  }
+	
+	public String bytesToHexString(byte[] byteArray) {
+	      final StringBuilder builder = new StringBuilder();
+	      for(byte octet : byteArray) {
+	         builder.append(Integer.toString(octet, 16));
+	      }
+	      return builder.toString();
+	   }
 
 }

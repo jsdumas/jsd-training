@@ -9,8 +9,8 @@
 		<relativePath>../maven-main/pom.xml</relativePath>
 	</parent>
 
-	<artifactId>java-design-pattern</artifactId>
-	<name>java-design-pattern</name>
+	<artifactId>java-best-of</artifactId>
+	<name>java-best-of</name>
 
 	<dependencies>
 		<dependency>
