@@ -6,20 +6,13 @@ import java.io.IOException;
 
 public class BinaryFileReading {
 	
-	private static int getByte(byte byteValue) {
-		return byteValue & 0xff;
-	}
+	private static final String FICHIER_PATH = "src/main/resources/MiniDamSacem_2013-08-26";
 	
-	public static int getNumeroTrain(byte[] byteArray) {
-		return ((getByte(byteArray[17]) & 0x3) << 8) | getByte(byteArray[18]);
-	}
-
 	public static void main(String[] args) throws IOException {
-		String nomFichier = "src/MiniDamSacem_2013-08-26";
-		File fichier = new File(nomFichier);
+		File fichier = new File(FICHIER_PATH);
 		// tab de byte qui contiendra ici tout ton fichier
-		byte[] tableau = new byte[(int) fichier.length()];
-
+		byte[] trame = new byte[(int) fichier.length()];
+		MiniDamBaseConverter miniDamBaseConverter = new MiniDamBaseConverter(trame);
 		// creation du fis
 		FileInputStream fis = new FileInputStream(fichier);
 		/*
@@ -27,8 +20,12 @@ public class BinaryFileReading {
 		 * parametre a l'octet de d�part et le 3eme parametre combien d'octet tu va lire
 		 */
 		System.out.println(fichier.length());
-		System.out.println(fis.read(tableau, 0, (int) fichier.length()));
-		System.out.println(getNumeroTrain(tableau));
+		System.out.println(fis.read(trame, 0, (int) fichier.length()));
+		System.out.println(miniDamBaseConverter.getNumeroTrain());
+		System.out.println(miniDamBaseConverter.getCodeMessage(7));
+		System.out.println(trame[0]);
+		System.out.println(miniDamBaseConverter.getCodeMission(1000));
+		System.out.println(miniDamBaseConverter.getSensCirculation(1));
 	}
 
 }

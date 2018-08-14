@@ -5,10 +5,10 @@ public class LogicOperators {
 
 	public static void main(String[] args) {
 
-		System.out.println(0x1F);
-		System.out.println(0x3F);
-		System.out.println(0x1F & 0x3F);
-		System.out.println((0x1F & 0x3F)<<4);
+		System.out.println("0x1F = "+0x1F);
+		System.out.println("0x3F = "+0x3F);
+		System.out.println("0x1F & 0x3F = "+(0x1F & 0x3F));
+		System.out.println("(0x1F & 0x3F)<<4 = "+((0x1F & 0x3F)<<4));
 		
 		
 		byte[] array = new byte[2];
