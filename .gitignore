@@ -1,11 +1,38 @@
-.metadata/
+# Maven 
+target/
+
+# eclipse project file
+.settings/
 .classpath
 .project
-.settings/
+
+.metadata/
 /META-INF
 /bin
 build.properties
-/target
 org.eclipse*
 pom.properties
 MANIFEST.MF
+
+# IntelliJ project files 
+*.iml
+*.iws
+*.ipr
+.idea/
+
+# Binaries
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.war
+*.ear
+*.sar
+*.class
+
+# OS
+.DS_Store

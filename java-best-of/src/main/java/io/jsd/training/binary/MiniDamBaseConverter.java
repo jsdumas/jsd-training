@@ -160,14 +160,6 @@ public class MiniDamBaseConverter {
 		return getUnsignedByte(59) & 0x3;
 	}
 	
-
-	
-
-	
-
-	
-
-
 //	public int getFuBranche() {
 //		return ((getUnsignedByte(1) & 0x3) << 2) | ((getUnsignedByte(2) & 0xC0) >> 6);
 //	}
