@@ -10,12 +10,13 @@ public class FrameReader {
 	}
 	
 	public int fieldTranslator(FieldParams fieldParams) {
+		Field field;
 		if(fieldParams.getByteNumber()==1) {
-			FieldOnOneByte fieldOnOneByte = new FieldOnOneByte(trame, fieldParams);
-			return fieldOnOneByte.translate();
+			field = new FieldOnOneByte(trame, fieldParams);
+		} else {
+			field = new FieldOnManyBytes(trame, fieldParams);
 		}
-		FieldOnManyBytes fieldOnManyBytes = new FieldOnManyBytes(trame, fieldParams);
-		return fieldOnManyBytes.translate();
+		return field.translate();
 	}
 	
 

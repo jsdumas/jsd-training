@@ -4,24 +4,42 @@ public class FieldOnManyBytes extends Field {
 
 	private final byte[] trame;
 	private final FieldParams fieldParams;
-	private int[]bitNumberByByte;
+	private final int byteNumber;
+	private final int[]bitNumberByByte;
 
 	public FieldOnManyBytes(byte[] trame, FieldParams fieldParams) {
 		this.trame = trame;
 		this.fieldParams = fieldParams;
+		this.byteNumber = fieldParams.getByteNumber();
+		this.bitNumberByByte = new int[byteNumber];
+	}
+	
+	private void initBitNumberByByte() {
+		int bitPosition = fieldParams.getBitPosition();
+		int bitNumber = fieldParams.getBitNumber();
+		for(int i=0; i<this.byteNumber; i++) {
+			if(bitNumber<8) {
+				bitNumberByByte[i]=bitNumber;
+			} else {
+				bitNumber=8-bitPosition;
+				bitNumberByByte[i]=bitNumber;
+				bitPosition=0;
+			}
+		}
 	}
 
 	@Override
 	public int translate() {
-		int byteNumber = fieldParams.getByteNumber();
+		initBitNumberByByte();
 		int[] field = new int[byteNumber];
 		int bitOffset = 0;
 		int bitPosition = fieldParams.getBitPosition();
 		for(int i=0; i<byteNumber; i++) {
-			int fieldPart = initField(fieldParams);
-			bitOffset += 8-bitPosition;
+			
+			int fieldPart = initField(this.trame, bitPosition, bitNumberByByte[i]);
 			bitPosition=0;
-			if(i==(i-1)) {
+			if(i>0) {
+				bitOffset += bitNumberByByte[i-1];
 				fieldPart = fieldPart >> bitOffset;
 			}
 			field[i]=fieldPart;
@@ -36,29 +54,14 @@ public class FieldOnManyBytes extends Field {
 		}
 		return fieldMerged;
 	}
-
-	@Override
-	protected int initField(FieldParams fieldParams) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	public String getCodeMission() {
+		int codeMission = translate();
+		byte[] codeByte = new byte[2];
+		codeByte[0] = (byte) (((codeMission & 0xFFE0) >> 5) | 0x40);
+		codeByte[1] = (byte) ((codeMission & 0x1F) | 0x40);
+		return new String(codeByte);
 	}
 
-	@Override
-	protected int selectBit(FieldParams fieldParams) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	protected int field(FieldParams fieldParams, int bitSelected) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	protected int initMask(FieldParams fieldParams) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

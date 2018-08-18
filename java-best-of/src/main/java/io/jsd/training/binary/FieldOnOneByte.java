@@ -12,39 +12,7 @@ public class FieldOnOneByte extends Field {
 
 	@Override
 	public int translate() {
-		return initField(fieldParams);
+		return initField(this.trame, fieldParams.getBitPosition(), fieldParams.getBitNumber());
 	}
 	
-	@Override
-	protected int initField(FieldParams fieldParams) {
-		int bitSelected = selectBit(fieldParams);
-		return field(fieldParams, bitSelected);
-	}
-	
-	@Override
-	protected int selectBit(FieldParams fieldParams) {
-		int octet = unsignedByte(this.trame, fieldParams.getBytePosition());
-		int mask = initMask(fieldParams);
-		return (octet & mask);
-	}
-	
-	@Override
-	protected int field(FieldParams fieldParams, int bitSelected) {
-		int lastBitPosition = fieldParams.getBitPosition()+fieldParams.getBitNumber();
-		int offset = 8-lastBitPosition;
-		return bitSelected >> offset;
-	}
-	
-	@Override
-	protected int initMask(FieldParams fieldParams) {
-		int bitNumber = fieldParams.getBitNumber();
-		int bitPosition = fieldParams.getBitPosition();
-		int mask = 0;
-		for(int i=0; i<bitNumber; i++) {
-			mask+=BIT_WEIGHT[bitPosition];
-			bitPosition++;
-		}
-		return mask;
-	}
-
 }

@@ -28,11 +28,13 @@ public class BinaryFileReading {
 		System.out.println("Sens de circulation "+miniDamBaseConverter.getSensCirculation(0));
 		
 		FrameReader frameReader = new FrameReader(trame);
+		FieldOnManyBytes field = new FieldOnManyBytes(trame, MiniDamBase.CODE_MISSION_BLOC_7);
 		
 		System.out.println("************FRAME***************");
 		System.out.println("Code du message "+frameReader.fieldTranslator(MiniDamBase.CODE_MESSAGE_BLOC_0));
 		System.out.println("Sens de circulation "+frameReader.fieldTranslator(MiniDamBase.SENS_CIRCULATION_BLOC_0));
-		System.out.println("Sens de circulation "+frameReader.fieldTranslator(MiniDamBase.CODE_MISSION_BLOC_7));
+		System.out.println("Code mission "+frameReader.fieldTranslator(MiniDamBase.CODE_MISSION_BLOC_7));
+		System.out.println("Code mission "+field.getCodeMission());
 		
 	}
 
