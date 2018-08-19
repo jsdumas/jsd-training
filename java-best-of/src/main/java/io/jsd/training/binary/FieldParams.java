@@ -6,5 +6,5 @@ public interface FieldParams {
 	int getByteNumber();
 	int getBitPosition();
 	int getBitNumber();
-
+	FieldParams getParam();
 }

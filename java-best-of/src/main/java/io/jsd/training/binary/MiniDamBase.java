@@ -170,5 +170,10 @@ public enum MiniDamBase implements FieldParams {
 	public int getBitNumber() {
 		return this.bitNumber;
 	}
+	
+	@Override
+	public MiniDamBase getParam() {
+		return this;
+	}
 
 }

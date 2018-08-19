@@ -16,16 +16,20 @@ public class FieldOnManyBytes extends Field {
 	
 	private void initBitNumberByByte() {
 		int bitPosition = fieldParams.getBitPosition();
-		int bitNumber = fieldParams.getBitNumber();
+		System.out.println("bitPosition " + bitPosition);
+		int totalBitNumber = fieldParams.getBitNumber();
+		System.out.println("bitNumber " + totalBitNumber);
 		for(int i=0; i<this.byteNumber; i++) {
-			if(bitNumber<8) {
-				bitNumberByByte[i]=bitNumber;
+			if(totalBitNumber<8) {
+				bitNumberByByte[i]=totalBitNumber;
 			} else {
-				bitNumber=8-bitPosition;
-				bitNumberByByte[i]=bitNumber;
+				int fieldBitNumber = 8-bitPosition;
+				totalBitNumber-=fieldBitNumber;
+				bitNumberByByte[i]=fieldBitNumber;
 				bitPosition=0;
 			}
 		}
+		System.out.println("number by byte " + bitNumberByByte[0]+" "+bitNumberByByte[1]);
 	}
 
 	@Override
@@ -34,9 +38,11 @@ public class FieldOnManyBytes extends Field {
 		int[] field = new int[byteNumber];
 		int bitOffset = 0;
 		int bitPosition = fieldParams.getBitPosition();
+		int bytePosition = fieldParams.getBytePosition();
 		for(int i=0; i<byteNumber; i++) {
 			
-			int fieldPart = initField(this.trame, bitPosition, bitNumberByByte[i]);
+			int fieldPart = initField(this.trame[bytePosition], bitPosition, bitNumberByByte[i]);
+			bytePosition++;
 			bitPosition=0;
 			if(i>0) {
 				bitOffset += bitNumberByByte[i-1];
@@ -44,23 +50,35 @@ public class FieldOnManyBytes extends Field {
 			}
 			field[i]=fieldPart;
 		}
+		if(fieldParams.getParam().equals(MiniDamBase.CODE_MISSION_BLOC_0) || //
+				fieldParams.getParam().equals(MiniDamBase.CODE_MISSION_BLOC_1) || //
+				fieldParams.getParam().equals(MiniDamBase.CODE_MISSION_BLOC_2) || //
+				fieldParams.getParam().equals(MiniDamBase.CODE_MISSION_BLOC_3) || //
+				fieldParams.getParam().equals(MiniDamBase.CODE_MISSION_BLOC_4) || //
+				fieldParams.getParam().equals(MiniDamBase.CODE_MISSION_BLOC_5) || //
+				fieldParams.getParam().equals(MiniDamBase.CODE_MISSION_BLOC_6) || //
+				fieldParams.getParam().equals(MiniDamBase.CODE_MISSION_BLOC_7)) {
+			System.out.println("OK");
+			return codeMission(field);
+		}
 		return mergeField(field);
 	}
 	
 	private int mergeField(int[] field) {
-		int fieldMerged = 0;
+		int fieldMerged = field[0];
 		for(int i=0; i<field.length-1; i++) {
-			fieldMerged = field[i] | field[i+1];
+			fieldMerged = fieldMerged | field[i+1];
 		}
 		return fieldMerged;
 	}
 	
-	public String getCodeMission() {
-		int codeMission = translate();
+	private int codeMission(int[] field) {
+		int codeMission = mergeField(field);
 		byte[] codeByte = new byte[2];
-		codeByte[0] = (byte) (((codeMission & 0xFFE0) >> 5) | 0x40);
+		codeByte[0] = (byte) (((codeMission & 0xF800) >> 5) | 0x40);
 		codeByte[1] = (byte) ((codeMission & 0x1F) | 0x40);
-		return new String(codeByte);
+		System.out.println("code mission debug "+codeByte[0]+" "+codeByte[1]);
+		return (codeByte[0]<<5) | codeByte[1];
 	}
 
 

@@ -12,7 +12,7 @@ public class FieldOnOneByte extends Field {
 
 	@Override
 	public int translate() {
-		return initField(this.trame, fieldParams.getBitPosition(), fieldParams.getBitNumber());
+		return initField(this.trame[fieldParams.getBytePosition()], fieldParams.getBitPosition(), fieldParams.getBitNumber());
 	}
 	
 }
