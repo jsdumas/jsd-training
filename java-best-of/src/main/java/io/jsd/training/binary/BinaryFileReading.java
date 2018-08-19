@@ -21,17 +21,17 @@ public class BinaryFileReading {
 		 */
 		System.out.println(fichier.length());
 		System.out.println(fis.read(trame, 0, (int) fichier.length()));
-		System.out.println("Numéro du train " + miniDamBaseConverter.getNumeroTrain());
-		System.out.println("Code du message "+miniDamBaseConverter.getCodeMessage(0));
-		System.out.println(trame[0]);
+//		System.out.println("Numéro du train " + miniDamBaseConverter.getNumeroTrain());
+//		System.out.println("Code du message "+miniDamBaseConverter.getCodeMessage(0));
+//		System.out.println(trame[0]);
 		System.out.println("Code mission " + miniDamBaseConverter.getCodeMission(7));
-		System.out.println("Sens de circulation "+miniDamBaseConverter.getSensCirculation(0));
+//		System.out.println("Sens de circulation "+miniDamBaseConverter.getSensCirculation(0));
 		
 		FrameReader frameReader = new FrameReader(trame);
 		
 		System.out.println("************FRAME***************");
-		System.out.println("Code du message "+frameReader.fieldTranslator(MiniDamBase.CODE_MESSAGE_BLOC_0));
-		System.out.println("Sens de circulation "+frameReader.fieldTranslator(MiniDamBase.SENS_CIRCULATION_BLOC_0));
+//		System.out.println("Code du message "+frameReader.fieldTranslator(MiniDamBase.CODE_MESSAGE_BLOC_0));
+//		System.out.println("Sens de circulation "+frameReader.fieldTranslator(MiniDamBase.SENS_CIRCULATION_BLOC_0));
 		System.out.println("Code mission "+frameReader.fieldTranslator(MiniDamBase.CODE_MISSION_BLOC_7));
 		
 	}

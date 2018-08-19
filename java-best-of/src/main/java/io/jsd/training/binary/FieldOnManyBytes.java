@@ -42,6 +42,8 @@ public class FieldOnManyBytes extends Field {
 		int bytePosition = fieldParams.getBytePosition();
 		for(int i=0; i<byteNumber; i++) {
 			int fieldPart = initField(this.trame[bytePosition], bitPosition, bitNumberByByte[i]);
+			bitPosition=0;
+			bytePosition++;
 			field[i]=fieldPart;
 		}
 		if(fieldParams.getParam().equals(MiniDamBase.CODE_MISSION_BLOC_0) || //
@@ -60,12 +62,13 @@ public class FieldOnManyBytes extends Field {
 	
 	private int mergeField(int[] field) {
 		int bitNumberRestant = totalBitNumber-bitNumberByByte[0];
-		int fieldMerged = field[0] << bitNumberRestant;
-		for(int i=1; i<field.length; i++) {
-//			bitNumberRestant-=bitNumberByByte[i];
-			fieldMerged = fieldMerged | (field[i] >> bitNumberRestant);
-		}
-		return fieldMerged;
+//		int bitNumberRestant = this.totalBitNumber;
+//		int offset=0;
+//		int fieldMerged = field[0] << bitNumberRestant;
+//		for(int i=1; i<field.length; i++) {
+//			fieldMerged = fieldMerged | (field[i] >> bitNumberRestant);
+//		}
+		return (field[0] << bitNumberRestant) | field[1];
 	}
 	
 	private int codeMission(int[] field) {
