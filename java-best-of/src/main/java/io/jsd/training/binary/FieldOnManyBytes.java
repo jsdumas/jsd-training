@@ -62,12 +62,6 @@ public class FieldOnManyBytes extends Field {
 	
 	private int mergeField(int[] field) {
 		int bitNumberRestant = totalBitNumber-bitNumberByByte[0];
-//		int bitNumberRestant = this.totalBitNumber;
-//		int offset=0;
-//		int fieldMerged = field[0] << bitNumberRestant;
-//		for(int i=1; i<field.length; i++) {
-//			fieldMerged = fieldMerged | (field[i] >> bitNumberRestant);
-//		}
 		return (field[0] << bitNumberRestant) | field[1];
 	}
 	
@@ -75,9 +69,10 @@ public class FieldOnManyBytes extends Field {
 		int codeMission = mergeField(field);
 		System.out.println("code decimal debug "+codeMission);
 		byte[] codeByte = new byte[2];
-		codeByte[0] = (byte) (((codeMission & 0xF800) >> 5) | 0x40);
+		codeByte[0] = (byte) (((codeMission & 0xFFE0) >> 5) | 0x40);
 		codeByte[1] = (byte) ((codeMission & 0x1F) | 0x40);
 		System.out.println("code mission debug "+codeByte[0]+" "+codeByte[1]);
+		System.out.println("code mission debug "+new String(codeByte));
 		return (codeByte[0]<<5) | codeByte[1];
 	}
 
