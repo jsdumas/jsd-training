@@ -1,6 +1,6 @@
 package io.jsd.training.binary;
 
-public class FieldOnManyBytes extends Field {
+public class FieldOnTwoBytes extends Field {
 
 	private final byte[] trame;
 	private final FieldParams fieldParams;
@@ -8,7 +8,7 @@ public class FieldOnManyBytes extends Field {
 	private final int[]bitNumberByByte;
 	private final int totalBitNumber;
 
-	public FieldOnManyBytes(byte[] trame, FieldParams fieldParams) {
+	public FieldOnTwoBytes(byte[] trame, FieldParams fieldParams) {
 		this.trame = trame;
 		this.fieldParams = fieldParams;
 		this.byteNumber = fieldParams.getByteNumber();
@@ -73,7 +73,7 @@ public class FieldOnManyBytes extends Field {
 		codeByte[1] = (byte) ((codeMission & 0x1F) | 0x40);
 		System.out.println("code mission debug "+codeByte[0]+" "+codeByte[1]);
 		System.out.println("code mission debug "+new String(codeByte));
-		return (codeByte[0]<<5) | codeByte[1];
+		return (codeByte[0]<<8) | codeByte[1];
 	}
 
 

@@ -32,7 +32,12 @@ public class BinaryFileReading {
 		System.out.println("************FRAME***************");
 //		System.out.println("Code du message "+frameReader.fieldTranslator(MiniDamBase.CODE_MESSAGE_BLOC_0));
 //		System.out.println("Sens de circulation "+frameReader.fieldTranslator(MiniDamBase.SENS_CIRCULATION_BLOC_0));
-		System.out.println("Code mission "+frameReader.fieldTranslator(MiniDamBase.CODE_MISSION_BLOC_7));
+		
+		int codeMiss = frameReader.fieldTranslator(MiniDamBase.CODE_MISSION_BLOC_7);
+		byte [] codeMission = new byte[2];
+		codeMission[0] = (byte) ((codeMiss & 0xFF00) >> 8);
+		codeMission[1] = (byte) (codeMiss & 0xFF);
+		System.out.println("Code mission final "+new String(codeMission));
 		
 	}
 

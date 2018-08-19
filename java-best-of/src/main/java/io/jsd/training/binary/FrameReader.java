@@ -14,7 +14,7 @@ public class FrameReader {
 		if(fieldParams.getByteNumber()==1) {
 			field = new FieldOnOneByte(trame, fieldParams);
 		} else {
-			field = new FieldOnManyBytes(trame, fieldParams);
+			field = new FieldOnTwoBytes(trame, fieldParams);
 		}
 		return field.translate();
 	}
