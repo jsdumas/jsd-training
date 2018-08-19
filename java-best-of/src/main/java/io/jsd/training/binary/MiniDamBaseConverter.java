@@ -21,6 +21,7 @@ public class MiniDamBaseConverter {
 	
 	public String getCodeMission(int numeroBloc) {
 		int codeDecimal = ((getUnsignedByte(numeroBloc*8) & 0x3F) << 4) | ((getUnsignedByte((numeroBloc*8)+1) & 0xF0) >> 4);
+		System.out.println("codedecimal debug "+codeDecimal);
 		byte[] codeByte = new byte[2];
 		codeByte[0] = (byte) (((codeDecimal & 0xFFE0) >> 5) | 0x40);
 		codeByte[1] = (byte) ((codeDecimal & 0x1F) | 0x40);

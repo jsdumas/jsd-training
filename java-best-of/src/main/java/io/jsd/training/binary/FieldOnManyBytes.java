@@ -6,25 +6,27 @@ public class FieldOnManyBytes extends Field {
 	private final FieldParams fieldParams;
 	private final int byteNumber;
 	private final int[]bitNumberByByte;
+	private final int totalBitNumber;
 
 	public FieldOnManyBytes(byte[] trame, FieldParams fieldParams) {
 		this.trame = trame;
 		this.fieldParams = fieldParams;
 		this.byteNumber = fieldParams.getByteNumber();
 		this.bitNumberByByte = new int[byteNumber];
+		this.totalBitNumber = fieldParams.getBitNumber();
 	}
 	
 	private void initBitNumberByByte() {
 		int bitPosition = fieldParams.getBitPosition();
 		System.out.println("bitPosition " + bitPosition);
-		int totalBitNumber = fieldParams.getBitNumber();
 		System.out.println("bitNumber " + totalBitNumber);
+		int bitNumberRestant = this.totalBitNumber;
 		for(int i=0; i<this.byteNumber; i++) {
-			if(totalBitNumber<8) {
-				bitNumberByByte[i]=totalBitNumber;
+			if(bitNumberRestant<8) {
+				bitNumberByByte[i]=bitNumberRestant;
 			} else {
 				int fieldBitNumber = 8-bitPosition;
-				totalBitNumber-=fieldBitNumber;
+				bitNumberRestant-=fieldBitNumber;
 				bitNumberByByte[i]=fieldBitNumber;
 				bitPosition=0;
 			}
@@ -36,18 +38,10 @@ public class FieldOnManyBytes extends Field {
 	public int translate() {
 		initBitNumberByByte();
 		int[] field = new int[byteNumber];
-		int bitOffset = 0;
 		int bitPosition = fieldParams.getBitPosition();
 		int bytePosition = fieldParams.getBytePosition();
 		for(int i=0; i<byteNumber; i++) {
-			
 			int fieldPart = initField(this.trame[bytePosition], bitPosition, bitNumberByByte[i]);
-			bytePosition++;
-			bitPosition=0;
-			if(i>0) {
-				bitOffset += bitNumberByByte[i-1];
-				fieldPart = fieldPart >> bitOffset;
-			}
 			field[i]=fieldPart;
 		}
 		if(fieldParams.getParam().equals(MiniDamBase.CODE_MISSION_BLOC_0) || //
@@ -65,15 +59,18 @@ public class FieldOnManyBytes extends Field {
 	}
 	
 	private int mergeField(int[] field) {
-		int fieldMerged = field[0];
-		for(int i=0; i<field.length-1; i++) {
-			fieldMerged = fieldMerged | field[i+1];
+		int bitNumberRestant = totalBitNumber-bitNumberByByte[0];
+		int fieldMerged = field[0] << bitNumberRestant;
+		for(int i=1; i<field.length; i++) {
+//			bitNumberRestant-=bitNumberByByte[i];
+			fieldMerged = fieldMerged | (field[i] >> bitNumberRestant);
 		}
 		return fieldMerged;
 	}
 	
 	private int codeMission(int[] field) {
 		int codeMission = mergeField(field);
+		System.out.println("code decimal debug "+codeMission);
 		byte[] codeByte = new byte[2];
 		codeByte[0] = (byte) (((codeMission & 0xF800) >> 5) | 0x40);
 		codeByte[1] = (byte) ((codeMission & 0x1F) | 0x40);
