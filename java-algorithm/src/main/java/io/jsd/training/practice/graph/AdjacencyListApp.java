@@ -9,7 +9,7 @@ public class AdjacencyListApp {
 
 	public static void main(String[] args) {
 
-		AdjList<Integer> adjList = initAdjList()
+		AdjList<Integer> adjacencyList = initAdjList()
 				.addVertex(1)
 				.addVertex(3)
 				.addVertex(5)
@@ -20,17 +20,17 @@ public class AdjacencyListApp {
 				.build();
 
 		// DFS
-		DFSAdjList<Integer> dfs = new DFSAdjList<>(adjList);
+        DepthFirstSearchAdjacencyList<Integer> dfs = new DepthFirstSearchAdjacencyList<>(adjacencyList);
 		dfs.dfs(3);
-		for (int v : adjList.vertices())
-			System.out.println("dfs(" + v + ")=" + dfs.dfsNum(v));
+		for (int vertex : adjacencyList.vertices())
+			System.out.println("dfs(" + vertex + ")=" + dfs.dfsNum(vertex));
 		System.out.println();
 
 		// BFS
-		BFSAdjList<Integer> bfs = new BFSAdjList<>(adjList);
+        BreadthFirstSearchAdjacencyList<Integer> bfs = new BreadthFirstSearchAdjacencyList<>(adjacencyList);
 		bfs.bfs();
-		for (int v : adjList.vertices())
-			System.out.println("bfs(" + v + ")=" + bfs.bfsNum(v));
+		for (int vertex : adjacencyList.vertices())
+			System.out.println("bfs(" + vertex + ")=" + bfs.bfsNum(vertex));
 
 		System.out.println("TestAdjList OK");
 	}
