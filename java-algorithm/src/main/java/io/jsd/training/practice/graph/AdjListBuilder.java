@@ -7,22 +7,26 @@ import io.jsd.training.practice.graph.AdjList;
 
 public class AdjListBuilder {
 	
+	public static AdjListBuilder initAdjList() {
+		return new AdjListBuilder();
+	}
+	
 	private AdjList<Integer> graph;
 	
-	public AdjListBuilder(){
-		this.graph = new AdjList<Integer>();
+	private AdjListBuilder(){
+		this.graph = new AdjList<>();
 	}
 	
 	public AdjList<Integer> build(){
 		return this.graph;
 	}
 	
-	public AdjListBuilder withVertex(Integer number){
+	public AdjListBuilder addVertex(Integer number){
 		this.graph.addVertex(number);
 		return this;
 	}
 	
-	public AdjListBuilder withEdge(Integer from, Integer to){
+	public AdjListBuilder addEdge(Integer from, Integer to){
 		this.graph.addEdge(from, to);
 		return this;
 	}

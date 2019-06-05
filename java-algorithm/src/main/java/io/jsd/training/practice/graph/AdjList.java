@@ -14,13 +14,11 @@ public class AdjList<V> {
 	private final Map<V, LinkedList<V>> adjacencyList;
 
 	public AdjList() {
-		this.adjacencyList = new HashMap<V, LinkedList<V>>();
+		this.adjacencyList = new HashMap<>();
 	}
 
 	public void addVertex(V vertex) {
-		List<V> vertexList = this.adjacencyList.get(vertex);
-		if (vertexList == null)
-			this.adjacencyList.put(vertex, new LinkedList<V>());
+		this.adjacencyList.computeIfAbsent(vertex, v -> new LinkedList<V>());
 	}
 
 	public boolean hasEdge(V vertexFrom, V vertexTo) {
