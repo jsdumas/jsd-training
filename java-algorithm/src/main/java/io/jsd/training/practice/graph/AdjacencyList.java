@@ -9,39 +9,39 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-public class AdjList<V> {
+public class AdjacencyList<T> {
 
-	private final Map<V, LinkedList<V>> adjacencyList;
+	private final Map<T, LinkedList<T>> adjacencyList;
 
-	public AdjList() {
+	public AdjacencyList() {
 		this.adjacencyList = new HashMap<>();
 	}
 
-	public void addVertex(V vertex) {
-		this.adjacencyList.computeIfAbsent(vertex, v -> new LinkedList<V>());
+	public void addVertex(T vertex) {
+		this.adjacencyList.computeIfAbsent(vertex, v -> new LinkedList<T>());
 	}
 
-	public boolean hasEdge(V vertexFrom, V vertexTo) {
-		List<V> vertexList = this.adjacencyList.get(vertexFrom);
+	public boolean hasEdge(T vertexFrom, T vertexTo) {
+		List<T> vertexList = this.adjacencyList.get(vertexFrom);
 		return vertexList != null && vertexList.contains(vertexTo);
 	}
 
-	public void addEdge(V vertexFrom, V vertexTo) {
+	public void addEdge(T vertexFrom, T vertexTo) {
 		addVertex(vertexFrom);
 		this.adjacencyList.get(vertexFrom).add(vertexTo);
 	}
 
-	public void removeEdge(V vertexFrom, V vertexTo) {
-		List<V> vertexList = this.adjacencyList.get(vertexFrom);
+	public void removeEdge(T vertexFrom, T vertexTo) {
+		List<T> vertexList = this.adjacencyList.get(vertexFrom);
 		if (vertexList != null)
 			vertexList.remove(vertexTo);
 	}
 
-	List<V> successors(V vertex) {
+	public List<T> successors(T vertex) {
 		return this.adjacencyList.get(vertex);
 	}
 
-	public Set<V> vertices() {
+	public Set<T> vertices() {
 		return this.adjacencyList.keySet();
 	}
 

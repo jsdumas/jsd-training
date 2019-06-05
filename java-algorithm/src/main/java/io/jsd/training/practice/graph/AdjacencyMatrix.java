@@ -2,12 +2,12 @@ package io.jsd.training.practice.graph;
 
 // graphes par matrices d'adjacence
 
-public class AdjMatrix {
+public class AdjacencyMatrix {
 
 	private final int size; // les sommets sont 0,...,n-1
 	private final boolean[][] m;
 
-	public AdjMatrix(int size) {
+	public AdjacencyMatrix(int size) {
 		this.size = size;
 		this.m = new boolean[size][size];
 	}

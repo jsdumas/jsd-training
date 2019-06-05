@@ -9,37 +9,37 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-public class BFSAdjList<V> {
+public class BreadthFirstSearchAdjacencyList<T> {
 
-	private final AdjList<V> g;
-	private final HashMap<V, Integer> visited;
+	private final AdjList<T> g;
+	private final HashMap<T, Integer> visited;
 	private int count;
 
-	public BFSAdjList(AdjList<V> g) {
+	public BreadthFirstSearchAdjacencyList(AdjList<T> g) {
 		this.g = g;
-		this.visited = new HashMap<V, Integer>();
+		this.visited = new HashMap<T, Integer>();
 		this.count = 0;
 	}
 
-	void bfs(V v) {
-		Queue<V> q = new LinkedList<V>();
+	void bfs(T v) {
+		Queue<T> q = new LinkedList<T>();
 		if (!this.visited.containsKey(v))
 			q.add(v);
 		while (!q.isEmpty()) {
 			v = q.poll();
 			this.visited.put(v, count++);
-			for (V w : g.successors(v))
+			for (T w : g.successors(v))
 				if (!this.visited.containsKey(w))
 					q.add(w);
 		}
 	}
 
 	public void bfs() {
-		for (V v : g.vertices())
+		for (T v : g.vertices())
 			bfs(v);
 	}
 
-	public int bfsNum(V v) {
+	public int bfsNum(T v) {
 		bfs(v);
 		return this.visited.get(v);
 	}

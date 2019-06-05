@@ -5,15 +5,15 @@ import java.util.Map;
 
 import io.jsd.training.practice.graph.AdjList;
 
-public class AdjListBuilder {
-	
-	public static AdjListBuilder initAdjList() {
-		return new AdjListBuilder();
+public class AdjacencyListBuilder {
+
+	public static AdjacencyListBuilder initAdjList() {
+		return new AdjacencyListBuilder();
 	}
 	
 	private AdjList<Integer> graph;
 	
-	private AdjListBuilder(){
+	private AdjacencyListBuilder(){
 		this.graph = new AdjList<>();
 	}
 	
@@ -21,12 +21,12 @@ public class AdjListBuilder {
 		return this.graph;
 	}
 	
-	public AdjListBuilder addVertex(Integer number){
+	public AdjacencyListBuilder addVertex(Integer number){
 		this.graph.addVertex(number);
 		return this;
 	}
 	
-	public AdjListBuilder addEdge(Integer from, Integer to){
+	public AdjacencyListBuilder addEdge(Integer from, Integer to){
 		this.graph.addEdge(from, to);
 		return this;
 	}

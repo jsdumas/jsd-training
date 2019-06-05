@@ -1,7 +1,7 @@
 package io.jsd.training.practice.graph;
 
 // graphes �tiquet�s
-public class AdjMatrixLabel<L> {
+public class AdjacencyMatrixLabel<L> {
 
 	private final int size; // les sommets sont 0,...,n-1
 	private final L[][] m;

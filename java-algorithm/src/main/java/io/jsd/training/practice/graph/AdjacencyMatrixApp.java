@@ -1,6 +1,6 @@
 package io.jsd.training.practice.graph;
 
-public class AdjMatrixApp {
+public class AdjacencyMatrixApp {
 
 	public static void main(String[] args) {
 		AdjMatrix g = new AdjMatrix(6);

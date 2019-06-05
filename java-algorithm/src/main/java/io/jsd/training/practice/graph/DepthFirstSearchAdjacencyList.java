@@ -9,32 +9,32 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-public class DFSAdjList<V> {
+public class DepthFirstSearchAdjacencyList<T> {
 
-		private final AdjList<V> g;
-		private final HashMap<V, Integer> visited;
+		private final AdjList<T> g;
+		private final HashMap<T, Integer> visited;
 		private int count;
 
-		public DFSAdjList(AdjList<V> g) {
+		public DepthFirstSearchAdjacencyList(AdjList<T> g) {
 			this.g = g;
-			this.visited = new HashMap<V, Integer>();
+			this.visited = new HashMap<T, Integer>();
 			this.count = 0;
 		}
 
-		public void dfs(V v) {
+		public void dfs(T v) {
 			if (this.visited.containsKey(v))
 				return;
 			this.visited.put(v, count++);
-			for (V w : g.successors(v))
+			for (T w : g.successors(v))
 				dfs(w);
 		}
 
 		void dfs() {
-			for (V v : g.vertices())
+			for (T v : g.vertices())
 				dfs(v);
 		}
 
-		public int dfsNum(V v) {
+		public int dfsNum(T v) {
 			dfs(v);
 			return this.visited.get(v);
 		}
