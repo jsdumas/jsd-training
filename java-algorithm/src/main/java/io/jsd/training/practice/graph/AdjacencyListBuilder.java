@@ -8,23 +8,23 @@ public class AdjacencyListBuilder {
 		return new AdjacencyListBuilder();
 	}
 	
-	private AdjacencyList<Integer> graph;
+	private AdjacencyList<Integer> adjacencyList;
 	
 	private AdjacencyListBuilder(){
-		this.graph = new AdjacencyList<>();
+		this.adjacencyList = new AdjacencyList<>();
 	}
 	
 	public AdjacencyList<Integer> build(){
-		return this.graph;
+		return this.adjacencyList;
 	}
 	
 	public AdjacencyListBuilder addVertex(Integer number){
-		this.graph.addNewVertex(number);
+		this.adjacencyList.addNewVertex(number);
 		return this;
 	}
 	
 	public AdjacencyListBuilder addEdge(Integer from, Integer to){
-		this.graph.addEdge(from, to);
+		this.adjacencyList.addEdge(from, to);
 		return this;
 	}
 
