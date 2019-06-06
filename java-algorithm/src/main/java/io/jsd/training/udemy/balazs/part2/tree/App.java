@@ -1,6 +1,5 @@
 package io.jsd.training.udemy.balazs.part2.tree;
 
-import java.util.List;
 
 public class App {
 
