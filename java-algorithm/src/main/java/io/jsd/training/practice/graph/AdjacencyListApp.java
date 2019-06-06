@@ -27,9 +27,9 @@ public class AdjacencyListApp {
 
 		// BFS
         BreadthFirstSearchAdjacencyList<Integer> bfs = new BreadthFirstSearchAdjacencyList<>(adjacencyList);
-		bfs.bfs();
+		bfs.breadthFirstSearch();
 		for (int vertex : adjacencyList.getAllVertices())
-			System.out.println("bfs(" + vertex + ")=" + bfs.bfsNum(vertex));
+			System.out.println("bfs(" + vertex + ")=" + bfs.breadthFirstSearchNumber(vertex));
 
 		System.out.println("TestAdjList OK");
 	}

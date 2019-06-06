@@ -8,37 +8,37 @@ import java.util.Queue;
 
 public class BreadthFirstSearchAdjacencyList<T> {
 
-	private final AdjacencyList<T> g;
+	private final AdjacencyList<T> adjacencyList;
 	private final HashMap<T, Integer> visited;
 	private int count;
 
-	public BreadthFirstSearchAdjacencyList(AdjacencyList<T> g) {
-		this.g = g;
+	public BreadthFirstSearchAdjacencyList(AdjacencyList<T> adjacencyList) {
+		this.adjacencyList = adjacencyList;
 		this.visited = new HashMap<>();
 		this.count = 0;
 	}
 
-	void bfs(T v) {
-		Queue<T> q = new LinkedList<>();
-		if (!this.visited.containsKey(v))
-			q.add(v);
-		while (!q.isEmpty()) {
-			v = q.poll();
-			this.visited.put(v, count++);
-			for (T w : g.getChildsFromVertex(v))
-				if (!this.visited.containsKey(w))
-					q.add(w);
+	public void breadthFirstSearch(T vertex) {
+		Queue<T> queue = new LinkedList<>();
+		if (!this.visited.containsKey(vertex))
+			queue.add(vertex);
+		while (!queue.isEmpty()) {
+			vertex = queue.poll();
+			this.visited.put(vertex, count++);
+			for (T childVertex : adjacencyList.getChildsFromVertex(vertex))
+				if (!this.visited.containsKey(childVertex))
+					queue.add(childVertex);
 		}
 	}
 
-	public void bfs() {
-		for (T v : g.getAllVertices())
-			bfs(v);
+	public void breadthFirstSearch() {
+		for (T vertex : adjacencyList.getAllVertices())
+			breadthFirstSearch(vertex);
 	}
 
-	public int bfsNum(T v) {
-		bfs(v);
-		return this.visited.get(v);
+	public int breadthFirstSearchNumber(T vertex) {
+		breadthFirstSearch(vertex);
+		return this.visited.get(vertex);
 	}
 
 }
