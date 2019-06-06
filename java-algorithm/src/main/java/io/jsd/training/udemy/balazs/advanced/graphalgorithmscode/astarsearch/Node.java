@@ -5,25 +5,25 @@ import java.util.List;
 
 public class Node implements Comparable<Node> {
 
-	private String value;
+	private final String value;
 	private double gScore;
 	private double fScore = 0;
 	private double x;
 	private double y;
-	private List<Edge> adjacenciesList;
+	private List<Edge> edges;
 	private Node parentNode;
 
 	public Node(String value) {
 		this.value = value;
-		this.adjacenciesList = new ArrayList<Edge>();
+		this.edges = new ArrayList<>();
 	}
 
 	public double getgScore() {
 		return gScore;
 	}
 	
-	public void addNeighbour(Edge edge){
-		this.adjacenciesList.add(edge);
+	public void addChild(Edge edge){
+		this.edges.add(edge);
 	}
 
 	public double getX() {
@@ -62,16 +62,16 @@ public class Node implements Comparable<Node> {
 		return value;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
-	}
+//	public void setValue(String value) {
+//		this.value = value;
+//	}
 
 	public void setParentNode(Node parentNode) {
 		this.parentNode = parentNode;
 	}
 
-	public List<Edge> getAdjacenciesList() {
-		return adjacenciesList;
+	public List<Edge> getEdges() {
+		return edges;
 	}
 
 	@Override
