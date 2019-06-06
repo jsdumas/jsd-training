@@ -6,32 +6,32 @@ import java.util.HashMap;
 
 public class DepthFirstSearchAdjacencyList<T> {
 
-		private final AdjacencyList<T> g;
+		private final AdjacencyList<T> adjacencyList;
 		private final HashMap<T, Integer> visited;
 		private int count;
 
-		public DepthFirstSearchAdjacencyList(AdjacencyList<T> g) {
-			this.g = g;
+		public DepthFirstSearchAdjacencyList(AdjacencyList<T> adjacencyList) {
+			this.adjacencyList = adjacencyList;
 			this.visited = new HashMap<>();
 			this.count = 0;
 		}
 
-		public void dfs(T v) {
-			if (this.visited.containsKey(v))
+		public void depthFirstSearch(T vertex) {
+			if (this.visited.containsKey(vertex))
 				return;
-			this.visited.put(v, count++);
-			for (T w : g.getChildsFromVertex(v))
-				dfs(w);
+			this.visited.put(vertex, count++);
+			for (T childVertex : adjacencyList.getChildsFromVertex(vertex))
+				depthFirstSearch(childVertex);
 		}
 
-		void dfs() {
-			for (T v : g.getAllVertices())
-				dfs(v);
+		public void depthFirstSearch() {
+			for (T vertex : adjacencyList.getAllVertices())
+				depthFirstSearch(vertex);
 		}
 
-		public int dfsNum(T v) {
-			dfs(v);
-			return this.visited.get(v);
+		public int depthFirstSearchNumber(T vertex) {
+			depthFirstSearch(vertex);
+			return this.visited.get(vertex);
 		}
 
 	}

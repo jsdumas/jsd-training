@@ -20,9 +20,9 @@ public class AdjacencyListApp {
 
 		// DFS
         DepthFirstSearchAdjacencyList<Integer> dfs = new DepthFirstSearchAdjacencyList<>(adjacencyList);
-		dfs.dfs(3);
+		dfs.depthFirstSearch(3);
 		for (int vertex : adjacencyList.getAllVertices())
-			System.out.println("dfs(" + vertex + ")=" + dfs.dfsNum(vertex));
+			System.out.println("dfs(" + vertex + ")=" + dfs.depthFirstSearchNumber(vertex));
 		System.out.println();
 
 		// BFS
