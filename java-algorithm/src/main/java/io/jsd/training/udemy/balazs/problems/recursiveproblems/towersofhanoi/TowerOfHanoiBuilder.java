@@ -15,7 +15,7 @@ public class TowerOfHanoiBuilder {
 
 	public TowerOfHanoiBuilder withPlate(Plate plate) {
 		if (plates == null) {
-			plates = new Stack<Plate>();
+			plates = new Stack<>();
 		}
 		plates.push(plate);
 		return this;

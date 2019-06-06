@@ -16,21 +16,21 @@ public class DepthFirstSearchAdjacencyList<T> {
 			this.count = 0;
 		}
 
-		public void depthFirstSearch(T vertex) {
+		public void depthFirstSearchFromVertex(T vertex) {
 			if (this.visited.containsKey(vertex))
 				return;
 			this.visited.put(vertex, count++);
 			for (T childVertex : adjacencyList.getChildsFromVertex(vertex))
-				depthFirstSearch(childVertex);
+				depthFirstSearchFromVertex(childVertex);
 		}
 
-		public void depthFirstSearch() {
+		public void depthFirstSearchForAllVertices() {
 			for (T vertex : adjacencyList.getAllVertices())
-				depthFirstSearch(vertex);
+				depthFirstSearchFromVertex(vertex);
 		}
 
-		public int depthFirstSearchNumber(T vertex) {
-			depthFirstSearch(vertex);
+		public int vertexPositionAfterdepthFirstSearch(T vertex) {
+			depthFirstSearchFromVertex(vertex);
 			return this.visited.get(vertex);
 		}
 
