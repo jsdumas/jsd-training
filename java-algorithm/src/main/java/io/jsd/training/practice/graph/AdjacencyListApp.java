@@ -21,14 +21,14 @@ public class AdjacencyListApp {
 		// DFS
         DepthFirstSearchAdjacencyList<Integer> dfs = new DepthFirstSearchAdjacencyList<>(adjacencyList);
 		dfs.dfs(3);
-		for (int vertex : adjacencyList.vertices())
+		for (int vertex : adjacencyList.getAllVertices())
 			System.out.println("dfs(" + vertex + ")=" + dfs.dfsNum(vertex));
 		System.out.println();
 
 		// BFS
         BreadthFirstSearchAdjacencyList<Integer> bfs = new BreadthFirstSearchAdjacencyList<>(adjacencyList);
 		bfs.bfs();
-		for (int vertex : adjacencyList.vertices())
+		for (int vertex : adjacencyList.getAllVertices())
 			System.out.println("bfs(" + vertex + ")=" + bfs.bfsNum(vertex));
 
 		System.out.println("TestAdjList OK");

@@ -25,14 +25,14 @@ public class BreadthFirstSearchAdjacencyList<T> {
 		while (!q.isEmpty()) {
 			v = q.poll();
 			this.visited.put(v, count++);
-			for (T w : g.successors(v))
+			for (T w : g.getChildsFromVertex(v))
 				if (!this.visited.containsKey(w))
 					q.add(w);
 		}
 	}
 
 	public void bfs() {
-		for (T v : g.vertices())
+		for (T v : g.getAllVertices())
 			bfs(v);
 	}
 

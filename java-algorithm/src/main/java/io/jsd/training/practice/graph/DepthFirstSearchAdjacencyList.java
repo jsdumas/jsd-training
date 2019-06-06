@@ -20,12 +20,12 @@ public class DepthFirstSearchAdjacencyList<T> {
 			if (this.visited.containsKey(v))
 				return;
 			this.visited.put(v, count++);
-			for (T w : g.successors(v))
+			for (T w : g.getChildsFromVertex(v))
 				dfs(w);
 		}
 
 		void dfs() {
-			for (T v : g.vertices())
+			for (T v : g.getAllVertices())
 				dfs(v);
 		}
 

@@ -19,7 +19,7 @@ public class AdjacencyListBuilder {
 	}
 	
 	public AdjacencyListBuilder addVertex(Integer number){
-		this.graph.addVertex(number);
+		this.graph.addNewVertex(number);
 		return this;
 	}
 	
