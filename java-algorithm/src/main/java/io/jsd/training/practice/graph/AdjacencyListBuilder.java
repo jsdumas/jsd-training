@@ -1,9 +1,6 @@
 package io.jsd.training.practice.graph;
 
-import java.util.LinkedList;
-import java.util.Map;
-
-import io.jsd.training.practice.graph.AdjList;
+import io.jsd.training.practice.graph.AdjacencyList;
 
 public class AdjacencyListBuilder {
 
@@ -11,13 +8,13 @@ public class AdjacencyListBuilder {
 		return new AdjacencyListBuilder();
 	}
 	
-	private AdjList<Integer> graph;
+	private AdjacencyList<Integer> graph;
 	
 	private AdjacencyListBuilder(){
-		this.graph = new AdjList<>();
+		this.graph = new AdjacencyList<>();
 	}
 	
-	public AdjList<Integer> build(){
+	public AdjacencyList<Integer> build(){
 		return this.graph;
 	}
 	

@@ -1,15 +1,15 @@
 package io.jsd.training.practice.graph;
 
 // graphes �tiquet�s
-public class AdjacencyMatrixLabel<L> {
+public class AdjacencyMatrixLabel<T> {
 
 	private final int size; // les sommets sont 0,...,n-1
-	private final L[][] m;
+	private final T[][] m;
 
 	@SuppressWarnings("unchecked")
-	public AdjMatrixLabel(int n) {
+	public AdjacencyMatrixLabel(int n) {
 		this.size = n;
-		this.m = (L[][]) new Object[n][n];
+		this.m = (T[][]) new Object[n][n];
 	}
 
 	public int getSize() {
@@ -20,11 +20,11 @@ public class AdjacencyMatrixLabel<L> {
 		return this.m[x][y] != null;
 	}
 
-	public L getLabel(int x, int y) {
+	public T getLabel(int x, int y) {
 		return this.m[x][y];
 	}
 
-	public void addEdge(int x, L label, int y) {
+	public void addEdge(int x, T label, int y) {
 		this.m[x][y] = label;
 	}
 

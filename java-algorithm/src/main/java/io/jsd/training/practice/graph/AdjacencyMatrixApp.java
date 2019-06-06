@@ -3,7 +3,7 @@ package io.jsd.training.practice.graph;
 public class AdjacencyMatrixApp {
 
 	public static void main(String[] args) {
-		AdjMatrix g = new AdjMatrix(6);
+		AdjacencyMatrix g = new AdjacencyMatrix(6);
 		g.addEdge(1, 3);
 		g.addEdge(3, 5);
 		assert (g.hasEdge(1, 3));
@@ -12,7 +12,7 @@ public class AdjacencyMatrixApp {
 		assert (!g.hasEdge(3, 1));
 		assert (g.hasEdge(3, 5));
 
-		AdjMatrixLabel<String> gl = new AdjMatrixLabel<>(6);
+		AdjacencyMatrixLabel<String> gl = new AdjacencyMatrixLabel<>(6);
 		gl.addEdge(1, "foo", 3);
 		gl.addEdge(3, "bar", 5);
 		assert (gl.hasEdge(1, 3));

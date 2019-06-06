@@ -1,15 +1,14 @@
 package io.jsd.training.practice.graph;
 
-import static io.jsd.training.practice.graph.AdjListBuilder.initAdjList;
+import static io.jsd.training.practice.graph.AdjacencyListBuilder.initAdjList;
 
-import io.jsd.training.practice.graph.AdjListBuilder;
 
 public class AdjacencyListApp {
 
 
 	public static void main(String[] args) {
 
-		AdjList<Integer> adjacencyList = initAdjList()
+		AdjacencyList<Integer> adjacencyList = initAdjList()
 				.addVertex(1)
 				.addVertex(3)
 				.addVertex(5)
