@@ -7,11 +7,11 @@ public class Vertex {
 
 	private int data;
 	private boolean visited;
-	private List<Vertex> neighbourList;
+	private List<Vertex> childs;
 	
 	public Vertex(int data){
 		this.data=data;
-		this.neighbourList = new ArrayList<>();
+		this.childs = new ArrayList<>();
 	}
 
 	public int getData() {
@@ -30,12 +30,12 @@ public class Vertex {
 		this.visited = visited;
 	}
 
-	public List<Vertex> getNeighbourList() {
-		return neighbourList;
+	public List<Vertex> getChilds() {
+		return childs;
 	}
 
-	public void addNeighbour(Vertex neighbour) {
-		this.neighbourList.add(neighbour);
+	public void addChild(Vertex child) {
+		this.childs.add(child);
 	}
 	
 	@Override

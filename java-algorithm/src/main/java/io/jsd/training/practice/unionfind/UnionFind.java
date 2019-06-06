@@ -1,4 +1,4 @@
-package io.jsd.training.practice.uf;
+package io.jsd.training.practice.unionfind;
 
 public class UnionFind {
 

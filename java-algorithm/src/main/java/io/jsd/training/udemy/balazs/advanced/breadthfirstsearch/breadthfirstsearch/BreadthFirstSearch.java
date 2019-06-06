@@ -13,10 +13,10 @@ public class BreadthFirstSearch {
 		while( !queue.isEmpty() ){
 			Vertex actualVertex = queue.remove();
 			System.out.print(actualVertex+" ");
-			for( Vertex v : actualVertex.getNeighbourList() ){
-				if( !v.isVisited() ){
-					v.setVisited(true);
-					queue.add(v);
+			for( Vertex child : actualVertex.getChilds() ){
+				if( !child.isVisited() ){
+					child.setVisited(true);
+					queue.add(child);
 				}
 			}			
 		}

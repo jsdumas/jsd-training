@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 // suite de Fibonacci
 
-public class Fib {
+public class Fibonacci {
 
 	// m�mo�sation
-	private final HashMap<Integer, Long> memo = new HashMap<Integer, Long>();
+	private final HashMap<Integer, Long> memo = new HashMap<>();
 
 	public long fibonacci(int value) {
 		if (value <= 1)

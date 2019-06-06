@@ -5,11 +5,11 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
 
-import io.jsd.training.practice.memo.Fib;
+import io.jsd.training.practice.memo.Fibonacci;
 
-public class FibTest {
+public class FibonacciTest {
 
-	private static final Fib FIB = new Fib();
+	private static final Fibonacci FIB = new Fibonacci();
 
 	@Test
 	public void test() {

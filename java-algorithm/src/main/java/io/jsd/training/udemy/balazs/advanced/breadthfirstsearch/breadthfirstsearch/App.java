@@ -12,10 +12,10 @@ public class App {
 		Vertex vertex4 = new Vertex(4);
 		Vertex vertex5 = new Vertex(5);
 		
-		vertex1.addNeighbour(vertex2);
-		vertex1.addNeighbour(vertex4);
-		vertex4.addNeighbour(vertex5);
-		vertex2.addNeighbour(vertex3);
+		vertex1.addChild(vertex2);
+		vertex1.addChild(vertex4);
+		vertex4.addChild(vertex5);
+		vertex2.addChild(vertex3);
 		
 		breadthFirstSearch.bfs(vertex1);
 
