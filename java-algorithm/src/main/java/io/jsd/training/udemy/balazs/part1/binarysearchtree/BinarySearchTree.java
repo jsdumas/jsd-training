@@ -13,9 +13,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
 	@Override
 	public void insert(T data) {
-
 		if (root == null) {
-			root = new Node<T>(data);
+			root = new Node<>(data);
 		} else {
 			insertNode(data, root);
 		}
@@ -23,19 +22,15 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
 	@Override
 	public T getMaxValue() {
-
 		if (root == null)
 			return null;
-
 		return getMax(root);
 	}
 
 	@Override
 	public T getMinValue() {
-
 		if (root == null)
 			return null;
-
 		return getMin(root);
 	}
 

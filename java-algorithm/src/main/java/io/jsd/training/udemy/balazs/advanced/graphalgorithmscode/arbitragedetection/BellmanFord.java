@@ -1,33 +1,30 @@
  package io.jsd.training.udemy.balazs.advanced.graphalgorithmscode.arbitragedetection;
 
+import static java.lang.Integer.MAX_VALUE;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class BellmanFord {
 
-	private List<Vertex> vertexList;
-	private List<Edge> edgeList;
-	private List<Vertex> cycleList;
+	private List<Vertex> vertices;
+	private List<Edge> edges;
+	private List<Vertex> cycles;
 
 	public BellmanFord(List<Vertex> vertexList, List<Edge> edgeList) {
-		this.vertexList = vertexList;
-		this.edgeList = edgeList;
-		this.cycleList = new ArrayList<>();
+		this.vertices = vertexList;
+		this.edges = edgeList;
+		this.cycles = new ArrayList<>();
 	}
 
 	public void bellmanFord(Vertex sourceVertex) {
-
 		sourceVertex.setMinDistance(0);
-
-		for (Vertex vertex : vertexList) {
-			for (Edge edge : edgeList) {
-
-				if (edge.getStartVertex().getMinDistance() == Integer.MAX_VALUE) {
+		for (Vertex vertex : vertices) {
+			for (Edge edge : edges) {
+				if (edge.getStartVertex().getMinDistance() == MAX_VALUE) {
 					continue;
 				}
-
 				double newDistance = edge.getStartVertex().getMinDistance() + edge.getWeight();
-
 				if (newDistance < edge.getTargetVertex().getMinDistance()) {
 					edge.getTargetVertex().setMinDistance(newDistance);
 					edge.getTargetVertex().setPreviousVertex(edge.getStartVertex());
@@ -35,19 +32,15 @@ public class BellmanFord {
 			}
 		}
 
-		for (Edge edge : edgeList) {
-			if (edge.getStartVertex().getMinDistance() != Integer.MAX_VALUE) {
+		for (Edge edge : edges) {
+			if (edge.getStartVertex().getMinDistance() != MAX_VALUE) {
 				if ( hasCycle(edge) ) {				
-					
 					Vertex vertex = edge.getStartVertex();
-					
 					while( !vertex.equals(edge.getTargetVertex())){
-						this.cycleList.add(vertex);
+						this.cycles.add(vertex);
 						vertex = vertex.getPreviousVertex();
 					}
-					
-					this.cycleList.add(edge.getTargetVertex());
-					
+					this.cycles.add(edge.getTargetVertex());
 					return;
 				}
 			}
@@ -59,8 +52,8 @@ public class BellmanFord {
 	}
 	
 	public void printCycle(){
-		if( this.cycleList != null ){
-			for(Vertex vertex : this.cycleList){
+		if( this.cycles != null ){
+			for(Vertex vertex : this.cycles){
 				System.out.println(vertex);
 			}
 		}else{
